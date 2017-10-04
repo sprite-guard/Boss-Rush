@@ -30,15 +30,15 @@ function BulletSpawner(descriptor) {
     this.components.push(c)
   }
   
-  this.update = function() {
-    for(var i = 0; i < this.components.length; i++) {
-      components[i].update();
-    }
-  
-    this.x += this.dx;
-    this.y += this.dy;
-  
-    if(this.life_remaining > 0) {
+  this.update = function(draw_only) {
+
+    if((this.life_remaining > 0) && (!draw_only)) {
+      for(var i = 0; i < this.components.length; i++) {
+        components[i].update();
+      }
+    
+      this.x += this.dx;
+      this.y += this.dy;
       if(this.timer == 0) {
         var scatter = 0;
         
@@ -68,7 +68,7 @@ function BulletSpawner(descriptor) {
     }
     
     for(var i = 0; i < this.all_bullets.length; i++) {
-      this.all_bullets[i].update();
+      this.all_bullets[i].update(draw_only);
     }
     this.gc();
   }
@@ -96,7 +96,13 @@ function Bullet(descriptor) {
   this.style = descriptor.style || "solid";
   this.yaw = descriptor.yaw || 0;
   this.speed = descriptor.speed || 1;
-  this.max_age = descriptor.max_age || 1000;
+  if(descriptor.max_age) {
+    this.max_age = descriptor.max_age;
+  } else if(this.yaw == 0) {
+    this.max_age = 1000 / this.speed;
+  } else {
+    this.max_age = ((2 * Math.PI) / this.yaw);
+  }
   
   // internal
   this.exists = true;
@@ -127,17 +133,21 @@ function Bullet(descriptor) {
     }
   }
   
-  this.update = function() {
-    this.age++
-    
-    this.heading += this.yaw;
-    var dx = Math.cos(this.heading);
-    var dy = Math.sin(this.heading);
-    this.x += this.speed * dx;
-    this.y += this.speed * dy;
-    
-    if(this.age > this.max_age) {
-      this.cull();
+  this.update = function(draw_only) {
+    if(!draw_only) {
+      this.age++
+      
+      this.heading += this.yaw;
+      var dx = Math.cos(this.heading);
+      var dy = Math.sin(this.heading);
+      this.x += this.speed * dx;
+      this.y += this.speed * dy;
+      
+      if(this.age > this.max_age) {
+        this.cull();
+      } else {
+        this.draw();
+      }
     } else {
       this.draw();
     }

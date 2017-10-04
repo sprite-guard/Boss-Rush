@@ -2,8 +2,9 @@ var K_LEFT = 37,
     K_UP = 38,
     K_RIGHT = 39,
     K_DOWN = 40,
-    K_ACTION = 16,
     K_RESET = 82,
+    K_PAUSE = 80,
+    K_BLINK = 32,
     DEBUG = true;
 
 var CONTROLS = {
@@ -30,11 +31,14 @@ window.onkeydown = function(e){
     case K_DOWN:
       CONTROLS.down = 1;
       break;
-    case K_ACTION:
-      CONTROLS.action = 1;
+    case K_BLINK:
+      CONTROLS.blink = 1;
       break;
     case K_RESET:
-      CONTROLS.reset = 1;
+      game.reset();
+      break;
+    case K_PAUSE:
+      game.pause_unpause();
       break;
   }
 };
@@ -53,11 +57,8 @@ window.onkeyup = function(e){
     case K_DOWN:
       CONTROLS.down = 0;
       break;
-    case K_ACTION:
-      CONTROLS.action = 0;
-      break;
-    case K_RESET:
-      CONTROLS.reset = 0;
+    case K_BLINK:
+      CONTROLS.blink = 0;
       break;
   }
 };

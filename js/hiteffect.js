@@ -12,21 +12,23 @@ function HitEffect(descriptor) {
   this.r = this.r_min;
   this.alive = true;
   
-  this.update = function() {
+  this.update = function(draw_only) {
     if(this.r < this.r_max) {
-      this.r += 2;
+      if(!draw_only) {
+        this.r += 2;
+      }
       this.draw();
     } else {
-      console.log(this.r + "," + this.r_min + "," + this.r_max);
       this.alive = false;
     }
   };
   
   this.draw = function() {
-    console.log("drawing hit effect at " + this.x + "," + this.y);
     game.draw.beginPath();
     game.draw.strokeStyle = this.color;
+    game.draw.lineWidth = 3;
     game.draw.ellipse(this.x, this.y, this.r, this.r, 0, 0, 2 * Math.PI);
     game.draw.stroke();
+    game.draw.lineWidth = 1;
   };
 }

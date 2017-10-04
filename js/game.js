@@ -5,19 +5,18 @@
  * Sub goal is to create performant bullet-hell patterns in HTML Canvas.
  */
  
- /* Wrapping up 9/27/2017
-  * 
-  * The game is playable! Huzzah
-  *
-  * Player hit effect is implemented, but weak
-  * we need to make it more visually impactful
-  * it should also destroy bullets.
+ /* Leaving off 10/2/2017
+  * Slowdown works
+  * hit effects work
+  * dashing works, but does not consume fuel
+  * dashing needs to decrement the player's fuel instead of incrementing its age.
   */
 
 var DEBUG = true,
     FR = document.getElementById("fr"),
     UPDATE = 60,
-    MAX_UPDATE = 60;
+    MAX_UPDATE = 60,
+    BGCOLOR = "#002244";
     
 var frame_counter = 0,
     last_time = performance.now(),
@@ -25,93 +24,118 @@ var frame_counter = 0,
 
 var game = {};
 
-game.gamepads = [];
-game.canvas = document.getElementById("game");
-game.draw = game.canvas.getContext("2d");
-
 game.fullscreen = function() {
   game.canvas.webkitRequestFullScreen();
   game.draw.clearRect(0, 0, game.canvas.width, game.canvas.height);
 }
 
 game.init = function() {
+  // initialize game object
+
+  game.timer = 0;
+  game.slowdown = 0;
+  game.max_slowdown = 3;
+  game.gamepads = [];
+  game.canvas = document.getElementById("game");
+  game.draw = game.canvas.getContext("2d");
+  game.spawners = [];
+  game.timecount = 0;
+  game.framecount = 1;
+  game.fps = 0;
+  game.ewam = 60;
+  game.draw_batch = [];
+  
+  // spawners
+  var test_spawner = new BulletSpawner({
+    x: 0,
+    y: 100,
+    heading: 0.5 * Math.PI,
+    bullet_type: {
+      yaw: 0,
+      speed: 3,
+      r: 8,
+      color: "#00FFFF",
+      shell: "#0000FF",
+      style: "gradient"
+    },
+    spin: 1,
+    random_spread: 0.2,
+    dx: 1,
+    dy: 0,
+    
+    lifespan: 600,
+    delay: 0
+  });
+
+  game.spawners.push(test_spawner);
+
+  var other_test_spawner = new BulletSpawner({
+    x: 400,
+    y: 100,
+    heading: 0.6 * Math.PI,
+    bullet_type: {
+      yaw: 0.007,
+      r: 8,
+      color: "#FFBBFF",
+      shell: "#FF0000",
+      pit_size: 2,
+      style: "gradient",
+      speed: 2
+    },
+    spin: 1,
+    random_spread: 0.4,
+    
+    lifespan: 600,
+    delay: 0
+  });
+
+  game.spawners.push(other_test_spawner);
+
+  // housekeeping
   controllers.init();
   game.canvas.setAttribute("ondblclick", "game.fullscreen()");
   game.keep_going = true;
+  
   player.init();
-
+  
   // game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
-  window.requestAnimationFrame(game.update)
+  game.animation_request = window.requestAnimationFrame(game.update);
 }
-
-game.spawners = [];
-
-game.query_inputs = function() {
-
-}
-
-game.timecount = 0;
-game.framecount = 1;
-game.fps = 0;
-game.ewam = 60;
-
-var test_spawner = new BulletSpawner({
-  x: 0,
-  y: 100,
-  heading: 0.5 * Math.PI,
-  bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#00FFFF",
-    shell: "#0000FF",
-    style: "gradient"
-  },
-  spin: 1,
-  random_spread: 0.2,
-  dx: 1,
-  dy: 0,
-  
-  lifespan: 600,
-  delay: 0
-});
-
-game.spawners.push(test_spawner);
-
-var other_test_spawner = new BulletSpawner({
-  x: 400,
-  y: 100,
-  heading: 0.6 * Math.PI,
-  bullet_type: {
-    yaw: 0.007,
-    r: 8,
-    color: "#FFBBFF",
-    shell: "#FF0000",
-    pit_size: 2,
-    style: "gradient",
-    speed: 2
-  },
-  spin: 1,
-  random_spread: 0.4,
-  
-  lifespan: 600,
-  delay: 0
-});
-
-game.spawners.push(other_test_spawner);
 
 game.update = function() {
   game.width = game.canvas.width;
   game.height = game.canvas.height;
-
-  game.draw.clearRect(0,0,game.canvas.width,game.canvas.height);
   
-  
-  player.update();
-  game.check_collisions();
 
-  for(var i = 0; i < game.spawners.length; i++) {
-    game.spawners[i].update();
+  if(game.timer <= 0) {
+    game.timer = game.slowdown;
+    
+    game.draw.fillStyle = BGCOLOR;
+    game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
+    
+    game.check_collisions();
+  
+    player.update();
+
+    for(var i = 0; i < game.spawners.length; i++) {
+      game.spawners[i].update();
+    }
+  } else {
+    game.timer--;
+    
+    game.draw.fillStyle = BGCOLOR;
+    game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
+    player.update(true);
+    
+    for(var i = 0; i < game.spawners.length; i++) {
+      game.spawners[i].update(true);
+    }
+  }
+  
+  if(CONTROLS.blink) {
+    game.slowdown = game.max_slowdown;
+  } else {
+    game.slowdown = 0;
   }
   
   if(DEBUG) {
@@ -128,7 +152,7 @@ game.update = function() {
   }
   
   if(game.keep_going) {
-    window.requestAnimationFrame(game.update);
+    game.animation_request = window.requestAnimationFrame(game.update);
   }
 }
 
@@ -162,6 +186,16 @@ game.check_collisions = function() {
 
 game.pause = function() {
   game.keep_going = false;
+}
+
+game.pause_unpause = function() {
+  game.keep_going = !game.keep_going;
+  window.requestAnimationFrame(game.update);
+}
+
+game.reset = function() {
+  window.cancelAnimationFrame(game.animation_request);
+  game.init();
 }
 
 game.init();
