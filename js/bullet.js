@@ -14,11 +14,6 @@ function BulletSpawner(descriptor) {
   this.dy = descriptor.dy || 0;
   this.random_spread = descriptor.random_spread || 0;
   
-  // nb incorporate RNG as beam width instead of boundaries
-  if(descriptor.randmin && descriptor.randmax) {
-    this.is_random = true;
-  }
-  
   // internal
   this.timer = (descriptor.delay + descriptor.sync) || 0;
   this.life_remaining = this.lifespan;
@@ -92,6 +87,7 @@ function Bullet(descriptor) {
   // optional
   this.color = descriptor.color || "#FFFFFF";
   this.shell = descriptor.shell || "#FF00FF";
+  this.graze_color = descriptor.graze_color || "#FFFFFF#"
   this.pit_size = descriptor.pit_size || 0;
   this.style = descriptor.style || "solid";
   this.yaw = descriptor.yaw || 0;
@@ -107,6 +103,7 @@ function Bullet(descriptor) {
   // internal
   this.exists = true;
   this.age = 0;
+  this.current_shell = this.shell;
   
   this.cull = descriptor.cull || function() {
     this.exists = false;
@@ -124,7 +121,7 @@ function Bullet(descriptor) {
     } else if(this.style == "gradient") {
       var gradient = game.draw.createRadialGradient(this.x, this.y, this.r,
                                                     this.x, this.y, this.pit_size );
-      gradient.addColorStop(0, this.shell);
+      gradient.addColorStop(0, this.current_shell);
       gradient.addColorStop(1, this.color);
       game.draw.fillStyle = gradient;
       game.draw.fill();
@@ -151,13 +148,18 @@ function Bullet(descriptor) {
     } else {
       this.draw();
     }
+    this.current_shell = this.shell;
+  }
+  
+  this.graze = function() {
+    this.current_shell = this.graze_color;
   }
 }
 
 Bullet.prototype.gradient = function() {
   var gradient = game.draw.createRadialGradient(this.x, this.y, this.r,
                                                 this.x, this.y, 0 );
-  gradient.addColorStop(0, this.shell);
+  gradient.addColorStop(0, this.current_shell);
   gradient.addColorStop(1, this.color);
   game.draw.fillStyle = gradient;
   game.draw.beginPath();

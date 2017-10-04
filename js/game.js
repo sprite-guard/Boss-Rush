@@ -56,6 +56,7 @@ game.init = function() {
       r: 8,
       color: "#00FFFF",
       shell: "#0000FF",
+      graze_color: "#000000",
       style: "gradient"
     },
     spin: 1,
@@ -63,7 +64,7 @@ game.init = function() {
     dx: 1,
     dy: 0,
     
-    lifespan: 600,
+    lifespan: 800,
     delay: 0
   });
 
@@ -74,10 +75,11 @@ game.init = function() {
     y: 100,
     heading: 0.6 * Math.PI,
     bullet_type: {
-      yaw: 0.007,
+      yaw: 0.0065,
       r: 8,
       color: "#FFBBFF",
       shell: "#FF0000",
+      graze_color: "#000000",
       pit_size: 2,
       style: "gradient",
       speed: 2
@@ -85,7 +87,7 @@ game.init = function() {
     spin: 1,
     random_spread: 0.4,
     
-    lifespan: 600,
+    lifespan: 800,
     delay: 0
   });
 
@@ -132,7 +134,7 @@ game.update = function() {
     }
   }
   
-  if(CONTROLS.blink) {
+  if(player.dash_target) {
     game.slowdown = game.max_slowdown;
   } else {
     game.slowdown = 0;
@@ -158,12 +160,14 @@ game.update = function() {
 
 game.check_collisions = function() {
   var player_hb_squared = 0;
+  var player_gb_squared = player.graze_radius * player.graze_radius;
   
   for(var spawner = 0; spawner < game.spawners.length; spawner++) {
     var bullet_radius = game.spawners[spawner].bullet_type.r - 2;
     var bullet_radius_squared = (bullet_radius * bullet_radius);
     
     var striking_distance = bullet_radius_squared + player_hb_squared;
+    var grazing_distance = bullet_radius_squared + player_gb_squared;
 
     for(var i = 0; i < game.spawners[spawner].all_bullets.length; i++) {
       
@@ -176,6 +180,11 @@ game.check_collisions = function() {
       var ysq = (y_distance * y_distance);
       
       if((xsq + ysq) < striking_distance) player.get_hurt();
+      
+      if((xsq + ysq) < grazing_distance) {
+        game.spawners[spawner].all_bullets[i].graze();
+        player.graze();
+      }
       
       // collide with shield
       

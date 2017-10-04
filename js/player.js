@@ -8,6 +8,7 @@ player.init = function() {
   this.w = 12;
   this.h = 16;
   this.r = 8;
+  this.graze_radius = 32;
   this.hb = 0;
   this.shell_color = "#000000";
   this.core_color = "#00FFFF";
@@ -23,6 +24,7 @@ player.init = function() {
   this.hit_effects = [];
   this.dash_target = false;
   this.dash_fuel = 60;
+  this.max_dash_fuel = 120;
 }
 
 player.draw = function() {
@@ -55,26 +57,21 @@ player.update = function(draw_only) {
   if(CONTROLS.blink) {
     if(this.dash_target) {
       this.dash_target.update();
-      if(this.dash_target.age == this.dash_target.max_age) {
-        this.x += this.dash_target.x_offset;
-        this.y += this.dash_target.y_offset;
+      if(this.dash_fuel <= 0) {
+        // target is active, fuel is spent
+        this.move_to_dash_target();
         this.dash_target = false;
       }
-    } else if(this.dash_fuel > 0) {
-      console.log("yay, dash fuel: " + this.dash_fuel);
+    } else if((!this.dash_target) && (this.dash_fuel > 0)) {
       this.dash_target = new DashTarget();
-    } else if(this.dash_fuel < 0) {
-      console.log("whoops, dash fuel: " + this.dash_fuel);
-      this.dash_fuel = 0;
     } else {
-      console.log("whoops, dash fuel: " + this.dash_fuel);
+      // no target, no fuel
+      this.dash_fuel = 0;
     }
   } else if(!draw_only) {
     // blink is not held, update is go
     if(this.dash_target) {
-      this.x += this.dash_target.x_offset;
-      this.y += this.dash_target.y_offset;
-      this.dash_target = false;
+      this.move_to_dash_target();
     }
   
     // move the player
@@ -114,6 +111,12 @@ player.update = function(draw_only) {
   player.draw();
 };
 
+player.move_to_dash_target = function() {
+  this.x += this.dash_target.x_offset;
+  this.y += this.dash_target.y_offset;
+  this.dash_target = false;
+}
+
 player.get_hurt = function() {
   if(this.state != "hurt") {
     this.health--;
@@ -125,5 +128,11 @@ player.get_hurt = function() {
     if(this.health == 0) {
       game.pause();
     }
+  }
+}
+
+player.graze = function() {
+  if(this.dash_fuel < this.max_dash_fuel) {
+    this.dash_fuel += 0.1;
   }
 }
