@@ -53,7 +53,7 @@ game.init = function() {
     bullet_type: {
       yaw: 0,
       speed: 3,
-      r: 8,
+      r: 16,
       color: "#00FFFF",
       shell: "#0000FF",
       graze_color: "#000000",
