@@ -5,6 +5,7 @@ var K_LEFT = 37,
     K_RESET = 82,
     K_PAUSE = 80,
     K_BLINK = 32,
+    K_SPIRIT = 16,
     DEBUG = true;
 
 var CONTROLS = {
@@ -12,7 +13,8 @@ var CONTROLS = {
     right: 0,
     up: 0,
     down: 0,
-    action: 0,
+    blink: 0,
+    spirit: 0,
     reset: 0
 };
 
@@ -33,6 +35,9 @@ window.onkeydown = function(e){
       break;
     case K_BLINK:
       CONTROLS.blink = 1;
+      break;
+    case K_SPIRIT:
+      CONTROLS.spirit = 1;
       break;
     case K_RESET:
       game.reset();
@@ -60,5 +65,7 @@ window.onkeyup = function(e){
     case K_BLINK:
       CONTROLS.blink = 0;
       break;
+    case K_SPIRIT:
+      CONTROLS.spirit = 0;
   }
 };

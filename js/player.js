@@ -25,6 +25,7 @@ player.init = function() {
   this.dash_target = false;
   this.dash_fuel = 60;
   this.max_dash_fuel = 120;
+  this.spirit = false;
 }
 
 player.draw = function() {
@@ -68,10 +69,27 @@ player.update = function(draw_only) {
       // no target, no fuel
       this.dash_fuel = 0;
     }
-  } else if(!draw_only) {
-    // blink is not held, update is go
+  }
+  
+  if(CONTROLS.spirit) {
+    if(this.spirit) {
+      this.spirit.update(true);
+    } else {
+      this.spirit = new Spirit({
+        x: this.x,
+        y: this.y
+      });
+    }
+  }
+  
+  if(!draw_only && !CONTROLS.blink && !CONTROLS.spirit) {
+    // blink and spirit are not held, update is go
     if(this.dash_target) {
       this.move_to_dash_target();
+    }
+    
+    if(this.spirit) {
+      this.spirit.update(false)
     }
   
     // move the player
@@ -82,6 +100,12 @@ player.update = function(draw_only) {
     this.x += this.dx;
     this.y += this.dy;
   }
+  
+
+  if(this.x < 0) this.x = 0;
+  if(this.x > game.canvas.width) this.x = game.canvas.width;
+  if(this.y < 0) this.y = 0;
+  if(this.y > game.canvas.height) this.y = game.canvas.height;
   
   // handle iframes
   if(!draw_only) {
