@@ -26,9 +26,14 @@ player.init = function() {
   this.dash_fuel = 60;
   this.max_dash_fuel = 120;
   this.spirit = false;
+  this.invulnerable = false;
 }
 
 player.draw = function() {
+  
+  if(this.spirit) {
+    this.spirit.draw();
+  }
   var gradient = game.draw.createRadialGradient( this.x, this.y, this.r,
                                                  this.x, this.y, 0);
   if(this.state == "fine") {
@@ -89,7 +94,7 @@ player.update = function(draw_only) {
     }
     
     if(this.spirit) {
-      this.spirit.update(false)
+      this.spirit.update(false);
     }
   
     // move the player
@@ -132,7 +137,7 @@ player.update = function(draw_only) {
 
   
   // draw the result
-  player.draw();
+  // player.draw();
 };
 
 player.move_to_dash_target = function() {
@@ -142,15 +147,17 @@ player.move_to_dash_target = function() {
 }
 
 player.get_hurt = function() {
-  if(this.state != "hurt") {
-    this.health--;
-    this.state = "hurt";
-    this.hit_effects.push(new HitEffect({
-      x: this.x,
-      y: this.y
-    }));
-    if(this.health == 0) {
-      game.pause();
+  if(!this.invulnerable) {
+    if(this.state != "hurt") {
+      this.health--;
+      this.state = "hurt";
+      this.hit_effects.push(new HitEffect({
+        x: this.x,
+        y: this.y
+      }));
+      if(this.health == 0) {
+        game.pause();
+      }
     }
   }
 }

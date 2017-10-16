@@ -69,3 +69,52 @@ var other_test_spawner = new RandomBulletSpawner({
   lifespan: 600,
   delay: 0
 });
+
+// Current test pattern 10/11/2017
+// spawners
+var test_spawner = new BulletSpawner({
+  x: 0,
+  y: 100,
+  heading: 0.5 * Math.PI,
+  bullet_type: {
+    yaw: -0.006,
+    speed: 3,
+    r: 16,
+    color: "#00FFFF",
+    shell: "#0000FF",
+    graze_color: "#000000",
+    style: "gradient"
+  },
+  spin: 1,
+  random_spread: 0.3,
+  dx: 1,
+  dy: 0,
+  
+  lifespan: 800,
+  delay: 3
+});
+
+game.spawners.push(test_spawner);
+
+var other_test_spawner = new BulletSpawner({
+  x: 400,
+  y: 100,
+  heading: 0.6 * Math.PI,
+  bullet_type: {
+    yaw: 0.0065,
+    r: 8,
+    color: "#FFBBFF",
+    shell: "#FF0000",
+    graze_color: "#000000",
+    pit_size: 2,
+    style: "gradient",
+    speed: 2
+  },
+  spin: 1,
+  random_spread: 0.4,
+  
+  lifespan: 600,
+  delay: 3
+});
+
+game.spawners.push(other_test_spawner);

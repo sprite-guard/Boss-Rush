@@ -97,7 +97,7 @@ function Bullet(descriptor) {
   } else if(this.yaw == 0) {
     this.max_age = 1000 / this.speed;
   } else {
-    this.max_age = ((2 * Math.PI) / this.yaw);
+    this.max_age = ((2 * Math.PI) / Math.abs(this.yaw));
   }
   
   // internal
