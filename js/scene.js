@@ -21,17 +21,17 @@ scenes_list.menu = new Scene({
   elements: [
     new Background("#002244"),
     new MenuItem({
-      x: 100,
-      y: 100,
-      w: 234,
-      h: 40,
+      x: 10,
+      y: 10,
+      w: 238,
+      h: 46,
       font: "sans-serif",
       size: "32px",
-      text: "Test Menu Item"
+      text: "Daily Challenge"
     }),
     new Portal({
-      x: 360,
-      y: 120,
+      x: 268,
+      y: 32,
       h: 16,
       destination: "test_scene"
     }),

@@ -3,7 +3,7 @@ function Spirit(descriptor) {
   this.y = descriptor.y;
   
   // optional
-  this.speed = descriptor.speed || 4;
+  this.speed = descriptor.speed || 5;
   this.dpf = descriptor.dammage || 1;
   this.inner_color = descriptor.inner_color || "#FFFF00";
   this.outer_color = descriptor.outer_color || "#996600";
