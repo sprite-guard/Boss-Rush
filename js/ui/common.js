@@ -15,4 +15,4 @@ COMMON.daily_portal = new Portal({
   y: 32,
   h: 16,
   destination: "test_scene"
-}),
+});

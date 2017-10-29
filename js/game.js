@@ -138,7 +138,10 @@ game.check_collisions = function() {
       if((xsq + ysq) < grazing_distance) {
         game.spawners[spawner].all_bullets[i].graze();
         player.graze();
+      } else {
+        game.spawners[spawner].all_bullets[i].ungraze();
       }
+        
       
       // collide with shield
       

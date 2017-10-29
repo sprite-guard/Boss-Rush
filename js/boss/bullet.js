@@ -26,7 +26,6 @@ function BulletSpawner(descriptor) {
   }
   
   this.update = function(draw_only) {
-
     if((this.life_remaining > 0) && (!draw_only)) {
       for(var i = 0; i < this.components.length; i++) {
         components[i].update();
@@ -63,10 +62,16 @@ function BulletSpawner(descriptor) {
     }
     
     for(var i = 0; i < this.all_bullets.length; i++) {
-      this.all_bullets[i].update(draw_only);
+      this.all_bullets[i].update();
     }
     this.gc();
   }
+  
+  this.draw = function() {
+    for(var i = 0; i < this.all_bullets.length; i++) {
+      this.all_bullets[i].draw();
+    }
+  };
   
   this.gc = function() {
     var res = [];
@@ -130,29 +135,26 @@ function Bullet(descriptor) {
     }
   }
   
-  this.update = function(draw_only) {
-    if(!draw_only) {
-      this.age++
-      
-      this.heading += this.yaw;
-      var dx = Math.cos(this.heading);
-      var dy = Math.sin(this.heading);
-      this.x += this.speed * dx;
-      this.y += this.speed * dy;
-      
-      if(this.age > this.max_age) {
-        this.cull();
-      } else {
-        this.draw();
-      }
-    } else {
-      this.draw();
+  this.update = function() {
+    this.age++
+    
+    this.heading += this.yaw;
+    var dx = Math.cos(this.heading);
+    var dy = Math.sin(this.heading);
+    this.x += this.speed * dx;
+    this.y += this.speed * dy;
+    
+    if(this.age > this.max_age) {
+      this.cull();
     }
-    this.current_shell = this.shell;
   }
   
   this.graze = function() {
     this.current_shell = this.graze_color;
+  }
+  
+  this.ungraze = function() {
+    this.current_shell = this.shell
   }
 }
 

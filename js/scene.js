@@ -46,12 +46,7 @@ scenes_list.menu = new Scene({
 scenes_list.test_scene = new Scene({
   elements: [
     new Background("#002244"),
-    new Portal({
-      x: 400,
-      y: 300,
-      h: 32,
-      destination: "menu"
-    }),
+    test_boss,
     player
   ],
   init: function() {
