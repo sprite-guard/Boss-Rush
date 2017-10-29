@@ -13,6 +13,44 @@ function Scene(descriptor) {
       this.elements[i].draw();
     }
   };
+  
+  this.check_collisions = function() {
+    var player_hb_squared = 0;
+    var player_gb_squared = player.graze_radius * player.graze_radius;
+    
+    for(var spawner = 0; spawner < game.spawners.length; spawner++) {
+      var bullet_radius = game.spawners[spawner].bullet_type.r - 2;
+      var bullet_radius_squared = (bullet_radius * bullet_radius);
+      
+      var striking_distance = bullet_radius_squared + player_hb_squared;
+      var grazing_distance = bullet_radius_squared + player_gb_squared;
+// NB CHANGE EVERYTHING
+      for(var i = 0; i < game.spawners[spawner].all_bullets.length; i++) {
+        
+        var current_bullet = game.spawners[spawner].all_bullets[i];
+        
+        // collide with player
+        var x_distance = Math.abs(current_bullet.x - player.x);
+        var y_distance = Math.abs(current_bullet.y - player.y);
+        var xsq = (x_distance * x_distance);
+        var ysq = (y_distance * y_distance);
+        
+        if((xsq + ysq) < striking_distance) player.get_hurt();
+        
+        if((xsq + ysq) < grazing_distance) {
+          game.spawners[spawner].all_bullets[i].graze();
+          player.graze();
+        } else {
+          game.spawners[spawner].all_bullets[i].ungraze();
+        }
+          
+        
+        // collide with shield
+        
+        // maybe get bombed? I dunno if bombs are even a thing.
+      }
+    }
+  }
 }
 
 var scenes_list = {};
