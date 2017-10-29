@@ -62,38 +62,7 @@ game.update = function() {
   
   game.current_scene.update();
   game.current_scene.draw();
-  /*
-  if(game.timer <= 0) {
-    game.timer = game.slowdown;
-    
-    game.draw.fillStyle = BGCOLOR;
-    game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
-    
-    game.check_collisions();
-  
-    player.update();
 
-    for(var i = 0; i < game.spawners.length; i++) {
-      game.spawners[i].update();
-    }
-  } else {
-    game.timer--;
-    
-    game.draw.fillStyle = BGCOLOR;
-    game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
-    player.update(true);
-    
-    for(var i = 0; i < game.spawners.length; i++) {
-      game.spawners[i].update(true);
-    }
-  }
-  
-  if(player.dash_target) {
-    game.slowdown = game.max_slowdown;
-  } else {
-    game.slowdown = 0;
-  }
-  */
   if(DEBUG) {
     UPDATE--;
     var current_time = performance.now();
