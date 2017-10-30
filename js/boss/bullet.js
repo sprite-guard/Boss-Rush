@@ -150,7 +150,7 @@ function Bullet(descriptor) {
       this.graze();
       player.graze();
     } else if(collision_type == "hit") {
-      player.get_hit();
+      player.get_hurt();
     } else {
       this.ungraze();
     }
