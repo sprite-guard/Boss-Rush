@@ -126,6 +126,7 @@ player.update = function(draw_only) {
   }
   
   // hit effect management
+  // NB the refactor is going to ruin this
   var next_hit_array = [];
   for(var i = 0; i < this.hit_effects.length; i++) {
     this.hit_effects[i].update(draw_only);

@@ -15,6 +15,7 @@ function Scene(descriptor) {
   };
   
   this.check_collisions = function() {
+  // NB CHANGE EVERYTHING
     var player_hb_squared = 0;
     var player_gb_squared = player.graze_radius * player.graze_radius;
     
@@ -24,7 +25,7 @@ function Scene(descriptor) {
       
       var striking_distance = bullet_radius_squared + player_hb_squared;
       var grazing_distance = bullet_radius_squared + player_gb_squared;
-// NB CHANGE EVERYTHING
+
       for(var i = 0; i < game.spawners[spawner].all_bullets.length; i++) {
         
         var current_bullet = game.spawners[spawner].all_bullets[i];
@@ -43,8 +44,7 @@ function Scene(descriptor) {
         } else {
           game.spawners[spawner].all_bullets[i].ungraze();
         }
-          
-        
+
         // collide with shield
         
         // maybe get bombed? I dunno if bombs are even a thing.
