@@ -144,6 +144,16 @@ function Bullet(descriptor) {
     this.x += this.speed * dx;
     this.y += this.speed * dy;
     
+    var collision_type = this.check_collisions();
+    
+    if(collision_type == "graze") {
+      // do the grazening
+    } else if(collision_type == "hit") {
+      // player gets hit, draw an explosion, all that jazz
+    } else {
+      // nothing happens, but we'll put a block here in case something does.
+    }
+    
     if(this.age > this.max_age) {
       this.cull();
     }

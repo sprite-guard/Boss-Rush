@@ -81,8 +81,6 @@ game.update = function() {
   }
 }
 
-
-
 game.pause = function() {
   game.keep_going = false;
 }
