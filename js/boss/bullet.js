@@ -2,6 +2,7 @@ function BulletSpawner(descriptor) {
   this.x = descriptor.x;
   this.y = descriptor.y;
   this.heading = descriptor.heading;
+  this.home = {x: this.x, y: this.y, heading: this.heading};
   this.bullet_type = descriptor.bullet_type;
   this.lifespan = descriptor.lifespan;
   
@@ -15,10 +16,17 @@ function BulletSpawner(descriptor) {
   this.random_spread = descriptor.random_spread || 0;
   
   // internal
-  this.timer = (descriptor.delay + descriptor.sync) || 0;
-  this.life_remaining = this.lifespan;
-  this.alive = true;
-  this.all_bullets = [];
+  
+  this.init = function() {
+    this.x = this.home.x;
+    this.y = this.home.y;
+    this.heading = this.home.heading;
+    
+    this.timer = (descriptor.delay + descriptor.sync) || 0;
+    this.life_remaining = this.lifespan;
+    this.alive = true;
+    this.all_bullets = [];
+  }
   
   this.add_component = function(c) {
     c.parent_object = this;
@@ -112,7 +120,7 @@ function Bullet(descriptor) {
   
   this.cull = descriptor.cull || function() {
     this.exists = false;
-  }
+  };
   
   this.draw = descriptor.draw || function() {
     game.draw.beginPath();
@@ -133,7 +141,7 @@ function Bullet(descriptor) {
     } else {
       console.log("oops, tried to draw " + this.style);
     }
-  }
+  };
   
   this.update = function() {
     this.age++
@@ -158,15 +166,34 @@ function Bullet(descriptor) {
     if(this.age > this.max_age) {
       this.cull();
     }
-  }
+  };
   
   this.graze = function() {
     this.current_shell = this.graze_color;
-  }
+  };
   
   this.ungraze = function() {
     this.current_shell = this.shell
-  }
+  };
+  
+  this.check_collisions = function() {
+    var rsq = this.r * this.r,
+        player_hbsq = player.hb * player.hb,
+        x_distance = Math.abs(this.x - player.x),
+        y_distance = Math.abs(this.y - player.y),
+        dsq = (x_distance * x_distance) + (y_distance * y_distance),
+        collision_distance_squared = (rsq + player_hbsq),
+        gbsq = (player.graze_radius * player.graze_radius),
+        graze_distance_squared = rsq + gbsq;
+        
+    if(dsq <= collision_distance_squared) {
+      return "hit";
+    } else if(dsq <= graze_distance_squared) {
+      return "graze";
+    } else {
+      return false;
+    }
+  };
 }
 
 Bullet.prototype.gradient = function() {

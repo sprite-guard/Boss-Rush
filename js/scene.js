@@ -1,10 +1,18 @@
 function Scene(descriptor) {
   this.elements = descriptor.elements;
   this.init = descriptor.init;
+  
+  // internal
+  this.slowdown_speed = 0.3;
+  this.slowdown = false;
 
   this.update = function() {
     for(var i = 0; i < this.elements.length; i++) {
-      this.elements[i].update();
+      // NB we need to propagate the slowdown to every element
+      // and tell them how and when to slow themselves down.
+      // we also need a way to toggle the slowdown
+      // that power will be given to the player object.
+      this.elements[i].update(this.slowdown, this.slowdown_speed);
     }
   };
   
@@ -89,5 +97,6 @@ scenes_list.test_scene = new Scene({
   ],
   init: function() {
     player.init();
+    test_boss.init();
   }
 })

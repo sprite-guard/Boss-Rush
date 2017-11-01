@@ -90,7 +90,7 @@ game.pause_unpause = function() {
   window.requestAnimationFrame(game.update);
 }
 
-game.reset = function() {
+game.return_to_menu = function() {
   window.cancelAnimationFrame(game.animation_request);
   game.init();
 }

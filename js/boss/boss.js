@@ -1,6 +1,7 @@
 function Boss(descriptor) {
   this.x = descriptor.x;
   this.y = descriptor.y;
+  this.home = {x: this.x, y: this.y}
   this.graphic = descriptor.graphic;
   this.exit = descriptor.exit;
   
@@ -10,6 +11,15 @@ function Boss(descriptor) {
   
   this.add_phase = function(descriptor) {
     this.phases.push( new Phase(this, descriptor) );
+  }
+  
+  this.init = function() {
+    this.phase = 0;
+    this.x = this.home.x;
+    this.y = this.home.y;
+    for(var i = 0; i < this.phases.length; i++) {
+      this.phases[i].init();
+    }
   }
   
   this.update = function() {
@@ -50,6 +60,15 @@ function Phase(parent,descriptor) {
   // internal
   this.iframes = 0;
   this.current_attack = false;
+  
+  this.init = function() {
+    this.iframes = 0;
+    this.current_attack = false;
+    
+    for(var i = 0; i < this.attacks.length; i++) {
+      this.attacks[i].init();
+    }
+  };
   
   this.is_done = descriptor.end_condition || function() {
     if(this.timer <= 0) return true;
@@ -127,6 +146,11 @@ function Attack(parent,descriptor) {
   };
   
   // internal
+  this.init = function() {
+    for(var i = 0; i < this.spawners.length; i++) {
+      this.spawners[i].init();
+    }
+  }
   
   this.update = function() {
     this.choreography(this.parent,this.spawners);
