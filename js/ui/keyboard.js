@@ -8,6 +8,7 @@ var K_LEFT = 37,
     K_BLINK = 32,
     K_SPIRIT = 16,
     K_INVULN = 73,
+    K_TEST = 65,
     DEBUG = true;
 
 var CONTROLS = {
@@ -49,6 +50,10 @@ window.onkeydown = function(e){
       break;
     case K_PAUSE:
       game.pause_unpause();
+      break;
+    case K_TEST:
+      game.current_scene = scenes_list.test_scene;
+      game.current_scene.init();
       break;
     case K_INVULN:
       player.invulnerable = true;

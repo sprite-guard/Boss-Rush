@@ -14,6 +14,8 @@ function BulletSpawner(descriptor) {
   this.dx = descriptor.dx || 0;
   this.dy = descriptor.dy || 0;
   this.random_spread = descriptor.random_spread || 0;
+  this.aimed = descriptor.aimed || false;
+  this.target = descriptor.target || player;
   
   // internal
   
@@ -49,14 +51,26 @@ function BulletSpawner(descriptor) {
           scatter = (Math.random() * this.random_spread) - offset;
         }
       
-        var next_direction = this.heading + scatter;
+        var next_direction = this.heading;
+        
+        if(this.aimed) {
+          // figure out what direction the player is in
+          var x_offset = this.target.x - this.x;
+          var y_offset = this.target.y - this.y;
+          var magnitude = Math.sqrt((x_offset * x_offset) + (y_offset * y_offset));
+          
+          var h = Math.atan2(y_offset, x_offset);
+          next_direction = h;
+        } else {
+          next_direction += this.spin;
+        }
+        
+        this.heading = next_direction;
 
         var next_bullet = this.bullet_type;
-        next_bullet.heading = next_direction;
+        next_bullet.heading = next_direction + scatter;
         next_bullet.x = this.x;
         next_bullet.y = this.y;
-        
-        this.heading += this.spin;
 
         this.life_remaining--;
         this.all_bullets.push(new Bullet(next_bullet));
