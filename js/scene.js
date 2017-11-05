@@ -20,7 +20,21 @@ function Scene(descriptor) {
     for(var i = 0; i < this.elements.length; i++) {
       this.elements[i].draw();
     }
+    
+    if(player.dead) {
+      game.draw.fillStyle = "#FF9966";
+      game.draw.font = "128px serif";
+      game.draw.fillText("Ritual Failed",64,300);
+      game.draw.font = "100px serif";
+      game.draw.fillText("press r to restart",64,450);
+    }
   };
+  
+  this.game_over = function() {
+    player.spirit = false;
+    player.dash_target = false;
+    player.dead = true;
+  }
   
   this.check_collisions = function() {
   // NB CHANGE EVERYTHING

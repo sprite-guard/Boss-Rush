@@ -91,8 +91,8 @@ game.pause_unpause = function() {
 }
 
 game.return_to_menu = function() {
-  window.cancelAnimationFrame(game.animation_request);
-  game.init();
+  game.current_scene = scenes_list.menu;
+  game.current_scene.init();
 }
 
 game.init();

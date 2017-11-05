@@ -27,6 +27,7 @@ player.init = function() {
   this.max_dash_fuel = 120;
   this.spirit = false;
   this.invulnerable = false;
+  this.dead = false;
 }
 
 player.draw = function() {
@@ -59,83 +60,84 @@ player.draw = function() {
 };
 
 player.update = function(draw_only) {
-  // dash target
-  if(CONTROLS.blink) {
-    if(this.dash_target) {
-      this.dash_target.update();
-      if(this.dash_fuel <= 0) {
-        // target is active, fuel is spent
-        this.move_to_dash_target();
-        this.dash_target = false;
+  if(!this.dead) {
+    // dash target
+    if(CONTROLS.blink) {
+      if(this.dash_target) {
+        this.dash_target.update();
+        if(this.dash_fuel <= 0) {
+          // target is active, fuel is spent
+          this.move_to_dash_target();
+          this.dash_target = false;
+        }
+      } else if((!this.dash_target) && (this.dash_fuel > 0)) {
+        this.dash_target = new DashTarget();
+      } else {
+        // no target, no fuel
+        this.dash_fuel = 0;
       }
-    } else if((!this.dash_target) && (this.dash_fuel > 0)) {
-      this.dash_target = new DashTarget();
-    } else {
-      // no target, no fuel
-      this.dash_fuel = 0;
-    }
-  }
-  
-  if(CONTROLS.spirit) {
-    if(this.spirit) {
-      this.spirit.update(true);
-    } else {
-      this.spirit = new Spirit({
-        x: this.x,
-        y: this.y
-      });
-    }
-  }
-  
-  if(!draw_only && !CONTROLS.blink && !CONTROLS.spirit) {
-    // blink and spirit are not held, update is go
-    if(this.dash_target) {
-      this.move_to_dash_target();
     }
     
-    if(this.spirit) {
-      this.spirit.update(false);
-    }
-  
-    // move the player
-
-    this.dx = this.speed * (CONTROLS.right - CONTROLS.left);
-    this.dy = this.speed * (CONTROLS.down - CONTROLS.up);
-
-    this.x += this.dx;
-    this.y += this.dy;
-  }
-  
-
-  if(this.x < 0) this.x = 0;
-  if(this.x > game.canvas.width) this.x = game.canvas.width;
-  if(this.y < 0) this.y = 0;
-  if(this.y > game.canvas.height) this.y = game.canvas.height;
-  
-  // handle iframes
-  if(!draw_only) {
-    if(this.state == "hurt") {
-      this.iframes--;
-      
-      if(this.iframes <= 0) {
-        this.state = "fine";
-        this.iframes = this.max_iframes;
+    if(CONTROLS.spirit) {
+      if(this.spirit) {
+        this.spirit.update(true);
+      } else {
+        this.spirit = new Spirit({
+          x: this.x,
+          y: this.y
+        });
       }
     }
-  
-  }
-  
-  // hit effect management
-  // NB the refactor is going to ruin this
-  var next_hit_array = [];
-  for(var i = 0; i < this.hit_effects.length; i++) {
-    this.hit_effects[i].update(draw_only);
-    if(this.hit_effects[i].alive) {
-      next_hit_array.push(this.hit_effects[i]);
-    }
-  }
-  this.hit_effects = next_hit_array;
+    
+    if(!draw_only && !CONTROLS.blink && !CONTROLS.spirit) {
+      // blink and spirit are not held, update is go
+      if(this.dash_target) {
+        this.move_to_dash_target();
+      }
+      
+      if(this.spirit) {
+        this.spirit.update(false);
+      }
+    
+      // move the player
 
+      this.dx = this.speed * (CONTROLS.right - CONTROLS.left);
+      this.dy = this.speed * (CONTROLS.down - CONTROLS.up);
+
+      this.x += this.dx;
+      this.y += this.dy;
+    }
+    
+
+    if(this.x < 0) this.x = 0;
+    if(this.x > game.canvas.width) this.x = game.canvas.width;
+    if(this.y < 0) this.y = 0;
+    if(this.y > game.canvas.height) this.y = game.canvas.height;
+    
+    // handle iframes
+    if(!draw_only) {
+      if(this.state == "hurt") {
+        this.iframes--;
+        
+        if(this.iframes <= 0) {
+          this.state = "fine";
+          this.iframes = this.max_iframes;
+        }
+      }
+    
+    }
+    
+    // hit effect management
+    // NB the refactor is going to ruin this
+    var next_hit_array = [];
+    for(var i = 0; i < this.hit_effects.length; i++) {
+      this.hit_effects[i].update(draw_only);
+      if(this.hit_effects[i].alive) {
+        next_hit_array.push(this.hit_effects[i]);
+      }
+    }
+    this.hit_effects = next_hit_array;
+  }
   
   // draw the result
   // player.draw();
@@ -157,7 +159,7 @@ player.get_hurt = function() {
         y: this.y
       }));
       if(this.health == 0) {
-        game.pause();
+        game.current_scene.game_over();
       }
     }
   }
