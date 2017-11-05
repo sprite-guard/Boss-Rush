@@ -3,7 +3,7 @@ function Spirit(descriptor) {
   this.y = descriptor.y;
   
   // optional
-  this.speed = descriptor.speed || 3;
+  this.speed = descriptor.speed || 5;
   this.dpf = descriptor.dammage || 1;
   this.inner_color = descriptor.inner_color || "#FFFF00";
   this.outer_color = descriptor.outer_color || "#996600";
@@ -20,6 +20,7 @@ function Spirit(descriptor) {
   this.wing_rotation = (0.05 * 2 * Math.PI);
   
   // internal
+  this.leash = new Leash();
   
   this.update = function(move) {
     if(move) {
@@ -34,8 +35,8 @@ function Spirit(descriptor) {
     if(this.x > game.canvas.width) this.x = game.canvas.width;
     if(this.y < 0) this.y = 0;
     if(this.y > game.canvas.height) this.y = game.canvas.height;
-    
-    this.draw();
+
+    this.leash.update();
   }
   
   this.draw = function() {
@@ -80,6 +81,30 @@ function Spirit(descriptor) {
                       this.wing_width, this.wing_height,
                       -this.wing_rotation, 0, 2 * Math.PI);
     game.draw.fill();
-
+    
+    this.leash.draw();
   }
+}
+
+function Leash() {
+  this.update = function() {
+    this.start_x = player.x;
+    this.start_y = player.y;
+    this.end_x = player.spirit.x;
+    this.end_y = player.spirit.y;
+    
+    var dx = Math.abs(this.start_x - this.end_x);
+    var dy = Math.abs(this.start_y - this.end_y);
+    
+    this.length = Math.sqrt((dx * dx) + (dy * dy));
+  };
+  
+  this.draw = function() {
+    game.draw.strokeStyle = "#FFFF88";
+    game.draw.lineWidth = 3;
+    game.draw.beginPath();
+    game.draw.moveTo(this.start_x,this.start_y);
+    game.draw.lineTo(this.end_x,this.end_y);
+    game.draw.stroke();
+  };
 }

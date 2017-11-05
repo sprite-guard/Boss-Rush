@@ -3,9 +3,12 @@ var K_LEFT = 37,
     K_RIGHT = 39,
     K_DOWN = 40,
     K_RESET = 82,
+    K_MENU = 27,
     K_PAUSE = 80,
     K_BLINK = 32,
     K_SPIRIT = 16,
+    K_INVULN = 73,
+    K_TEST = 65,
     DEBUG = true;
 
 var CONTROLS = {
@@ -40,10 +43,20 @@ window.onkeydown = function(e){
       CONTROLS.spirit = 1;
       break;
     case K_RESET:
-      game.reset();
+      game.current_scene.init();
+      break;
+    case K_MENU:
+      game.return_to_menu();
       break;
     case K_PAUSE:
       game.pause_unpause();
+      break;
+    case K_TEST:
+      game.current_scene = scenes_list.test_scene;
+      game.current_scene.init();
+      break;
+    case K_INVULN:
+      player.invulnerable = true;
       break;
   }
 };

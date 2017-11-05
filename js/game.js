@@ -5,11 +5,8 @@
  * Sub goal is to create performant bullet-hell patterns in HTML Canvas.
  */
  
- /* Leaving off 10/2/2017
-  * Slowdown works
-  * hit effects work
-  * dashing works, but does not consume fuel
-  * dashing needs to decrement the player's fuel instead of incrementing its age.
+ /* Leaving off 10/4/2017
+  * Spirit now works, dash target has a stronger visual presence.
   */
 
 var DEBUG = true,
@@ -45,53 +42,8 @@ game.init = function() {
   game.ewam = 60;
   game.draw_batch = [];
   
-  // spawners
-  var test_spawner = new BulletSpawner({
-    x: 0,
-    y: 100,
-    heading: 0.5 * Math.PI,
-    bullet_type: {
-      yaw: 0,
-      speed: 3,
-      r: 16,
-      color: "#00FFFF",
-      shell: "#0000FF",
-      graze_color: "#000000",
-      style: "gradient"
-    },
-    spin: 1,
-    random_spread: 0.2,
-    dx: 1,
-    dy: 0,
-    
-    lifespan: 800,
-    delay: 0
-  });
-
-  game.spawners.push(test_spawner);
-
-  var other_test_spawner = new BulletSpawner({
-    x: 400,
-    y: 100,
-    heading: 0.6 * Math.PI,
-    bullet_type: {
-      yaw: 0.0065,
-      r: 8,
-      color: "#FFBBFF",
-      shell: "#FF0000",
-      graze_color: "#000000",
-      pit_size: 2,
-      style: "gradient",
-      speed: 2
-    },
-    spin: 1,
-    random_spread: 0.4,
-    
-    lifespan: 800,
-    delay: 0
-  });
-
-  game.spawners.push(other_test_spawner);
+  game.current_scene = scenes_list.menu;
+  game.current_scene.init();
 
   // housekeeping
   controllers.init();
@@ -108,38 +60,9 @@ game.update = function() {
   game.width = game.canvas.width;
   game.height = game.canvas.height;
   
+  game.current_scene.update();
+  game.current_scene.draw();
 
-  if(game.timer <= 0) {
-    game.timer = game.slowdown;
-    
-    game.draw.fillStyle = BGCOLOR;
-    game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
-    
-    game.check_collisions();
-  
-    player.update();
-
-    for(var i = 0; i < game.spawners.length; i++) {
-      game.spawners[i].update();
-    }
-  } else {
-    game.timer--;
-    
-    game.draw.fillStyle = BGCOLOR;
-    game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
-    player.update(true);
-    
-    for(var i = 0; i < game.spawners.length; i++) {
-      game.spawners[i].update(true);
-    }
-  }
-  
-  if(player.dash_target) {
-    game.slowdown = game.max_slowdown;
-  } else {
-    game.slowdown = 0;
-  }
-  
   if(DEBUG) {
     UPDATE--;
     var current_time = performance.now();
@@ -158,41 +81,6 @@ game.update = function() {
   }
 }
 
-game.check_collisions = function() {
-  var player_hb_squared = 0;
-  var player_gb_squared = player.graze_radius * player.graze_radius;
-  
-  for(var spawner = 0; spawner < game.spawners.length; spawner++) {
-    var bullet_radius = game.spawners[spawner].bullet_type.r - 2;
-    var bullet_radius_squared = (bullet_radius * bullet_radius);
-    
-    var striking_distance = bullet_radius_squared + player_hb_squared;
-    var grazing_distance = bullet_radius_squared + player_gb_squared;
-
-    for(var i = 0; i < game.spawners[spawner].all_bullets.length; i++) {
-      
-      var current_bullet = game.spawners[spawner].all_bullets[i];
-      
-      // collide with player
-      var x_distance = Math.abs(current_bullet.x - player.x);
-      var y_distance = Math.abs(current_bullet.y - player.y);
-      var xsq = (x_distance * x_distance);
-      var ysq = (y_distance * y_distance);
-      
-      if((xsq + ysq) < striking_distance) player.get_hurt();
-      
-      if((xsq + ysq) < grazing_distance) {
-        game.spawners[spawner].all_bullets[i].graze();
-        player.graze();
-      }
-      
-      // collide with shield
-      
-      // maybe get bombed? I dunno if bombs are even a thing.
-    }
-  }
-}
-
 game.pause = function() {
   game.keep_going = false;
 }
@@ -202,9 +90,9 @@ game.pause_unpause = function() {
   window.requestAnimationFrame(game.update);
 }
 
-game.reset = function() {
-  window.cancelAnimationFrame(game.animation_request);
-  game.init();
+game.return_to_menu = function() {
+  game.current_scene = scenes_list.menu;
+  game.current_scene.init();
 }
 
 game.init();

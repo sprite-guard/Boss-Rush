@@ -2,6 +2,7 @@ function BulletSpawner(descriptor) {
   this.x = descriptor.x;
   this.y = descriptor.y;
   this.heading = descriptor.heading;
+  this.home = {x: this.x, y: this.y, heading: this.heading};
   this.bullet_type = descriptor.bullet_type;
   this.lifespan = descriptor.lifespan;
   
@@ -13,12 +14,21 @@ function BulletSpawner(descriptor) {
   this.dx = descriptor.dx || 0;
   this.dy = descriptor.dy || 0;
   this.random_spread = descriptor.random_spread || 0;
+  this.aimed = descriptor.aimed || false;
+  this.target = descriptor.target || player;
   
   // internal
-  this.timer = (descriptor.delay + descriptor.sync) || 0;
-  this.life_remaining = this.lifespan;
-  this.alive = true;
-  this.all_bullets = [];
+  
+  this.init = function() {
+    this.x = this.home.x;
+    this.y = this.home.y;
+    this.heading = this.home.heading;
+    
+    this.timer = (descriptor.delay + descriptor.sync) || 0;
+    this.life_remaining = this.lifespan;
+    this.alive = true;
+    this.all_bullets = [];
+  }
   
   this.add_component = function(c) {
     c.parent_object = this;
@@ -26,7 +36,6 @@ function BulletSpawner(descriptor) {
   }
   
   this.update = function(draw_only) {
-
     if((this.life_remaining > 0) && (!draw_only)) {
       for(var i = 0; i < this.components.length; i++) {
         components[i].update();
@@ -42,14 +51,26 @@ function BulletSpawner(descriptor) {
           scatter = (Math.random() * this.random_spread) - offset;
         }
       
-        var next_direction = this.heading + scatter;
+        var next_direction = this.heading;
+        
+        if(this.aimed) {
+          // figure out what direction the player is in
+          var x_offset = this.target.x - this.x;
+          var y_offset = this.target.y - this.y;
+          var magnitude = Math.sqrt((x_offset * x_offset) + (y_offset * y_offset));
+          
+          var h = Math.atan2(y_offset, x_offset);
+          next_direction = h;
+        } else {
+          next_direction += this.spin;
+        }
+        
+        this.heading = next_direction;
 
         var next_bullet = this.bullet_type;
-        next_bullet.heading = next_direction;
+        next_bullet.heading = next_direction + scatter;
         next_bullet.x = this.x;
         next_bullet.y = this.y;
-        
-        this.heading += this.spin;
 
         this.life_remaining--;
         this.all_bullets.push(new Bullet(next_bullet));
@@ -63,10 +84,16 @@ function BulletSpawner(descriptor) {
     }
     
     for(var i = 0; i < this.all_bullets.length; i++) {
-      this.all_bullets[i].update(draw_only);
+      this.all_bullets[i].update();
     }
     this.gc();
   }
+  
+  this.draw = function() {
+    for(var i = 0; i < this.all_bullets.length; i++) {
+      this.all_bullets[i].draw();
+    }
+  };
   
   this.gc = function() {
     var res = [];
@@ -97,7 +124,7 @@ function Bullet(descriptor) {
   } else if(this.yaw == 0) {
     this.max_age = 1000 / this.speed;
   } else {
-    this.max_age = ((2 * Math.PI) / this.yaw);
+    this.max_age = ((2 * Math.PI) / Math.abs(this.yaw));
   }
   
   // internal
@@ -107,7 +134,7 @@ function Bullet(descriptor) {
   
   this.cull = descriptor.cull || function() {
     this.exists = false;
-  }
+  };
   
   this.draw = descriptor.draw || function() {
     game.draw.beginPath();
@@ -128,32 +155,59 @@ function Bullet(descriptor) {
     } else {
       console.log("oops, tried to draw " + this.style);
     }
-  }
+  };
   
-  this.update = function(draw_only) {
-    if(!draw_only) {
-      this.age++
-      
-      this.heading += this.yaw;
-      var dx = Math.cos(this.heading);
-      var dy = Math.sin(this.heading);
-      this.x += this.speed * dx;
-      this.y += this.speed * dy;
-      
-      if(this.age > this.max_age) {
-        this.cull();
-      } else {
-        this.draw();
-      }
+  this.update = function() {
+    this.age++
+    
+    this.heading += this.yaw;
+    var dx = Math.cos(this.heading);
+    var dy = Math.sin(this.heading);
+    this.x += this.speed * dx;
+    this.y += this.speed * dy;
+    
+    var collision_type = this.check_collisions();
+    
+    if(collision_type == "graze") {
+      this.graze();
+      player.graze();
+    } else if(collision_type == "hit") {
+      player.get_hurt();
     } else {
-      this.draw();
+      this.ungraze();
     }
-    this.current_shell = this.shell;
-  }
+    
+    if(this.age > this.max_age) {
+      this.cull();
+    }
+  };
   
   this.graze = function() {
     this.current_shell = this.graze_color;
-  }
+  };
+  
+  this.ungraze = function() {
+    this.current_shell = this.shell
+  };
+  
+  this.check_collisions = function() {
+    var rsq = this.r * this.r,
+        player_hbsq = player.hb * player.hb,
+        x_distance = Math.abs(this.x - player.x),
+        y_distance = Math.abs(this.y - player.y),
+        dsq = (x_distance * x_distance) + (y_distance * y_distance),
+        collision_distance_squared = (rsq + player_hbsq),
+        gbsq = (player.graze_radius * player.graze_radius),
+        graze_distance_squared = rsq + gbsq;
+        
+    if(dsq <= collision_distance_squared) {
+      return "hit";
+    } else if(dsq <= graze_distance_squared) {
+      return "graze";
+    } else {
+      return false;
+    }
+  };
 }
 
 Bullet.prototype.gradient = function() {
