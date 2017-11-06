@@ -1,6 +1,6 @@
-/* Endless Bossrush Game
+/* Infinite Ritual
  *
- * The idea for this game is an endless series of Zenzizenzic-style bosses
+ * The idea for this game is an endless series of bullet hell bosses
  * The goal is to procedurally generate bosses that are fair, but extremely difficult.
  * Sub goal is to create performant bullet-hell patterns in HTML Canvas.
  */
