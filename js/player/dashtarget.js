@@ -6,7 +6,7 @@ function DashTarget() {
   this.core_r = 5;
   this.dx = 0;
   this.dy = 0;
-  this.speed = 3;
+  this.speed = 2;
   
   this.update = function() {
     if(player.dash_fuel >= 1) {

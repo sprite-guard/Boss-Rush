@@ -1,4 +1,5 @@
 var test_spawner_a = new BulletSpawner({
+  // blue curving spiral
   x: 0,
   y: 100,
   heading: 0.5 * Math.PI,
@@ -9,7 +10,8 @@ var test_spawner_a = new BulletSpawner({
     color: "#00FFFF",
     shell: "#0000FF",
     graze_color: "#000000",
-    style: "gradient"
+    style: "gradient",
+  cull_type: "screen"
   },
   spin: 1,
   random_spread: 0.0,
@@ -17,10 +19,11 @@ var test_spawner_a = new BulletSpawner({
   dy: 0,
   
   lifespan: 200,
-  delay: 3
+  delay: 2
 });
 
 var test_spawner_b = new BulletSpawner({
+  // magenta aimed spray
   x: 0,
   y: 300,
   heading: 0.0 * Math.PI,
@@ -44,6 +47,7 @@ var test_spawner_b = new BulletSpawner({
 });
 
 var test_spawner_c = new BulletSpawner({
+  // magenta slow spiral spray
   x: 0,
   y: 300,
   heading: 1.0 * Math.PI,
