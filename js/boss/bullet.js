@@ -35,15 +35,23 @@ function BulletSpawner(descriptor) {
     this.components.push(c)
   }
   
-  this.update = function(draw_only) {
-    if((this.life_remaining > 0) && (!draw_only)) {
+  this.update = function(slowdown,slowspeed) { 
+    var speed_modifier;
+    if(slowdown) {
+      speed_modifier = slowspeed;
+    } else {
+      speed_modifier = 1;
+    }
+
+    if(this.life_remaining > 0) {
       for(var i = 0; i < this.components.length; i++) {
-        components[i].update();
+        components[i].update(slowdown,slowspeed);
       }
     
-      this.x += this.dx;
-      this.y += this.dy;
-      if(this.timer == 0) {
+      this.x += this.dx * speed_modifier;
+      this.y += this.dy * speed_modifier;
+      if(this.timer <= 0) {
+        // this is to slow down the number of shots per second.
         var scatter = 0;
         
         if(this.random_spread > 0) {
@@ -72,19 +80,19 @@ function BulletSpawner(descriptor) {
         next_bullet.x = this.x;
         next_bullet.y = this.y;
 
-        this.life_remaining--;
+        this.life_remaining -= speed_modifier;
         this.all_bullets.push(new Bullet(next_bullet));
         
         this.timer = this.delay;
       } else {
-        this.timer--;
+        this.timer -= speed_modifier;
       }
-    } else {
+    } else { // life is still remaining
       if(this.all_bullets.length == 0) this.alive = false;
     }
     
     for(var i = 0; i < this.all_bullets.length; i++) {
-      this.all_bullets[i].update();
+      this.all_bullets[i].update(slowdown,slowspeed);
     }
     this.gc();
   }
@@ -119,6 +127,8 @@ function Bullet(descriptor) {
   this.style = descriptor.style || "solid";
   this.yaw = descriptor.yaw || 0;
   this.speed = descriptor.speed || 1;
+  this.cull_type = descriptor.cull_type || "timer";
+  
   if(descriptor.max_age) {
     this.max_age = descriptor.max_age;
   } else if(this.yaw == 0) {
@@ -157,14 +167,20 @@ function Bullet(descriptor) {
     }
   };
   
-  this.update = function() {
-    this.age++
+  this.update = function(slowdown,slowspeed) {
+    var speed_modifier;
+    if(slowdown) {
+      speed_modifier = slowspeed;
+    } else {
+      speed_modifier = 1;
+    }
+    this.age += speed_modifier;
     
-    this.heading += this.yaw;
+    this.heading += this.yaw * speed_modifier;
     var dx = Math.cos(this.heading);
     var dy = Math.sin(this.heading);
-    this.x += this.speed * dx;
-    this.y += this.speed * dy;
+    this.x += this.speed * dx * speed_modifier;
+    this.y += this.speed * dy * speed_modifier;
     
     var collision_type = this.check_collisions();
     
@@ -177,8 +193,19 @@ function Bullet(descriptor) {
       this.ungraze();
     }
     
-    if(this.age > this.max_age) {
-      this.cull();
+    if(this.cull_type == "timer") {
+      if(this.age > this.max_age) {
+        this.cull();
+      }
+    } else if(this.cull_type == "screen") {
+      var min_x = 0 - this.r,
+          min_y = 0 - this.r,
+          max_x = game.canvas.width + this.r,
+          max_y = game.canvas.height + this.r;
+          
+      if((this.x < min_x) || (this.y < min_y) || (this.x > max_x) || (this.y > max_y)) {
+        this.cull();
+      }
     }
   };
   

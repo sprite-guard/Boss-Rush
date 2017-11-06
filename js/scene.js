@@ -1,11 +1,18 @@
 function Scene(descriptor) {
   this.elements = descriptor.elements;
-  this.init = descriptor.init;
+  
+  this.special_init = descriptor.init;
+
   
   // internal
   this.slowdown_speed = 0.3;
   this.slowdown = false;
-
+  
+  this.init = function() {
+    this.special_init();
+    this.slowdown = false;
+  };
+  
   this.update = function() {
     for(var i = 0; i < this.elements.length; i++) {
       // NB we need to propagate the slowdown to every element
@@ -23,10 +30,18 @@ function Scene(descriptor) {
     
     if(player.dead) {
       game.draw.fillStyle = "#FF9966";
+      game.draw.strokeStyle = "#FFFFAA";
+      game.draw.lineWidth = 2;
       game.draw.font = "128px serif";
-      game.draw.fillText("Ritual Failed",64,300);
+      game.draw.fillText("Ritual Failed",64,250);
+      game.draw.beginPath();
+      game.draw.strokeText("Ritual Failed",64,250);
+      game.draw.stroke();
       game.draw.font = "100px serif";
       game.draw.fillText("press r to restart",64,450);
+      game.draw.beginPath();
+      game.draw.strokeText("press r to restart",64,450);
+      game.draw.stroke();
     }
   };
   

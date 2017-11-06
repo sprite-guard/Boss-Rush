@@ -22,10 +22,10 @@ function Boss(descriptor) {
     }
   }
   
-  this.update = function() {
+  this.update = function(slowdown,slowspeed) {
     var n = this.phase;
     // Loop through attacks for the current phase
-    this.phases[n].update();
+    this.phases[n].update(slowdown,slowspeed);
     
     // check if the end-of-phase condition is met (time, health, sattelites etc)
     if(this.phases[n].is_done()) {
@@ -80,12 +80,19 @@ function Phase(parent,descriptor) {
     this.attacks.push( new Attack(this, descriptor) );
   };
   
-  this.update = function() {
-    this.timer--;
+  this.update = function(slowdown,slowspeed) {
+    var timer_increment = 1;
+    var speed = 1;
+    if(slowdown) {
+      timer_increment = slowspeed;
+      speed = slowspeed;
+    }
+  
+    this.timer -= timer_increment;
     
     if(this.current_attack) {
       var a = this.current_attack - 1;
-      this.attacks[a].update();
+      this.attacks[a].update(slowdown,slowspeed);
       
       if(this.attacks[a].is_done()) {
         if(this.is_random) {
@@ -152,16 +159,15 @@ function Attack(parent,descriptor) {
     }
   }
   
-  this.update = function() {
-    this.choreography(this.parent,this.spawners);
+  this.update = function(slowdown,slowspeed) {
+    this.choreography(this.parent,this.spawners,slowdown,slowspeed);
     
     for(var i = 0; i < this.spawners.length; i++) {
-      this.spawners[i].update();
+      this.spawners[i].update(slowdown,slowspeed);
     }
   };
   
   this.draw = function() {
-    // return true;
     
     for(var i = 0; i < this.spawners.length; i++) {
       // console.log(this.spawners[i]);

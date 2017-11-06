@@ -57,9 +57,20 @@ player.draw = function() {
   if(this.dash_target) {
     this.dash_target.draw();
   }
+  
+  for(var i = 0; i < this.hit_effects.length; i++) {
+    this.hit_effects[i].draw();
+  }
 };
 
-player.update = function(draw_only) {
+player.update = function() {
+  var speed_modifier, slowdown;
+  if(slowdown) {
+    speed_modifier = slowspeed;
+  } else {
+    speed_modifier = 1;
+  }
+
   if(!this.dead) {
     // dash target
     if(CONTROLS.blink) {
@@ -69,17 +80,28 @@ player.update = function(draw_only) {
           // target is active, fuel is spent
           this.move_to_dash_target();
           this.dash_target = false;
+          game.current_scene.slowdown = false;
+        } else {
+          game.current_scene.slowdown = true;
         }
       } else if((!this.dash_target) && (this.dash_fuel > 0)) {
         this.dash_target = new DashTarget();
       } else {
         // no target, no fuel
         this.dash_fuel = 0;
+        game.current_scene.slowdown = false;
+      }
+    } else { // blink is not held down
+      if(this.dash_target) {
+        this.move_to_dash_target();
+        this.dash_target = false;
+        game.current_scene.slowdown = false;
       }
     }
     
     if(CONTROLS.spirit) {
       if(this.spirit) {
+        // do move the spirit
         this.spirit.update(true);
       } else {
         this.spirit = new Spirit({
@@ -89,13 +111,11 @@ player.update = function(draw_only) {
       }
     }
     
-    if(!draw_only && !CONTROLS.blink && !CONTROLS.spirit) {
+    if(!CONTROLS.blink && !CONTROLS.spirit) {
       // blink and spirit are not held, update is go
-      if(this.dash_target) {
-        this.move_to_dash_target();
-      }
-      
+
       if(this.spirit) {
+        // do not move the spirit, but still make it do good things
         this.spirit.update(false);
       }
     
@@ -115,23 +135,20 @@ player.update = function(draw_only) {
     if(this.y > game.canvas.height) this.y = game.canvas.height;
     
     // handle iframes
-    if(!draw_only) {
-      if(this.state == "hurt") {
-        this.iframes--;
-        
-        if(this.iframes <= 0) {
-          this.state = "fine";
-          this.iframes = this.max_iframes;
-        }
+    if(this.state == "hurt") {
+      this.iframes--;
+      
+      if(this.iframes <= 0) {
+        this.state = "fine";
+        this.iframes = this.max_iframes;
       }
-    
     }
     
     // hit effect management
     // NB the refactor is going to ruin this
     var next_hit_array = [];
     for(var i = 0; i < this.hit_effects.length; i++) {
-      this.hit_effects[i].update(draw_only);
+      this.hit_effects[i].update();
       if(this.hit_effects[i].alive) {
         next_hit_array.push(this.hit_effects[i]);
       }
