@@ -1,4 +1,4 @@
-# Endless Boss Rush
+# Infinite Ritual
 Bullet hell boss rush game developed live on Twitch.tv/spriteguard
 
 This game currently only works on Chrome, and relies heavily on the ellipse
