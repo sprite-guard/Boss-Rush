@@ -7,6 +7,8 @@ var K_LEFT = 37,
     K_PAUSE = 80,
     K_BLINK = 32,
     K_SPIRIT = 16,
+    K_SLOW = 88,
+    K_SHIELD = 67,
     K_INVULN = 73,
     K_TEST = 65,
     DEBUG = true;
@@ -18,7 +20,9 @@ var CONTROLS = {
     down: 0,
     blink: 0,
     spirit: 0,
-    reset: 0
+    reset: 0,
+    slow: 0,
+    shield: 0
 };
 
 window.onkeydown = function(e){
@@ -41,6 +45,12 @@ window.onkeydown = function(e){
       break;
     case K_SPIRIT:
       CONTROLS.spirit = 1;
+      break;
+    case K_SLOW:
+      CONTROLS.slow = 1;
+      break;
+    case K_SHIELD:
+      CONTROLS.shield = 1;
       break;
     case K_RESET:
       game.current_scene.init();
@@ -80,5 +90,12 @@ window.onkeyup = function(e){
       break;
     case K_SPIRIT:
       CONTROLS.spirit = 0;
+      break;
+    case K_SLOW:
+      CONTROLS.slow = 0;
+      break;
+    case K_SHIELD:
+      CONTROLS.shield = 0;
+      break;
   }
 };

@@ -49,9 +49,11 @@ function Boss(descriptor) {
 
 function Phase(parent,descriptor) {
   this.parent = parent;
+  this.wells = descriptor.wells;
   
   // optional
   this.attacks = descriptor.attacks || [];
+  this.sprites = descriptor.sprites || [];
   this.is_random = descriptor.random || false;
   this.health = descriptor.health || Infinity;
   this.timer = descriptor.timer || Infinity;
@@ -67,6 +69,10 @@ function Phase(parent,descriptor) {
     
     for(var i = 0; i < this.attacks.length; i++) {
       this.attacks[i].init();
+    }
+    
+    for(var i = 0; i < this.wells.length; i++) {
+      this.wells[i].init();
     }
   };
   
@@ -111,13 +117,23 @@ function Phase(parent,descriptor) {
         this.current_attack = 1;
       }
     }
-    
+    for(var i = 0; i < this.wells.length; i++) {
+      this.wells[i].update(slowdown,slowspeed);
+    }
     
   };
   
   this.draw = function() {
     for(var i = 0; i < this.attacks.length; i++) {
       this.attacks[i].draw();
+    }
+    
+    for(var i = 0; i < this.wells.length; i++) {
+      this.wells[i].draw();
+    }
+    
+    for(var i = 0; i < this.sprites.length; i++) {
+      this.sprites[i].draw();
     }
   };
   
@@ -130,7 +146,7 @@ function Phase(parent,descriptor) {
   this.get_hurt = function() {
     this.health--;
     this.iframes = this.max_iframes;
-  }
+  };
 }
 
 function Attack(parent,descriptor) {
@@ -138,9 +154,7 @@ function Attack(parent,descriptor) {
   this.spawners = descriptor.spawners;
   
   // optional
-  this.choreography = descriptor.choreography || function() {
-    return true;
-  };
+  this.choreography = descriptor.choreography || false;
   
   this.is_done = descriptor.is_done || function() {
   
@@ -160,7 +174,9 @@ function Attack(parent,descriptor) {
   }
   
   this.update = function(slowdown,slowspeed) {
-    this.choreography(this.parent,this.spawners,slowdown,slowspeed);
+    if(this.choreography) {
+      this.choreography.advance(this.parent,this.spawners,slowdown,slowspeed);
+    }
     
     for(var i = 0; i < this.spawners.length; i++) {
       this.spawners[i].update(slowdown,slowspeed);

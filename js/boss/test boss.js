@@ -80,11 +80,19 @@ var test_boss = new Boss({
     y: 300,
     h: 32,
     destination: "menu"
-  })
+  }),
+  
 });
 
 var test_phase = new Phase(test_boss,{
-  attacks: []
+  attacks: [],
+  wells: [
+    new SpiritWell({
+      x: 100,
+      y: 100,
+      r: 64
+    })
+  ]
 });
 
 test_phase.add_attack({

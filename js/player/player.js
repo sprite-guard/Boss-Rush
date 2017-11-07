@@ -14,7 +14,9 @@ player.init = function() {
   this.core_color = "#00FFFF";
   this.pip_color = "#FF6600";
   this.hurt_color = "#666666";
-  this.speed = 2;
+  this.slow_speed = 2;
+  this.fast_speed = 4;
+  this.speed = this.fast_speed;
   this.health = 4;
   this.iframes = 30;
   this.max_iframes = 30;
@@ -109,6 +111,12 @@ player.update = function() {
           y: this.y
         });
       }
+    }
+    
+    if(CONTROLS.slow) {
+      this.speed = this.slow_speed;
+    } else {
+      this.speed = this.fast_speed;
     }
     
     if(!CONTROLS.blink && !CONTROLS.spirit) {

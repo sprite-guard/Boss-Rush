@@ -52,7 +52,6 @@ function Scene(descriptor) {
   }
   
   this.check_collisions = function() {
-  // NB CHANGE EVERYTHING
     var player_hb_squared = 0;
     var player_gb_squared = player.graze_radius * player.graze_radius;
     
