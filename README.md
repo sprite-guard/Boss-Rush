@@ -6,9 +6,9 @@ function, so it is unlikely to be ported to other browsers.
 
 ## Controls
 
-Arrow keys: move yourself
-Shift + arrows: move your spirit
-Space + arrows: slow time and teleport
+* Arrow keys: move yourself
+* Shift + arrows: move your spirit
+* Space + arrows: slow time and teleport
 
 ## Gameplay
 
