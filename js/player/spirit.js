@@ -11,7 +11,7 @@ function Spirit(descriptor) {
   this.wing_outer_color = descriptor.wing_outer_color || "#555500";
   
   // nb should these be variables?
-  this.hitbox = 16;
+  this.hitbox = 48;
   this.body_width = 8;
   this.body_height = 32;
   this.wing_width = 6;

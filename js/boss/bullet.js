@@ -1,3 +1,8 @@
+/* I would still like to implement
+ * "plane sources" for rain
+ * ring sources that can be aimed or rotated randomly
+ */
+
 function BulletSpawner(descriptor) {
   this.x = descriptor.x;
   this.y = descriptor.y;
@@ -87,7 +92,7 @@ function BulletSpawner(descriptor) {
       } else {
         this.timer -= speed_modifier;
       }
-    } else { // life is still remaining
+    } else { // life is not remaining
       if(this.all_bullets.length == 0) this.alive = false;
     }
     
@@ -102,6 +107,10 @@ function BulletSpawner(descriptor) {
       this.all_bullets[i].draw();
     }
   };
+  
+  this.despawn = function() {
+    this.life_remaining = 0;
+  }
   
   this.gc = function() {
     var res = [];

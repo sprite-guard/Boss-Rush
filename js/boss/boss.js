@@ -8,9 +8,10 @@ function Boss(descriptor) {
   // internal
   this.phase = 0;
   this.phases = [];
+  this.is_alive = true;
   
-  this.add_phase = function(descriptor) {
-    this.phases.push( new Phase(this, descriptor) );
+  this.add_phase = function(phase) {
+    this.phases.push( phase );
   }
   
   this.init = function() {
@@ -20,40 +21,48 @@ function Boss(descriptor) {
     for(var i = 0; i < this.phases.length; i++) {
       this.phases[i].init();
     }
+    this.is_alive = true;
   }
   
   this.update = function(slowdown,slowspeed) {
-    var n = this.phase;
-    // Loop through attacks for the current phase
-    this.phases[n].update(slowdown,slowspeed);
-    
-    // check if the end-of-phase condition is met (time, health, sattelites etc)
-    if(this.phases[n].is_done()) {
-      this.phase++
-    }
-    
-    if(this.phase >= this.phases.length) {
-      // nb not done
-      game.current_scene = game.scenes_list.menu;
-      game.current_scene.init();
-      // create the exit portal, despawn bullets, etc
-      this.phases[this.phases.length - 1].despawn();
+    if(this.is_alive) {
+      var n = this.phase;
+      // Loop through attacks for the current phase
+      this.phases[n].update(slowdown,slowspeed);
+      
+      // check if the end-of-phase condition is met (time, health, sattelites etc)
+      if(this.phases[n].is_done()) {
+        this.phase++
+      }
+      
+      if(this.phase >= this.phases.length) {
+        // NB not done
+        // game.current_scene = game.scenes_list.menu;
+        // game.current_scene.init();
+        // create the exit portal, despawn bullets, etc
+        // this.phases[this.phases.length - 1].despawn();
+        // game.current_scene.elements.push(this.exit);
+        this.is_alive = false;
+      }
     }
   }
   
   this.draw = function() {
-    this.graphic();
-    this.phases[this.phase].draw();
+    if(this.is_alive){
+      this.graphic();
+      this.phases[this.phase].draw();
+    }
   }
 }
 
 function Phase(parent,descriptor) {
   this.parent = parent;
-  this.wells = descriptor.wells;
   
   // optional
   this.attacks = descriptor.attacks || [];
   this.sprites = descriptor.sprites || [];
+  this.wells = descriptor.wells || [];
+  this.exits = descriptor.exits || [];
   this.is_random = descriptor.random || false;
   this.health = descriptor.health || Infinity;
   this.timer = descriptor.timer || Infinity;
@@ -74,12 +83,25 @@ function Phase(parent,descriptor) {
     for(var i = 0; i < this.wells.length; i++) {
       this.wells[i].init();
     }
+    
+    for(var i = 0; i < this.exits.length; i++) {
+      this.exits[i].init();
+    }
   };
   
   this.is_done = descriptor.end_condition || function() {
-    if(this.timer <= 0) return true;
-    if(this.health <= 0) return true;
-    else return false;
+    var might_be_done = true;
+    if(this.timer <= 0) {
+      return true;
+    }
+    else {
+      for(var i = 0; i < this.wells.length; i++) {
+        if(!this.wells[i].is_full) {
+          might_be_done = false;
+        } // do not change might_be_done if well is full
+      }
+      return might_be_done;
+    }
   };
   
   this.add_attack = function(descriptor) {
@@ -96,11 +118,13 @@ function Phase(parent,descriptor) {
   
     this.timer -= timer_increment;
     
-    if(this.current_attack) {
+    if(this.current_attack && this.attacks[this.current_attack - 1]) {
       var a = this.current_attack - 1;
       this.attacks[a].update(slowdown,slowspeed);
       
       if(this.attacks[a].is_done()) {
+        console.log("attack number " + a + " is done");
+        this.attacks[a].despawn();
         if(this.is_random) {
           this.current_attack = Math.floor(Math.random() * this.attacks.length) + 1;
         } else {
@@ -109,6 +133,7 @@ function Phase(parent,descriptor) {
             this.current_attack = 1;
           }
         }
+        this.attacks[this.current_attack - 1].init();
       }
     } else {
       if(this.is_random) {
@@ -116,9 +141,15 @@ function Phase(parent,descriptor) {
       } else {
         this.current_attack = 1;
       }
+      this.attacks[this.current_attack - 1].init();
     }
+    
     for(var i = 0; i < this.wells.length; i++) {
       this.wells[i].update(slowdown,slowspeed);
+    }
+    
+    for(var i = 0; i < this.exits.length; i++) {
+      this.exits[i].update();
     }
     
   };
@@ -134,6 +165,10 @@ function Phase(parent,descriptor) {
     
     for(var i = 0; i < this.sprites.length; i++) {
       this.sprites[i].draw();
+    }
+    
+    for(var i = 0; i < this.exits.length; i++) {
+      this.exits[i].draw();
     }
   };
   
@@ -155,8 +190,13 @@ function Attack(parent,descriptor) {
   
   // optional
   this.choreography = descriptor.choreography || false;
+  this.max_age = descriptor.max_age;
   
   this.is_done = descriptor.is_done || function() {
+  
+    if(this.max_age) {
+      if(this.age > this.max_age) return true;
+    }
   
     // for the sake of one, I shall not destroy it
     for(var i = 0; i < this.spawners.length; i++) {
@@ -167,6 +207,7 @@ function Attack(parent,descriptor) {
   };
   
   // internal
+  this.age = 0;
   this.init = function() {
     for(var i = 0; i < this.spawners.length; i++) {
       this.spawners[i].init();
@@ -174,6 +215,15 @@ function Attack(parent,descriptor) {
   }
   
   this.update = function(slowdown,slowspeed) {
+    var speed = 1;
+    if(slowdown) {
+      speed = slowspeed;
+    } else {
+      speed = 1;
+    }
+    
+    this.age += slowspeed;
+    
     if(this.choreography) {
       this.choreography.advance(this.parent,this.spawners,slowdown,slowspeed);
     }

@@ -16,6 +16,12 @@ function Portal(descriptor) {
   this.w = this.wmax -1;
   this.animation_direction = 1;
   
+  this.init = function() {
+    this.wmax = this.h / 2;
+    this.w = this.wmax -1;
+    this.animation_direction = 1;
+  };
+  
   this.check_collisions = function(player_hb_squared,player_gb_squared) {
     var x_offset = Math.abs(this.x - player.x);
     var y_offset = Math.abs(this.y - player.y);

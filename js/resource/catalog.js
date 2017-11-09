@@ -118,3 +118,126 @@ var other_test_spawner = new BulletSpawner({
 });
 
 game.spawners.push(other_test_spawner);
+
+// rain with diagonal bullets
+var shower_speed = 2,
+    shower_r = 6,
+    shower_delay = 8,
+    shower_spread = 1.0,
+    shower_y = -170,
+    shower_lifespan = 500,
+    shower_bullet_life = 1000,
+    shower_curving_left = 0.00,
+    shower_curving_right = 0.00;
+
+var shower_spawner_a = new BulletSpawner({
+  x: 10,
+  y: shower_y,
+  heading: 0.5*Math.PI,
+  bullet_type: {
+    yaw: shower_curving_right,
+    speed: shower_speed,
+    r: shower_r,
+    color: "#FF9999",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: shower_bullet_life
+  },
+  spin: 0,
+  random_spread: shower_spread,
+  dx: 0,
+  dy: 0,
+  lifespan: shower_lifespan,
+  delay: shower_delay
+});
+
+var shower_spawner_b = new BulletSpawner({
+  x: 210,
+  y: shower_y,
+  heading: 0.5*Math.PI,
+  bullet_type: {
+    yaw: shower_curving_right,
+    speed: shower_speed,
+    r: shower_r,
+    color: "#FF9999",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: shower_bullet_life
+  },
+  spin: 0,
+  random_spread: shower_spread,
+  dx: 0,
+  dy: 0,
+  lifespan: shower_lifespan,
+  delay: shower_delay
+});
+var shower_spawner_c = new BulletSpawner({
+  x: 410,
+  y: shower_y,
+  heading: 0.5*Math.PI,
+  bullet_type: {
+    yaw: 0,
+    speed: shower_speed,
+    r: shower_r,
+    color: "#FF9999",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: shower_bullet_life
+  },
+  spin: 0,
+  random_spread: shower_spread,
+  dx: 0,
+  dy: 0,
+  lifespan: shower_lifespan,
+  delay: shower_delay
+});
+var shower_spawner_d = new BulletSpawner({
+  x: 610,
+  y: shower_y,
+  heading: 0.5*Math.PI,
+  bullet_type: {
+    yaw: shower_curving_left,
+    speed: shower_speed,
+    r: shower_r,
+    color: "#FF9999",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: shower_bullet_life
+  },
+  spin: 0,
+  random_spread: shower_spread,
+  dx: 0,
+  dy: 0,
+  lifespan: shower_lifespan,
+  delay: shower_delay
+});
+var shower_spawner_e = new BulletSpawner({
+  x: 810,
+  y: shower_y,
+  heading: 0.5*Math.PI,
+  bullet_type: {
+    yaw: shower_curving_left,
+    speed: shower_speed,
+    r: shower_r,
+    color: "#FF9999",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: shower_bullet_life
+  },
+  spin: 0,
+  random_spread: shower_spread,
+  dx: 0,
+  dy: 0,
+  lifespan: shower_lifespan,
+  delay: shower_delay
+});
