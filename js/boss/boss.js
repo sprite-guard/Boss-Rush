@@ -136,12 +136,16 @@ function Phase(parent,descriptor) {
         this.attacks[this.current_attack - 1].init();
       }
     } else {
+      // either this.current_attack isn't defined
+      // or this current attack isn't
       if(this.is_random) {
         this.current_attack = Math.floor(Math.random() * this.attacks.length) + 1;
       } else {
         this.current_attack = 1;
       }
-      this.attacks[this.current_attack - 1].init();
+      if(this.attacks[this.current_attack - 1]) {
+        this.attacks[this.current_attack - 1].init();
+      }
     }
     
     for(var i = 0; i < this.wells.length; i++) {

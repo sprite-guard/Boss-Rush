@@ -238,16 +238,8 @@ test_phase.add_attack({
     shower_spawner_d,
     shower_spawner_e,
     test_spawner_a
-  ],
-  max_age: 300
+  ]
 });
-test_phase.add_attack({
-  spawners: [
-    test_spawner_b,
-    test_spawner_c
-  ],
-  max_age: 180
-})
 
 test_boss.add_phase(test_phase);
 test_boss.add_phase(exit_phase);
