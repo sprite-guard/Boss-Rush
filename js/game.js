@@ -4,10 +4,6 @@
  * The goal is to procedurally generate bosses that are fair, but extremely difficult.
  * Sub goal is to create performant bullet-hell patterns in HTML Canvas.
  */
- 
- /* Leaving off 10/4/2017
-  * Spirit now works, dash target has a stronger visual presence.
-  */
 
 var DEBUG = true,
     FR = document.getElementById("fr"),
