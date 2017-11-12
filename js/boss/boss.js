@@ -66,6 +66,7 @@ function Phase(parent,descriptor) {
   this.is_random = descriptor.random || false;
   this.health = descriptor.health || Infinity;
   this.timer = descriptor.timer || Infinity;
+  this.max_timer = this.timer;
   this.max_iframes = descriptor.iframes || 0;
   
   // internal
@@ -75,6 +76,7 @@ function Phase(parent,descriptor) {
   this.init = function() {
     this.iframes = 0;
     this.current_attack = false;
+    this.timer = this.max_timer;
     
     for(var i = 0; i < this.attacks.length; i++) {
       this.attacks[i].init();
@@ -94,13 +96,15 @@ function Phase(parent,descriptor) {
     if(this.timer <= 0) {
       return true;
     }
-    else {
+    else if(this.wells.length > 0) {
       for(var i = 0; i < this.wells.length; i++) {
         if(!this.wells[i].is_full) {
           might_be_done = false;
         } // do not change might_be_done if well is full
       }
       return might_be_done;
+    } else {
+      return false;
     }
   };
   

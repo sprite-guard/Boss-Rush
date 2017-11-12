@@ -75,7 +75,7 @@ var shower_speed = 4,
     shower_delay = 10,
     shower_spread = 1.0,
     shower_y = -170,
-    shower_lifespan = 500,
+    shower_lifespan = Infinity,
     shower_bullet_life = 1000,
     shower_curving_left = 0.00,
     shower_curving_right = 0.00;
@@ -192,6 +192,54 @@ var shower_spawner_e = new BulletSpawner({
   delay: shower_delay
 });
 
+var gel_blast_a = new BulletSpawner({
+  x: 800,
+  y: 0,
+  heading: 0.25 * Math.PI,
+  spin: 0,
+  random_spread: 0.5 * Math.PI,
+  dx: 0,
+  dy: 0,
+  aimed: true,
+  lifespan: 30,
+  delay: 0,
+  sync: 60,
+  bullet_type: {
+    yaw: 0,
+    speed: 6,
+    r: 8,
+    color: "#00FFFF",
+    shell: "#006699",
+    graze_color: "#009999",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+var gel_blast_b = new BulletSpawner({
+  x: 0,
+  y: 0,
+  heading: 0.25 * Math.PI,
+  spin: 0,
+  random_spread: 0.5 * Math.PI,
+  dx: 0,
+  dy: 0,
+  aimed: true,
+  lifespan: 30,
+  delay: 0,
+  sync: 60,
+  bullet_type: {
+    yaw: 0,
+    speed: 6,
+    r: 8,
+    color: "#00FFFF",
+    shell: "#006699",
+    graze_color: "#009999",
+    style: "gradient",
+    cull_type: "screen"
+  }
+})
+
 var test_boss = new Boss({
   x: 400,
   y: 100,
@@ -218,6 +266,19 @@ var test_phase = new Phase(test_boss,{
   random: false
 });
 
+var gel_phase = new Phase(test_boss,{
+  attacks: [],
+  wells: [],
+  timer: 300
+});
+
+gel_phase.add_attack({
+  spawners: [
+    gel_blast_a,
+    gel_blast_b
+  ]
+});
+
 var exit_phase = new Phase(test_boss,{
   exits: [
     new Portal({
@@ -241,5 +302,6 @@ test_phase.add_attack({
   ]
 });
 
+test_boss.add_phase(gel_phase);
 test_boss.add_phase(test_phase);
 test_boss.add_phase(exit_phase);
