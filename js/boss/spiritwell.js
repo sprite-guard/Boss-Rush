@@ -10,6 +10,7 @@ function SpiritWell(descriptor) {
   // optional
   this.capacity = descriptor.capacity || 400;
   this.outer_color = descriptor.color || "#000000";
+  this.inner_color = descriptor.inner_color || "#003355";
   this.fill_color = descriptor.fill_color || "#FFFF00";
   this.full_border = descriptor.full_border || "#FFFFFF";
   
@@ -74,6 +75,11 @@ function SpiritWell(descriptor) {
     } else {
       outer_color = this.outer_color;
     }
+    // draw the bottom
+    game.draw.fillStyle = this.inner_color;
+    game.draw.beginPath();
+    game.draw.ellipse(this.x, this.y, this.r, this.r, 0, 0, 2*Math.PI);
+    game.draw.fill();
     // draw the inner circle
     game.draw.fillStyle = this.fill_color;
     game.draw.beginPath();
