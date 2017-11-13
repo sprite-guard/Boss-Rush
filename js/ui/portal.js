@@ -48,14 +48,15 @@ function Portal(descriptor) {
     this.tilt += this.tilt_speed;
     
     if(this.w <= 0) {
+      this.w = 0;
       this.animation_direction = 1;
     } else if(this.w >= this.wmax) {
+      this.w = this.wmax;
       this.animation_direction = -1;
     }
     
     // check collision
     this.check_collisions(0,2 * player.graze_radius * player.graze_radius);
-    
     
     this.draw();
   };

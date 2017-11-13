@@ -19,7 +19,7 @@ function Attack(parent, descriptor) {
   this.init = function() {
     this.total_duration = 0;
     
-    for(var i = 0; i < this.spawners.length; i++) {
+    for(var i = 0; i < this.spawner_types.length; i++) {
       this.spawners[i] = new BulletSpawner(this.spawner_types[i]);
       this.spawners[i].init();
     }

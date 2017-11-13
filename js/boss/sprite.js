@@ -1,4 +1,4 @@
-function Sprite(descriptor) {
+function Sprite(parent,descriptor) {
   this.start_x = descriptor.x;
   this.start_y = descriptor.y;
   this.x = this.start_x;
