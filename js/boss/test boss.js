@@ -260,7 +260,7 @@ var test_phase = new Phase(test_boss,{
     new SpiritWell({
       x: 700,
       y: 100,
-      r: 32
+      r: 32,
     })
   ],
   random: false
@@ -271,6 +271,98 @@ var gel_phase = new Phase(test_boss,{
   wells: [],
   timer: 300
 });
+
+var minimal_fountain = new Phase(test_boss,{
+  attacks: [],
+  wells: [],
+  timer: 200
+});
+
+var minimal_spread = 0.3,
+    minimal_life = 30,
+    minimal_delay = 0,
+    minimal_sync = 30,
+    minimal_curve = 0,
+    minimal_speed = 6;
+
+var minimal_blast_a = new BulletSpawner({
+  x: 400,
+  y: 600,
+  heading: 1.5 * Math.PI,
+  spin: 0,
+  random_spread: minimal_spread * Math.PI,
+  dx: 0,
+  dy: 0,
+  aimed: false,
+  lifespan: minimal_life,
+  delay: minimal_delay,
+  sync: minimal_sync,
+  bullet_type: {
+    yaw: minimal_curve,
+    speed: minimal_speed,
+    r: 8,
+    color: "#006699",
+    shell: "#004488",
+    graze_color: "#00AAAA",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+var minimal_blast_b = new BulletSpawner({
+  x: 200,
+  y: 600,
+  heading: 1.5 * Math.PI,
+  spin: 0,
+  random_spread: minimal_spread * Math.PI,
+  dx: 0,
+  dy: 0,
+  aimed: false,
+  lifespan: minimal_life,
+  delay: minimal_delay,
+  sync: minimal_sync,
+  bullet_type: {
+    yaw: minimal_curve,
+    speed: minimal_speed,
+    r: 8,
+    color: "#006699",
+    shell: "#004488",
+    graze_color: "#00AAAA",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+var minimal_blast_c = new BulletSpawner({
+  x: 600,
+  y: 600,
+  heading: 1.5 * Math.PI,
+  spin: 0,
+  random_spread: minimal_spread * Math.PI,
+  dx: 0,
+  dy: 0,
+  aimed: false,
+  lifespan: minimal_life,
+  delay: minimal_delay,
+  sync: minimal_sync,
+  bullet_type: {
+    yaw: minimal_curve,
+    speed: minimal_speed,
+    r: 8,
+    color: "#006699",
+    shell: "#004488",
+    graze_color: "#00AAAA",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+minimal_fountain.add_attack({
+  spawners: [
+    minimal_blast_a,
+    minimal_blast_b,
+    minimal_blast_c
+  ]
+})
 
 gel_phase.add_attack({
   spawners: [
@@ -303,5 +395,6 @@ test_phase.add_attack({
 });
 
 test_boss.add_phase(gel_phase);
+test_boss.add_phase(minimal_fountain);
 test_boss.add_phase(test_phase);
 test_boss.add_phase(exit_phase);
