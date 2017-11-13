@@ -108,9 +108,12 @@ function BulletSpawner(descriptor) {
     }
   };
   
-  this.despawn = function() {
+  this.despawn = function(hard) {
     this.life_remaining = 0;
-  }
+    if(hard) {
+      this.all_bullets = [];
+    }
+  };
   
   this.gc = function() {
     var res = [];
@@ -120,7 +123,7 @@ function BulletSpawner(descriptor) {
       }
     }
     this.all_bullets = res;
-  }
+  };
 }
 
 function Bullet(descriptor) {

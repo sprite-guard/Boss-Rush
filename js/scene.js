@@ -1,31 +1,47 @@
 function Scene(descriptor) {
   this.elements = descriptor.elements;
+  this.boss_type = descriptor.boss;
+  this.player = descriptor.player;
   
   this.special_init = descriptor.init;
-
   
   // internal
-  this.slowdown_speed = 0.3;
+  this.slowdown_speed = 0.1;
   this.slowdown = false;
   
   this.init = function() {
     this.special_init();
+    
+    if(this.boss_type) {
+      this.boss = new Boss(this.boss_type);
+      this.boss.init();
+    }
     this.slowdown = false;
   };
   
   this.update = function() {
     for(var i = 0; i < this.elements.length; i++) {
-      // NB we need to propagate the slowdown to every element
-      // and tell them how and when to slow themselves down.
-      // we also need a way to toggle the slowdown
-      // that power will be given to the player object.
       this.elements[i].update(this.slowdown, this.slowdown_speed);
+    }
+    
+    if(this.boss) {
+      this.boss.update(this.slowdown, this.slowdown_speed);
+    }
+    
+    if(this.player) {
+      this.player.update(this.slowdown, this.slowdown_speed);
     }
   };
   
   this.draw = function() {
     for(var i = 0; i < this.elements.length; i++) {
       this.elements[i].draw();
+    }
+    if(this.boss) {
+      this.boss.draw();
+    }
+    if(this.player) {
+      this.player.draw();
     }
     
     if(player.dead) {
@@ -109,22 +125,18 @@ scenes_list.menu = new Scene({
       h: 16,
       destination: "test_scene"
     }),
-    player
   ],
-
+  player: player,
   init: function() {
     player.init();
   }
 });
 
 scenes_list.test_scene = new Scene({
-  elements: [
-    new Background("#002244"),
-    test_boss,
-    player
-  ],
+  elements: [ new Background("#002244") ],
   init: function() {
     player.init();
-    test_boss.init();
-  }
+  },
+  boss: test_boss,
+  player: player
 })

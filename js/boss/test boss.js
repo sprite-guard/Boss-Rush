@@ -1,78 +1,88 @@
-var test_spawner_a = new BulletSpawner({
-  // blue curving spiral
+var test_boss = {
   x: 0,
+  y: 0,
+  sprites: [
+    { draw: function(x,y) { return true; } }
+  ],
+  phases: []
+};
+
+var exit_phase = {
+  attacks: [],
+  spirit_wells: [],
+  exits: [
+    new Portal({
+      x: 400,
+      y: 300,
+      h: 45,
+      destination: "menu"
+    })
+  ]
+}
+
+gel_phase = {
+  attacks: [],
+  spirit_wells: [],
+  exits: [],
+  duration: 200
+};
+
+shower_phase = ({
+  attacks: [],
+  spirit_wells: [
+    new SpiritWell({
+      x: 100,
+      y: 100,
+      r: 32
+    }),
+    new SpiritWell({
+      x: 700,
+      y: 100,
+      r: 32
+    }),
+    new SpiritWell({
+      x: 100,
+      y: 500,
+      r: 32
+    }),
+    new SpiritWell({
+      x: 700,
+      y: 500,
+      r: 32
+    })
+  ],
+  exits: []
+});
+
+// spiral
+
+// shower
+var spiral_spawner = new BulletSpawner({
+  x: 400,
   y: 100,
-  heading: 0.5 * Math.PI,
-  bullet_type: {
-    yaw: -0.006,
-    speed: 3,
-    r: 12,
-    color: "#00FFFF",
-    shell: "#0000FF",
-    graze_color: "#000000",
-    style: "gradient",
-    cull_type: "timer"
-  },
+  heading: 0,
   spin: 1,
-  random_spread: 0.0,
-  dx: 1,
+  random_spread: 0,
+  dx: 0,
   dy: 0,
-  
-  lifespan: 200,
-  delay: 2
-});
-
-var test_spawner_b = new BulletSpawner({
-  // magenta aimed spray
-  x: 0,
-  y: 300,
-  heading: 0.0 * Math.PI,
+  delay: 2,
+  lifespan: 500,
   bullet_type: {
-    yaw: 0,
-    speed: 2,
-    r: 8,
-    color: "#FFCCFF",
-    shell: "#FF0066",
-    graze_color: "#000000",
-    style: "gradient"
-  },
-  spin: 0.0,
-  random_spread: 0.9,
-  aimed: true,
-  dx: 1,
-  dy: 0,
-  
-  lifespan: 320,
-  delay: 2
-});
-
-var test_spawner_c = new BulletSpawner({
-  // magenta slow spiral spray
-  x: 0,
-  y: 300,
-  heading: 1.0 * Math.PI,
-  bullet_type: {
-    yaw: 0,
+    yaw: 0.006,
     speed: 3,
     r: 8,
-    color: "#FFCCFF",
-    shell: "#FF0066",
-    graze_color: "#000000",
+    color: "#0099FF",
+    shell: "#004488",
+    graze_color: "#3377AA",
     style: "gradient",
-    cull_type: "timer"
-  },
-  spin: 0.1,
-  random_spread: 0.9,
-  dx: 1,
-  dy: 0,
-  
-  lifespan: 320,
-  delay: 2
+    cull_type: "timer",
+    max_age: false
+  }
 });
 
-var shower_speed = 4,
+var shower_speed = 3,
     shower_r = 6,
-    shower_delay = 10,
+    shower_delay = 16,
     shower_spread = 1.0,
     shower_y = -170,
     shower_lifespan = 500,
@@ -192,54 +202,88 @@ var shower_spawner_e = new BulletSpawner({
   delay: shower_delay
 });
 
-var test_boss = new Boss({
-  x: 400,
-  y: 100,
-  graphic: function() {
-    return true;
-  }
-  
-});
-
-var test_phase = new Phase(test_boss,{
-  attacks: [],
-  wells: [
-    new SpiritWell({
-      x: 100,
-      y: 100,
-      r: 32
-    }),
-    new SpiritWell({
-      x: 700,
-      y: 100,
-      r: 32
-    })
-  ],
-  random: false
-});
-
-var exit_phase = new Phase(test_boss,{
-  exits: [
-    new Portal({
-      x: 400,
-      y: 300,
-      h: 32,
-      destination: "menu"
-    })
-  ],
-  end_condition: function() { return false; }
-})
-
-test_phase.add_attack({
+shower_attack = {
   spawners: [
     shower_spawner_a,
     shower_spawner_b,
     shower_spawner_c,
     shower_spawner_d,
     shower_spawner_e,
-    test_spawner_a
-  ]
+    spiral_spawner
+  ],
+  choreography: {}
+};
+
+shower_phase.attacks.push(shower_attack);
+
+// gel
+var gel_speed = 6,
+    gel_r = 6,
+    gel_delay = 0,
+    gel_spread = 0.5 * Math.PI,
+    gel_y = 0,
+    gel_lifespan = 40,
+    gel_bullet_life = 1000,
+    gel_curving_left = 0.00,
+    gel_curving_right = 0.00;
+
+var gel_spawner_a = new BulletSpawner({
+  x: 0,
+  y: gel_y,
+  heading: 0.5*Math.PI,
+  bullet_type: {
+    yaw: gel_curving_right,
+    speed: gel_speed,
+    r: gel_r,
+    color: "#FF9999",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: gel_bullet_life
+  },
+  aimed: true,
+  spin: 0,
+  random_spread: gel_spread,
+  dx: 0,
+  dy: 0,
+  lifespan: gel_lifespan,
+  delay: gel_delay
+});
+var gel_spawner_b = new BulletSpawner({
+  x: 800,
+  y: gel_y,
+  heading: 0.5*Math.PI,
+  bullet_type: {
+    yaw: gel_curving_right,
+    speed: gel_speed,
+    r: gel_r,
+    color: "#FF9999",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: gel_bullet_life
+  },
+  aimed: true,
+  spin: 0,
+  random_spread: gel_spread,
+  dx: 0,
+  dy: 0,
+  lifespan: gel_lifespan,
+  delay: gel_delay
 });
 
-test_boss.add_phase(test_phase);
-test_boss.add_phase(exit_phase);
+gel_attack = {
+  spawners: [
+    gel_spawner_a,
+    gel_spawner_b
+  ],
+  choreography: {}
+};
+
+gel_phase.attacks.push(gel_attack);
+
+test_boss.phases.push(gel_phase);
+test_boss.phases.push(shower_phase);
+test_boss.phases.push(exit_phase);

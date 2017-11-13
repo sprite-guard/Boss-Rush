@@ -64,7 +64,54 @@ player.draw = function() {
     this.hit_effects[i].draw();
   }
 };
+/*
+NB rewrite player draw code to make it shaped like the spirit, but smaller
 
+player.draw = function() {
+    var body_gradient = game.draw.createRadialGradient(this.x, this.y, this.body_height,
+                                                       this.x, this.y, 0);
+    body_gradient.addColorStop(0,this.outer_color);
+    body_gradient.addColorStop(1,this.inner_color);
+    
+    var left_wing_x = this.x - this.wing_x_offset;
+    var left_wing_y = this.y + this.wing_y_offset;
+    var right_wing_x = this.x + this.wing_x_offset;
+    var right_wing_y = this.y + this.wing_y_offset;
+    
+    var left_wing_gradient = game.draw.createRadialGradient(left_wing_x,left_wing_y,this.wing_height,
+                                                            left_wing_x,left_wing_y,0);
+    left_wing_gradient.addColorStop(0,this.wing_outer_color);
+    left_wing_gradient.addColorStop(1,this.wing_inner_color);
+    
+    var right_wing_gradient = game.draw.createRadialGradient(right_wing_x,right_wing_y,this.wing_height,
+                                                             right_wing_x,right_wing_y,0);
+    right_wing_gradient.addColorStop(0,this.wing_outer_color);
+    right_wing_gradient.addColorStop(1,this.wing_inner_color);
+    
+    // draw the body
+    game.draw.beginPath();
+    game.draw.fillStyle = body_gradient;
+    game.draw.ellipse(this.x, this.y, this.body_width, this.body_height, 0, 0, 2 * Math.PI)
+    game.draw.fill();
+    
+    // draw the left wing
+    game.draw.beginPath();
+    game.draw.fillStyle = left_wing_gradient;
+    game.draw.ellipse(left_wing_x, left_wing_y,
+                      this.wing_width, this.wing_height,
+                      this.wing_rotation, 0, 2 * Math.PI);
+    game.draw.fill();
+    
+    // draw the right wing
+    game.draw.beginPath();
+    game.draw.fillStyle = right_wing_gradient;
+    game.draw.ellipse(right_wing_x, right_wing_y,
+                      this.wing_width, this.wing_height,
+                      -this.wing_rotation, 0, 2 * Math.PI);
+    game.draw.fill();
+  }
+}
+*/
 player.update = function() {
   var speed_modifier, slowdown;
   if(slowdown) {
@@ -163,9 +210,6 @@ player.update = function() {
     }
     this.hit_effects = next_hit_array;
   }
-  
-  // draw the result
-  // player.draw();
 };
 
 player.move_to_dash_target = function() {
