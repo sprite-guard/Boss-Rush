@@ -59,15 +59,15 @@ var spiral_spawner = new BulletSpawner({
   x: 400,
   y: 100,
   heading: 0,
-  spin: 1,
+  spin: 0.5,
   random_spread: 0,
   dx: 0,
   dy: 0,
   delay: 1,
   lifespan: Infinity,
   bullet_type: {
-    yaw: 0.01,
-    speed: 3,
+    yaw: 0.006,
+    speed: 2,
     r: 8,
     color: "#00FFFF",
     shell: "#006699",
@@ -81,14 +81,15 @@ var spiral_spawner = new BulletSpawner({
 // shower
 
 var shower_speed = 2,
-    shower_r = 6,
-    shower_delay = 32,
-    shower_spread = 1.0,
-    shower_y = -170,
-    shower_lifespan = 0,
+    shower_r = 12,
+    shower_delay = 45,
+    shower_spread = 0,
+    shower_y = 0,
+    shower_lifespan = Infinity,
     shower_bullet_life = 1000,
     shower_curving_left = 0.00,
-    shower_curving_right = 0.00;
+    shower_curving_right = 0.00,
+    shower_aimed = true;
 
 var shower_spawner_a = new BulletSpawner({
   x: 10,
@@ -105,6 +106,7 @@ var shower_spawner_a = new BulletSpawner({
     cull_type: "timer",
     max_age: shower_bullet_life
   },
+  aimed: shower_aimed,
   spin: 0,
   random_spread: shower_spread,
   dx: 0,
@@ -128,6 +130,7 @@ var shower_spawner_b = new BulletSpawner({
     cull_type: "timer",
     max_age: shower_bullet_life
   },
+  aimed: shower_aimed,
   spin: 0,
   random_spread: shower_spread,
   dx: 0,
@@ -150,6 +153,7 @@ var shower_spawner_c = new BulletSpawner({
     cull_type: "timer",
     max_age: shower_bullet_life
   },
+  aimed: shower_aimed,
   spin: 0,
   random_spread: shower_spread,
   dx: 0,
@@ -172,6 +176,7 @@ var shower_spawner_d = new BulletSpawner({
     cull_type: "timer",
     max_age: shower_bullet_life
   },
+  aimed: shower_aimed,
   spin: 0,
   random_spread: shower_spread,
   dx: 0,
@@ -194,6 +199,7 @@ var shower_spawner_e = new BulletSpawner({
     cull_type: "timer",
     max_age: shower_bullet_life
   },
+  aimed: shower_aimed,
   spin: 0,
   random_spread: shower_spread,
   dx: 0,

@@ -37,11 +37,11 @@ function Scene(descriptor) {
     for(var i = 0; i < this.elements.length; i++) {
       this.elements[i].draw();
     }
-    if(this.boss) {
-      this.boss.draw();
-    }
     if(this.player) {
       this.player.draw();
+    }
+    if(this.boss) {
+      this.boss.draw();
     }
     
     if(player.dead) {
