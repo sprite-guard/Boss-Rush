@@ -5,15 +5,24 @@ var player = {
 player.init = function() {
   this.x = game.canvas.width / 2;
   this.y = game.canvas.height * 0.75;
-  this.w = 12;
-  this.h = 16;
+  this.w = 10;
+  this.h = 24;
+  this.body_width = this.w;
+  this.body_height = this.h;
+  this.wing_height = 24;
+  this.wing_width = 6;
+  this.wing_x_offset = 12;
+  this.wing_y_offset = 6;
+  this.wing_rotation = 0.33;
   this.r = 8;
   this.graze_radius = 32;
   this.hb = 0;
-  this.shell_color = "#000000";
-  this.core_color = "#00FFFF";
-  this.pip_color = "#FF6600";
-  this.hurt_color = "#666666";
+  this.outer_color = "#000011";
+  this.inner_color = "#006699";
+  this.pip_color = "#FFFFFF";
+  this.hurt_color = "#4499AA";
+  this.wing_outer_color = "#000033";
+  this.wing_inner_color = "#005588";
   this.slow_speed = 2;
   this.fast_speed = 4;
   this.speed = this.fast_speed;
@@ -33,29 +42,65 @@ player.init = function() {
 }
 
 player.draw = function() {
-  
   if(this.spirit) {
     this.spirit.draw();
   }
-  var gradient = game.draw.createRadialGradient( this.x, this.y, this.r,
-                                                 this.x, this.y, 0);
+  var outermost_color;
+  var wing_inner_color;
   if(this.state == "fine") {
-    gradient.addColorStop(0,this.shell_color);
-    gradient.addColorStop(1,this.core_color);
+    outermost_color = this.outer_color;
+    wing_inner_color = this.wing_inner_color
   } else if(this.state == "hurt") {
-    gradient.addColorStop(0,this.hurt_color);
-    gradient.addColorStop(1,this.core_color);
+    outermost_color = this.hurt_color;
+    wing_inner_color = this.hurt_color;
   } else {
-    gradient.addColorStop(0,this.shell_color);
-    gradient.addColorStop(1,this.core_color);
+    outermost_color = this.outer_color;
+    wing_inner_color = this.wing_inner_color;
   }
   
-  game.draw.fillStyle = gradient;
-
+  var body_gradient = game.draw.createRadialGradient(this.x, this.y, this.body_height,
+                                                     this.x, this.y, 0);
+  body_gradient.addColorStop(0.25,outermost_color);
+  body_gradient.addColorStop(0.75,this.inner_color);
+  body_gradient.addColorStop(1,this.pip_color);
+  
+  var left_wing_x = this.x - this.wing_x_offset;
+  var left_wing_y = this.y + this.wing_y_offset;
+  var right_wing_x = this.x + this.wing_x_offset;
+  var right_wing_y = this.y + this.wing_y_offset;
+      
+  var left_wing_gradient = game.draw.createRadialGradient(left_wing_x,left_wing_y,this.wing_height,
+                                                          left_wing_x,left_wing_y,0);
+  left_wing_gradient.addColorStop(0,this.wing_outer_color);
+  left_wing_gradient.addColorStop(1,wing_inner_color);
+  
+  var right_wing_gradient = game.draw.createRadialGradient(right_wing_x,right_wing_y,this.wing_height,
+                                                           right_wing_x,right_wing_y,0);
+  right_wing_gradient.addColorStop(0,this.wing_outer_color);
+  right_wing_gradient.addColorStop(1,wing_inner_color);
+  
+  // draw the body
   game.draw.beginPath();
-  game.draw.ellipse(this.x,this.y, this.w,this.h, 0, 0, 2 * Math.PI);
+  game.draw.fillStyle = body_gradient;
+  game.draw.ellipse(this.x, this.y, this.body_width, this.body_height, 0, 0, 2 * Math.PI)
   game.draw.fill();
   
+  // draw the left wing
+  game.draw.beginPath();
+  game.draw.fillStyle = left_wing_gradient;
+  game.draw.ellipse(left_wing_x, left_wing_y,
+                    this.wing_width, this.wing_height,
+                    this.wing_rotation, 0, 2 * Math.PI);
+  game.draw.fill();
+  
+  // draw the right wing
+  game.draw.beginPath();
+  game.draw.fillStyle = right_wing_gradient;
+  game.draw.ellipse(right_wing_x, right_wing_y,
+                    this.wing_width, this.wing_height,
+                    -this.wing_rotation, 0, 2 * Math.PI);
+  game.draw.fill();
+    
   if(this.dash_target) {
     this.dash_target.draw();
   }
@@ -64,54 +109,7 @@ player.draw = function() {
     this.hit_effects[i].draw();
   }
 };
-/*
-NB rewrite player draw code to make it shaped like the spirit, but smaller
 
-player.draw = function() {
-    var body_gradient = game.draw.createRadialGradient(this.x, this.y, this.body_height,
-                                                       this.x, this.y, 0);
-    body_gradient.addColorStop(0,this.outer_color);
-    body_gradient.addColorStop(1,this.inner_color);
-    
-    var left_wing_x = this.x - this.wing_x_offset;
-    var left_wing_y = this.y + this.wing_y_offset;
-    var right_wing_x = this.x + this.wing_x_offset;
-    var right_wing_y = this.y + this.wing_y_offset;
-    
-    var left_wing_gradient = game.draw.createRadialGradient(left_wing_x,left_wing_y,this.wing_height,
-                                                            left_wing_x,left_wing_y,0);
-    left_wing_gradient.addColorStop(0,this.wing_outer_color);
-    left_wing_gradient.addColorStop(1,this.wing_inner_color);
-    
-    var right_wing_gradient = game.draw.createRadialGradient(right_wing_x,right_wing_y,this.wing_height,
-                                                             right_wing_x,right_wing_y,0);
-    right_wing_gradient.addColorStop(0,this.wing_outer_color);
-    right_wing_gradient.addColorStop(1,this.wing_inner_color);
-    
-    // draw the body
-    game.draw.beginPath();
-    game.draw.fillStyle = body_gradient;
-    game.draw.ellipse(this.x, this.y, this.body_width, this.body_height, 0, 0, 2 * Math.PI)
-    game.draw.fill();
-    
-    // draw the left wing
-    game.draw.beginPath();
-    game.draw.fillStyle = left_wing_gradient;
-    game.draw.ellipse(left_wing_x, left_wing_y,
-                      this.wing_width, this.wing_height,
-                      this.wing_rotation, 0, 2 * Math.PI);
-    game.draw.fill();
-    
-    // draw the right wing
-    game.draw.beginPath();
-    game.draw.fillStyle = right_wing_gradient;
-    game.draw.ellipse(right_wing_x, right_wing_y,
-                      this.wing_width, this.wing_height,
-                      -this.wing_rotation, 0, 2 * Math.PI);
-    game.draw.fill();
-  }
-}
-*/
 player.update = function() {
   var speed_modifier, slowdown;
   if(slowdown) {

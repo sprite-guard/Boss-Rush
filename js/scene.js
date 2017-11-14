@@ -107,9 +107,11 @@ function Scene(descriptor) {
 
 var scenes_list = {};
 
+var default_background = new Background("#002244");
+
 scenes_list.menu = new Scene({
   elements: [
-    new Background("#002244"),
+    default_background,
     new MenuItem({
       x: 10,
       y: 10,
@@ -133,7 +135,7 @@ scenes_list.menu = new Scene({
 });
 
 scenes_list.test_scene = new Scene({
-  elements: [ new Background("#002244") ],
+  elements: [ default_background ],
   init: function() {
     player.init();
   },

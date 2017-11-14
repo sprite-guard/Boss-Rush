@@ -55,8 +55,6 @@ shower_phase = ({
 });
 
 // spiral
-
-// shower
 var spiral_spawner = new BulletSpawner({
   x: 400,
   y: 100,
@@ -65,27 +63,29 @@ var spiral_spawner = new BulletSpawner({
   random_spread: 0,
   dx: 0,
   dy: 0,
-  delay: 2,
-  lifespan: 500,
+  delay: 1,
+  lifespan: Infinity,
   bullet_type: {
-    yaw: 0.006,
+    yaw: 0.01,
     speed: 3,
     r: 8,
-    color: "#0099FF",
-    shell: "#004488",
-    graze_color: "#3377AA",
+    color: "#00FFFF",
+    shell: "#006699",
+    graze_color: "#3333AA",
     style: "gradient",
     cull_type: "timer",
     max_age: false
   }
 });
 
-var shower_speed = 3,
+// shower
+
+var shower_speed = 2,
     shower_r = 6,
-    shower_delay = 16,
+    shower_delay = 32,
     shower_spread = 1.0,
     shower_y = -170,
-    shower_lifespan = 500,
+    shower_lifespan = 0,
     shower_bullet_life = 1000,
     shower_curving_left = 0.00,
     shower_curving_right = 0.00;
