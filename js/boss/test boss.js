@@ -55,7 +55,7 @@ shower_phase = ({
 });
 
 // spiral
-var spiral_spawner = new BulletSpawner({
+var spiral_spawner = ({
   x: 400,
   y: 100,
   heading: 0,
@@ -91,7 +91,7 @@ var shower_speed = 2,
     shower_curving_right = 0.00,
     shower_aimed = true;
 
-var shower_spawner_a = new BulletSpawner({
+var shower_spawner_a = ({
   x: 10,
   y: shower_y,
   heading: 0.5*Math.PI,
@@ -115,7 +115,7 @@ var shower_spawner_a = new BulletSpawner({
   delay: shower_delay
 });
 
-var shower_spawner_b = new BulletSpawner({
+var shower_spawner_b = ({
   x: 210,
   y: shower_y,
   heading: 0.5*Math.PI,
@@ -138,7 +138,7 @@ var shower_spawner_b = new BulletSpawner({
   lifespan: shower_lifespan,
   delay: shower_delay
 });
-var shower_spawner_c = new BulletSpawner({
+var shower_spawner_c = ({
   x: 410,
   y: shower_y,
   heading: 0.5*Math.PI,
@@ -161,7 +161,7 @@ var shower_spawner_c = new BulletSpawner({
   lifespan: shower_lifespan,
   delay: shower_delay
 });
-var shower_spawner_d = new BulletSpawner({
+var shower_spawner_d = ({
   x: 610,
   y: shower_y,
   heading: 0.5*Math.PI,
@@ -184,7 +184,7 @@ var shower_spawner_d = new BulletSpawner({
   lifespan: shower_lifespan,
   delay: shower_delay
 });
-var shower_spawner_e = new BulletSpawner({
+var shower_spawner_e = ({
   x: 810,
   y: shower_y,
   heading: 0.5*Math.PI,
@@ -233,7 +233,7 @@ var gel_speed = 6,
     gel_curving_left = 0.00,
     gel_curving_right = 0.00;
 
-var gel_spawner_a = new BulletSpawner({
+var gel_spawner_a = ({
   x: 0,
   y: gel_y,
   heading: 0.5*Math.PI,
@@ -256,7 +256,7 @@ var gel_spawner_a = new BulletSpawner({
   lifespan: gel_lifespan,
   delay: gel_delay
 });
-var gel_spawner_b = new BulletSpawner({
+var gel_spawner_b = ({
   x: 800,
   y: gel_y,
   heading: 0.5*Math.PI,

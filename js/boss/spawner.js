@@ -25,6 +25,7 @@ function BulletSpawner(descriptor) {
     
     // initialize every source
     for(var i = 0; i < this.source_homes.length; i++) {
+      this.sources[i] = {};
       this.sources[i].x = this.source_homes[i].x;
       this.sources[i].y = this.source_homes[i].y;
       this.sources[i].heading = this.source_homes[i].initial_heading;
@@ -58,7 +59,7 @@ function BulletSpawner(descriptor) {
           // apply heading
           var next_direction = this.sources[i].heading;
           
-          if(this.sources[i].aimed) {
+          if(this.aimed) {
             // find the target's direction from this particular source
             var x_offset = this.target.x - this.sources[i].x;
             var y_offset = this.target.y - this.sources[i].y;

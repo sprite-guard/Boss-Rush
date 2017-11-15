@@ -6,7 +6,7 @@ function Scene(descriptor) {
   this.special_init = descriptor.init;
   
   // internal
-  this.slowdown_speed = 0.1;
+  this.slowdown_speed = 0.2;
   this.slowdown = false;
   
   this.init = function() {
@@ -34,14 +34,28 @@ function Scene(descriptor) {
   };
   
   this.draw = function() {
+  
+    // draw order:
+    // UI
+    // spirit wells + boss
+    // player
+    // bullets
+    // should spirit be above bullets?
+  
     for(var i = 0; i < this.elements.length; i++) {
       this.elements[i].draw();
     }
+    
+    if(this.boss) {
+      this.boss.draw_sprites();
+    }
+    
     if(this.player) {
       this.player.draw();
     }
+    
     if(this.boss) {
-      this.boss.draw();
+      this.boss.draw_bullets();
     }
     
     if(player.dead) {
