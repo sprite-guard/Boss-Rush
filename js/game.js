@@ -91,4 +91,12 @@ game.return_to_menu = function() {
   game.current_scene.init();
 }
 
+// helpers
+game.makeRingAttack = function(x,y,count) {
+  for(var i = 0; i < count; i++) {
+    var h = i * ((2*Math.PI) / count);
+    res.push({ x: x, y: y, heading: h });
+  }
+}
+
 game.init();

@@ -12,7 +12,7 @@ function, so it is unlikely to be ported to other browsers.
 
 ## Gameplay
 
-You control the black oval. Your center is vulerable, don't let the bullets
+You control the black oval. Your center is vulnerable, don't let the bullets
 touch it. You can slow time and teleport if you get caught in a sticky situation.
 
 Each ritual has a series of phases. Use your spirit to fill up the spirit wells

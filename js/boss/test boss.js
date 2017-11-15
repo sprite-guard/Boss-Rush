@@ -20,14 +20,54 @@ var exit_phase = {
   ]
 }
 
-gel_phase = {
+var gel_phase = {
   attacks: [],
   spirit_wells: [],
   exits: [],
   duration: 200
 };
 
-shower_phase = ({
+var ring_phase = {
+  attacks: [],
+  spirit_wells: [],
+  exits: [],
+  duration: 500
+};
+
+var ring_points = [];
+var ring_density = 36;
+var ring_x = 400;
+var ring_y = 200;
+
+for(var i = 0; i < ring_density; i++) {
+  var h = i * ((2*Math.PI) / ring_density);
+  ring_points.push({ x: ring_x, y: ring_y, heading: h });
+}
+
+var ring_spawner = {
+  x: ring_x,
+  y: ring_y,
+  heading: 0,
+  lifespan: 90,
+  sources: ring_points,
+  spin: 0,
+  aimed: false,
+  delay: 15,
+  sync: 300,
+  bullet_type: {
+    yaw: 0,
+    speed: 4,
+    r: 8,
+    color: "#FFFF66",
+    shell: "#996600",
+    graze_color: "#3333AA",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: false
+  }
+};
+
+var shower_phase = ({
   attacks: [],
   spirit_wells: [
     new SpiritWell({
@@ -80,16 +120,16 @@ var spiral_spawner = ({
 
 // shower
 
-var shower_speed = 2,
-    shower_r = 12,
-    shower_delay = 45,
-    shower_spread = 0,
-    shower_y = 0,
+var shower_speed = 3,
+    shower_r = 6,
+    shower_delay = 16,
+    shower_spread = 0.5,
+    shower_y = -170,
     shower_lifespan = Infinity,
     shower_bullet_life = 1000,
     shower_curving_left = 0.00,
     shower_curving_right = 0.00,
-    shower_aimed = true;
+    shower_aimed = false;
 
 var shower_spawner_a = ({
   x: 10,
@@ -290,6 +330,21 @@ gel_attack = {
 
 gel_phase.attacks.push(gel_attack);
 
+var ring_attack = {
+  spawners: [
+    ring_spawner,
+    shower_spawner_a,
+    shower_spawner_b,
+    shower_spawner_c,
+    shower_spawner_d,
+    shower_spawner_e
+    ],
+  choreography: {}
+};
+
+ring_phase.attacks.push(ring_attack);
+
+test_boss.phases.push(ring_phase);
 test_boss.phases.push(gel_phase);
 test_boss.phases.push(shower_phase);
 test_boss.phases.push(exit_phase);

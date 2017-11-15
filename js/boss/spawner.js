@@ -4,13 +4,16 @@ function BulletSpawner(descriptor) {
   this.lifespan = descriptor.lifespan;
   
   // optional
-  this.source_homes = descriptor.sources || [{x: descriptor.x, y: descriptor.y, initial_heading: descriptor.heading}];
+  this.source_homes = descriptor.sources || [{x: descriptor.x, y: descriptor.y, heading: descriptor.heading}];
   this.aimed = descriptor.aimed;
   this.spin = descriptor.spin || 0;
   this.delay = descriptor.delay || 0;
   this.sync = descriptor.sync || 0;
   this.random_spread = descriptor.random_spread;
   this.target = descriptor.target || player;
+  // simplify ring-source spawners
+  this.x = descriptor.x || 0;
+  this.y = descriptor.y || 0;
   
   // internal
   this.sources = [];
@@ -26,9 +29,9 @@ function BulletSpawner(descriptor) {
     // initialize every source
     for(var i = 0; i < this.source_homes.length; i++) {
       this.sources[i] = {};
-      this.sources[i].x = this.source_homes[i].x;
-      this.sources[i].y = this.source_homes[i].y;
-      this.sources[i].heading = this.source_homes[i].initial_heading;
+      this.sources[i].x = this.source_homes[i].x || this.x;
+      this.sources[i].y = this.source_homes[i].y || this.y;
+      this.sources[i].heading = this.source_homes[i].heading;
     }
   };
   
