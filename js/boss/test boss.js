@@ -34,15 +34,11 @@ var ring_phase = {
   duration: 500
 };
 
-var ring_points = [];
 var ring_density = 36;
 var ring_x = 400;
 var ring_y = 200;
 
-for(var i = 0; i < ring_density; i++) {
-  var h = i * ((2*Math.PI) / ring_density);
-  ring_points.push({ x: ring_x, y: ring_y, heading: h });
-}
+var ring_points = helpers.makeRingAttack(ring_x, ring_y, ring_density);
 
 var ring_spawner = {
   x: ring_x,
@@ -71,24 +67,28 @@ var shower_phase = ({
   attacks: [],
   spirit_wells: [
     new SpiritWell({
-      x: 100,
-      y: 100,
-      r: 32
+      x: 200,
+      y: 200,
+      r: 32,
+      capacity: 200
     }),
     new SpiritWell({
-      x: 700,
-      y: 100,
-      r: 32
+      x: 600,
+      y: 200,
+      r: 32,
+      capacity: 200
     }),
     new SpiritWell({
-      x: 100,
-      y: 500,
-      r: 32
+      x: 200,
+      y: 400,
+      r: 32,
+      capacity: 200
     }),
     new SpiritWell({
-      x: 700,
-      y: 500,
-      r: 32
+      x: 600,
+      y: 400,
+      r: 32,
+      capacity: 200
     })
   ],
   exits: []
@@ -120,7 +120,7 @@ var spiral_spawner = ({
 
 // shower
 
-var shower_speed = 3,
+var shower_speed = 5,
     shower_r = 6,
     shower_delay = 16,
     shower_spread = 0.5,
@@ -250,11 +250,6 @@ var shower_spawner_e = ({
 
 shower_attack = {
   spawners: [
-    shower_spawner_a,
-    shower_spawner_b,
-    shower_spawner_c,
-    shower_spawner_d,
-    shower_spawner_e,
     spiral_spawner
   ],
   choreography: {}
