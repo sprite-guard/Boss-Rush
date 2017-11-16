@@ -22,11 +22,11 @@ helpers.makeLineAttack = function(descriptor) {
   
   var res = [];
   for(var i = 0; i < count; i++) {
-    res.push {
+    res.push ({
       x: descriptor.sx + (x_move * i),
       y: descriptor.sy + (y_move * i),
       heading: head
-    };
+    });
   }
   return res;
   
