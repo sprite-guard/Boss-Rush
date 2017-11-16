@@ -2,7 +2,7 @@
  * "plane sources" for rain
  * ring sources that can be aimed or rotated randomly
  */
-
+/*
 function BulletSpawner(descriptor) {
   this.x = descriptor.x;
   this.y = descriptor.y;
@@ -125,7 +125,7 @@ function BulletSpawner(descriptor) {
     this.all_bullets = res;
   };
 }
-
+*/
 function Bullet(descriptor) {
   this.x = descriptor.x;
   this.y = descriptor.y;

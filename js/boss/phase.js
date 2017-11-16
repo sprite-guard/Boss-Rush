@@ -99,12 +99,8 @@ function Phase(parent,descriptor) {
     }
   };
   
-  this.draw = function() {
+  this.draw_sprites = function() {
     
-    // attacks
-    if(this.current_attack) {
-      this.current_attack.draw();
-    }
     // spirit wells
     for(var i = 0; i < this.spirit_wells.length; i++) {
       this.spirit_wells[i].draw();
@@ -113,6 +109,12 @@ function Phase(parent,descriptor) {
     // exits
     for(var i = 0; i < this.exits.length; i++) {
       this.exits[i].draw();
+    }
+  };
+  
+  this.draw_bullets = function() {
+    if(this.current_attack) {
+      this.current_attack.draw();
     }
   };
 }

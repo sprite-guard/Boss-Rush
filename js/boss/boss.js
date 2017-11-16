@@ -43,10 +43,14 @@ function Boss(descriptor) {
     
   };
   
-  this.draw = function() {
+  this.draw_sprites = function() {
     // draw our current sprite
     this.active_sprite.draw();
     // draw our current phase
-    this.active_phase.draw();
+    this.active_phase.draw_sprites();
   };
+  
+  this.draw_bullets = function() {
+    this.active_phase.draw_bullets();
+  }
 }
