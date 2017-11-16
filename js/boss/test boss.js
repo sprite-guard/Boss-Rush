@@ -63,6 +63,76 @@ var ring_spawner = {
   }
 };
 
+var ltr_line_descriptor = {
+  sx: 100,
+  sy: 500,
+  ex: 300,
+  ey: 300,
+  count: 5,
+  heading: 0
+};
+
+var ltr = helpers.makeLineAttack(ltr_line_descriptor);
+
+var rtl_line_descriptor = {
+  sx: 700,
+  sy: 500,
+  ex: 500,
+  ey: 300,
+  count: 5,
+  heading: Math.PI
+};
+
+var rtl = helpers.makeLineAttack(rtl_line_descriptor);
+
+var ltr_line_attack = {
+  x: 100,
+  y: 500,
+  heading: 0,
+  spin: 0,
+  random_spread: 0,
+  dx: 0,
+  dy: 0,
+  delay: 64,
+  sources: ltr,
+  lifespan: Infinity,
+  bullet_type: {
+    yaw: 0,
+    speed: 1,
+    r: 8,
+    color: "#FF9966",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000
+  },
+};
+
+var rtl_line_attack = {
+  x: 700,
+  y: 500,
+  heading: 0,
+  spin: 0,
+  random_spread: 0,
+  dx: 0,
+  dy: 0,
+  delay: 64,
+  sources: rtl,
+  lifespan: Infinity,
+  bullet_type: {
+    yaw: 0,
+    speed: 1,
+    r: 8,
+    color: "#FF9966",
+    shell: "#FF3333",
+    graze_color: "#991111",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000
+  },
+};
+
 var shower_phase = ({
   attacks: [],
   spirit_wells: [
@@ -328,11 +398,8 @@ gel_phase.attacks.push(gel_attack);
 var ring_attack = {
   spawners: [
     ring_spawner,
-    shower_spawner_a,
-    shower_spawner_b,
-    shower_spawner_c,
-    shower_spawner_d,
-    shower_spawner_e
+    ltr_line_attack,
+    rtl_line_attack
     ],
   choreography: {}
 };
