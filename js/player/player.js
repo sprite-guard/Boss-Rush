@@ -17,6 +17,8 @@ player.init = function() {
   this.r = 8;
   this.graze_radius = 32;
   this.hb = 0;
+  this.border_width = 3;
+  this.border_color = "#0099AA";
   this.outer_color = "#000011";
   this.inner_color = "#006699";
   this.pip_color = "#FFFFFF";
@@ -78,6 +80,26 @@ player.draw = function() {
                                                            right_wing_x,right_wing_y,0);
   right_wing_gradient.addColorStop(0,this.wing_outer_color);
   right_wing_gradient.addColorStop(1,wing_inner_color);
+  
+  // draw the outline
+  game.draw.lineWidth = this.border_width;
+  game.draw.strokeStyle = this.border_color;
+  // outline the body
+  game.draw.beginPath();
+  game.draw.ellipse(this.x, this.y, this.body_width, this.body_height, 0, 0, 2 * Math.PI)
+  game.draw.stroke();
+  // outline the left wing
+  game.draw.beginPath();
+  game.draw.ellipse(left_wing_x, left_wing_y,
+                    this.wing_width, this.wing_height,
+                    this.wing_rotation, 0, 2 * Math.PI);
+  game.draw.stroke();
+  // outline the right wing
+  game.draw.beginPath();
+  game.draw.ellipse(right_wing_x, right_wing_y,
+                    this.wing_width, this.wing_height,
+                    -this.wing_rotation, 0, 2 * Math.PI);
+  game.draw.stroke();
   
   // draw the body
   game.draw.beginPath();
