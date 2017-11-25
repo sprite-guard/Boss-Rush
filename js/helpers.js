@@ -28,7 +28,6 @@ helpers.makeLineAttack = function(descriptor) {
       heading: head
     });
   }
-  console.log(res);
   return res;
   
 }
