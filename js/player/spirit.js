@@ -83,7 +83,7 @@ function Spirit(descriptor) {
                       -this.wing_rotation, 0, 2 * Math.PI);
     game.draw.fill();
     
-    this.leash.draw();
+    // this.leash.draw();
   }
 }
 
@@ -102,7 +102,7 @@ function Leash() {
   
   this.draw = function() {
     game.draw.strokeStyle = "#FFFF88";
-    game.draw.lineWidth = 3;
+    game.draw.lineWidth = 1;
     game.draw.beginPath();
     game.draw.moveTo(this.start_x,this.start_y);
     game.draw.lineTo(this.end_x,this.end_y);
