@@ -153,6 +153,6 @@ scenes_list.test_scene = new Scene({
   init: function() {
     player.init();
   },
-  boss: test_boss,
+  boss: avoidance_boss,
   player: player
 })
