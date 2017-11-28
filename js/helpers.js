@@ -1,10 +1,18 @@
 var helpers = {};
 
-helpers.makeRingAttack = function(x,y,count) {
+var TAU = 2 * Math.PI
+
+helpers.makeRingAttack = function(x,y,count,begin,end) {
+  
+  var total_angle = end - begin;
+  
+  // if(total_angle < 1) total_angle += (1 / count);
+  if((total_angle == 1) && (count > 1)) count--;
+  
   var res = [];
-  for(var i = 0; i < count; i++) {
+  for(var i = 0; i <= count; i++) {
     // evently divide the circle, and add one source for each direction
-    var h = i * ((2*Math.PI) / count);
+    var h = i * ((total_angle * TAU) / count) + (begin * TAU);
     res.push({ x: x, y: y, heading: h });
   }
   return res;

@@ -12,6 +12,8 @@ function Bullet(descriptor) {
   this.yaw = descriptor.yaw || 0;
   this.speed = descriptor.speed || 1;
   this.cull_type = descriptor.cull_type || "timer";
+  this.behavior = descriptor.behavior || "none";
+  this.remaining_bounces = descriptor.bounces || 0;
   
   if(descriptor.max_age) {
     this.max_age = descriptor.max_age;
@@ -34,11 +36,15 @@ function Bullet(descriptor) {
     game.draw.beginPath();
   	game.draw.ellipse(Math.floor(this.x), Math.floor(this.y), this.r, this.r, 0, 0, 2 * Math.PI);
     if(this.style == "hollow") {
-      game.draw.strokeStyle = this.color;
+      game.draw.lineWidth = 3;
+      game.draw.strokeStyle = this.current_shell;
       game.draw.stroke();
     } else if(this.style == "solid") {
+      game.draw.lineWidth = 3;
       game.draw.fillStyle = this.color;
       game.draw.fill();
+      game.draw.strokeStyle = this.current_shell;
+      game.draw.stroke();
     } else if(this.style == "gradient") {
       var gradient = game.draw.createRadialGradient(this.x, this.y, this.r,
                                                     this.x, this.y, this.pit_size );
@@ -75,6 +81,23 @@ function Bullet(descriptor) {
       player.get_hurt();
     } else {
       this.ungraze();
+    }
+    
+    if((this.behavior == "bounce") && (this.remaining_bounces > 0)) {
+      var did_bounce = false;
+      if((this.x <= 0) || (this.x >= game.width)) {
+        this.heading = Math.PI - this.heading;
+        did_bounce = true;
+      }
+      
+      if((this.y <= 0) || (this.y >= game.height)) {
+        this.heading = (-1) * this.heading;
+        did_bounce = true;
+      }
+      
+      if(did_bounce) {
+        this.remaining_bounces--;
+      }
     }
     
     if(this.cull_type == "timer") {

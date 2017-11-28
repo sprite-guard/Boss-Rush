@@ -110,6 +110,17 @@ function Phase(parent,descriptor) {
     for(var i = 0; i < this.exits.length; i++) {
       this.exits[i].draw();
     }
+    
+    // avoidance timer
+    if(this.timer < this.max_timer) {
+      var portion_remaining = (this.timer / this.max_timer);
+      var health_bar_width = portion_remaining * game.width;
+      var health_bar_height = 10; // NB this is a magic number. Maybe move it?
+      var health_bar_color = "#FF0000"; // NB same
+      game.draw.fillStyle = health_bar_color;
+      game.draw.fillRect(0,0,health_bar_width,health_bar_height);
+    }
+    
   };
   
   this.draw_bullets = function() {

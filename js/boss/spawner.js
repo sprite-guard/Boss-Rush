@@ -1,16 +1,21 @@
 function BulletSpawner(descriptor) {
   this.bullet_type = descriptor.bullet_type;
   this.initial_heading = descriptor.heading;
-  this.lifespan = descriptor.lifespan;
+  
+  
+  this.sync = descriptor.sync || 0;
+  this.lifespan = descriptor.lifespan + this.sync;
   
   // optional
   this.source_homes = descriptor.sources || [{x: descriptor.x, y: descriptor.y, heading: descriptor.heading}];
   this.aimed = descriptor.aimed;
   this.spin = descriptor.spin || 0;
   this.delay = descriptor.delay || 0;
-  this.sync = descriptor.sync || 0;
-  this.random_spread = descriptor.random_spread;
   this.target = descriptor.target || player;
+  // randomize everything
+  this.random_spread = descriptor.random_spread || 0;
+  this.yaw_jitter = descriptor.yaw_jitter || 0;
+  this.speed_jitter = descriptor.speed_jitter || 0;
   // simplify ring-source spawners
   this.x = descriptor.x || 0;
   this.y = descriptor.y || 0;
@@ -73,21 +78,26 @@ function BulletSpawner(descriptor) {
           }
           this.sources[i].heading = next_direction;
           
+          // randomize speed and curvature
+          var next_yaw_offset = Math.random() * this.yaw_jitter,
+              next_speed_offset = Math.random() * this.speed_jitter;
+          
           // fire bullet
-          var next_bullet = this.bullet_type;
+          var next_bullet = new Bullet(this.bullet_type);
               next_bullet.heading = next_direction + scatter;
               next_bullet.x = this.sources[i].x;
               next_bullet.y = this.sources[i].y;
+              next_bullet.yaw = next_bullet.yaw + next_yaw_offset;
+              next_bullet.speed = next_bullet.speed + next_speed_offset;
               
-          this.all_bullets.push( new Bullet(next_bullet) );
+          this.all_bullets.push( next_bullet );
           // housekeeping
-          this.life_remaining -= speed_modifier;
           this.timer = this.delay;
         }
-      
       } else {
         this.timer -= speed_modifier;
       }
+      this.life_remaining -= speed_modifier;
     } else { // life is not remaining
       if(this.all_bullets.length == 0) this.alive = false;
     }

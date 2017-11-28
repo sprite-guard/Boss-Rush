@@ -54,9 +54,11 @@ window.onkeydown = function(e){
       break;
     case K_RESET:
       game.current_scene.init();
+      game.unpause();
       break;
     case K_MENU:
       game.return_to_menu();
+      game.unpause();
       break;
     case K_PAUSE:
       game.pause_unpause();
@@ -66,7 +68,7 @@ window.onkeydown = function(e){
       game.current_scene.init();
       break;
     case K_INVULN:
-      player.invulnerable = true;
+      player.invulnerable = !player.invulnerable;
       break;
   }
 };

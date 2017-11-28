@@ -81,9 +81,15 @@ game.pause = function() {
   game.keep_going = false;
 }
 
+game.unpause = function() {
+  game.keep_going = true;
+  window.cancelAnimationFrame(game.animation_request);
+  game.animation_request = window.requestAnimationFrame(game.update);
+}
+
 game.pause_unpause = function() {
   game.keep_going = !game.keep_going;
-  window.requestAnimationFrame(game.update);
+  game.animation_request = window.requestAnimationFrame(game.update);
 }
 
 game.return_to_menu = function() {
