@@ -123,24 +123,46 @@ var scenes_list = {};
 
 var default_background = new Background("#002244");
 
+var top_line = "Infinite",
+    bottom_line = "Ritual";
+
 scenes_list.menu = new Scene({
   elements: [
     default_background,
     new MenuItem({
       x: 10,
       y: 10,
-      w: 238,
-      h: 46,
+      w: 160,
+      h: 44,
       font: "sans-serif",
       size: "32px",
-      text: "Daily Challenge"
+      text: "Test Boss"
     }),
     new Portal({
-      x: 268,
+      x: 200,
       y: 32,
       h: 16,
       destination: "test_scene"
     }),
+    
+    {
+      init: () => { return true; },
+      update: () => { return true; },
+      draw: () => {
+        game.draw.fillStyle = "#006666";
+        game.draw.strokeStyle = "#009999";
+        game.draw.lineWidth = 2;
+        game.draw.font = "128px serif";
+        game.draw.fillText(top_line,32,250);
+        game.draw.beginPath();
+        game.draw.strokeText(top_line,32,250);
+        game.draw.stroke();
+        game.draw.fillText(bottom_line,32,400);
+        game.draw.beginPath();
+        game.draw.strokeText(bottom_line,32,400);
+        game.draw.stroke();
+      }
+    }
   ],
   player: player,
   init: function() {
