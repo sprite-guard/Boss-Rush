@@ -239,17 +239,15 @@ player.move_to_dash_target = function() {
 }
 
 player.get_hurt = function() {
-  if(!this.invulnerable) {
-    if(this.state != "hurt") {
-      this.health--;
-      this.state = "hurt";
-      this.hit_effects.push(new HitEffect({
-        x: this.x,
-        y: this.y
-      }));
-      if(this.health == 0) {
-        game.current_scene.game_over();
-      }
+  if(this.state != "hurt") {
+    if(!this.invulnerable) this.health--;
+    this.state = "hurt";
+    this.hit_effects.push(new HitEffect({
+      x: this.x,
+      y: this.y
+    }));
+    if(this.health == 0) {
+      game.current_scene.game_over();
     }
   }
 }
