@@ -12,8 +12,8 @@ function, so it is unlikely to be ported to other browsers.
 
 ## Gameplay
 
-You control the black oval. Your center is vulnerable, don't let the bullets
-touch it. You can slow time and teleport if you get caught in a sticky situation.
-
-Each ritual has a series of phases. Use your spirit to fill up the spirit wells
-on each phase to progress to the next one. Your spirit is not affected by bullets.
+You control the blue insect. Your center is vulnerable, don't let the bullets
+touch it. Spacebar will slow time and let you teleport out of trouble. Press
+Shift to send out your spirit, which is invulnerable and can fill Spirit Wells.
+You can only control one at a time, so make sure your body is safe before you
+try to move your spirit.
