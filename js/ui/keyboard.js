@@ -57,8 +57,12 @@ window.onkeydown = function(e){
       game.unpause();
       break;
     case K_MENU:
-      game.return_to_menu();
-      game.unpause();
+      if(game.current_scene != scenes_list.menu) {
+        game.return_to_menu();
+        game.unpause();
+      } else {
+        game.quit();
+      }
       break;
     case K_PAUSE:
       game.pause_unpause();
