@@ -51,9 +51,10 @@ avoidance_attack.spawners.push({
   delay: 35,
   sync: 0,
   lifespan: 820,
+  speed_jitter: 1,
   bullet_type: {
     yaw: 0,
-    speed: 4,
+    speed: 2,
     r: 8,
     color: "#FF9966",
     shell: "#FF3333",
