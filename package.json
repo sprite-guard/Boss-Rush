@@ -1,0 +1,17 @@
+{
+  "main": "bossrush.html",
+  "name": "infinite-ritual",
+  "description": "Bullet hell boss rush game made by SpriteGuard",
+  "version": "0.0.0",
+  "window": {
+    "title": "Infinite Ritual",
+    "toolbar": true,
+    "frame": false,
+    "width": 800,
+    "height": 600,
+    "min_width": 800,
+    "max_width": 800,
+    "min_height": 600,
+    "max_height": 600
+  }
+}

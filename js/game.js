@@ -5,8 +5,9 @@
  * Sub goal is to create performant bullet-hell patterns in HTML Canvas.
  */
 
+if(typeof nw == "undefined") nw = false;
+
 var DEBUG = true,
-    FR = document.getElementById("fr"),
     UPDATE = 60,
     MAX_UPDATE = 60,
     BGCOLOR = "#002244";
@@ -24,7 +25,9 @@ game.fullscreen = function() {
 
 game.init = function() {
   // initialize game object
-
+  if(DEBUG && nw) {
+    nw.Window.get().showDevTools();
+  }
   game.timer = 0;
   game.slowdown = 0;
   game.max_slowdown = 3;
@@ -35,6 +38,7 @@ game.init = function() {
   game.timecount = 0;
   game.framecount = 1;
   game.fps = 0;
+  game.fr = 0;
   game.ewam = 60;
   game.draw_batch = [];
   
@@ -68,8 +72,11 @@ game.update = function() {
     
     if(UPDATE == 0) {
       UPDATE = MAX_UPDATE;
-      FR.innerHTML = Math.floor(game.ewam);
+      game.fr = Math.floor(game.ewam);
     }
+    game.draw.fillStyle = "#0077AA";
+    game.draw.font = "10px monospace";
+    game.draw.fillText(game.fr,2,595);
   }
   
   if(game.keep_going) {
@@ -95,6 +102,13 @@ game.pause_unpause = function() {
 game.return_to_menu = function() {
   game.current_scene = scenes_list.menu;
   game.current_scene.init();
+}
+
+game.quit = function() {
+  if(nw) {
+    var win = nw.Window.get();
+    win.close();
+  }
 }
 
 game.init();
