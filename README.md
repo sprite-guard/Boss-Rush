@@ -1,14 +1,19 @@
 # Infinite Ritual
 Bullet hell boss rush game developed live on Twitch.tv/spriteguard
 
-This game currently only works on Chrome, and relies heavily on the ellipse
-function, so it is unlikely to be ported to other browsers.
+This game can be run in Chrome or as a NWJS app. It has not been tested in any
+other browsers, and probably doesn't work in them.
 
 ## Controls
 
 * Arrow keys: move yourself
 * Shift + arrows: move your spirit
 * Space + arrows: slow time and teleport
+* R: Restart current level
+* A: jump to the test scene
+* P: Pause
+* I: Toggle invulnerability
+* escape: return to menu, or quit from menu (NWJS only)
 
 ## Gameplay
 
