@@ -10,8 +10,11 @@ if(typeof nw == "undefined") nw = false;
 var DEBUG = true,
     UPDATE = 60,
     MAX_UPDATE = 60,
-    BGCOLOR = "#002244";
-    
+    BGCOLOR = "#002244",
+    BASE_W = 800,
+    BASE_H = 600;
+
+// performance testing
 var frame_counter = 0,
     last_time = performance.now(),
     accumulated_time = 0;
@@ -28,6 +31,7 @@ game.init = function() {
   if(DEBUG && nw) {
     nw.Window.get().showDevTools();
   }
+  
   game.timer = 0;
   game.slowdown = 0;
   game.max_slowdown = 3;
@@ -42,12 +46,15 @@ game.init = function() {
   game.ewam = 60;
   game.draw_batch = [];
   
+  if(nw) {
+    game.window = nw.Window.get();
+  }
+  
   game.current_scene = scenes_list.menu;
   game.current_scene.init();
 
   // housekeeping
   controllers.init();
-  game.canvas.setAttribute("ondblclick", "game.fullscreen()");
   game.keep_going = true;
   
   player.init();
