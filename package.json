@@ -9,6 +9,7 @@
     "frame": true,
     "width": 799,
     "height": 599,
-    "resizable": true
+    "resizable": true,
+    "icon": "./icon.PNG"
   }
 }
