@@ -6,7 +6,7 @@ function Scene(descriptor) {
   this.special_init = descriptor.init;
   
   // internal
-  this.slowdown_speed = 0.2;
+  this.slowdown_speed = 0.15;
   this.slowdown = false;
   
   this.init = function() {
