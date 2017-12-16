@@ -1,23 +1,31 @@
 function Choreography(parent,descriptor) {
-  this.attack = parent;
-  this.actions_list = descriptor.actions_list || [];
+
+  this.parent = parent;
+  this.start_time = descriptor.start_time;
+  this.duration = descriptor.duration;
+  this.actions = descriptor.actions;
   
-  this.current_action = 0;
+  // internal
+  this.time_elapsed = 0;
   
   this.init = function() {
-    this.current_action = 0;
-  };
-  
-  this.add_action = function(action) {
-    this.actions_list.push(action);
-  };
-  
-  this.update = function(slowdown, slowspeed){
-    // NB does not do anything yet
-    return true;
-  };
-}
+    this.time_elapsed = 0;
+  }
 
-function Action(descriptor) {
-
+  this.update = function(slowdown, slowspeed) {
+    // apply slowdown
+    var speed = 1;
+    if(slowdown) {
+      speed = slowspeed;
+    } else {
+      speed = 1;
+    }
+    if(this.parent.total_duration >= this.start_time) {
+      
+    } else {
+    
+    }
+    
+    this.time_elapsed += speed;
+  };
 }
