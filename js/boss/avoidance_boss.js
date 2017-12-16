@@ -22,9 +22,9 @@ var exit_phase = {
 
 var avoidance_phase = {
   attacks: [],
-  wells: [],
+  spirit_wells: [],
   exits: [],
-  duration: 6000
+  duration: 3500
 };
 
 var avoidance_attack = {
@@ -65,9 +65,9 @@ avoidance_attack.spawners.push({
   }
 });
 
-var corner_rings = helpers.makeRingAttack(0,0,8,0,.25).concat( 
+var corner_rings = helpers.makeRingAttack(0,0,9,0,.25).concat( 
                    helpers.makeRingAttack(0,600,8,.75,1)).concat(
-                   helpers.makeRingAttack(800,0,8,.25,.5)).concat(
+                   helpers.makeRingAttack(800,0,9,.25,.5)).concat(
                    helpers.makeRingAttack(800,600,8,.5,.75));
 
 avoidance_attack.spawners.push({
@@ -78,7 +78,7 @@ avoidance_attack.spawners.push({
   lifespan: 60,
   bullet_type: {
     behavior: "bounce",
-    bounces: 1,
+    bounces: 2,
     yaw: 0,
     speed: 3,
     r: 6,
@@ -86,6 +86,7 @@ avoidance_attack.spawners.push({
     shell: "#FF9922",
     graze_color: "#884400",
     style: "solid",
+    length: 10,
     cull_type: "screen",
     max_age: 1000
   }
@@ -193,7 +194,7 @@ avoidance_attack.spawners.push({
   random_spread: 0,
   delay: 1,
   sync: 1330,
-  lifespan: 60,
+  lifespan: 120,
   bullet_type: {
     yaw: 0,
     speed: 2,
@@ -331,6 +332,216 @@ avoidance_attack.spawners.push({
   }
 });
 
+avoidance_attack.spawners.push({
+  x: 400, y: 300, heading: 0,
+  spin: 1,
+  delay: 1,
+  sync: 2090,
+  lifespan: 900,
+  random_spread: 0,
+  speed_jitter: 0.5,
+  yaw_jitter: -0.005,
+  bullet_type: {
+    yaw: 0.003,
+    speed: 1,
+    r: 8,
+    color: "#CC6699",
+    shell: "#662233",
+    graze_color: "#000000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000,
+  }
+});
+
+avoidance_attack.spawners.push({
+  x: 400, y: 300, heading: 0,
+  spin: 1,
+  delay: 1,
+  sync: 2090,
+  lifespan: 900,
+  random_spread: 0,
+  speed_jitter: 0.5,
+  yaw_jitter: 0.005,
+  bullet_type: {
+    yaw: -0.003,
+    speed: 1,
+    r: 8,
+    color: "#9966CC",
+    shell: "#332266",
+    graze_color: "#000000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000,
+  }
+});
+
+var spiral_rings = helpers.makeRingAttack(400,300,6,0,1);
+
+avoidance_attack.spawners.push({
+  sources: spiral_rings,
+  x: 400, y: 300, heading: 0,
+  spin: 0.1,
+  delay: 2,
+  sync: 2390,
+  lifespan: 600,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#99AACC",
+    shell: "#338866",
+    graze_color: "#000000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000,
+  }
+});
+
+var wells_phase = {
+  attacks: [],
+  spirit_wells: [
+    new SpiritWell({
+      x: 200,
+      y: 200,
+      r: 64
+    }),
+    new SpiritWell({
+      x: 600,
+      y: 200,
+      r: 64
+    }),
+    new SpiritWell({
+      x: 200,
+      y: 400,
+      r: 64
+    }),
+    new SpiritWell({
+      x: 600,
+      y: 400,
+      r: 64
+    })
+  ],
+  exits: []
+};
+
+var wells_attack = {
+  spawners: [],
+  choreography: {}
+};
+
+var bounce_pulse_a = helpers.makeRingAttack(200,200,21,0,1),
+    bounce_pulse_b = helpers.makeRingAttack(200,400,21,0,1),
+    bounce_pulse_c = helpers.makeRingAttack(600,200,21,0,1),
+    bounce_pulse_d = helpers.makeRingAttack(600,400,21,0,1);
+
+wells_attack.spawners.push({
+  sources: bounce_pulse_a,
+  x: 200,
+  y: 200,
+  heading: 0,
+  spin: 0,
+  sync: 20,
+  lifespan: 150,
+  delay: 60,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 2,
+    r: 8,
+    color: "#CC4400",
+    shell: "#CC4400",
+    graze_color: "#660000",
+    style: "hollow",
+    cull_type: "screen",
+    behavior: "bounce",
+    bounces: Infinity
+  }
+});
+wells_attack.spawners.push({
+  sources: bounce_pulse_b,
+  x: 200,
+  y: 200,
+  heading: 0,
+  spin: 0,
+  sync: 40,
+  lifespan: 150,
+  delay: 60,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 2,
+    r: 8,
+    color: "#CC4400",
+    shell: "#CC4400",
+    graze_color: "#660000",
+    style: "hollow",
+    cull_type: "screen",
+    behavior: "bounce",
+    bounces: Infinity
+  }
+});
+wells_attack.spawners.push({
+  sources: bounce_pulse_c,
+  x: 200,
+  y: 200,
+  heading: 0,
+  spin: 0,
+  sync: 60,
+  lifespan: 150,
+  delay: 60,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 2,
+    r: 8,
+    color: "#CC4400",
+    shell: "#CC4400",
+    graze_color: "#660000",
+    style: "hollow",
+    cull_type: "screen",
+    behavior: "bounce",
+    bounces: Infinity
+  }
+});
+wells_attack.spawners.push({
+  sources: bounce_pulse_d,
+  x: 200,
+  y: 200,
+  heading: 0,
+  spin: 0,
+  sync: 80,
+  lifespan: 150,
+  delay: 60,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 2,
+    r: 8,
+    color: "#CC4400",
+    shell: "#CC4400",
+    graze_color: "#660000",
+    style: "hollow",
+    cull_type: "screen",
+    behavior: "bounce",
+    bounces: Infinity
+  }
+});
+
+wells_phase.attacks.push(wells_attack);
+
 avoidance_phase.attacks.push(avoidance_attack);
 avoidance_boss.phases.push(avoidance_phase);
+avoidance_boss.phases.push(wells_phase);
 avoidance_boss.phases.push(exit_phase);
