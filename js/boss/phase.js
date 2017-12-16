@@ -25,12 +25,11 @@ function Phase(parent,descriptor) {
         might_be_done = true;
       } else {
         // we've found a well that isn't full
-        // so we break out of the loop entirely
-        return false;
+        // but if the timer runs out we still want to break
+        might_be_done = false;
       }
     } // might_be_done will be false if there are no wells
       // and true if all wells are full
-      // won't be reached if there is a well that isn't full.
       
     if(this.timer <= 0) {
       return true;

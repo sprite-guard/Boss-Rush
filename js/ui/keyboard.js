@@ -11,6 +11,7 @@ var K_LEFT = 37,
     K_SHIELD = 67,
     K_INVULN = 73,
     K_TEST = 65,
+    K_SKIP = 75,
     DEBUG = true;
 
 var CONTROLS = {
@@ -73,6 +74,9 @@ window.onkeydown = function(e){
       break;
     case K_INVULN:
       player.invulnerable = !player.invulnerable;
+      break;
+    case K_SKIP:
+      game.current_scene.boss.active_phase.timer = 0;
       break;
   }
 };
