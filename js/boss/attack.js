@@ -49,6 +49,7 @@ function Attack(parent, descriptor) {
     }
     
     // update elements
+    this.total_duration += speed;
     this.choreography.update(slowdown,slowspeed);
     
     for(var i = 0; i < this.spawners.length; i++) {
