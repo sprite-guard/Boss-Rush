@@ -13,6 +13,7 @@ other browsers, and probably doesn't work in them.
 * A: jump to the test scene
 * P: Pause
 * I: Toggle invulnerability
+* K: Skip current phase - only works on boss phases, crashes on final phase.
 * escape: return to menu, or quit from menu (NWJS only)
 
 ## Gameplay
