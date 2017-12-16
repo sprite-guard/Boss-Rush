@@ -56,7 +56,9 @@ function Portal(descriptor) {
     }
     
     // check collision
-    this.check_collisions(0,2 * player.graze_radius * player.graze_radius);
+    if(!player.dead) {
+      this.check_collisions(0,2 * player.graze_radius * player.graze_radius);
+    }
     
     this.draw();
   };
