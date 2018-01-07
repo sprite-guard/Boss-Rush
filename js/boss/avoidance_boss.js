@@ -125,6 +125,7 @@ avoidance_attack.spawners.push({
   delay: 10,
   sync: 780,
   lifespan: 130,
+  aimed: true,
   bullet_type: {
     behavior: "bounce",
     bounces: 1,
@@ -382,7 +383,7 @@ avoidance_attack.spawners.push({
   sources: spiral_rings,
   x: 400, y: 300, heading: 0,
   spin: 0.1,
-  delay: 2,
+  delay: 4,
   sync: 2390,
   lifespan: 600,
   random_spread: 0,
@@ -433,10 +434,10 @@ var wells_attack = {
   choreography: {}
 };
 
-var bounce_pulse_a = helpers.makeRingAttack(200,200,21,0,1),
-    bounce_pulse_b = helpers.makeRingAttack(200,400,21,0,1),
-    bounce_pulse_c = helpers.makeRingAttack(600,200,21,0,1),
-    bounce_pulse_d = helpers.makeRingAttack(600,400,21,0,1);
+var bounce_pulse_a = helpers.makeRingAttack(200,200,11,0,1),
+    bounce_pulse_b = helpers.makeRingAttack(200,400,11,0,1),
+    bounce_pulse_c = helpers.makeRingAttack(600,200,11,0,1),
+    bounce_pulse_d = helpers.makeRingAttack(600,400,11,0,1);
 
 wells_attack.spawners.push({
   sources: bounce_pulse_a,
@@ -447,7 +448,7 @@ wells_attack.spawners.push({
   sync: 20,
   lifespan: 150,
   delay: 60,
-  random_spread: 0,
+  random_spread: 0.2,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
@@ -472,7 +473,7 @@ wells_attack.spawners.push({
   sync: 40,
   lifespan: 150,
   delay: 60,
-  random_spread: 0,
+  random_spread: 0.2,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
@@ -497,7 +498,7 @@ wells_attack.spawners.push({
   sync: 60,
   lifespan: 150,
   delay: 60,
-  random_spread: 0,
+  random_spread: 0.2,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
@@ -522,7 +523,7 @@ wells_attack.spawners.push({
   sync: 80,
   lifespan: 150,
   delay: 60,
-  random_spread: 0,
+  random_spread: 0.2,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
@@ -541,7 +542,217 @@ wells_attack.spawners.push({
 
 wells_phase.attacks.push(wells_attack);
 
+var aimed_phase = {
+  attacks: [],
+  spirit_wells: [],
+  exits: [],
+  duration: 3760
+};
+
+var aimed_attack = {
+  spawners: [],
+  choreography: {}
+};
+
+aimed_attack.spawners.push({
+  x: 400,
+  y: 300,
+  heading: 0,
+  spin: 0,
+  sync: 0,
+  lifespan: 1000,
+  delay: 60,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  aimed: true,
+  bullet_type: {
+    yaw: 0,
+    speed: 4,
+    r: 8,
+    color: "#CC4400",
+    shell: "#CC4400",
+    graze_color: "#660000",
+    style: "solid",
+    cull_type: "screen",
+    behavior: "bounce",
+    bounces: 3
+  }
+});
+
+aimed_attack.spawners.push({
+  x: 400,
+  y: 300,
+  heading: 0,
+  spin: 1,
+  sync: 0,
+  lifespan: 1000,
+  delay: 1,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0.006,
+    speed: 2,
+    r: 8,
+    color: "#0066FF",
+    shell: "#2222CC",
+    graze_color: "#001111",
+    style: "gradient",
+    cull_type: "timer"
+  }
+});
+
+var overlap_a = helpers.makeRingAttack(200,100,11,0,1),
+    overlap_b = helpers.makeRingAttack(600,100,11,0,1);
+
+aimed_attack.spawners.push({
+  sources: overlap_a,
+  x: 400,
+  y: 300,
+  heading: 0,
+  spin: 0.1,
+  sync: 2000,
+  lifespan: 1000,
+  delay: 9,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0.001,
+  bullet_type: {
+    yaw: 0,
+    speed: 1,
+    r: 5,
+    color: "#33AAAA",
+    shell: "#116666",
+    graze_color: "#001111",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+aimed_attack.spawners.push({
+  sources: overlap_b,
+  x: 400,
+  y: 300,
+  heading: 0,
+  spin: 0.1,
+  sync: 2000,
+  lifespan: 1000,
+  delay: 9,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0.001,
+  bullet_type: {
+    yaw: 0,
+    speed: 1,
+    r: 5,
+    color: "#33AAAA",
+    shell: "#116666",
+    graze_color: "#001111",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+aimed_attack.spawners.push({
+  x: 300,
+  y: 100,
+  heading: 0,
+  spin: 0,
+  aimed: true,
+  sync: 2200,
+  lifespan: 1000,
+  delay: 40,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 5,
+    r: 10,
+    color: "#77AAAA",
+    shell: "#111111",
+    graze_color: "#001111",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+aimed_attack.spawners.push({
+  x: 500,
+  y: 100,
+  heading: 0,
+  spin: 0,
+  aimed: true,
+  sync: 2200,
+  lifespan: 1000,
+  delay: 40,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 5,
+    r: 10,
+    color: "#77AAAA",
+    shell: "#111111",
+    graze_color: "#001111",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+aimed_attack.spawners.push({
+  x: 100,
+  y: 550,
+  heading: 0,
+  spin: 0,
+  aimed: true,
+  sync: 2300,
+  lifespan: 1000,
+  delay: 40,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 5,
+    r: 10,
+    color: "#77AAAA",
+    shell: "#111111",
+    graze_color: "#001111",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+aimed_attack.spawners.push({
+  x: 700,
+  y: 550,
+  heading: 0,
+  spin: 0,
+  aimed: true,
+  sync: 2300,
+  lifespan: 1000,
+  delay: 40,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 5,
+    r: 10,
+    color: "#77AAAA",
+    shell: "#111111",
+    graze_color: "#001111",
+    style: "gradient",
+    cull_type: "screen"
+  }
+});
+
+aimed_phase.attacks.push(aimed_attack);
+
 avoidance_phase.attacks.push(avoidance_attack);
 avoidance_boss.phases.push(avoidance_phase);
 avoidance_boss.phases.push(wells_phase);
+avoidance_boss.phases.push(aimed_phase);
 avoidance_boss.phases.push(exit_phase);

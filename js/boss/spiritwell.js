@@ -21,6 +21,8 @@ function SpiritWell(descriptor) {
   
   this.init = function() {
     this.fullness = 0;
+    this.is_full = false;
+    this.is_filling = false;
     this.x = this.start_x;
     this.y = this.start_y;
     this.r = this.start_r;

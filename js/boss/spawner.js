@@ -69,14 +69,14 @@ function BulletSpawner(descriptor) {
           
           if(this.aimed) {
             // find the target's direction from this particular source
-            var x_offset = this.target.x - this.sources[i].x;
-            var y_offset = this.target.y - this.sources[i].y;
+            var x_offset = this.target.x - this.sources[0].x;
+            var y_offset = this.target.y - this.sources[0].y;
             var h = Math.atan2(y_offset,x_offset);
-            next_direction = h;
+            next_direction += h;
           } else { // not aimed, it's a spinner or a sprayer
             next_direction += this.spin;
+            this.sources[i].heading = next_direction;
           }
-          this.sources[i].heading = next_direction;
           
           // randomize speed and curvature
           var next_yaw_offset = Math.random() * this.yaw_jitter,

@@ -7,6 +7,7 @@ var K_LEFT = 37,
     K_PAUSE = 80,
     K_BLINK = 32,
     K_SPIRIT = 16,
+    K_RECALL = 67,
     K_SLOW = 88,
     K_SHIELD = 67,
     K_INVULN = 73,
@@ -46,6 +47,9 @@ window.onkeydown = function(e){
       break;
     case K_SPIRIT:
       CONTROLS.spirit = 1;
+      break;
+    case K_RECALL:
+      player.spirit = false;
       break;
     case K_SLOW:
       CONTROLS.slow = 1;
