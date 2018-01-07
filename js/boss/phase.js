@@ -14,6 +14,15 @@ function Phase(parent,descriptor) {
   
   this.start_attack_index = descriptor.start_attack || 0;
   this.current_attack_index = this.start_attack_index;
+  this.randomize_attacks = descriptor.randomize_attacks;
+  
+  this.get_next_attack_index = function() {
+    if(this.randomize_attacks) {
+      return Math.floor(Math.random() * this.attack_types.length);
+    } else {
+      return (this.current_attack_index + 1) % (this.attack_types.length);
+    }
+  }
   
   this.is_done = function() {
     // we're only done if every single well is full
@@ -78,10 +87,11 @@ function Phase(parent,descriptor) {
     // change current attack if it's done
     if(this.current_attack) {
       if(this.current_attack.is_done) {
-        this.current_attack.despawn(true);
+        this.current_attack.despawn(false);
         var n = this.get_next_attack_index();
         this.current_attack_index = n;
         this.current_attack = new Attack(this, this.attack_types[n]);
+        this.current_attack.init();
       }
     }
     

@@ -40,6 +40,21 @@ function BulletSpawner(descriptor) {
     }
   };
   
+  this.despawn = function(hard) {
+    if(hard) {
+      this.alive = false;
+      this.all_bullets = [];
+    }
+  };
+  
+  this.is_done = function() {
+    if(this.life_remaining <= 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  
   this.update = function(slowdown, slowspeed) {
   
     // apply slowdown

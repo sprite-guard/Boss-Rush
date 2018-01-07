@@ -18,6 +18,7 @@ function Attack(parent, descriptor) {
   
   this.init = function() {
     this.total_duration = 0;
+    this.is_done = false;
     
     for(var i = 0; i < this.spawner_types.length; i++) {
       this.spawners[i] = new BulletSpawner(this.spawner_types[i]);
@@ -35,8 +36,12 @@ function Attack(parent, descriptor) {
     }
     
     // clear temporary objects
-    this.spawners = [];
-    this.choreography = false;
+    if(hard) {
+      this.spawners = [];
+      this.choreography = false;
+    }
+    // we are done
+    this.is_done = true;
   };
   
   this.update = function(slowdown,slowspeed) {
@@ -50,10 +55,17 @@ function Attack(parent, descriptor) {
     
     // update elements
     this.total_duration += speed;
-    this.choreography.update(slowdown,slowspeed);
+    // this.choreography.update(slowdown,slowspeed);
     
+    var might_be_done = true;
+
     for(var i = 0; i < this.spawners.length; i++) {
       this.spawners[i].update(slowdown,slowspeed);
+      if(!this.spawners[i].is_done()) {
+        might_be_done = false;
+      }
+      
+      this.is_done = might_be_done;
     }
   };
   
