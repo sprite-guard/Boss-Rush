@@ -18,6 +18,14 @@ function Boss(descriptor) {
   this.start_phase = descriptor.start_phase || 0;
   
   // internal
+  // the boss needs to handle bullets at the top level, so that
+  // megaman-style bosses don't have a free period between attacks.
+  this.active_bullets = [];
+  
+  // since bullets are handled at the top level, if we decide to do
+  // blitting like madewokherd suggested, then we'll need to store
+  // them at the top level too.
+  this.cached_sprites = [];
   
   this.init = function() {
     this.x = this.start_x;

@@ -24,7 +24,8 @@ var avoidance_phase = {
   attacks: [],
   spirit_wells: [],
   exits: [],
-  duration: 3500
+  duration: 3500,
+  cycle: false
 };
 
 var avoidance_attack = {
@@ -426,7 +427,8 @@ var wells_phase = {
       r: 48
     })
   ],
-  exits: []
+  exits: [],
+  cycle: true
 };
 
 var bounce_attack = {
@@ -645,7 +647,8 @@ var aimed_phase = {
   attacks: [],
   spirit_wells: [],
   exits: [],
-  duration: 3690
+  duration: 3690,
+  cycle: false
 };
 
 var aimed_attack = {

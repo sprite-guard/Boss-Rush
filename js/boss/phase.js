@@ -15,6 +15,7 @@ function Phase(parent,descriptor) {
   this.start_attack_index = descriptor.start_attack || 0;
   this.current_attack_index = this.start_attack_index;
   this.randomize_attacks = descriptor.randomize_attacks;
+  this.cycle = descriptor.cycle;
   
   this.get_next_attack_index = function() {
     if(this.randomize_attacks) {
@@ -86,7 +87,7 @@ function Phase(parent,descriptor) {
   
     // change current attack if it's done
     if(this.current_attack) {
-      if(this.current_attack.is_done) {
+      if(this.current_attack.is_done && this.cycle) {
         this.current_attack.despawn(false);
         var n = this.get_next_attack_index();
         this.current_attack_index = n;
