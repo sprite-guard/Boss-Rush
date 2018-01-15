@@ -45,8 +45,7 @@ function Phase(parent,descriptor) {
     if(this.timer <= 0) {
       return true;
     } else {
-      // there is at least one well filled
-      // and there are no unfilled wells
+      // we haven't timed out yet
       return (there_is_a_filled_well && !there_is_an_unfilled_well);
     }
   }

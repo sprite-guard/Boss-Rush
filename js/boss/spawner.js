@@ -109,7 +109,7 @@ function BulletSpawner(descriptor) {
           // housekeeping
           this.timer = this.delay;
         }
-      } else {
+      } else { // timer has not run out
         this.timer -= speed_modifier;
       }
       this.life_remaining -= speed_modifier;
