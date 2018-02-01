@@ -11,9 +11,12 @@ function Bullet(descriptor) {
   this.style = descriptor.style || "solid";
   this.yaw = descriptor.yaw || 0;
   this.speed = descriptor.speed || 1;
+  this.max_speed = descriptor.speed || 1;
   this.cull_type = descriptor.cull_type || "timer";
   this.behavior = descriptor.behavior || "none";
   this.remaining_bounces = descriptor.bounces || 0;
+  this.slowable = descriptor.slowable || false;
+  this.min_speed = descriptor.min_speed || this.max_speed / 2;
   
   if(descriptor.max_age) {
     this.max_age = descriptor.max_age;
@@ -118,10 +121,14 @@ function Bullet(descriptor) {
   
   this.graze = function() {
     this.current_shell = this.graze_color;
+    if(this.slowable) {
+      this.speed = this.max_speed / 2;
+    }
   };
   
   this.ungraze = function() {
-    this.current_shell = this.shell
+    this.current_shell = this.shell;
+    this.speed = this.max_speed;
   };
   
   this.check_collisions = function() {
