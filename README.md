@@ -1,6 +1,8 @@
 # Infinite Ritual
 Bullet hell boss rush game developed live on Twitch.tv/spriteguard
 
+>I made this game for a certain kind of person, to delight them.
+
 This game can be run in Chrome or as a NWJS app. It has not been tested in any
 other browsers, and probably doesn't work in them.
 
