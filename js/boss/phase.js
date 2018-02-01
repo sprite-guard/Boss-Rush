@@ -132,6 +132,10 @@ function Phase(parent,descriptor) {
       var health_bar_color = "#FF0000"; // NB same
       game.draw.fillStyle = health_bar_color;
       game.draw.fillRect(0,0,health_bar_width,health_bar_height);
+        
+      game.draw.fillStyle = "#FFFFFF";
+      game.draw.font = "10px monospace";
+      game.draw.fillText(Math.floor(this.max_timer - this.timer),2,7);
     }
     
   };
