@@ -13,10 +13,16 @@ function Bullet(descriptor) {
   this.speed = descriptor.speed || 1;
   this.max_speed = descriptor.speed || 1;
   this.cull_type = descriptor.cull_type || "timer";
-  this.behavior = descriptor.behavior || "none";
   this.remaining_bounces = descriptor.bounces || 0;
   this.slowable = descriptor.slowable || false;
   this.min_speed = descriptor.min_speed || this.max_speed / 2;
+  
+  // initialize behaviors
+  this.behaviors = descriptor.behaviors || [];
+  for(var i = 0; i < this.behaviors.length; i++) {
+    this.behaviors[i] = new BulletBehavior(this,this.behaviors[i]);
+    this.behaviors[i].init();
+  }
   
   if(descriptor.max_age) {
     this.max_age = descriptor.max_age;
@@ -69,6 +75,10 @@ function Bullet(descriptor) {
     }
     this.age += speed_modifier;
     
+    for(var i = 0; i < this.behaviors.length; i++) {
+      this.behaviors[i].update(slowdown,slowspeed);
+    }
+    
     this.heading += this.yaw * speed_modifier;
     var dx = Math.cos(this.heading);
     var dy = Math.sin(this.heading);
@@ -85,7 +95,7 @@ function Bullet(descriptor) {
     } else {
       this.ungraze();
     }
-    
+    /*
     if((this.behavior == "bounce") && (this.remaining_bounces > 0)) {
       var did_bounce = false;
       if((this.x <= 0) || (this.x >= game.width)) {
@@ -102,7 +112,7 @@ function Bullet(descriptor) {
         this.remaining_bounces--;
       }
     }
-    
+    */
     if(this.cull_type == "timer") {
       if(this.age > this.max_age) {
         this.cull();

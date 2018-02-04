@@ -45,8 +45,6 @@ var test_attack = {
   choreography: {}
 };
 
-test_phase.attacks.push(test_attack);
-
 rain_spawners = helpers.makeLineAttack({
   sx: 0,
   sy: 0,
@@ -92,8 +90,7 @@ avoidance_attack.spawners.push({
   sync: 300,
   lifespan: 60,
   bullet_type: {
-    behavior: "bounce",
-    bounces: 2,
+    behaviors: [ BulletBehavior.bounce(2) ],
     yaw: 0,
     speed: 3,
     r: 6,
@@ -681,6 +678,11 @@ avoidance_attack.spawners.push({
   }
 });
 
+test_attack.spawners.push({ x: 400, y: 0, heading: 0.5 * Math.PI, spin: 0, random_spread: 3, delay: 100, sync: 0, lifespan: 501, speed_jitter: 0, bullet_type: { behavior: "bounce", bounces: 4, yaw: 0, speed: 4, r: 150, color: "#FF9966", shell: "#FF3333", graze_color: "#991111", style: "gradient", cull_type: "screen", max_age: 1000 } });
+
+test_attack.spawners.push({ x: 400, y: 10, heading: 0 * Math.PI, spin: 0, random_spread: 0, delay: 2, sync: 0, lifespan: 1000, aimed: true, bullet_type: { yaw: 0, speed: 6, r: 5, color: "#FF9922", shell: "#FF9922", graze_color: "#884400", style: "solid", cull_type: "screen", max_age: 1000 } });
+
+test_phase.attacks.push(test_attack);
 
 /*
 aimed_attack.spawners.push({
