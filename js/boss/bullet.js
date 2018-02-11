@@ -76,7 +76,7 @@ function Bullet(descriptor) {
     this.age += speed_modifier;
     
     for(var i = 0; i < this.behaviors.length; i++) {
-      this.behaviors[i].update(slowdown,slowspeed);
+      this.behaviors[i].update(this,slowdown,slowspeed);
     }
     
     this.heading += this.yaw * speed_modifier;

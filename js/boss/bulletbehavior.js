@@ -5,31 +5,31 @@ function BulletBehavior(parent,descriptor) {
   this.draw = descriptor.draw || function() { return true; };
 }
 
-BulletBehavior.bounce = function(bounces) {
-  return {
-    init: function() {
-      this.remaining_bounces = bounces;
-    },
+BulletBehavior.Bounce = function(bounces) {
+  this.remaining_bounces = bounces;
+  this.init = function() {
+    this.remaining_bounces = bounces;
+  },
 
-    update: function() {
-      if(this.remaining_bounces > 0) {
-        var did_bounce = false;
-        if((this.parent.x <= 0) || (this.parent.x >= game.width)) {
-          this.parent.heading = Math.PI - this.parent.heading;
-          did_bounce = true;
-        }
-        
-        if((this.parent.y <= 0) || (this.parent.y >= game.height)) {
-          this.parent.heading = (-1) * this.parent.heading;
-          did_bounce = true;
-        }
-        
-        if(did_bounce) {
-          this.remaining_bounces--;
-        }
+  this.update = function(parent) {
+    console.log(this.remaining_bounces);
+    if(this.remaining_bounces > 0) {
+      var did_bounce = false;
+      if((parent.x <= 0) || (parent.x >= game.width)) {
+        parent.heading = Math.PI - parent.heading;
+        did_bounce = true;
+      }
+      
+      if((parent.y <= 0) || (parent.y >= game.height)) {
+        parent.heading = (-1) * parent.heading;
+        did_bounce = true;
+      }
+      
+      if(did_bounce) {
+        this.remaining_bounces--;
       }
     }
-  };
+  }
 };
 
 BulletBehavior.homing = {
