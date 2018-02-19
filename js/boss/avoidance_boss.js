@@ -90,7 +90,8 @@ avoidance_attack.spawners.push({
   sync: 300,
   lifespan: 60,
   bullet_type: {
-    behaviors: [ new BulletBehavior.Bounce(2) ],
+    behaviors: [ BulletBehavior.bounce ],
+    bounces: 2,
     yaw: 0,
     speed: 3,
     r: 6,
@@ -684,9 +685,11 @@ test_attack.spawners.push({
   sync: 0,
   lifespan: 300,
   bullet_type: {
-    behaviors: [ new BulletBehavior.Bounce(2) ],
+    behaviors: [ BulletBehavior.bounce, BulletBehavior.homing  ],
+    bounces: 2,
     yaw: 0,
-    speed: 3,
+    speed: 6,
+    max_yaw: 0.1,
     r: 6,
     color: "#FF9922",
     shell: "#FF9922",

@@ -16,13 +16,10 @@ function Bullet(descriptor) {
   this.remaining_bounces = descriptor.bounces || 0;
   this.slowable = descriptor.slowable || false;
   this.min_speed = descriptor.min_speed || this.max_speed / 2;
+  this.max_yaw = descriptor.max_yaw || 0;
   
   // initialize behaviors
   this.behaviors = descriptor.behaviors || [];
-  for(var i = 0; i < this.behaviors.length; i++) {
-    this.behaviors[i] = new BulletBehavior(this,this.behaviors[i]);
-    this.behaviors[i].init();
-  }
   
   if(descriptor.max_age) {
     this.max_age = descriptor.max_age;
@@ -76,7 +73,7 @@ function Bullet(descriptor) {
     this.age += speed_modifier;
     
     for(var i = 0; i < this.behaviors.length; i++) {
-      this.behaviors[i].update(this,slowdown,slowspeed);
+      this.behaviors[i](this);
     }
     
     this.heading += this.yaw * speed_modifier;
