@@ -16,7 +16,7 @@ function Bullet(descriptor) {
   this.remaining_bounces = descriptor.bounces || 0;
   this.slowable = descriptor.slowable || false;
   this.min_speed = descriptor.min_speed || this.max_speed / 2;
-  this.max_yaw = descriptor.max_yaw || 0;
+  this.homing_timer = descriptor.homing_time || Infinity;
   
   // initialize behaviors
   this.behaviors = descriptor.behaviors || [];

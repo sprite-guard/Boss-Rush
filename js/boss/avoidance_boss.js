@@ -201,6 +201,29 @@ sources: crime_and_punishment,
 });
 
 avoidance_attack.spawners.push({
+  x: 700, y: 100, heading: 0, spin: 0, random_spread: 0,
+  delay: 100,
+  sync: 1050,
+  lifespan: 830,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 3,
+    behaviors: [ BulletBehavior.homing  ],
+    homing_time: 160,
+    r: 6,
+    color: "#442222",
+    shell: "#990000",
+    graze_color: "#990000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000
+  }
+});
+
+avoidance_attack.spawners.push({
   x: 400,
   y: 300,
   heading: 0,
@@ -594,14 +617,14 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 5,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
     yaw: 0,
     speed: 1.5,
-    r: 5,
+    r: 7,
     color: "#33AAAA",
     shell: "#116666",
     graze_color: "#001111",
@@ -617,14 +640,14 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 5,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
     yaw: 0,
     speed: 1.5,
-    r: 5,
+    r: 7,
     color: "#33AAAA",
     shell: "#116666",
     graze_color: "#001111",
@@ -640,14 +663,14 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 5,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
     yaw: 0,
     speed: 1.5,
-    r: 5,
+    r: 7,
     color: "#33AAAA",
     shell: "#116666",
     graze_color: "#001111",
@@ -663,14 +686,14 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 5,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
     yaw: 0,
     speed: 1.5,
-    r: 5,
+    r: 7,
     color: "#33AAAA",
     shell: "#116666",
     graze_color: "#001111",
@@ -681,15 +704,15 @@ avoidance_attack.spawners.push({
 
 test_attack.spawners.push({
   x: 400, y: 200, heading: 0, spin: 0.05, random_spread: 0,
-  delay: 60,
+  delay: 90,
   sync: 0,
-  lifespan: 300,
+  lifespan: 500,
   bullet_type: {
     behaviors: [ BulletBehavior.bounce, BulletBehavior.homing  ],
     bounces: 2,
     yaw: 0,
-    speed: 6,
-    max_yaw: 0.1,
+    speed: 3,
+    max_yaw: 0,
     r: 6,
     color: "#FF9922",
     shell: "#FF9922",
@@ -697,7 +720,7 @@ test_attack.spawners.push({
     style: "solid",
     length: 10,
     cull_type: "screen",
-    max_age: 1000
+    homing_time: 300
   }
 });
 
