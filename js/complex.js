@@ -18,7 +18,7 @@ function Complex(c) {
   };
   
   this.to_angle = function() {
-    Math.atan2(this.i,this.r);
+    return Math.atan2(this.i,this.r);
   };
 }
 
@@ -27,10 +27,12 @@ function ComplexRotation(theta,z) {
   this.angle = this.z.to_angle();
   
   this.add = function(other) {
-    return new ComplexRotation(false,this.z.times(other));
+//    console.log("multiplying ",this.z," by ",other.z);
+    return new ComplexRotation(false,this.z.times(other.z));
   };
   
-  this.subtract = function(other {
-    return new ComplexRotation(false,this.z.times(other.conjugate()));
+  this.subtract = function(other) {
+//    console.log("multiplying ",this.z," by ",other.z.conjugate());
+    return new ComplexRotation(false,this.z.times(other.z.conjugate()));
   };
 }

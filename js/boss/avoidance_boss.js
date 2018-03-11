@@ -140,7 +140,7 @@ avoidance_attack.spawners.push({
   lifespan: 130,
   aimed: true,
   bullet_type: {
-    behavior: "bounce",
+    behaviors: [ BulletBehavior.bounce ],
     bounces: 1,
     yaw: 0,
     speed: 3,
@@ -204,15 +204,16 @@ avoidance_attack.spawners.push({
   x: 700, y: 100, heading: 0, spin: 0, random_spread: 0,
   delay: 100,
   sync: 1050,
-  lifespan: 830,
+  lifespan: 600,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
   bullet_type: {
     yaw: 0,
     speed: 3,
-    behaviors: [ BulletBehavior.homing  ],
-    homing_time: 160,
+    behaviors: [ BulletBehavior.limited_homing  ],
+    homing_time: 400,
+    max_yaw: 0.04,
     r: 6,
     color: "#442222",
     shell: "#990000",
@@ -702,17 +703,19 @@ avoidance_attack.spawners.push({
   }
 });
 
+// nb test
+
 test_attack.spawners.push({
   x: 400, y: 200, heading: 0, spin: 0.05, random_spread: 0,
-  delay: 90,
+  delay: 9,
   sync: 0,
-  lifespan: 500,
+  lifespan: 10,
   bullet_type: {
-    behaviors: [ BulletBehavior.bounce, BulletBehavior.homing  ],
+    behaviors: [ BulletBehavior.bounce, BulletBehavior.limited_homing  ],
     bounces: 2,
     yaw: 0,
     speed: 3,
-    max_yaw: 0,
+    max_yaw: 0.03,
     r: 6,
     color: "#FF9922",
     shell: "#FF9922",

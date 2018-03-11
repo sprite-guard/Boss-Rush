@@ -10,6 +10,7 @@ function Bullet(descriptor) {
   this.pit_size = descriptor.pit_size || 0;
   this.style = descriptor.style || "solid";
   this.yaw = descriptor.yaw || 0;
+  this.max_yaw = descriptor.max_yaw || 0;
   this.speed = descriptor.speed || 1;
   this.max_speed = descriptor.speed || 1;
   this.cull_type = descriptor.cull_type || "timer";
