@@ -24,6 +24,7 @@ var avoidance_phase = {
   attacks: [],
   spirit_wells: [],
   exits: [],
+  music: "music/Sam Crowley - Sync.wav",
   duration: 6500,
   cycle: false
 };

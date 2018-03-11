@@ -10,6 +10,10 @@ function Scene(descriptor) {
   this.slowdown = false;
   
   this.init = function() {
+    if(game.music) {
+      game.music.pause();
+      game.music.rewind();
+    }
     this.special_init();
     
     if(this.boss_type) {
@@ -175,6 +179,6 @@ scenes_list.test_scene = new Scene({
   init: function() {
     player.init();
   },
-  boss: avoidance_boss,
+  boss: symmetria,
   player: player
 })

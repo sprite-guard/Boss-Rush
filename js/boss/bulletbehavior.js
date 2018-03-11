@@ -21,34 +21,6 @@ BulletBehavior.bounce = function(parent) {
 };
 
 BulletBehavior.homing = function(parent) {
-  // retarget every n frames
-  // NB needs slowdown
-  if(parent.homing_timer >= 0) {
-    parent.homing_timer --;
-    var x_offset = player.x - parent.x;
-    var y_offset = player.y - parent.y;
-    var target_heading = Math.atan2(y_offset,x_offset);
-    parent.heading = target_heading;
-  }
-/*
-  // man cannot live by angles alone
-  var x_offset = player.x - parent.x;
-  var y_offset = player.y - parent.y;
-  var target_heading = Math.atan2(y_offset,x_offset);
-  var max_yaw = parent.max_yaw;
-  var unsigned_difference = Math.abs(target_heading - parent.heading);
-  var heading_sign = Math.sign(parent.heading);
-  var target_sign = Math.sign(target_heading);
-  
-  if(unsigned_difference < max_yaw) {
-    parent.heading = target_heading;
-  } else if(heading_sign == target_sign) {
-    
-  }
-*/
-};
-
-BulletBehavior.limited_homing = function(parent) {
 //  console.log(parent);
 
   if(parent.homing_timer >= 0) {

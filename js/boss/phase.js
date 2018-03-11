@@ -17,6 +17,8 @@ function Phase(parent,descriptor) {
   this.randomize_attacks = descriptor.randomize_attacks;
   this.cycle = descriptor.cycle;
   
+  this.music = new Sound(descriptor.music) || false;
+  
   this.get_next_attack_index = function() {
     if(this.randomize_attacks) {
       return Math.floor(Math.random() * this.attack_types.length);
@@ -74,6 +76,12 @@ function Phase(parent,descriptor) {
         this.exits[i].init();
       }
     }
+    
+    if(this.music) {
+      game.music = this.music;
+      game.music.rewind();
+      game.music.play();
+    }
   };
   
   
@@ -81,6 +89,9 @@ function Phase(parent,descriptor) {
     var time_increment = 1;
     if(slowdown) {
       time_increment = slowspeed;
+      game.music.setspeed(slowspeed);
+    } else {
+      game.music.setspeed(1);
     }
     
     this.timer -= time_increment;

@@ -103,6 +103,11 @@ game.unpause = function() {
 
 game.pause_unpause = function() {
   game.keep_going = !game.keep_going;
+  if(game.keep_going) {
+    game.music.play();
+  } else {
+    game.music.pause();
+  }
   game.animation_request = window.requestAnimationFrame(game.update);
 }
 
