@@ -45,8 +45,6 @@ var test_attack = {
   choreography: {}
 };
 
-test_phase.attacks.push(test_attack);
-
 rain_spawners = helpers.makeLineAttack({
   sx: 0,
   sy: 0,
@@ -92,7 +90,7 @@ avoidance_attack.spawners.push({
   sync: 300,
   lifespan: 60,
   bullet_type: {
-    behavior: "bounce",
+    behaviors: [ BulletBehavior.bounce ],
     bounces: 2,
     yaw: 0,
     speed: 3,
@@ -142,7 +140,7 @@ avoidance_attack.spawners.push({
   lifespan: 130,
   aimed: true,
   bullet_type: {
-    behavior: "bounce",
+    behaviors: [ BulletBehavior.bounce ],
     bounces: 1,
     yaw: 0,
     speed: 3,
@@ -195,6 +193,30 @@ sources: crime_and_punishment,
     r: 6,
     color: "#222222",
     shell: "#000000",
+    graze_color: "#990000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000
+  }
+});
+
+avoidance_attack.spawners.push({
+  x: 700, y: 100, heading: 0, spin: 0, random_spread: 0,
+  delay: 100,
+  sync: 1050,
+  lifespan: 600,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 3,
+    behaviors: [ BulletBehavior.limited_homing  ],
+    homing_time: 400,
+    max_yaw: 0.04,
+    r: 6,
+    color: "#442222",
+    shell: "#990000",
     graze_color: "#990000",
     style: "gradient",
     cull_type: "screen",
@@ -596,7 +618,7 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 12,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
@@ -619,7 +641,7 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 12,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
@@ -642,7 +664,7 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 12,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
@@ -665,7 +687,7 @@ avoidance_attack.spawners.push({
   spin: 0.02,
   sync: 4500,
   lifespan: 1000,
-  delay: 12,
+  delay: 10,
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
@@ -681,6 +703,31 @@ avoidance_attack.spawners.push({
   }
 });
 
+// nb test
+
+test_attack.spawners.push({
+  x: 400, y: 200, heading: 0, spin: 0.05, random_spread: 0,
+  delay: 9,
+  sync: 0,
+  lifespan: 10,
+  bullet_type: {
+    behaviors: [ BulletBehavior.bounce, BulletBehavior.limited_homing  ],
+    bounces: 2,
+    yaw: 0,
+    speed: 3,
+    max_yaw: 0.03,
+    r: 6,
+    color: "#FF9922",
+    shell: "#FF9922",
+    graze_color: "#884400",
+    style: "solid",
+    length: 10,
+    cull_type: "screen",
+    homing_time: 300
+  }
+});
+
+test_phase.attacks.push(test_attack);
 
 /*
 aimed_attack.spawners.push({

@@ -2,6 +2,12 @@ var helpers = {};
 
 var TAU = 2 * Math.PI
 
+helpers.signed_angle_to_unsigned = function(theta) {
+  theta = theta % Math.PI
+  if(theta >= 0) return theta;
+  if(theta < 0) return theta + TAU;
+};
+
 helpers.makeRingAttack = function(x,y,count,begin,end) {
   
   var total_angle = end - begin;
