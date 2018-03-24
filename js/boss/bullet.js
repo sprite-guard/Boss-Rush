@@ -129,14 +129,10 @@ function Bullet(descriptor) {
   
   this.graze = function() {
     this.current_shell = this.graze_color;
-    if(this.slowable) {
-      this.speed = this.max_speed / 2;
-    }
   };
   
   this.ungraze = function() {
     this.current_shell = this.shell;
-    this.speed = this.max_speed;
   };
   
   this.check_collisions = function() {
