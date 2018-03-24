@@ -25,3 +25,10 @@ touch it. Spacebar will slow time and let you teleport out of trouble. Press
 Shift to send out your spirit, which is invulnerable and can fill Spirit Wells.
 You can only control one at a time, so make sure your body is safe before you
 try to move your spirit.
+
+## Music
+
+"Sync"
+Sam Crowley
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
