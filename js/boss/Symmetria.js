@@ -34,6 +34,8 @@ var sym_attack = {
   choreography: {}
 };
 
+// lune-atic homing
+
 sym_attack.spawners.push({
   sources: [
     {x: 10, y: 10, heading: 0},
@@ -45,7 +47,7 @@ sym_attack.spawners.push({
   y: 0,
   spin: 0,
   random_spread: 0,
-  delay: 40,
+  delay: 39,
   sync: 10,
   lifespan: 820,
   speed_jitter: 0,
@@ -76,7 +78,7 @@ sym_attack.spawners.push({
   y: 0,
   spin: 0,
   random_spread: 0,
-  delay: 60,
+  delay: 78,
   sync: 310,
   lifespan: 820,
   speed_jitter: 0,
@@ -96,6 +98,8 @@ sym_attack.spawners.push({
   }
 });
 
+// bursts
+
 sym_attack.spawners.push({
   sources: [
     { x: 400, y: 50, heading: 0 }
@@ -114,7 +118,7 @@ sym_attack.spawners.push({
     color: "#66CCCC",
     shell: "#66CCFF",
     graze_color: "#666666",
-    style: "gradient",
+    style: "solid",
     cull_type: "screen"
   }
 });
@@ -137,7 +141,7 @@ sym_attack.spawners.push({
     color: "#66CCCC",
     shell: "#66CCFF",
     graze_color: "#666666",
-    style: "gradient",
+    style: "solid",
     cull_type: "screen"
   }
 });
@@ -160,7 +164,7 @@ sym_attack.spawners.push({
     color: "#66CCCC",
     shell: "#66CCFF",
     graze_color: "#666666",
-    style: "gradient",
+    style: "solid",
     cull_type: "screen"
   }
 });
@@ -183,10 +187,12 @@ sym_attack.spawners.push({
     color: "#66CCCC",
     shell: "#66CCFF",
     graze_color: "#666666",
-    style: "gradient",
+    style: "solid",
     cull_type: "screen"
   }
 });
+
+// four way madness
 
 sym_attack.spawners.push({
   sources: [
@@ -367,6 +373,8 @@ sym_attack.spawners.push({
   }
 
 });
+
+// cw multispiral
 
 sym_attack.spawners.push({
   sources: [
@@ -482,6 +490,320 @@ sym_attack.spawners.push({
     color: "#CC9922",
     shell: "#CC6633",
     graze_color: "#993300",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+// ccw multispiral
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: 0 }
+  ],
+  sync: 2800,
+  lifespan: 400,
+  spin: -0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#CC9922",
+    shell: "#CC6633",
+    graze_color: "#993300",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: 0 }
+  ],
+  sync: 2820,
+  lifespan: 400,
+  spin: -0.15,
+  delay: 1,
+  speed_jitter: 0.5,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#CC9922",
+    shell: "#CC6633",
+    graze_color: "#993300",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: 0 }
+  ],
+  sync: 2840,
+  lifespan: 400,
+  spin: -0.2,
+  delay: 1,
+  speed_jitter: 1,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#CC9922",
+    shell: "#CC6633",
+    graze_color: "#993300",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: 0 }
+  ],
+  sync: 2860,
+  lifespan: 400,
+  spin: -0.3,
+  delay: 1,
+  speed_jitter: 2,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#CC9922",
+    shell: "#CC6633",
+    graze_color: "#993300",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: 0 }
+  ],
+  sync: 2880,
+  lifespan: 400,
+  spin: -0.4,
+  delay: 1,
+  speed_jitter: 3,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#CC9922",
+    shell: "#CC6633",
+    graze_color: "#993300",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+// doubles
+
+var doubles_heading = (Math.PI / 2);
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3430,
+  lifespan: 580,
+  spin: 0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3430,
+  lifespan: 580,
+  spin: -0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3445,
+  lifespan: 540,
+  spin: 0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3445,
+  lifespan: 540,
+  spin: -0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3460,
+  lifespan: 500,
+  spin: 0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3460,
+  lifespan: 500,
+  spin: -0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3475,
+  lifespan: 460,
+  spin: 0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "screen"
+  }
+
+});
+sym_attack.spawners.push({
+  sources: [
+    { x: 400, y: 100, heading: doubles_heading }
+  ],
+  sync: 3475,
+  lifespan: 460,
+  spin: -0.1,
+  delay: 1,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+    bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
     style: "gradient",
     cull_type: "screen"
   }
