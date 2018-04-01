@@ -12,12 +12,15 @@ function Bullet(descriptor) {
   this.yaw = descriptor.yaw || 0;
   this.max_yaw = descriptor.max_yaw || 0;
   this.speed = descriptor.speed || 1;
+  this.max_speed = descriptor.speed;
   this.cull_type = descriptor.cull_type || "timer";
   this.remaining_bounces = descriptor.bounces || 0;
   this.homing_timer = descriptor.homing_time || Infinity;
+  this.parameters = descriptor.parameters || {};
   
   // initialize behaviors
   this.behaviors = descriptor.behaviors || [];
+  this.is_new = true;
   
   if(descriptor.max_age) {
     this.max_age = descriptor.max_age;
@@ -104,6 +107,10 @@ function Bullet(descriptor) {
         this.cull();
       }
     }
+    
+    // after the very first update, we should clear the is_new flag
+    this.is_new = false;
+    // it doesn't matter if we clear it on every frame
   };
   
   this.graze = function() {
