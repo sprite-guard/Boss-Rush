@@ -90,24 +90,6 @@ function Bullet(descriptor) {
     } else {
       this.ungraze();
     }
-    /*
-    if((this.behavior == "bounce") && (this.remaining_bounces > 0)) {
-      var did_bounce = false;
-      if((this.x <= 0) || (this.x >= game.width)) {
-        this.heading = Math.PI - this.heading;
-        did_bounce = true;
-      }
-      
-      if((this.y <= 0) || (this.y >= game.height)) {
-        this.heading = (-1) * this.heading;
-        did_bounce = true;
-      }
-      
-      if(did_bounce) {
-        this.remaining_bounces--;
-      }
-    }
-    */
     if(this.cull_type == "timer") {
       if(this.age > this.max_age) {
         this.cull();
