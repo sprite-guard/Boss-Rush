@@ -1,4 +1,5 @@
 var BulletBehavior = {};
+
 BulletBehavior.bounce = function(parent) {
 
   if(parent.remaining_bounces > 0) {
@@ -22,6 +23,12 @@ BulletBehavior.bounce = function(parent) {
 
 BulletBehavior.homing = function(parent) {
 //  console.log(parent);
+
+  if(parent.is_new) {
+    // only use new model if legacy model hasn't been used.
+    parent.homing_timer = parent.homing_timer || parent.parameters.homing_time;
+    parent.max_yaw = parent.max_yaw || parent.parameters.max_yaw;
+  }
 
   if(parent.homing_timer >= 0) {
     parent.homing_timer --;
@@ -56,10 +63,25 @@ BulletBehavior.homing = function(parent) {
 
 }
 
-BulletBehavior.explode = function(spawner) {
+// nb this needs a global timer. Local timer won't cut it.
 
-};
+BulletBehavior.freeze = function(parent) {
+  if(parent.is_new) {
+    // no legacy model for you!
+    parent.freeze_countdown = parent.parameters.freeze_countdown;
+    parent.freeze_duration = parent.parameters.freeze_duration;
+  }
+  
+  if(parent.freeze_countdown > 0) {
+    parent.freeze_countdown -= 1 // nb slowdown + slowspeed?
+  } else if(parent.freeze_duration > 0) {
+    parent.speed = 0;
+    parent.freeze_duration -= 1; // nb slowdown + slowspeed?
+  } else {
+    parent.speed = parent.max_speed; // nb this might break stuff
+  }
+}
 
-BulletBehavior.shootback = function(spawner) {
-
-};
+// TODO
+// exploders
+// shootback
