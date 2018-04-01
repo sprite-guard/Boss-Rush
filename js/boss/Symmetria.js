@@ -56,7 +56,7 @@ sym_attack.spawners.push({
     parameters: {
       homing_time: 700,
       max_yaw: 0.005
-    }
+    },
     yaw: 0,
     speed: 1.5,
     r: 8,
@@ -86,8 +86,10 @@ sym_attack.spawners.push({
   speed_jitter: 0,
   bullet_type: {
     behaviors: [ BulletBehavior.homing ],
-    homing_time: 700,
-    max_yaw: 0.01,
+    parameters: {
+      homing_time: 700,
+      max_yaw: 0.01
+    },
     yaw: 0,
     speed: 3,
     r: 8,
