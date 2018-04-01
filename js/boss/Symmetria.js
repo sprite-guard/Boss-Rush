@@ -53,8 +53,10 @@ sym_attack.spawners.push({
   speed_jitter: 0,
   bullet_type: {
     behaviors: [ BulletBehavior.homing ],
-    homing_time: 700,
-    max_yaw: 0.005,
+    parameters: {
+      homing_time: 700,
+      max_yaw: 0.005
+    }
     yaw: 0,
     speed: 1.5,
     r: 8,
@@ -107,7 +109,7 @@ sym_attack.spawners.push({
   spin: 0.2,
   random_spread: 0,
   delay: 1,
-  sync: 1050,
+  sync: 1120,
   lifespan: 80,
   speed_jitter: 0,
   yaw_jitter: 0.01,
@@ -130,7 +132,7 @@ sym_attack.spawners.push({
   spin: -0.2,
   random_spread: 0,
   delay: 1,
-  sync: 1050,
+  sync: 1120,
   lifespan: 80,
   speed_jitter: 0,
   yaw_jitter: 0.01,
@@ -374,13 +376,13 @@ sym_attack.spawners.push({
 
 });
 
-// cw multispiral
+// cw Orange
 
 sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2300,
+  sync: 2320,
   lifespan: 400,
   spin: 0.1,
   delay: 1,
@@ -404,7 +406,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2320,
+  sync: 2340,
   lifespan: 400,
   spin: 0.15,
   delay: 1,
@@ -428,7 +430,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2340,
+  sync: 2360,
   lifespan: 400,
   spin: 0.2,
   delay: 1,
@@ -452,7 +454,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2360,
+  sync: 2380,
   lifespan: 400,
   spin: 0.3,
   delay: 1,
@@ -476,7 +478,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2380,
+  sync: 2400,
   lifespan: 400,
   spin: 0.4,
   delay: 1,
@@ -496,13 +498,13 @@ sym_attack.spawners.push({
 
 });
 
-// ccw multispiral
+// ccw Orange
 
 sym_attack.spawners.push({
   sources: [
-    { x: 400, y: 100, heading: 0 }
+    { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2800,
+  sync: 2920,
   lifespan: 400,
   spin: -0.1,
   delay: 1,
@@ -524,9 +526,9 @@ sym_attack.spawners.push({
 
 sym_attack.spawners.push({
   sources: [
-    { x: 400, y: 100, heading: 0 }
+    { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2820,
+  sync: 2940,
   lifespan: 400,
   spin: -0.15,
   delay: 1,
@@ -548,9 +550,9 @@ sym_attack.spawners.push({
 
 sym_attack.spawners.push({
   sources: [
-    { x: 400, y: 100, heading: 0 }
+    { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2840,
+  sync: 2960,
   lifespan: 400,
   spin: -0.2,
   delay: 1,
@@ -572,9 +574,9 @@ sym_attack.spawners.push({
 
 sym_attack.spawners.push({
   sources: [
-    { x: 400, y: 100, heading: 0 }
+    { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2860,
+  sync: 2980,
   lifespan: 400,
   spin: -0.3,
   delay: 1,
@@ -596,9 +598,9 @@ sym_attack.spawners.push({
 
 sym_attack.spawners.push({
   sources: [
-    { x: 400, y: 100, heading: 0 }
+    { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2880,
+  sync: 3000,
   lifespan: 400,
   spin: -0.4,
   delay: 1,
@@ -626,7 +628,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3430,
+  sync: 3530,
   lifespan: 580,
   spin: 0.1,
   delay: 1,
@@ -634,8 +636,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: -0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
@@ -649,7 +651,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3430,
+  sync: 3530,
   lifespan: 580,
   spin: -0.1,
   delay: 1,
@@ -657,8 +659,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: 0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
@@ -673,7 +675,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3445,
+  sync: 3545,
   lifespan: 540,
   spin: 0.1,
   delay: 1,
@@ -681,8 +683,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: -0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
@@ -696,7 +698,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3445,
+  sync: 3545,
   lifespan: 540,
   spin: -0.1,
   delay: 1,
@@ -704,8 +706,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: 0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
@@ -720,7 +722,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3460,
+  sync: 3560,
   lifespan: 500,
   spin: 0.1,
   delay: 1,
@@ -728,8 +730,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: -0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
@@ -743,7 +745,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3460,
+  sync: 3560,
   lifespan: 500,
   spin: -0.1,
   delay: 1,
@@ -751,8 +753,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: 0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
@@ -767,7 +769,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3475,
+  sync: 3575,
   lifespan: 460,
   spin: 0.1,
   delay: 1,
@@ -775,8 +777,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: -0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
@@ -790,7 +792,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: doubles_heading }
   ],
-  sync: 3475,
+  sync: 3575,
   lifespan: 460,
   spin: -0.1,
   delay: 1,
@@ -798,8 +800,8 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0,
-    speed: 3,
+    yaw: 0.01,
+    speed: 4,
     r: 8,
     color: "#0099FF",
     shell: "#0066FF",
