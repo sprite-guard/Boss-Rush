@@ -1,7 +1,10 @@
 var BulletBehavior = {};
 
 BulletBehavior.bounce = function(parent) {
-
+  if(parent.is_new) {
+    // only use new model if legacy model hasn't been used.
+    parent.remaining_bounces = parent.bounces || parent.parameters.bounces;
+  }
   if(parent.remaining_bounces > 0) {
     var did_bounce = false;
     if((parent.x <= 0) || (parent.x >= game.width)) {
@@ -64,6 +67,7 @@ BulletBehavior.homing = function(parent) {
 }
 
 // nb this needs a global timer. Local timer won't cut it.
+// accessing such a timer will be a pain.
 
 BulletBehavior.freeze = function(parent) {
   if(parent.is_new) {
