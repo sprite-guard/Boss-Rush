@@ -396,7 +396,7 @@ var thaumiel = {
       ],
       spirit_wells: [],
       exits: [],
-      music: "music/the one with the vocaloid.flac",
+      music: "music/2CO - the one with the vocaloid.flac",
       duration: 6500,
       cycle: false
     },
