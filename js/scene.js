@@ -181,4 +181,4 @@ scenes_list.test_scene = new Scene({
   },
   boss: symmetria,
   player: player
-})
+});
