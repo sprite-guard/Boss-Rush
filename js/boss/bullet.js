@@ -17,6 +17,7 @@ function Bullet(descriptor) {
   this.remaining_bounces = descriptor.bounces || 0;
   this.homing_timer = descriptor.homing_time || Infinity;
   this.parameters = descriptor.parameters || {};
+  this.debug = descriptor.debug || false;
   
   // initialize behaviors
   this.behaviors = descriptor.behaviors || [];
@@ -53,6 +54,7 @@ function Bullet(descriptor) {
       game.draw.strokeStyle = this.current_shell;
       game.draw.stroke();
     } else if(this.style == "gradient") {
+      if(this.debug) console.log(this.x, this.y, this.r);
       var gradient = game.draw.createRadialGradient(this.x, this.y, this.r,
                                                     this.x, this.y, this.pit_size );
       gradient.addColorStop(0, this.current_shell);
