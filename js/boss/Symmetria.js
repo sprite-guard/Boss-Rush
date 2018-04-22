@@ -384,7 +384,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2320,
+  sync: 2310,
   lifespan: 400,
   spin: 0.1,
   delay: 1,
@@ -408,7 +408,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2340,
+  sync: 2320,
   lifespan: 400,
   spin: 0.15,
   delay: 1,
@@ -432,7 +432,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2360,
+  sync: 2330,
   lifespan: 400,
   spin: 0.2,
   delay: 1,
@@ -456,7 +456,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2380,
+  sync: 2340,
   lifespan: 400,
   spin: 0.3,
   delay: 1,
@@ -480,7 +480,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: 0 }
   ],
-  sync: 2400,
+  sync: 2350,
   lifespan: 400,
   spin: 0.4,
   delay: 1,
@@ -506,7 +506,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2920,
+  sync: 2930,
   lifespan: 400,
   spin: -0.1,
   delay: 1,
@@ -554,7 +554,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2960,
+  sync: 2950,
   lifespan: 400,
   spin: -0.2,
   delay: 1,
@@ -578,7 +578,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 2980,
+  sync: 2960,
   lifespan: 400,
   spin: -0.3,
   delay: 1,
@@ -602,7 +602,7 @@ sym_attack.spawners.push({
   sources: [
     { x: 400, y: 100, heading: Math.PI }
   ],
-  sync: 3000,
+  sync: 2970,
   lifespan: 400,
   spin: -0.4,
   delay: 1,
@@ -638,7 +638,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: -0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -661,7 +661,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -685,7 +685,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: -0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -708,7 +708,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -732,7 +732,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: -0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -755,7 +755,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -779,7 +779,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: -0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -802,7 +802,7 @@ sym_attack.spawners.push({
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
-    yaw: 0.01,
+    yaw: 0,
     speed: 4,
     r: 8,
     color: "#0099FF",
@@ -810,6 +810,38 @@ sym_attack.spawners.push({
     graze_color: "#0000CC",
     style: "gradient",
     cull_type: "screen"
+  }
+
+});
+
+var rain_spawners = helpers.makeLineAttack({
+  sx: 10,
+  sy: 720,
+  ex: 820,
+  ey: 720,
+  count: 12,
+  heading: -0.5 * Math.PI
+});
+
+sym_attack.spawners.push({
+  sources: rain_spawners,
+  sync: 4000,
+  lifespan: 740,
+  spin: 0,
+  delay: 10,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0.5,
+    bullet_type: {
+    yaw: 0,
+    speed: 1,
+    r: 8,
+    color: "#0099FF",
+    shell: "#0066FF",
+    graze_color: "#0000CC",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: 1000
   }
 
 });
