@@ -32,3 +32,13 @@ try to move your spirit.
 Sam Crowley
 Licensed under Creative Commons: By Attribution 3.0
 http://creativecommons.org/licenses/by/3.0/
+
+"The One With the Vocaloid"
+2CO
+Licensed under Creative Commons: Attribution-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
+https://creativecommons.org/licenses/by-sa/3.0/
+
+"ForSpriteMan"
+Seth "SirrMan" Sotolongo
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
