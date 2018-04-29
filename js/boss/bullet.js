@@ -3,6 +3,9 @@ function Bullet(descriptor) {
   this.y = descriptor.y;
   this.heading = descriptor.heading;
   this.r = descriptor.r;
+  this.speed = descriptor.speed;
+  this.max_speed = descriptor.speed;
+  
   // optional
   this.color = descriptor.color || "#FFFFFF";
   this.shell = descriptor.shell || "#FF00FF";
@@ -11,8 +14,6 @@ function Bullet(descriptor) {
   this.style = descriptor.style || "solid";
   this.yaw = descriptor.yaw || 0;
   this.max_yaw = descriptor.max_yaw || 0;
-  this.speed = descriptor.speed || 1;
-  this.max_speed = descriptor.speed;
   this.cull_type = descriptor.cull_type || "timer";
   this.remaining_bounces = descriptor.bounces || 0;
   this.homing_timer = descriptor.homing_time || Infinity;
