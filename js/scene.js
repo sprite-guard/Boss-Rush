@@ -6,7 +6,7 @@ function Scene(descriptor) {
   this.special_init = descriptor.init;
   
   // internal
-  this.slowdown_speed = 0.15;
+  this.slowdown_speed = 1;
   this.slowdown = false;
   
   this.init = function() {
@@ -179,6 +179,6 @@ scenes_list.test_scene = new Scene({
   init: function() {
     player.init();
   },
-  boss: symmetria,
+  boss: thaumiel,
   player: player
 });
