@@ -9,7 +9,7 @@ helpers.signed_angle_to_unsigned = function(theta) {
 };
 
 helpers.makeRingAttack = function(x,y,count,begin,end) {
-  
+  //NB USE RATIONAL ANGLES NOT RADIANS
   var total_angle = end - begin;
   
   // if(total_angle < 1) total_angle += (1 / count);
