@@ -19,11 +19,15 @@ function BulletSpawner(descriptor) {
   // simplify ring-source spawners
   this.x = descriptor.x || 0;
   this.y = descriptor.y || 0;
+  // behaviors
+  this.behaviors = descriptor.behaviors || [];
+  this.parameters = descriptor.parameters || {};
   
   // internal
   this.sources = [];
   this.all_bullets = [];
   this.heading = this.initial_heading;
+  this.is_new = true;
   
   this.init = function(){
     this.all_bullets = [];
@@ -63,6 +67,10 @@ function BulletSpawner(descriptor) {
       speed_modifier = slowspeed;
     } else {
       speed_modifier = 1;
+    }
+    
+    for(var i = 0; i < this.behaviors.length; i++) {
+      this.behaviors[i](this);
     }
     
     if(this.life_remaining > 0) {
@@ -121,6 +129,22 @@ function BulletSpawner(descriptor) {
       this.all_bullets[i].update(slowdown,slowspeed);
     }
     this.gc();
+    
+    // after the very first update, we should clear the is_new flag
+    this.is_new = false;
+    // it doesn't matter if we clear it on every frame
+  };
+  
+  this.set_bullet_speed = function(n) {
+    for(var i = 0; i < this.all_bullets.length; i++) {
+      this.all_bullets[i].speed = n;
+    }
+  };
+  
+  this.reset_bullet_speed = function() {
+    for(var i = 0; i < this.all_bullets.length; i++) {
+      this.all_bullets[i].speed = this.all_bullets[i].max_speed;
+    }
   };
   
   this.draw = function() {
