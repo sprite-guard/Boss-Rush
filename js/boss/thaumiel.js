@@ -368,7 +368,7 @@ var thaumiel = {
                 {x: 400, y: 300, heading: Math.PI/2},
                 {x: 400, y: 300, heading: -Math.PI/2}
               ],
-              spin: 0.3,
+              spin: -0.3,
               random_spread: 0,
               delay: 1,
               sync: 980,
@@ -388,6 +388,88 @@ var thaumiel = {
                 graze_color: "#003333",
                 style: "gradient",
                 cull_type: "screen"
+              }
+            },
+            // rings
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 1150,
+              lifespan: 600,
+              speed_jitter: 0,
+              yaw_jitter: 0,
+              bullet_type: {
+                debug: false,
+                yaw: 0.02,
+                speed: 3,
+                r: 8,
+                color: "#22FF00",
+                shell: "#44CC00",
+                graze_color: "#003333",
+                style: "gradient",
+                cull_type: "timer"
+              }
+            },
+            {
+              sources: [{x: 400, y: 300, heading: 0}],
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 1200,
+              lifespan: 550,
+              speed_jitter: 0,
+              yaw_jitter: 0,
+              bullet_type: {
+                debug: false,
+                behaviors: [ BulletBehavior.homing ],
+                parameters: {
+                  max_yaw: 0.05,
+                  homing_time: 300
+                },
+                yaw: 0,
+                speed: 3,
+                r: 8,
+                color: "#CC2200",
+                shell: "#CC4400",
+                graze_color: "#CC0088",
+                style: "gradient",
+                cull_type: "screen"
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: -120,
+                ex: 820,
+                ey: -120,
+                count: 12,
+                heading: 0.5 * Math.PI
+              }),
+              sync: 2000,
+              lifespan: 300,
+              spin: 0,
+              delay: 20,
+              speed_jitter: 0,
+              yaw_jitter: 0.00,
+              random_spread: 0.5,
+              behaviors: [ SpawnerBehavior.freeze, SpawnerBehavior.scatter ],
+              parameters: {
+                freeze_countdown: 300,
+                freeze_duration: 500,
+                scatter_countdown: 800
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 3,
+                r: 8,
+                color: "#0099FF",
+                shell: "#0066FF",
+                graze_color: "#0000CC",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
               }
             }
           ],
