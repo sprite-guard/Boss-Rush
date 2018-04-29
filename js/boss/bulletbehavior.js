@@ -25,16 +25,20 @@ BulletBehavior.bounce = function(parent) {
 };
 
 BulletBehavior.homing = function(parent) {
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
 //  console.log(parent);
 
   if(parent.is_new) {
     // only use new model if legacy model hasn't been used.
-    parent.homing_timer = parent.homing_timer || parent.parameters.homing_time;
-    parent.max_yaw = parent.max_yaw || parent.parameters.max_yaw;
+    parent.homing_timer = parent.parameters.homing_time;
+    parent.max_yaw = parent.parameters.max_yaw;
   }
 
   if(parent.homing_timer >= 0) {
-    parent.homing_timer --;
+    parent.homing_timer -= speed;
     var home_rotation = new ComplexRotation(parent.heading);
     
     var x_offset = player.x - parent.x;
@@ -64,26 +68,6 @@ BulletBehavior.homing = function(parent) {
     parent.heading = new_rotation.angle;
   }
 
-}
-
-// nb this needs a global timer. Local timer won't cut it.
-// accessing such a timer will be a pain.
-
-BulletBehavior.freeze = function(parent) {
-  if(parent.is_new) {
-    // no legacy model for you!
-    parent.freeze_countdown = parent.parameters.freeze_countdown;
-    parent.freeze_duration = parent.parameters.freeze_duration;
-  }
-  
-  if(parent.freeze_countdown > 0) {
-    parent.freeze_countdown -= 1 // nb slowdown + slowspeed?
-  } else if(parent.freeze_duration > 0) {
-    parent.speed = 0;
-    parent.freeze_duration -= 1; // nb slowdown + slowspeed?
-  } else {
-    parent.speed = parent.max_speed; // nb this might break stuff
-  }
 }
 
 // TODO

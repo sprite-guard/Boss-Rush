@@ -13,6 +13,7 @@ var K_LEFT = 37,
     K_INVULN = 73,
     K_TEST = 65,
     K_SKIP = 75,
+    K_FAST = 70,
     DEBUG = true;
 
 var CONTROLS = {
@@ -82,6 +83,9 @@ window.onkeydown = function(e){
     case K_SKIP:
       game.current_scene.boss.active_phase.timer = 0;
       break;
+    case K_FAST:
+      game.current_scene.slowdown_speed = 3;
+      game.current_scene.slowdown = true;
   }
 };
 
@@ -111,5 +115,8 @@ window.onkeyup = function(e){
     case K_SHIELD:
       CONTROLS.shield = 0;
       break;
+    case K_FAST:
+      game.current_scene.slowdown_speed = 1;
+      game.current_scene.slowdown = false;
   }
 };
