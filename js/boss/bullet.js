@@ -1,4 +1,5 @@
-function Bullet(descriptor) {
+function Bullet(parent,descriptor) {
+  this.parent = parent;
   this.x = descriptor.x;
   this.y = descriptor.y;
   this.heading = descriptor.heading;

@@ -21,7 +21,7 @@ function Attack(parent, descriptor) {
     this.is_done = false;
     
     for(var i = 0; i < this.spawner_types.length; i++) {
-      this.spawners[i] = new BulletSpawner(this.spawner_types[i]);
+      this.spawners[i] = new BulletSpawner(this,this.spawner_types[i]);
       this.spawners[i].init();
     }
     
