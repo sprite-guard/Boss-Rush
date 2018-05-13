@@ -381,17 +381,42 @@ sym_attack.spawners.push({
 // cw Orange
 
 sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: 0 }
-  ],
+  sources: helpers.makeRingAttack(400,300,6,0,1),
   sync: 2310,
   lifespan: 400,
-  spin: 0.1,
-  delay: 1,
+  spin: 0,
+  delay: 64,
   speed_jitter: 0,
   yaw_jitter: 0.00,
   random_spread: 0,
     bullet_type: {
+    behaviors: [ BulletBehavior.shootback ],
+    parameters: {
+      shootback_spawner: {
+        sources: [
+          { x: 750, y: 550, heading: 0 }
+        ],
+        behaviors: [],
+        parameters: {},
+        sync: 0,
+        lifespan: 200,
+        spin: 0,
+        delay: 16,
+        speed_jitter: 0,
+        yaw_jitter: 0.00,
+        random_spread: 0,
+          bullet_type: {
+          yaw: 0,
+          speed: 3,
+          r: 8,
+          color: "#66CC22",
+          shell: "#66FF66",
+          graze_color: "#996622",
+          style: "gradient",
+          cull_type: "screen"
+        }
+      }
+    },
     yaw: 0,
     speed: 3,
     r: 8,
