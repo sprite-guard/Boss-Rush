@@ -67,8 +67,80 @@ BulletBehavior.homing = function(parent) {
 //    console.log("new angle is ",new_rotation);
     parent.heading = new_rotation.angle;
   }
+};
 
-}
+BulletBehavior.explode = function(parent) {
+  // speed modifier
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  // initializer
+  if(parent.is_new) {
+    parent.explode_timer = parent.parameters.explode_time;
+    parent.explode_spawner = parent.parameters.explode_spawner;
+  }
+  // behavior
+  if(parent.explode_timer > 0) {
+    parent.explode_timer -= speed;
+  } else {
+    parent.cull();
+    // move every spawner to the bullet's location
+    for(var i = 0; i < parent.explode_spawner.sources.length; i++) {
+      parent.explode_spawner.sources[i].x = parent.x;
+      parent.explode_spawner.sources[i].y = parent.y;
+    }
+  //bullet spawner attack
+    var new_spawner = new BulletSpawner(parent.parent.parent,parent.explode_spawner);
+    new_spawner.init();
+    parent.parent.parent.spawners.push(new_spawner);
+  }
+};
+
+BulletBehavior.shootback = function(parent) {
+  // speed modifier
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  
+  if(parent.is_new) {
+    // place the spawner
+    // move every spawner to the bullet's location
+    parent.shootback_spawner = parent.parameters.shootback_spawner;
+    for(var i = 0; i < parent.shootback_spawner.sources.length; i++) {
+      parent.shootback_spawner.sources[i].x = parent.x;
+      parent.shootback_spawner.sources[i].y = parent.y;
+      parent.shootback_spawner.sources[i].heading += parent.heading + Math.PI;
+    }
+    // attack the "follow target" behavior
+    console.log(parent.shootback_spawner);
+    parent.shootback_spawner.behaviors.push(SpawnerBehavior.followtarget);
+    parent.shootback_spawner.parameters.follow_target = parent;
+    var new_spawner = new BulletSpawner(parent.parent.parent,parent.shootback_spawner);
+    new_spawner.init();
+    parent.parent.parent.spawners.push(new_spawner);
+  }
+  
+};
+
+BulletBehavior.template = function(parent) {
+  // speed modifier
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  // initializer
+  if(parent.is_new) {
+    parent.template_timer = parent.params.template_timer;
+  }
+  // behavior
+  if(parent.template_timer > 0) {
+    parent.template_timer -= speed;
+  } else {
+    // do the thing
+  }
+};
 
 // TODO
 // exploders
