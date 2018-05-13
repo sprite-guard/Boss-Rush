@@ -447,7 +447,7 @@ var thaumiel = {
                 count: 12,
                 heading: 0.5 * Math.PI
               }),
-              sync: 2000,
+              sync: 1950,
               lifespan: 300,
               spin: 0,
               delay: 20,
@@ -456,9 +456,9 @@ var thaumiel = {
               random_spread: 0.5,
               behaviors: [ SpawnerBehavior.freeze, SpawnerBehavior.scatter ],
               parameters: {
-                freeze_countdown: 300,
+                freeze_countdown: 350,
                 freeze_duration: 500,
-                scatter_countdown: 800
+                scatter_countdown: 850
               },
                 bullet_type: {
                 yaw: 0,
@@ -467,6 +467,40 @@ var thaumiel = {
                 color: "#0099FF",
                 shell: "#0066FF",
                 graze_color: "#0000CC",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: -120,
+                ex: 820,
+                ey: -120,
+                count: 12,
+                heading: 0.5 * Math.PI
+              }),
+              sync: 2350,
+              lifespan: 300,
+              spin: 0,
+              delay: 20,
+              speed_jitter: 0,
+              yaw_jitter: 0.00,
+              random_spread: 0.5,
+              behaviors: [ SpawnerBehavior.freeze, SpawnerBehavior.scatter ],
+              parameters: {
+                freeze_countdown: 350,
+                freeze_duration: 300,
+                scatter_countdown: 650
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 3,
+                r: 8,
+                color: "#00FF99",
+                shell: "#00FF66",
+                graze_color: "#00CC00",
                 style: "gradient",
                 cull_type: "timer",
                 max_age: 1200
