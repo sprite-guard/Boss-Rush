@@ -1,6 +1,7 @@
-function BulletSpawner(descriptor) {
+function BulletSpawner(parent,descriptor) {
   this.bullet_type = descriptor.bullet_type;
   this.initial_heading = descriptor.heading;
+  this.parent = parent;
   
   
   this.sync = descriptor.sync || 0;
@@ -22,6 +23,7 @@ function BulletSpawner(descriptor) {
   // behaviors
   this.behaviors = descriptor.behaviors || [];
   this.parameters = descriptor.parameters || {};
+  this.immediate = descriptor.immediate || false;
   
   // internal
   this.sources = [];
@@ -32,7 +34,11 @@ function BulletSpawner(descriptor) {
   this.init = function(){
     this.all_bullets = [];
     this.life_remaining = this.lifespan;
-    this.timer = (this.delay + this.sync);
+    if(this.immediate) {
+      this.timer = this.sync;
+    } else {
+      this.timer = (this.delay + this.sync);
+    }
     this.alive = true;
     
     // initialize every source
@@ -106,7 +112,7 @@ function BulletSpawner(descriptor) {
               next_speed_offset = Math.random() * this.speed_jitter;
           
           // fire bullet
-          var next_bullet = new Bullet(this.bullet_type);
+          var next_bullet = new Bullet(this, this.bullet_type);
               next_bullet.heading = next_direction + scatter;
               next_bullet.x = this.sources[i].x;
               next_bullet.y = this.sources[i].y;
