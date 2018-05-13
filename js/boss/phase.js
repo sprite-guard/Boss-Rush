@@ -28,28 +28,8 @@ function Phase(parent,descriptor) {
   }
   
   this.is_done = function() {
-    // we're only done if every single well is full
-    // NB we might want to add a timer condition option if there are no wells.
-    var there_is_a_filled_well = false;
-    var there_is_an_unfilled_well = false;
-    for(var i = 0; i < this.spirit_wells.length; i++) {
-      if(this.spirit_wells[i].is_full) {
-        // there is at least one well, and it is full.
-        there_is_a_filled_well = true;
-      } else {
-        // we've found a well that isn't full
-        // so we are absolutely not done in that sense
-        // but if the timer runs out we still want to break
-        there_is_an_unfilled_well = true;
-      }
-    }
-      
     if(this.timer <= 0) {
       return true;
-    } else {
-      // there is at least one well filled
-      // and there are no unfilled wells
-      return (there_is_a_filled_well && !there_is_an_unfilled_well);
     }
   }
   
