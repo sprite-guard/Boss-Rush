@@ -34,7 +34,7 @@ game.init = function() {
   
   game.timer = 0;
   game.slowdown = 0;
-  game.max_slowdown = 3;
+  game.max_slowdown = 5;
   game.gamepads = [];
   game.canvas = document.getElementById("game");
   game.draw = game.canvas.getContext("2d");
@@ -63,6 +63,8 @@ game.init = function() {
   game.animation_request = window.requestAnimationFrame(game.update);
 }
 
+game.moving_average_array = [];
+
 game.update = function() {
   game.width = game.canvas.width;
   game.height = game.canvas.height;
@@ -74,12 +76,18 @@ game.update = function() {
     UPDATE--;
     var current_time = performance.now();
     game.fps = 1000/(current_time - last_time);
-    game.ewam = (game.ewam + game.fps)/2;
+    game.moving_average_array.push(game.fps);
+    if(game.moving_average_array.length > 60) game.moving_average_array.shift();
+    game.average_fps = 0;
+    for(var i = 0; i < game.moving_average_array.length; i++) {
+      game.average_fps += game.moving_average_array[i];
+    }
+    game.average_fps = game.average_fps / game.moving_average_array.length;
     last_time = performance.now();
     
     if(UPDATE == 0) {
       UPDATE = MAX_UPDATE;
-      game.fr = Math.floor(game.ewam);
+      game.fr = Math.round(game.average_fps);
     }
     game.draw.fillStyle = "#0077AA";
     game.draw.font = "10px monospace";
