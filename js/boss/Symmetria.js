@@ -404,224 +404,6 @@ sym_attack.spawners.push({
 
 });
 
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: 0 }
-  ],
-  sync: 2320,
-  lifespan: 400,
-  spin: 0.15,
-  delay: 1,
-  speed_jitter: 0.5,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: 0 }
-  ],
-  sync: 2330,
-  lifespan: 400,
-  spin: 0.2,
-  delay: 1,
-  speed_jitter: 1,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: 0 }
-  ],
-  sync: 2340,
-  lifespan: 400,
-  spin: 0.3,
-  delay: 1,
-  speed_jitter: 2,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: 0 }
-  ],
-  sync: 2350,
-  lifespan: 400,
-  spin: 0.4,
-  delay: 1,
-  speed_jitter: 3,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-// ccw Orange
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: Math.PI }
-  ],
-  sync: 2930,
-  lifespan: 400,
-  spin: -0.1,
-  delay: 1,
-  speed_jitter: 0,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: Math.PI }
-  ],
-  sync: 2940,
-  lifespan: 400,
-  spin: -0.15,
-  delay: 1,
-  speed_jitter: 0.5,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: Math.PI }
-  ],
-  sync: 2950,
-  lifespan: 400,
-  spin: -0.2,
-  delay: 1,
-  speed_jitter: 1,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: Math.PI }
-  ],
-  sync: 2960,
-  lifespan: 400,
-  spin: -0.3,
-  delay: 1,
-  speed_jitter: 2,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
-sym_attack.spawners.push({
-  sources: [
-    { x: 400, y: 100, heading: Math.PI }
-  ],
-  sync: 2970,
-  lifespan: 400,
-  spin: -0.4,
-  delay: 1,
-  speed_jitter: 3,
-  yaw_jitter: 0.00,
-  random_spread: 0,
-    bullet_type: {
-    yaw: 0,
-    speed: 3,
-    r: 8,
-    color: "#CC9922",
-    shell: "#CC6633",
-    graze_color: "#993300",
-    style: "gradient",
-    cull_type: "screen"
-  }
-
-});
-
 // doubles
 
 var doubles_heading = (Math.PI / 2);
@@ -813,7 +595,7 @@ sym_attack.spawners.push({
   }
 
 });
-
+/* Dotkid Miku Wall
 var rain_spawners = helpers.makeLineAttack({
   sx: 10,
   sy: 720,
@@ -826,12 +608,16 @@ var rain_spawners = helpers.makeLineAttack({
 sym_attack.spawners.push({
   sources: rain_spawners,
   sync: 4000,
-  lifespan: 740,
+  lifespan: 600,
   spin: 0,
   delay: 10,
   speed_jitter: 0,
   yaw_jitter: 0.00,
   random_spread: 0.5,
+  behaviors: [ SpawnerBehavior.scatter ],
+  parameters: {
+    scatter_countdown: 800,
+  },
     bullet_type: {
     yaw: 0,
     speed: 1,
@@ -845,6 +631,129 @@ sym_attack.spawners.push({
   }
 
 });
+*/
+// sphere
+sym_attack.spawners.push({
+  x: 400, y: 300, heading: 0,
+  spin: 1,
+  delay: 1,
+  sync: 4140,
+  lifespan: 500,
+  random_spread: 0,
+  speed_jitter: 0.5,
+  yaw_jitter: -0.005,
+  bullet_type: {
+    yaw: 0.003,
+    speed: 1,
+    r: 8,
+    color: "#CC6699",
+    shell: "#662233",
+    graze_color: "#000000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000,
+  }
+});
+
+sym_attack.spawners.push({
+  x: 400, y: 300, heading: 0,
+  spin: 1,
+  delay: 1,
+  sync: 4140,
+  lifespan: 500,
+  random_spread: 0,
+  speed_jitter: 0.5,
+  yaw_jitter: 0.005,
+  bullet_type: {
+    yaw: -0.003,
+    speed: 1,
+    r: 8,
+    color: "#9966CC",
+    shell: "#332266",
+    graze_color: "#000000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000,
+  }
+});
+
+var spiral_rings = helpers.makeRingAttack(400,300,6,0,1);
+
+sym_attack.spawners.push({
+  sources: spiral_rings,
+  x: 400, y: 300, heading: 0,
+  spin: 0.1,
+  delay: 4,
+  sync: 4440,
+  lifespan: 220,
+  random_spread: 0,
+  speed_jitter: 0,
+  yaw_jitter: 0,
+  bullet_type: {
+    yaw: 0,
+    speed: 3,
+    r: 8,
+    color: "#99AACC",
+    shell: "#338866",
+    graze_color: "#000000",
+    style: "gradient",
+    cull_type: "screen",
+    max_age: 1000,
+  }
+});
+
+// double dash
+var spiral_spawners = helpers.makeRingAttack(400,300,5,0,1);
+
+sym_attack.spawners.push({
+  sources: spiral_spawners,
+  x: 400,
+  y: 300,
+  heading: 0,
+  spin: 0.8,
+  random_spread: 0,
+  delay: 1,
+  sync: 4800,
+  lifespan: 250,
+  bullet_type: {
+    yaw: 0,
+    speed: 2,
+    r: 8,
+    color: "#FFFFFF",
+    shell: "#444444",
+    graze_color: "#000000",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: 1000
+  }
+});
+
+var center_rings = helpers.makeRingAttack(400,300,24,0,1);
+
+sym_attack.spawners.push({
+  sources: center_rings,
+  x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
+  delay: 10,
+  sync: 4800,
+  lifespan: 130,
+  aimed: true,
+  bullet_type: {
+    behaviors: [ BulletBehavior.bounce ],
+    parameters: {
+      bounces: 1
+    },
+    yaw: 0,
+    speed: 3,
+    r: 6,
+    color: "#FF9922",
+    shell: "#FF9922",
+    graze_color: "#884400",
+    style: "solid",
+    cull_type: "screen",
+    max_age: 1000
+  }
+});
+
 
 sym_phase.attacks.push(sym_attack);
 symmetria.phases.push(sym_phase);
