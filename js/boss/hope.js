@@ -7,6 +7,8 @@ var hope = {
   phases: [
      {
       // main
+      music: "music/Milana Zilnik - Dream of a Child.wav",
+      duration: 6500,
       attacks: [
         {
           spawners: [
@@ -349,8 +351,6 @@ var hope = {
       ],
       spirit_wells: [],
       exits: [],
-      music: "music/Milana Zilnik - New hopes.wav",
-      duration: 6500,
       cycle: false
     },
   

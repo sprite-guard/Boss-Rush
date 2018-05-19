@@ -35,3 +35,8 @@ https://creativecommons.org/licenses/by-sa/3.0/
 Seth "SirrMan" Sotolongo
 Licensed under Creative Commons: By Attribution 3.0
 http://creativecommons.org/licenses/by/3.0/
+
+"Dream of a Child"
+Milana Zilnik http://www.milana.ws/
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
