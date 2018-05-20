@@ -22,17 +22,17 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Music:
 
 "Sync"
-Sam Crowley
+Sam Crowley https://soundcloud.com/user-859621942
 Licensed under Creative Commons: By Attribution 3.0
 http://creativecommons.org/licenses/by/3.0/
 
 "The One With the Vocaloid"
-2CO
+2CO https://soundcloud.com/2co2co
 Licensed under Creative Commons: Attribution-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
 https://creativecommons.org/licenses/by-sa/3.0/
 
 "ForSpriteMan"
-Seth "SirrMan" Sotolongo
+Seth "SirrMan" Sotolongo https://soundcloud.com/seth-sotolongo
 Licensed under Creative Commons: By Attribution 3.0
 http://creativecommons.org/licenses/by/3.0/
 
