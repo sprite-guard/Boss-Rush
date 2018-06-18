@@ -40,3 +40,8 @@ http://creativecommons.org/licenses/by/3.0/
 Milana Zilnik http://www.milana.ws/
 Licensed under Creative Commons: By Attribution 3.0
 http://creativecommons.org/licenses/by/3.0/
+
+"Kinetic Elevation Rites"
+Metaself
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
