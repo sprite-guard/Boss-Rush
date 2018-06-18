@@ -31,6 +31,9 @@ SpawnerBehavior.scatter = function(parent) {
   if(parent.is_new) {
     parent.scatter_countdown = parent.parameters.scatter_countdown + parent.sync;
     parent.has_not_scattered = true;
+    parent.target = parent.parameters.scatter_target || {x: 0, y:0};
+    parent.beam_width = parent.parameters.scatter_beam_width || 2*Math.PI;
+    parent.scatter_direction = parent.parameters.scatter_direction || 1;
   }
   
   if(parent.scatter_countdown > 0) {
@@ -38,18 +41,18 @@ SpawnerBehavior.scatter = function(parent) {
   } else if(parent.has_not_scattered) {
     // scatter all of the bullets
     for(var i = 0; i < parent.all_bullets.length; i++) {
-      // what quadrant are we in?
-      /*
-        0|1
-        -+-
-        2|3
-      */
       var bullet = parent.all_bullets[i];
-      var next_heading = Math.random()*Math.PI/2;
-      var heading_transform = -1;
-      if(bullet.y < 300) heading_transform = 1;
-      if(bullet.x > 400) heading_transform += (Math.PI/2)*heading_transform;
-      parent.all_bullets[i].heading = heading_transform+next_heading;
+      // find the target's direction from this particular source
+      var x_offset = parent.target.x - bullet.x;
+      var y_offset = parent.target.y - bullet.y;
+      var h = Math.atan2(y_offset,x_offset);
+      var next_direction = h;
+      // reverse if necessary
+      next_direction += parent.scatter_direction * Math.PI;
+      // add the beam spread
+      var randomization = (Math.random() * parent.beam_width) - (parent.beam_width / 2);
+      next_direction += randomization;
+      parent.all_bullets[i].heading = next_direction;
     }
     parent.has_not_scattered = false;
   } else {
