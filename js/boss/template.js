@@ -1,4 +1,4 @@
-var hope = {
+var template = {
   x: 0,
   y: 0,
   sprites: [
