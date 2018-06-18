@@ -105,23 +105,9 @@ BulletBehavior.shootback = function(parent) {
   }
   
   if(parent.is_new) {
-    // place the spawner
-    // move every spawner to the bullet's location
-    parent.shootback_spawner = parent.parameters.shootback_spawner;
-    for(var i = 0; i < parent.shootback_spawner.sources.length; i++) {
-      parent.shootback_spawner.sources[i].x = parent.x;
-      parent.shootback_spawner.sources[i].y = parent.y;
-      parent.shootback_spawner.sources[i].heading += parent.heading + Math.PI;
-    }
-    // attack the "follow target" behavior
-    console.log(parent.shootback_spawner);
-    parent.shootback_spawner.behaviors.push(SpawnerBehavior.followtarget);
-    parent.shootback_spawner.parameters.follow_target = parent;
-    var new_spawner = new BulletSpawner(parent.parent.parent,parent.shootback_spawner);
-    new_spawner.init();
-    parent.parent.parent.spawners.push(new_spawner);
+    // TBD
   }
-  
+
 };
 
 BulletBehavior.template = function(parent) {
