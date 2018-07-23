@@ -2,6 +2,12 @@ var helpers = {};
 
 var TAU = 2 * Math.PI
 
+helpers.distance_between = function(a,b) {
+  var x_offset = Math.abs(a.x-b.x);
+  var y_offset = Math.abs(a.y-b.y);
+  return Math.sqrt((x_offset * x_offset) + (y_offset * y_offset));
+}
+
 helpers.signed_angle_to_unsigned = function(theta) {
   theta = theta % Math.PI
   if(theta >= 0) return theta;
