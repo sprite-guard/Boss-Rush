@@ -105,8 +105,15 @@ BulletBehavior.shootback = function(parent) {
   }
   
   if(parent.is_new) {
-    // TBD
+    parent.shootback_spawner = new BulletSpawner(parent,parent.parameters.shootback_spawner);
+    parent.shootback_spawner.init();
   }
+  
+  parent.shootback_spawner.move_to(parent.x, parent.y);
+  parent.shootback_spawner.update();
+  parent.deferred_draw(parent.shootback_spawner);
+  
+  // NB we might need to cull these spawners manually
 
 };
 

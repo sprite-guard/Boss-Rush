@@ -65,6 +65,15 @@ function BulletSpawner(parent,descriptor) {
     }
   };
   
+  this.move_to = function(x,y) {
+    this.x = x;
+    this.y = y;
+    for(var i = 0; i < this.sources.length; i++) {
+      this.sources[i].x = x;
+      this.sources[i].y = y;
+    }
+  }
+  
   this.update = function(slowdown, slowspeed) {
   
     // apply slowdown
