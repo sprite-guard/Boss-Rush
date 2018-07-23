@@ -519,11 +519,11 @@ var hope = {
               }
             },
             {
-              sources: helpers.makeRingAttack(400,300,24,0,1),
+              sources: helpers.makeRingAttack(400,300,8,0,1),
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
               delay: 40,
-              sync: 3500,
-              lifespan: 220,
+              sync: 3480,
+              lifespan: 340,
               aimed: true,
               bullet_type: {
                 behaviors: [ BulletBehavior.shootback ],
@@ -535,15 +535,43 @@ var hope = {
                       heading: 0
                     }],
                     x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
-                    delay: 40,
-                    sync: 3500,
+                    delay: 20,
+                    sync: 30,
                     lifespan: 220,
-                    behaviors: [],
-                    parameters: {},
+                    behaviors: [SpawnerBehavior.freeze],
+                    parameters: {
+                      freeze_countdown: 0,
+                      freeze_duration: 200
+                    },
                     aimed: true,
+                    target: player,
                     bullet_type: {
                       behaviors: [  ],
                       parameters: {
+                        explode_time: 200,
+                        explode_spawner:{
+                          sources: helpers.makeRingAttack(400,300,6,0,1),
+                          x: 0,
+                          y: 0,
+                          spin: 0,
+                          random_spread: 0,
+                          delay: 1,
+                          sync: 0,
+                          lifespan: 1,
+                          speed_jitter: 0,
+                          immediate: true,
+                          bullet_type: {
+                            yaw: 0,
+                            speed: 1.5,
+                            r: 8,
+                            color: "#0066FF",
+                            shell: "#0044CC",
+                            graze_color: "#000000",
+                            style: "gradient",
+                            cull_type: "screen",
+                            max_age: 1000
+                          }
+                        }
                       },
                       yaw: 0,
                       speed: 3,
@@ -564,7 +592,7 @@ var hope = {
                 shell: "#0044CC",
                 graze_color: "#000000",
                 style: "gradient",
-                cull_type: "screen",
+                cull_type: "timer",
                 max_age: 1000
               }
             }
