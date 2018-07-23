@@ -125,7 +125,8 @@ function Scene(descriptor) {
 
 var scenes_list = {};
 
-var default_background = new Background("#002244");
+var default_background = new Background("#002244","#002244");
+var default_ingame_background = new Background("#002244","#000000");
 
 var top_line = "Infinite",
     bottom_line = "Ritual";
@@ -175,10 +176,10 @@ scenes_list.menu = new Scene({
 });
 
 scenes_list.test_scene = new Scene({
-  elements: [ default_background ],
+  elements: [ default_ingame_background ],
   init: function() {
     player.init();
   },
-  boss: thaumiel,
+  boss: hope,
   player: player
 });
