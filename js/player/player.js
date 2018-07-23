@@ -203,11 +203,18 @@ player.update = function() {
       this.y += this.dy;
     }
     
-
+    
     if(this.x < 0) this.x = 0;
     if(this.x > game.canvas.width) this.x = game.canvas.width;
     if(this.y < 0) this.y = 0;
     if(this.y > game.canvas.height) this.y = game.canvas.height;
+    
+    var player_distance_from_center = helpers.distance_between(player,{x: 400, y: 300});
+    if(player_distance_from_center > game.corner_buffer) {
+      this.x -= this.dx;
+      this.y -= this.dy;
+    }
+    
     
     // handle iframes
     if(this.state == "hurt") {

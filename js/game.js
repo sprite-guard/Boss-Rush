@@ -45,6 +45,7 @@ game.init = function() {
   game.fr = 0;
   game.ewam = 60;
   game.draw_batch = [];
+  game.corner_buffer = 450;
   
   if(nw) {
     game.window = nw.Window.get();
