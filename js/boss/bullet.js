@@ -42,6 +42,10 @@ function Bullet(parent,descriptor) {
     this.exists = false;
   };
   
+  this.deferred_draw = function(i) {
+    this.deferred_draw_item = i;
+  }
+  
   this.draw = descriptor.draw || function() {
     game.draw.beginPath();
   	game.draw.ellipse(Math.floor(this.x), Math.floor(this.y), this.r, this.r, 0, 0, 2 * Math.PI);
@@ -65,6 +69,9 @@ function Bullet(parent,descriptor) {
       game.draw.fill();
     } else {
       console.log("oops, tried to draw " + this.style);
+    }
+    if(this.deferred_draw_item) {
+      this.deferred_draw_item.draw();
     }
   };
   
