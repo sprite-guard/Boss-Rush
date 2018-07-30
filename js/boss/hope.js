@@ -8,7 +8,7 @@ var hope = {
      {
       // main
       music: "music/Milana Zilnik - Dream of a Child.wav",
-      duration: 6500,
+      duration: 8320,
       attacks: [
         {
           spawners: [
@@ -523,7 +523,7 @@ var hope = {
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
               delay: 40,
               sync: 3480,
-              lifespan: 340,
+              lifespan: 400,
               aimed: true,
               bullet_type: {
                 behaviors: [ BulletBehavior.shootback ],
@@ -594,6 +594,31 @@ var hope = {
                 style: "gradient",
                 cull_type: "timer",
                 max_age: 1000
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,24,0,1),
+              x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
+              delay: 160,
+              sync: 4500,
+              lifespan: 481,
+              aimed: true,
+              immediate: true,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                  bounces: 1
+                },
+                yaw: 0.0135,
+                speed: 3,
+                r: 6,
+                color: "#FF9922",
+                shell: "#FF9922",
+                graze_color: "#884400",
+                style: "solid",
+                cull_type: "timer",
+                max_cycles: 7,
+                max_age: false
               }
             }
             
