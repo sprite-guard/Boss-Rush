@@ -211,8 +211,14 @@ player.update = function() {
     
     var player_distance_from_center = helpers.distance_between(player,{x: 400, y: 300});
     if(player_distance_from_center > game.corner_buffer) {
-      this.x -= this.dx;
-      this.y -= this.dy;
+      var r = game.corner_buffer,
+          A = {x: 400, y: 300},
+          B = player,
+          C = {};
+      C.x = A.x + (r * ((B.x - A.x) / player_distance_from_center));
+      C.y = A.y + (r * ((B.y - A.y) / player_distance_from_center));
+      player.x = C.x;
+      player.y = C.y;
     }
     
     
