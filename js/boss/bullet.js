@@ -20,6 +20,7 @@ function Bullet(parent,descriptor) {
   this.homing_timer = descriptor.homing_time || Infinity;
   this.parameters = descriptor.parameters || {};
   this.debug = descriptor.debug || false;
+  this.max_cycles = descriptor.max_cycles || 1;
   
   // initialize behaviors
   this.behaviors = descriptor.behaviors || [];
@@ -30,7 +31,7 @@ function Bullet(parent,descriptor) {
   } else if(this.yaw == 0) {
     this.max_age = 1000 / this.speed;
   } else {
-    this.max_age = ((2 * Math.PI) / Math.abs(this.yaw));
+    this.max_age = ((2 * Math.PI) / Math.abs(this.yaw))*this.max_cycles;
   }
   
   // internal
