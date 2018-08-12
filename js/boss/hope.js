@@ -523,7 +523,7 @@ var hope = {
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
               delay: 40,
               sync: 3480,
-              lifespan: 400,
+              lifespan: 200,
               aimed: true,
               bullet_type: {
                 behaviors: [ BulletBehavior.shootback ],
@@ -535,8 +535,9 @@ var hope = {
                       heading: 0
                     }],
                     x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
-                    delay: 20,
-                    sync: 30,
+                    delay: 30,
+                    sync: 10,
+                    immediate: true,
                     lifespan: 220,
                     behaviors: [SpawnerBehavior.freeze],
                     parameters: {
@@ -585,7 +586,7 @@ var hope = {
                     }
                   }
                 },
-                yaw: 0,
+                yaw: 0.01,
                 speed: 3,
                 r: 8,
                 color: "#0066FF",
@@ -593,7 +594,33 @@ var hope = {
                 graze_color: "#000000",
                 style: "gradient",
                 cull_type: "timer",
-                max_age: 1000
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,48,0,1),
+              x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
+              delay: 80,
+              sync: 4300,
+              lifespan: 481,
+              aimed: true,
+              immediate: true,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                  bounces: 1
+                },
+                yaw: 0.0135,
+                speed: 2,
+                r: 6,
+                color: "#2299FF",
+                shell: "#2299FF",
+                graze_color: "#004488",
+                style: "solid",
+                cull_type: "timer",
+                max_cycles: 1,
+                max_age: false
               }
             },
             {
