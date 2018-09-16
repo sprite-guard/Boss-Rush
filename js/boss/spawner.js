@@ -31,6 +31,11 @@ function BulletSpawner(parent,descriptor) {
   this.heading = this.initial_heading;
   this.is_new = true;
   
+  this.ungraze_graphics_buffer = document.createElement("canvas"); // NB not in DOM
+  this.ungraze_draw_buffer = ungraze_graphics_buffer.getContext("2d");
+  this.graze_graphics_buffer = document.createElement("canvas");
+  this.graze_draw_buffer = graze_graphics_buffer.getContext("2d");
+  
   this.init = function(){
     this.all_bullets = [];
     this.life_remaining = this.lifespan;
@@ -47,6 +52,43 @@ function BulletSpawner(parent,descriptor) {
       this.sources[i].x = this.source_homes[i].x || this.x;
       this.sources[i].y = this.source_homes[i].y || this.y;
       this.sources[i].heading = this.source_homes[i].heading;
+    }
+    
+    // draw the buffered sprite
+    var d = this.bullet_type.r * 2;
+    this.ungraze_graphics_buffer.width = d;
+    this.ungraze_graphics_buffer.height = d;
+    this.ungraze_draw_buffer.clearRect(0,0,d,d);
+    
+    this.graze_graphics_buffer.width = d;
+    this.graze_graphics_buffer.height = d;
+    this.graze_draw_buffer.clearRect(0,0,d,d);
+    
+    this.ungraze_draw_buffer.beginPath();
+  	
+    if(this.style == "hollow") {
+      this.ungraze_draw_buffer.lineWidth = 3;
+      this.ungraze_draw_buffer.strokeStyle = this.current_shell;
+      this.ungraze_draw_buffer.stroke();
+    } else if(this.style == "solid") {
+      this.ungraze_draw_buffer.lineWidth = 3;
+      this.ungraze_draw_buffer.fillStyle = this.color;
+      this.ungraze_draw_buffer.fill();
+      this.ungraze_draw_buffer.strokeStyle = this.current_shell;
+      this.ungraze_draw_buffer.stroke();
+    } else if(this.style == "gradient") {
+      if(this.debug) console.log(this.x, this.y, this.r);
+      var gradient = this.ungraze_draw_buffer.createRadialGradient(this.x, this.y, this.r,
+                                                    this.x, this.y, this.pit_size );
+      gradient.addColorStop(0, this.current_shell);
+      gradient.addColorStop(1, this.color);
+      this.ungraze_draw_buffer.fillStyle = gradient;
+      this.ungraze_draw_buffer.fill();
+    } else {
+      console.log("oops, tried to draw " + this.style);
+    }
+    if(this.deferred_draw_item) {
+      this.deferred_draw_item.draw();
     }
   };
   
