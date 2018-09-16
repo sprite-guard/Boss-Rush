@@ -32,9 +32,9 @@ function BulletSpawner(parent,descriptor) {
   this.is_new = true;
   
   this.ungraze_graphics_buffer = document.createElement("canvas"); // NB not in DOM
-  this.ungraze_draw_buffer = ungraze_graphics_buffer.getContext("2d");
+  this.ungraze_draw_buffer = this.ungraze_graphics_buffer.getContext("2d");
   this.graze_graphics_buffer = document.createElement("canvas");
-  this.graze_draw_buffer = graze_graphics_buffer.getContext("2d");
+  this.graze_draw_buffer = this.graze_graphics_buffer.getContext("2d");
   
   this.init = function(){
     this.all_bullets = [];
