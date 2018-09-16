@@ -54,8 +54,27 @@ function BulletSpawner(parent,descriptor) {
       this.sources[i].heading = this.source_homes[i].heading;
     }
     
+    /*
+    Right now, the bullet handles all of its own drawing logic,
+    and re-draws itself on every frame. We want to copy most of that
+    drawing logic, but draw to an invisible buffer that we then blit
+    from.
+    
+    NB we have not traced through all of the drawing logic. Follow
+    the whole thread to make sure that everything that happens on
+    the bullet logic also happens on the buffer. Then we need to make
+    sure that all of the actual display logic gets replaced by the
+    blit in every place where it happens.
+    
+    + copy the basic drawing calls
+    + retarget the drawing variables to the bullet type object
+    - check the "deferred draw" function
+    - make the buffer visible and test its function
+    - create blitting logic
+    */
     // draw the buffered sprite
     var d = this.bullet_type.r * 2;
+    var center = {x: this.bullet_type.r, y: this.bullet_type.r};
     this.ungraze_graphics_buffer.width = d;
     this.ungraze_graphics_buffer.height = d;
     this.ungraze_draw_buffer.clearRect(0,0,d,d);
@@ -63,31 +82,65 @@ function BulletSpawner(parent,descriptor) {
     this.graze_graphics_buffer.width = d;
     this.graze_graphics_buffer.height = d;
     this.graze_draw_buffer.clearRect(0,0,d,d);
-    
+    // set the colors
+    var ungraze_outer = this.bullet_type.shell;
+    var inner_color = this.bullet_type.color;
+    var graze_outer = this.bullet_type.graze_color;
+    // draw the ungraze buffer
     this.ungraze_draw_buffer.beginPath();
   	
-    if(this.style == "hollow") {
+    if(this.bullet_type.style == "hollow") {
       this.ungraze_draw_buffer.lineWidth = 3;
-      this.ungraze_draw_buffer.strokeStyle = this.current_shell;
+      this.ungraze_draw_buffer.strokeStyle = ungraze_outer;
       this.ungraze_draw_buffer.stroke();
-    } else if(this.style == "solid") {
+    } else if(this.bullet_type.style == "solid") {
       this.ungraze_draw_buffer.lineWidth = 3;
-      this.ungraze_draw_buffer.fillStyle = this.color;
+      this.ungraze_draw_buffer.fillStyle = inner_color;
       this.ungraze_draw_buffer.fill();
-      this.ungraze_draw_buffer.strokeStyle = this.current_shell;
+      this.ungraze_draw_buffer.strokeStyle = ungraze_outer;
       this.ungraze_draw_buffer.stroke();
-    } else if(this.style == "gradient") {
-      if(this.debug) console.log(this.x, this.y, this.r);
-      var gradient = this.ungraze_draw_buffer.createRadialGradient(this.x, this.y, this.r,
-                                                    this.x, this.y, this.pit_size );
-      gradient.addColorStop(0, this.current_shell);
-      gradient.addColorStop(1, this.color);
+    } else if(this.bullet_type.style == "gradient") {
+    // NB look up gradient logic and double check this.
+      var gradient = this.ungraze_draw_buffer.createRadialGradient(
+                          center.x, center.y, this.bullet_type.r,
+                          center.x, center.y, this.bullet_type.pit_size || 0 );
+      gradient.addColorStop(0, ungraze_outer);
+      gradient.addColorStop(1, inner_color);
       this.ungraze_draw_buffer.fillStyle = gradient;
       this.ungraze_draw_buffer.fill();
     } else {
       console.log("oops, tried to draw " + this.style);
     }
+    
+    // draw the graze buffer
+    this.graze_draw_buffer.beginPath();
+    
+  	if(this.bullet_type.style == "hollow") {
+      this.graze_draw_buffer.lineWidth = 3;
+      this.graze_draw_buffer.strokeStyle = graze_outer;
+      this.graze_draw_buffer.stroke();
+    } else if(this.bullet_type.style == "solid") {
+      this.graze_draw_buffer.lineWidth = 3;
+      this.graze_draw_buffer.fillStyle = inner_color;
+      this.graze_draw_buffer.fill();
+      this.graze_draw_buffer.strokeStyle = graze_outer;
+      this.graze_draw_buffer.stroke();
+    } else if(this.bullet_type.style == "gradient") {
+    // NB look up gradient logic and double check this.
+      var gradient = this.graze_draw_buffer.createRadialGradient(
+                          center.x, center.y, this.bullet_type.r,
+                          center.x, center.y, this.bullet_type.pit_size || 0 );
+      gradient.addColorStop(0, graze_outer);
+      gradient.addColorStop(1, inner_color);
+      this.graze_draw_buffer.fillStyle = gradient;
+      this.graze_draw_buffer.fill();
+    } else {
+      console.log("oops, tried to draw " + this.style);
+    }
+    
+    
     if(this.deferred_draw_item) {
+      // NB what is this?
       this.deferred_draw_item.draw();
     }
   };
