@@ -67,12 +67,17 @@ function Phase(parent,descriptor) {
   
   this.update = function(slowdown,slowspeed) {
     var time_increment = 1;
+    
+    // slow the music if the framerate wobbles
+    var jitter = game.fr / 60;
+    
     if(slowdown) {
       time_increment = slowspeed;
-      game.music.setspeed(slowspeed);
+      game.music.setspeed(slowspeed * jitter);
     } else {
-      game.music.setspeed(1);
+      game.music.setspeed(1 * jitter);
     }
+    
     
     this.timer -= time_increment;
   

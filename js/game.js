@@ -73,12 +73,12 @@ game.update = function() {
   game.current_scene.update();
   game.current_scene.draw();
 
-  if(DEBUG) {
+
     UPDATE--;
     var current_time = performance.now();
     game.fps = 1000/(current_time - last_time);
     game.moving_average_array.push(game.fps);
-    if(game.moving_average_array.length > 60) game.moving_average_array.shift();
+    if(game.moving_average_array.length > 120) game.moving_average_array.shift();
     game.average_fps = 0;
     for(var i = 0; i < game.moving_average_array.length; i++) {
       game.average_fps += game.moving_average_array[i];
@@ -90,6 +90,7 @@ game.update = function() {
       UPDATE = MAX_UPDATE;
       game.fr = Math.round(game.average_fps);
     }
+  if(DEBUG) {
     game.draw.fillStyle = "#0077AA";
     game.draw.font = "10px monospace";
     game.draw.fillText(game.fr,2,595);
