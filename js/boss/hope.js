@@ -91,7 +91,7 @@ var hope = {
                 shell: "#3366FF",
                 graze_color: "#114499",
                 style: "gradient",
-                cull_type: "screen",
+                cull_type: "timer",
                 max_age: 1000
               }
             },
@@ -174,7 +174,7 @@ var hope = {
                 shell: "#FF6633",
                 graze_color: "#992211",
                 style: "gradient",
-                cull_type: "screen",
+                cull_type: "timer",
                 max_age: 1000
               }
             },
@@ -257,7 +257,7 @@ var hope = {
                 shell: "#44AA99",
                 graze_color: "#119911",
                 style: "gradient",
-                cull_type: "screen",
+                cull_type: "timer",
                 max_age: 1000
               }
             },
@@ -340,7 +340,7 @@ var hope = {
                 shell: "#FF44FF",
                 graze_color: "#991199",
                 style: "gradient",
-                cull_type: "screen",
+                cull_type: "timer",
                 max_age: 1000
               }
             },
