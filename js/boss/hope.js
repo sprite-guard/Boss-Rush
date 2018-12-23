@@ -32,7 +32,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,6,0,1),
+                    sources: helpers.makeRingAttack(400,300,8,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -115,7 +115,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,6,0,1),
+                    sources: helpers.makeRingAttack(400,300,8,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -198,7 +198,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,6,0,1),
+                    sources: helpers.makeRingAttack(400,300,8,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -281,7 +281,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,6,0,1),
+                    sources: helpers.makeRingAttack(400,300,8,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -381,8 +381,11 @@ var hope = {
                       scatter_direction: 1
                     },
                     bullet_type: {
-                      behaviors: [  ],
+                      behaviors: [ BulletBehavior.homing ],
                       parameters: {
+                        homing_time: 300,
+                        homing_delay: 140,
+                        max_yaw: 0.01,
                       },
                       yaw: 0,
                       speed: 3,
@@ -545,20 +548,22 @@ var hope = {
               }
             },
             {
-              sources: helpers.makeRingAttack(400,300,4,0,1),
-              x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
-              delay: 3,
-              sync: 3520,
-              lifespan: 200,
-              aimed: false,
+              sources: [
+                {x: 10, y: 10, heading: 0 }
+              ],
+              delay: 4,
+              sync: 2860,
+              lifespan: 100,
+              random_spread: 0.5,
+              aimed: true,
               immediate: true,
-              spin: 0.5,
+              spin: 0,
               bullet_type: {
                 behaviors: [  ],
                 parameters: {
                 },
-                yaw: 0.01,
-                speed: 3,
+                yaw: 0,
+                speed: 4,
                 r: 8,
                 color: "#0066FF",
                 shell: "#0044CC",
@@ -570,14 +575,144 @@ var hope = {
               }
             },
             {
-              sources: helpers.makeRingAttack(400,300,4,0,1),
+              sources: [
+                {x: 10, y: 550, heading: 0 }
+              ],
+              delay: 4,
+              sync: 2860,
+              lifespan: 100,
+              aimed: true,
+              immediate: true,
+              spin: 0,
+              random_spread: 0.5,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0,
+                speed: 4,
+                r: 8,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: [
+                {x: 750, y: 10, heading: 0 }
+              ],
+              delay: 4,
+              sync: 2860,
+              lifespan: 100,
+              aimed: true,
+              immediate: true,
+              spin: 0,
+              random_spread: 0.5,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0,
+                speed: 4,
+                r: 8,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: [
+                {x: 750, y: 550, heading: 0 }
+              ],
+              delay: 4,
+              sync: 2860,
+              lifespan: 100,
+              aimed: true,
+              immediate: true,
+              spin: 0,
+              random_spread: 0.5,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0,
+                speed: 4,
+                r: 8,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: [{x: 400, y: 300, heading: 0}],
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
+              delay: 2,
+              sync: 2700,
+              lifespan: 1000,
+              aimed: false,
+              spin: 1,
+              bullet_type: {
+                behaviors: [ BulletBehavior.shootback ],
+                parameters: {
+                  shootback_spawner: {
+                    sources: [{x: 0, y: 0, heading: 0}],
+                    spin: 1,
+                    random_spread: 0,
+                    delay: 40,
+                    sync: 300,
+                    lifespan: 41,
+                    aimed: true,
+                    target: {x: 400, y: 300},
+                    immediate: true,
+                    bullet_type: {
+                      behaviors: [  ],
+                      parameters: {
+                      },
+                      yaw: 0,
+                      speed: 1,
+                      r: 8,
+                      color: "#0066FF",
+                      shell: "#0066FF",
+                      graze_color: "#0099CC",
+                      style: "solid",
+                      cull_type: "timer",
+                      max_age: 600
+                    }
+                  }
+                },
+                yaw: 0,
+                speed: 2,
+                r: 0,
+                color: "#FF5522",
+                shell: "#FF5522",
+                graze_color: "#FF0000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 1000
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,4,0,1),
+              x: 0, y: 0, heading: 0,
+              random_spread: 0,
               delay: 3,
               sync: 3520,
               lifespan: 200,
               aimed: false,
               immediate: true,
-              spin: -0.5,
+              spin: -0.55,
               bullet_type: {
                 behaviors: [  ],
                 parameters: {
@@ -645,7 +780,7 @@ var hope = {
               }
             },
             {
-              sources: helpers.makeRingAttack(400,300,5,0,1),
+              sources: helpers.makeRingAttack(400,300,4,0,1),
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
               delay: 160,
               sync: 5140,
@@ -697,7 +832,7 @@ var hope = {
               }
             },
             {
-              sources: helpers.makeRingAttack(400,300,5,0,1),
+              sources: helpers.makeRingAttack(400,300,4,0,1),
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
               delay: 160,
               sync: 5240,
@@ -748,8 +883,59 @@ var hope = {
                 max_cycles: 7,
                 max_age: false
               }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,6,0,1),
+              x: 0, y: 0, heading: 0,
+              random_spread: 1,
+              delay: 2,
+              sync: 8120,
+              lifespan: 100,
+              aimed: false,
+              immediate: true,
+              spin: -0.55,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0.01,
+                speed: 4.5,
+                r: 6,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "screen",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,6,0,1),
+              x: 0, y: 0, heading: 0,
+              random_spread: 1,
+              delay: 2,
+              sync: 8120,
+              lifespan: 100,
+              aimed: false,
+              immediate: true,
+              spin: 0.55,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: -0.01,
+                speed: 4.5,
+                r: 6,
+                color: "#0088DD",
+                shell: "#0055BB",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "screen",
+                max_age: 800,
+                max_cycles: 1
+              }
             }
-            
           ],
           choreography: {}
         },

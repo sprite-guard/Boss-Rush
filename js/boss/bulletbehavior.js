@@ -35,9 +35,14 @@ BulletBehavior.homing = function(parent) {
     // only use new model if legacy model hasn't been used.
     parent.homing_timer = parent.parameters.homing_time;
     parent.max_yaw = parent.parameters.max_yaw;
+    if(parent.parameters.homing_delay) {
+      parent.homing_delay = parent.parameters.homing_delay;
+    } else {
+      parent.homing_delay = 0;
+    }
   }
 
-  if(parent.homing_timer >= 0) {
+  if((parent.homing_timer >= 0) && (parent.homing_delay <= 0)) {
     parent.homing_timer -= speed;
     var home_rotation = new ComplexRotation(parent.heading);
     
@@ -66,6 +71,8 @@ BulletBehavior.homing = function(parent) {
     }
 //    console.log("new angle is ",new_rotation);
     parent.heading = new_rotation.angle;
+  } else if(parent.homing_delay > 0) {
+    parent.homing_delay --;
   }
 };
 
@@ -117,6 +124,55 @@ BulletBehavior.shootback = function(parent) {
 
 };
 
+BulletBehavior.phasing = function(parent) {
+  // speed modifier
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  // initializer
+  if(parent.is_new) {
+    // phase in and out based on an array of timers
+    parent.phase_state_list = parent.params.phase_state_list;
+    parent.phase_timer = parent.phase_state_list[0];
+    // phased in or out?
+    parent.is_present = parent.params.start_phase;
+    // where in the list?
+    parent.current_phase_state = 0;
+    // transition
+    parent.phase_transition_time = parent.params.transition_time;
+    parent.max_r = parent.params.max_r || parent.params.r;
+    parent.min_r = parent.params.min_r || 0;
+  }
+  // behavior
+  if(parent.phase_timer > 0) {
+    parent.phase_timer -= speed;
+    // if we're within transition time of a switch
+    // set the size based on what % of the way through the transition we are
+    // otherwise set it to max/min based on which phase we're in
+    
+    // are we at the end of the phase?
+    if(parent.phase_timer < parent.phase_transition_time) {
+      // how far are we from the end of the phase?
+      var distance_from_transition = parent.phase_timer / parent.phase_transition_time;
+      
+      var r_span = parent.max_r - parent.min_r;
+      // which phase are we in?
+      if(parent.is_present) {
+        // shrink the bullet
+        parent.r = min_r + (distance_from_transition * r_span);
+      } else {
+        // grow the bullet
+        parent.r = max_r - (distance_from_transition * r_span);
+      }
+    }
+  } else {
+    // switch phase
+    // reset phase timer
+    // TODO
+  }
+};
+
 BulletBehavior.template = function(parent) {
   // speed modifier
   var speed = 1;
@@ -134,7 +190,3 @@ BulletBehavior.template = function(parent) {
     // do the thing
   }
 };
-
-// TODO
-// exploders
-// shootback

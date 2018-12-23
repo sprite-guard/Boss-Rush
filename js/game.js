@@ -21,6 +21,8 @@ var frame_counter = 0,
 
 var game = {};
 
+PIXI = false;
+
 game.fullscreen = function() {
   game.canvas.webkitRequestFullScreen();
   game.draw.clearRect(0, 0, game.canvas.width, game.canvas.height);
@@ -36,8 +38,6 @@ game.init = function() {
   game.slowdown = 0;
   game.max_slowdown = 5;
   game.gamepads = [];
-  game.canvas = document.getElementById("game");
-  game.draw = game.canvas.getContext("2d");
   game.spawners = [];
   game.timecount = 0;
   game.framecount = 1;
@@ -47,6 +47,20 @@ game.init = function() {
   game.draw_batch = [];
   game.corner_buffer = 450;
   
+  if(!PIXI) {
+    game.canvas = document.getElementById("game");
+    game.canvas = document.createElement("canvas");
+    game.canvas.width = 800;
+    game.canvas.height = 600;
+    game.draw = game.canvas.getContext("2d");
+    document.body.appendChild(game.canvas);
+  } else {
+    game.app = new PIXI.Application(800, 600, { antialias: true });
+    game.canvas = game.app.view;
+    document.body.appendChild(game.canvas);
+    game.graphics = new PIXI.Graphics();
+    game.draw = new helpers.PseudoCanvas(game.graphics);
+  }
   if(nw) {
     game.window = nw.Window.get();
   }

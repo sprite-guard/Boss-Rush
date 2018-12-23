@@ -402,7 +402,7 @@ var thaumiel = {
               yaw_jitter: 0,
               bullet_type: {
                 debug: false,
-                yaw: 0.02,
+                yaw: 0.0135,
                 speed: 3,
                 r: 8,
                 color: "#22FF00",
@@ -505,6 +505,108 @@ var thaumiel = {
                 cull_type: "timer",
                 max_age: 1200
               }
+            },
+            {
+              sources: [{x: 400, y: 300, heading: 0}],
+              x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
+              delay: 2,
+              sync: 3150,
+              lifespan: 800,
+              aimed: false,
+              spin: 1,
+              bullet_type: {
+                behaviors: [ BulletBehavior.shootback ],
+                parameters: {
+                  shootback_spawner: {
+                    sources: [{x: 0, y: 0, heading: 0}],
+                    spin: 1,
+                    random_spread: 0,
+                    delay: 40,
+                    sync: 300,
+                    lifespan: 41,
+                    aimed: true,
+                    target: {x: 400, y: 300},
+                    immediate: true,
+                    bullet_type: {
+                      behaviors: [  ],
+                      parameters: {
+                      },
+                      yaw: 0,
+                      speed: 1,
+                      r: 8,
+                      color: "#0066FF",
+                      shell: "#0066FF",
+                      graze_color: "#0099CC",
+                      style: "solid",
+                      cull_type: "timer",
+                      max_age: 600
+                    }
+                  }
+                },
+                yaw: 0,
+                speed: 2,
+                r: 0,
+                color: "#FF5522",
+                shell: "#FF5522",
+                graze_color: "#FF0000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 1000
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,7,0,1),
+              x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
+              delay: 40,
+              sync: 3000,
+              lifespan: 31,
+              aimed: false,
+              immediate: true,
+              spin: 0,
+              behaviors: [ SpawnerBehavior.freeze ],
+              parameters: {
+                freeze_countdown: 190,
+                freeze_duration: 370
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.shootback ],
+                parameters: {
+                  shootback_spawner: {
+                    sources: [{x: 0, y: 0, heading: 0}],
+                    spin: 1,
+                    random_spread: 0,
+                    delay: 8,
+                    sync: 190,
+                    lifespan: 370,
+                    aimed: false,
+                    target: {x: 400, y: 300},
+                    immediate: true,
+                    bullet_type: {
+                      behaviors: [  ],
+                      parameters: {
+                      },
+                      yaw: 0,
+                      speed: 2,
+                      r: 8,
+                      color: "#0066FF",
+                      shell: "#0066FF",
+                      graze_color: "#0099CC",
+                      style: "solid",
+                      cull_type: "screen",
+                      max_age: false
+                    }
+                  }
+                },
+                yaw: 0,
+                speed: 2,
+                r: 0,
+                color: "#FF5522",
+                shell: "#FF5522",
+                graze_color: "#FF0000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 2000
+              }
             }
           ],
           choreography: {}
@@ -513,7 +615,7 @@ var thaumiel = {
       spirit_wells: [],
       exits: [],
       music: "music/2CO - the one with the vocaloid.flac",
-      duration: 6500,
+      duration: 10000,
       cycle: false
     },
   

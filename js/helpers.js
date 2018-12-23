@@ -24,7 +24,7 @@ helpers.makeRingAttack = function(x,y,count,begin,end) {
   var res = [];
   for(var i = 0; i <= count; i++) {
     // evently divide the circle, and add one source for each direction
-    var h = i * ((total_angle * TAU) / count) + (begin * TAU);
+    var h = i * ((total_angle * TAU) / (count+1)) + (begin * TAU);
     res.push({ x: x, y: y, heading: h });
   }
   return res;
@@ -50,4 +50,29 @@ helpers.makeLineAttack = function(descriptor) {
   }
   return res;
   
+}
+
+helpers.fill_to_hex = function(fill) {
+  return parseInt(fill.replace("#","0x"));
+}
+
+if(PIXI) {
+  // reimplement canvas drawing API using PIXI rendering
+  helpers.PseudoCanvas = function(graphics) {
+    this.graphics = graphics;
+    
+    this.fillStyle = "#000000";
+    this.lineStyle = "#000000";
+    
+    this.fillRect = function(x,y,w,h) {
+      this.graphics.beginFill(helpers.fill_to_hex(this.fillStyle));
+      this.graphics.drawRect(x,y,w,h);
+      this.graphics.endFill();
+    }
+    
+    this.beginPath = function() {
+      this.graphics.beginFill(this.fillStyle);
+    }
+    
+  }
 }

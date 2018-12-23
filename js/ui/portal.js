@@ -64,16 +64,20 @@ function Portal(descriptor) {
   };
   
   this.draw = function() {
-  game.draw.lineWidth = 2;
-  game.draw.strokeStyle = this.color;
-  game.draw.beginPath();
-  game.draw.ellipse(this.x, this.y, this.w, this.h, this.tilt + Math.PI/4, 0, 2 * Math.PI);
-  game.draw.stroke();
-  game.draw.beginPath();
-  game.draw.ellipse(this.x, this.y, this.w, this.h, (this.tilt*2) + 7*(Math.PI/4), 0, 2 * Math.PI);
-  game.draw.stroke();
-  game.draw.beginPath();
-  game.draw.ellipse(this.x, this.y, this.wmax - this.w, this.h, (this.tilt*3), 0, 2*Math.PI);
-  game.draw.stroke();
+    if(!PIXI) {
+      game.draw.lineWidth = 2;
+      game.draw.strokeStyle = this.color;
+      game.draw.beginPath();
+      game.draw.ellipse(this.x, this.y, this.w, this.h, this.tilt + Math.PI/4, 0, 2 * Math.PI);
+      game.draw.stroke();
+      game.draw.beginPath();
+      game.draw.ellipse(this.x, this.y, this.w, this.h, (this.tilt*2) + 7*(Math.PI/4), 0, 2 * Math.PI);
+      game.draw.stroke();
+      game.draw.beginPath();
+      game.draw.ellipse(this.x, this.y, this.wmax - this.w, this.h, (this.tilt*3), 0, 2*Math.PI);
+      game.draw.stroke();
+    } else {
+      
+    }
   }
 }
