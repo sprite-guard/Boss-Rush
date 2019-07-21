@@ -45,8 +45,7 @@ The game is funded. If you want to be paid for this, we need to negotiate a
 rate up front so that I'm not surprised farther down the line. If you do not
 want to be paid, I'll need you to send me a message explicitly stating so.
 
-Since this is a solo operation, things do move slowly, so I have an
-accountability system in place: I stream the game's development every Sunday.
-You won't have to wonder whether or not the game is being worked on. I will
+Since this is mostly a solo operation, things move slowly. I stream the game's development on Twitch,
+so you won't have to wonder whether or not the game is being worked on. I will
 reply to messages within 48 hours, and let you know if I'm going on any
 vacations that will prevent that.
