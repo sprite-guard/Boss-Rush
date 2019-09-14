@@ -21,6 +21,7 @@ function Bullet(parent,descriptor) {
   this.parameters = descriptor.parameters || {};
   this.debug = descriptor.debug || false;
   this.max_cycles = descriptor.max_cycles || 1;
+  this.halo = descriptor.halo;
   
   // initialize behaviors
   this.behaviors = descriptor.behaviors || [];
@@ -70,6 +71,13 @@ function Bullet(parent,descriptor) {
       game.draw.fill();
     } else {
       console.log("oops, tried to draw " + this.style);
+    }
+    if(this.halo > 0) {
+      game.draw.beginPath();
+      game.draw.ellipse(Math.floor(this.x), Math.floor(this.y), this.halo, this.halo, 0, 0, 2 * Math.PI);
+      game.draw.lineWidth = 1;
+      game.draw.strokeStyle = this.current_shell;
+      game.draw.stroke();
     }
     if(this.deferred_draw_item) {
       this.deferred_draw_item.draw();

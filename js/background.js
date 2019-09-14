@@ -17,3 +17,6 @@ function Background(color,drop_color) {
     return true;
   }
 }
+
+Background.DEFAULT = new Background("#002244","#002244");
+Background.INGAME = new Background("#002244","#000000");

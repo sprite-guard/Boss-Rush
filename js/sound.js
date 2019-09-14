@@ -1,4 +1,4 @@
-function Sound(src) {
+function Sound(src, loop) {
   this.src = src;
   this.audio = document.createElement("audio");
   this.audio.src = src;
@@ -6,6 +6,11 @@ function Sound(src) {
   this.audio.setAttribute("controls","none");
   this.audio.style.display = "none";
   document.body.appendChild(this.audio);
+  
+  if(loop) {
+    this.audio.loop = true;
+  }
+  
   this.play = function() {
     this.audio.play();
   };

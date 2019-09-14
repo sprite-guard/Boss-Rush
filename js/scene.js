@@ -2,17 +2,31 @@ function Scene(descriptor) {
   this.elements = descriptor.elements;
   this.boss_type = descriptor.boss;
   this.player = descriptor.player;
+  this.timeout = descriptor.timeout || Infinity;
+  this.time_remaining = this.timeout;
+  this.next_scene = descriptor.next_scene;
   
-  this.special_init = descriptor.init;
+  if(descriptor.music) {
+    this.music = new Sound(descriptor.music, true);
+  }
+  
+  this.special_init = descriptor.init || function() { return true; };
   
   // internal
   this.slowdown_speed = 1;
   this.slowdown = false;
   
   this.init = function() {
+    this.time_remaining = this.timeout;
     if(game.music) {
       game.music.pause();
       game.music.rewind();
+    }
+    if(this.music) {
+      game.music = this.music;
+      game.music.pause();
+      game.music.rewind();
+      game.music.play();
     }
     this.special_init();
     
@@ -24,6 +38,7 @@ function Scene(descriptor) {
   };
   
   this.update = function() {
+      
     for(var i = 0; i < this.elements.length; i++) {
       this.elements[i].update(this.slowdown, this.slowdown_speed);
     }
@@ -34,6 +49,12 @@ function Scene(descriptor) {
     
     if(this.player) {
       this.player.update(this.slowdown, this.slowdown_speed);
+    }
+    this.time_remaining--
+    
+    if((this.time_remaining <= 0)&&this.next_scene) {
+      game.current_scene = this.next_scene;
+      game.current_scene.init();
     }
   };
   
@@ -63,20 +84,11 @@ function Scene(descriptor) {
     }
     
     if(player.dead) {
-      game.draw.fillStyle = "#FF9966";
-      game.draw.strokeStyle = "#FFFFAA";
-      game.draw.lineWidth = 2;
-      game.draw.font = "128px serif";
-      game.draw.fillText("Ritual Failed",64,250);
-      game.draw.beginPath();
-      game.draw.strokeText("Ritual Failed",64,250);
-      game.draw.stroke();
-      game.draw.font = "100px serif";
-      game.draw.fillText("press r to restart",64,450);
-      game.draw.beginPath();
-      game.draw.strokeText("press r to restart",64,450);
-      game.draw.stroke();
+      TextElement.GAMEOVER.draw();
     }
+    // if(this.prescreen.is_showing) {
+      // this.prescreen.draw();
+    // }
   };
   
   this.game_over = function() {
@@ -125,15 +137,13 @@ function Scene(descriptor) {
 
 var scenes_list = {};
 
-var default_background = new Background("#002244","#002244");
-var default_ingame_background = new Background("#002244","#000000");
-
 var top_line = "Infinite",
     bottom_line = "Ritual";
 
 scenes_list.menu = new Scene({
+//  prescreen: PreScreen.Default(),
   elements: [
-    default_background,
+    Background.DEFAULT,
     new MenuItem({
       x: 10,
       y: 10,
@@ -149,37 +159,60 @@ scenes_list.menu = new Scene({
       h: 16,
       destination: "test_scene"
     }),
-    
-    {
-      init: () => { return true; },
-      update: () => { return true; },
-      draw: () => {
-        game.draw.fillStyle = "#006666";
-        game.draw.strokeStyle = "#009999";
-        game.draw.lineWidth = 2;
-        game.draw.font = "128px serif";
-        game.draw.fillText(top_line,32,250);
-        game.draw.beginPath();
-        game.draw.strokeText(top_line,32,250);
-        game.draw.stroke();
-        game.draw.fillText(bottom_line,32,400);
-        game.draw.beginPath();
-        game.draw.strokeText(bottom_line,32,400);
-        game.draw.stroke();
-      }
-    }
+    new TextElement([
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "128px serif",
+        line_width: 2,
+        x: 32,
+        y: 250,
+        text: "Infinite"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "128px serif",
+        line_width: 2,
+        x: 32,
+        y: 400,
+        text: "Ritual"
+      })
+    ])
+
   ],
   player: player,
   init: function() {
     player.init();
-  }
+  },
+  music: "music/GlitchCat7 - Bullet_Hell_baseline.mp3"
 });
 
-scenes_list.test_scene = new Scene({
-  elements: [ default_ingame_background ],
+scenes_list.thaumiel = new Scene({
+  elements: [ Background.INGAME ],
+  init: function() {
+    player.init();
+  },
+  boss: thaumiel,
+  player: player,
+ // prescreen: new PreScreen(thaumiel.metadata)
+});
+
+scenes_list.dream_child = new Scene({
+  elements: [ Background.INGAME ],
   init: function() {
     player.init();
   },
   boss: hope,
-  player: player
+  player: player,
+ // prescreen: new PreScreen(thaumiel.metadata)
 });
+
+scenes_list.kinetic = new Scene({
+  elements: [ Background.INGAME ],
+  init: function() {
+    player.init();
+  },
+  boss: kinetic,
+  player: player,
+})

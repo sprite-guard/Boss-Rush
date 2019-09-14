@@ -5,6 +5,7 @@ function Portal(descriptor) {
   this.h = descriptor.h;
   this.tilt = 0;
   this.tilt_speed = 0.03;
+  this.show_prescreen = descriptor.show_prescreen;
   
   // optional
   this.normal_color = descriptor.color || "#006699";

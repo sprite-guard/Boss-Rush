@@ -11,5 +11,15 @@
     "height": 599,
     "resizable": true,
     "icon": "./icon.PNG"
+  },
+  "build": {
+    "nwVersion": "0.26.6"
+  },
+  "scripts": {
+    "dist": "build --tasks win-x64,linux-x64,mac-x64 --mirror https://dl.nwjs.io/ .",
+    "start": "run --x86 --mirror https://dl.nwjs.io/ ."
+  },
+  "devDependencies": {
+    "nwjs-builder-phoenix": "^1.15.0"
   }
 }

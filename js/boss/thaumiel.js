@@ -1,6 +1,11 @@
 var thaumiel = {
   x: 0,
   y: 0,
+  metadata: {
+    title: "Thaumiel",
+    composer: "2CO",
+    background: Background.DEFAULT
+  },
   sprites: [
     { draw: function(x,y) { return true; } }
   ],
@@ -267,7 +272,7 @@ var thaumiel = {
                 speed: 4,
                 r: 8,
                 color: "#FF00FF",
-                shell: "#0000FF",
+                shell: "#FF0000",
                 graze_color: "#666666",
                 style: "gradient",
                 cull_type: "screen"
@@ -296,7 +301,7 @@ var thaumiel = {
                 speed: 4,
                 r: 8,
                 color: "#FF00FF",
-                shell: "#0000FF",
+                shell: "#FF0000",
                 graze_color: "#666666",
                 style: "gradient",
                 cull_type: "screen"
@@ -325,8 +330,8 @@ var thaumiel = {
                 yaw: 0,
                 speed: 4,
                 r: 8,
-                color: "#00FFFF",
-                shell: "#0000FF",
+                color: "#FFFF00",
+                shell: "#FF0000",
                 graze_color: "#003333",
                 style: "gradient",
                 cull_type: "screen"
@@ -390,7 +395,7 @@ var thaumiel = {
                 cull_type: "screen"
               }
             },
-            // rings
+            // flower
             {
               sources: helpers.makeRingAttack(400,300,20,0,1),
               spin: 0,
@@ -412,61 +417,46 @@ var thaumiel = {
                 cull_type: "timer"
               }
             },
-            {
-              sources: [{x: 400, y: 300, heading: 0}],
-              spin: 0,
-              random_spread: 0,
-              delay: 50,
-              sync: 1200,
-              lifespan: 550,
-              speed_jitter: 0,
-              yaw_jitter: 0,
-              bullet_type: {
-                debug: false,
-                behaviors: [ BulletBehavior.homing ],
-                parameters: {
-                  max_yaw: 0.05,
-                  homing_time: 300
-                },
-                yaw: 0,
-                speed: 3,
-                r: 8,
-                color: "#CC2200",
-                shell: "#CC4400",
-                graze_color: "#CC0088",
-                style: "gradient",
-                cull_type: "screen"
-              }
-            },
+            // rain, stop and scatter
             {
               sources: helpers.makeLineAttack({
                 sx: 10,
                 sy: -120,
                 ex: 820,
                 ey: -120,
-                count: 12,
+                count: 7,
                 heading: 0.5 * Math.PI
               }),
               sync: 1950,
               lifespan: 300,
               spin: 0,
-              delay: 20,
+              delay: 25,
               speed_jitter: 0,
               yaw_jitter: 0.00,
               random_spread: 0.5,
-              behaviors: [ SpawnerBehavior.freeze, SpawnerBehavior.scatter ],
+              behaviors: [
+                  SpawnerBehavior.freeze
+                , SpawnerBehavior.scatter
+                , SpawnerBehavior.speedup
+              ],
               parameters: {
-                freeze_countdown: 350,
-                freeze_duration: 500,
-                scatter_countdown: 850
+                  freeze_countdown: 350
+                , freeze_duration: 500
+                , scatter_countdown: 850
+                , scatter_target: player
+                , scatter_beam_width: 0.4
+                , bullet_speedup_delay: 850
+                , bullet_speedup: 0.03
+                , max_bullet_speed: 4
+                , min_bullet_speed: 0.3
               },
                 bullet_type: {
                 yaw: 0,
                 speed: 3,
                 r: 8,
-                color: "#0099FF",
-                shell: "#0066FF",
-                graze_color: "#0000CC",
+                color: "#FF9900",
+                shell: "#FF6600",
+                graze_color: "#CC0000",
                 style: "gradient",
                 cull_type: "timer",
                 max_age: 1200
@@ -478,38 +468,49 @@ var thaumiel = {
                 sy: -120,
                 ex: 820,
                 ey: -120,
-                count: 12,
+                count: 7,
                 heading: 0.5 * Math.PI
               }),
               sync: 2350,
               lifespan: 300,
               spin: 0,
-              delay: 20,
+              delay: 25,
               speed_jitter: 0,
               yaw_jitter: 0.00,
               random_spread: 0.5,
-              behaviors: [ SpawnerBehavior.freeze, SpawnerBehavior.scatter ],
+              behaviors: [
+                  SpawnerBehavior.freeze
+                , SpawnerBehavior.scatter
+                , SpawnerBehavior.speedup
+              ],
               parameters: {
-                freeze_countdown: 350,
-                freeze_duration: 300,
-                scatter_countdown: 650
+                  freeze_countdown: 350
+                , freeze_duration: 300
+                , scatter_countdown: 650
+                , scatter_target: player
+                , scatter_beam_width: 0.4
+                , bullet_speedup_delay: 650
+                , bullet_speedup: 0.03
+                , max_bullet_speed: 4
+                , min_bullet_speed: 0.3
               },
                 bullet_type: {
                 yaw: 0,
                 speed: 3,
                 r: 8,
-                color: "#00FF99",
-                shell: "#00FF66",
+                color: "#99FF00",
+                shell: "#66FF00",
                 graze_color: "#00CC00",
                 style: "gradient",
                 cull_type: "timer",
                 max_age: 1200
               }
             },
+            // inward piano
             {
               sources: [{x: 400, y: 300, heading: 0}],
-              x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
-              delay: 2,
+              x: 0, y: 0, heading: 0, spin: 0, random_spread: 0.5,
+              delay: 1,
               sync: 3150,
               lifespan: 800,
               aimed: false,
@@ -534,9 +535,9 @@ var thaumiel = {
                       yaw: 0,
                       speed: 1,
                       r: 8,
-                      color: "#0066FF",
-                      shell: "#0066FF",
-                      graze_color: "#0099CC",
+                      color: "#FF5522",
+                      shell: "#FF5522",
+                      graze_color: "#CC9900",
                       style: "solid",
                       cull_type: "timer",
                       max_age: 600
@@ -554,8 +555,9 @@ var thaumiel = {
                 max_age: 1000
               }
             },
+            // third roar
             {
-              sources: helpers.makeRingAttack(400,300,7,0,1),
+              sources: helpers.makeRingAttack(400,300,8,0,1),
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
               delay: 40,
               sync: 3000,
@@ -573,13 +575,13 @@ var thaumiel = {
                 parameters: {
                   shootback_spawner: {
                     sources: [{x: 0, y: 0, heading: 0}],
-                    spin: 1,
-                    random_spread: 0,
-                    delay: 8,
-                    sync: 190,
+                    spin: 0,
+                    random_spread: 1,
+                    delay: 16,
+                    sync: 200,
                     lifespan: 370,
-                    aimed: false,
-                    target: {x: 400, y: 300},
+                    aimed: true,
+                    target: {x:400, y:300},
                     immediate: true,
                     bullet_type: {
                       behaviors: [  ],
@@ -588,12 +590,12 @@ var thaumiel = {
                       yaw: 0,
                       speed: 2,
                       r: 8,
-                      color: "#0066FF",
-                      shell: "#0066FF",
-                      graze_color: "#0099CC",
+                      color: "#FF6600",
+                      shell: "#FF6600",
+                      graze_color: "#CC9900",
                       style: "solid",
-                      cull_type: "screen",
-                      max_age: false
+                      cull_type: "timer",
+                      max_age: 1000
                     }
                   }
                 },
@@ -607,6 +609,434 @@ var thaumiel = {
                 cull_type: "timer",
                 max_age: 2000
               }
+            },
+            // piano slow
+            {
+              sources: [
+                {x: 0, y: 0, heading: (Math.PI / 4)},
+                {x: 0, y: 600, heading: -(Math.PI/4)},
+                {x: 800, y: 600, heading: -3*(Math.PI/4)},
+                {x: 800, y: 0, heading: 3*(Math.PI/4)}
+              ],
+              sync: 4540,
+              immediate: true,
+              lifespan: 1200,
+              spin: 0,
+              delay: 140,
+              speed_jitter: 0,
+              yaw_jitter: 0.00,
+              random_spread: 0,
+              behaviors: [  ],
+              parameters: {
+                freeze_countdown: 350,
+                freeze_duration: 500,
+                scatter_countdown: 850
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.shootback ],
+                parameters: {
+                  shootback_spawner: {
+                    sources: [{x: 0, y: 0, heading: 0}],
+                    spin: 1,
+                    random_spread: 1,
+                    delay: 20,
+                    sync: 0,
+                    lifespan: 800,
+                    aimed: false,
+                    //target: {x: 400, y: 300},
+                    immediate: true,
+                    bullet_type: {
+                      behaviors: [  ],
+                      parameters: {
+                      },
+                      yaw: 0,
+                      speed: 1,
+                      r: 4,
+                      color: "#996600",
+                      shell: "#FFAA00",
+                      graze_color: "#442200",
+                      style: "gradient",
+                      cull_type: "screen"
+                    }
+                  }
+                },
+                yaw: 0,
+                speed: 2,
+                r: 2,
+                color: "#FF9900",
+                shell: "#FF6600",
+                graze_color: "#CC0000",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            // layered rings
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 5480,
+              lifespan: 600,
+              speed_jitter: 0,
+              yaw_jitter: 0,
+              bullet_type: {
+                debug: false,
+                yaw: 0.012,
+                speed: 3,
+                r: 8,
+                color: "#449999",
+                shell: "#44AAAA",
+                graze_color: "#003333",
+                style: "solid",
+                cull_type: "screen"
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 5480,
+              lifespan: 600,
+              speed_jitter: 0,
+              yaw_jitter: 0,
+              bullet_type: {
+                debug: false,
+                yaw: -0.012,
+                speed: 3,
+                r: 8,
+                color: "#449999",
+                shell: "#44AAAA",
+                graze_color: "#003333",
+                style: "solid",
+                cull_type: "screen"
+              }
+            },
+            // quick rings
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 6100,
+              lifespan: 500,
+              speed_jitter: 0,
+              yaw_jitter: 0,
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: 0.015,
+                speed: 2,
+                r: 8,
+                color: "#449999",
+                shell: "#44AAAA",
+                graze_color: "#003333",
+                style: "solid",
+                cull_type: "screen"
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 6100,
+              lifespan: 500,
+              speed_jitter: 0,
+              yaw_jitter: 0,
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: -0.015,
+                speed: 2,
+                r: 8,
+                color: "#449999",
+                shell: "#44AAAA",
+                graze_color: "#003333",
+                style: "solid",
+                cull_type: "screen"
+              }
+            },
+            // spray and slide
+            {
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: -20,
+                ex: 820,
+                ey: -20,
+                count: 12,
+                heading: 0.5 * Math.PI
+              }),
+              sync: 6650,
+              lifespan: 320,
+              spin: 0,
+              delay: 30,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 0.25*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#FF9900",
+                shell: "#FF6600",
+                graze_color: "#CC0000",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: 620,
+                ex: 820,
+                ey: 620,
+                count: 12,
+                heading: -0.5 * Math.PI
+              }),
+              sync: 6650,
+              lifespan: 320,
+              spin: 0,
+              delay: 30,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 1.25*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#99FF00",
+                shell: "#66FF00",
+                graze_color: "#00CC00",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: -20,
+                ex: 820,
+                ey: -20,
+                count: 12,
+                heading: 0.5 * Math.PI
+              }),
+              sync: 7230,
+              lifespan: 320,
+              spin: 0,
+              delay: 30,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 0.75*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#FF9966",
+                shell: "#FF6666",
+                graze_color: "#CC0066",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: 620,
+                ex: 820,
+                ey: 620,
+                count: 12,
+                heading: -0.5 * Math.PI
+              }),
+              sync: 7230,
+              lifespan: 320,
+              spin: 0,
+              delay: 30,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 1.75*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#99FF66",
+                shell: "#66FF66",
+                graze_color: "#00CC66",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: -20,
+                sy: -20,
+                ex: -20,
+                ey: 620,
+                count: 12,
+                heading: 0
+              }),
+              sync: 7810,
+              lifespan: 320,
+              spin: 0,
+              delay: 30,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 0.25*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#FF9966",
+                shell: "#FF6666",
+                graze_color: "#CC0066",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: 820,
+                sy: -20,
+                ex: 820,
+                ey: 620,
+                count: 12,
+                heading: -1 * Math.PI
+              }),
+              sync: 7810,
+              lifespan: 320,
+              spin: 0,
+              delay: 40,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 1.25*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#99FF66",
+                shell: "#66FF66",
+                graze_color: "#00CC66",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: -20,
+                sy: -20,
+                ex: -20,
+                ey: 620,
+                count: 12,
+                heading: 0
+              }),
+              sync: 8380,
+              lifespan: 320,
+              spin: 0,
+              delay: 30,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 1.75*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#FF9999",
+                shell: "#FF6699",
+                graze_color: "#CC0099",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
+            },
+            {
+              sources: helpers.makeLineAttack({
+                sx: 820,
+                sy: -20,
+                ex: 820,
+                ey: 620,
+                count: 12,
+                heading: -1 * Math.PI
+              }),
+              sync: 8380,
+              lifespan: 320,
+              spin: 0,
+              delay: 40,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.00,
+              random_spread: 1,
+              behaviors: [ SpawnerBehavior.juke ],
+              parameters: {
+                juke_countdown: 320,
+                juke_direction: 0.75*Math.PI,
+                juke_beam_width: 0,
+              },
+                bullet_type: {
+                yaw: 0,
+                speed: 2,
+                r: 8,
+                color: "#99FF99",
+                shell: "#66FF99",
+                graze_color: "#00CC99",
+                style: "gradient",
+                cull_type: "timer",
+                max_age: 1200
+              }
             }
           ],
           choreography: {}
@@ -615,7 +1045,7 @@ var thaumiel = {
       spirit_wells: [],
       exits: [],
       music: "music/2CO - the one with the vocaloid.flac",
-      duration: 10000,
+      duration: 12200,
       cycle: false
     },
   

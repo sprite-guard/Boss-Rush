@@ -59,7 +59,7 @@ window.onkeydown = function(e){
       CONTROLS.shield = 1;
       break;
     case K_RESET:
-      game.current_scene.init();
+      game.current_scene.init({show_prescreen: false});
       game.unpause();
       break;
     case K_MENU:
@@ -75,13 +75,14 @@ window.onkeydown = function(e){
       break;
     case K_TEST:
       game.current_scene = scenes_list.test_scene;
-      game.current_scene.init();
+      game.current_scene.init({show_prescreen: true});
       break;
     case K_INVULN:
       player.invulnerable = !player.invulnerable;
       break;
     case K_SKIP:
-      game.current_scene.boss.active_phase.timer = 0;
+      // skip the prescreen
+      game.current_scene.time_remaining = 0;
       break;
     case K_FAST:
       game.current_scene.slowdown_speed = 3;

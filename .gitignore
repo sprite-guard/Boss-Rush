@@ -2,3 +2,608 @@ notes.txt
 todo.txt
 nppsesh
 node_modules/
+dist/infinite-ritual-0.0.0-win-x64/swiftshader/libGLESv2.dll
+dist/infinite-ritual-0.0.0-win-x64/swiftshader/libEGL.dll
+dist/infinite-ritual-0.0.0-win-x64/snapshot_blob.bin
+dist/infinite-ritual-0.0.0-win-x64/resources.pak
+dist/infinite-ritual-0.0.0-win-x64/README.md
+dist/infinite-ritual-0.0.0-win-x64/package.json
+dist/infinite-ritual-0.0.0-win-x64/package-lock.json
+dist/infinite-ritual-0.0.0-win-x64/nw_elf.dll
+dist/infinite-ritual-0.0.0-win-x64/nw_200_percent.pak
+dist/infinite-ritual-0.0.0-win-x64/nw_100_percent.pak
+dist/infinite-ritual-0.0.0-win-x64/nw.dll
+dist/infinite-ritual-0.0.0-win-x64/node.dll
+dist/infinite-ritual-0.0.0-win-x64/natives_blob.bin
+dist/infinite-ritual-0.0.0-win-x64/music/Seth SirrMan Sotolongo - ForSpriteMan (Final Cut).wav
+dist/infinite-ritual-0.0.0-win-x64/music/Sam Crowley - Sync.wav
+dist/infinite-ritual-0.0.0-win-x64/music/Milana Zilnik - Dream of a Child.wav
+dist/infinite-ritual-0.0.0-win-x64/music/Metaself - Kinetic Elevation Rites.wav
+dist/infinite-ritual-0.0.0-win-x64/music/2CO - the one with the vocaloid.mp3
+dist/infinite-ritual-0.0.0-win-x64/music/2CO - the one with the vocaloid.flac
+dist/infinite-ritual-0.0.0-win-x64/locales/zh-TW.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/zh-CN.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/vi.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/uk.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/tr.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/th.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/te.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ta.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/sw.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/sv.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/sr.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/sl.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/sk.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ru.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ro.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/pt-PT.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/pt-BR.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/pl.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/nl.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/nb.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ms.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/mr.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ml.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/lv.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/lt.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ko.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/kn.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ja.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/it.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/id.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/hu.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/hr.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/hi.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/he.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/gu.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/fr.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/fil.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/fi.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/fa.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/et.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/es.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/es-419.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/en-US.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/en-GB.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/el.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/de.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/da.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/cs.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ca.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/bn.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/bg.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/ar.pak
+dist/infinite-ritual-0.0.0-win-x64/locales/am.pak
+dist/infinite-ritual-0.0.0-win-x64/LICENSE.md
+dist/infinite-ritual-0.0.0-win-x64/libGLESv2.dll
+dist/infinite-ritual-0.0.0-win-x64/libEGL.dll
+dist/infinite-ritual-0.0.0-win-x64/lib/gpu/gpu.min.js
+dist/infinite-ritual-0.0.0-win-x64/lib/gpu/gpu.js
+dist/infinite-ritual-0.0.0-win-x64/lib/gpu/gpu-core.min.js
+dist/infinite-ritual-0.0.0-win-x64/lib/gpu/gpu-core.js
+dist/infinite-ritual-0.0.0-win-x64/js/ui/text.js
+dist/infinite-ritual-0.0.0-win-x64/js/ui/prescreen.js
+dist/infinite-ritual-0.0.0-win-x64/js/ui/portal.js
+dist/infinite-ritual-0.0.0-win-x64/js/ui/menuitem.js
+dist/infinite-ritual-0.0.0-win-x64/js/ui/keyboard.js
+dist/infinite-ritual-0.0.0-win-x64/js/ui/controllers.js
+dist/infinite-ritual-0.0.0-win-x64/js/ui/common.js
+dist/infinite-ritual-0.0.0-win-x64/js/sound.js
+dist/infinite-ritual-0.0.0-win-x64/js/scene.js
+dist/infinite-ritual-0.0.0-win-x64/js/resource/parameters.js
+dist/infinite-ritual-0.0.0-win-x64/js/resource/catalog.js
+dist/infinite-ritual-0.0.0-win-x64/js/player/spirit.js
+dist/infinite-ritual-0.0.0-win-x64/js/player/player.js
+dist/infinite-ritual-0.0.0-win-x64/js/player/hiteffect.js
+dist/infinite-ritual-0.0.0-win-x64/js/player/dashtarget.js
+dist/infinite-ritual-0.0.0-win-x64/js/lib/pixi.min.js
+dist/infinite-ritual-0.0.0-win-x64/js/helpers.js
+dist/infinite-ritual-0.0.0-win-x64/js/game.js
+dist/infinite-ritual-0.0.0-win-x64/js/complex.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/weaver.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/thaumiel.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/test boss.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/template.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/Symmetria.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/sprite.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/spiritwell.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/spawnerbehavior.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/spawner.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/phase.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/megaman_boss.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/kinetic.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/hope.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/generators/PCGBoss.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/generators/avoidance_generator.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/generators/avoidance_builder.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/choreography.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/bulletbehavior.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/bullet.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/boss.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/avoidance_boss.js
+dist/infinite-ritual-0.0.0-win-x64/js/boss/attack.js
+dist/infinite-ritual-0.0.0-win-x64/js/background.js
+dist/infinite-ritual-0.0.0-win-x64/infinite-ritual.exe
+dist/infinite-ritual-0.0.0-win-x64/icudtl.dat
+dist/infinite-ritual-0.0.0-win-x64/icon.PNG
+dist/infinite-ritual-0.0.0-win-x64/ffmpeg.dll
+dist/infinite-ritual-0.0.0-win-x64/d3dcompiler_47.dll
+dist/infinite-ritual-0.0.0-win-x64/credits.html
+dist/infinite-ritual-0.0.0-win-x64/CONTRIBUTING.md
+dist/infinite-ritual-0.0.0-win-x64/bossrush.html
+dist/infinite-ritual-0.0.0-win-x64/bossrush.css
+dist/infinite-ritual-0.0.0-win-x64/art/Water Spirit.png
+dist/infinite-ritual-0.0.0-win-x64/art/Spriteguard Commission.zip
+dist/infinite-ritual-0.0.0-win-x64/art/sample02.PNG
+dist/infinite-ritual-0.0.0-win-x64/art/sample01.PNG
+dist/infinite-ritual-0.0.0-win-x64/art/quiet bird.jpg
+dist/infinite-ritual-0.0.0-win-x64/art/proud bird.jpg
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Tail Tip.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Tail Straggler.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Pupil.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Middle Leg Top BG.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Middle Leg FG.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Middle Leg Bottom BG.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Mask.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Line Art.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Hind Leg Toe.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Hair Right.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Hair Left.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Hair Center.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Hair Center Left.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Front Leg Top BG.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Front Leg Straggler BG.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Front Leg Bottom BG.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Eye Black.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Ear.png
+dist/infinite-ritual-0.0.0-win-x64/art/Fox/Body.png
+dist/infinite-ritual-0.0.0-win-x64/art/dream child.xcf
+dist/infinite-ritual-0.0.0-win-x64/art/cover.PNG
+dist/infinite-ritual-0.0.0-win-x64.zip
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Helper.app/Contents/PkgInfo
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Helper.app/Contents/MacOS/nwjs Helper
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Helper.app/Contents/Info.plist
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/XPCServices
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/Current
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/XPCServices/AlertNotificationService.xpc/Contents/MacOS/AlertNotificationService
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/XPCServices/AlertNotificationService.xpc/Contents/Info.plist
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/zh_TW.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/zh_CN.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/vi.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/v8_context_snapshot.bin
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/uk.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/tr.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/Toolbar.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/th.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/te.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/TaskManager.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ta.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/sw.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/sv.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/sr.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/snapshot_blob.bin
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/sl.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/sk.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/SaveAccessoryView.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ru.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ro.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/resources.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/pt_PT.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/pt_BR.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/product_logo_32.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/pl.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/OneClickSigninDialog.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/OneClickSigninBubble.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/nw_200_percent.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/nw_100_percent.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/nl.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/nb.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/natives_blob.bin
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ms.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/mr.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ml.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/MainMenu.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/lv.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/lt.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ko.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/kn.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ja.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/it.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/install.sh
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/InfoBar.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/Info.plist
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/id.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/icudtl.dat
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/HungRendererDialog.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/hu.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/HttpAuthLoginSheet.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/hr.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/hi.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/he.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/gu.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/GlobalErrorBubble.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/fr.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/FirstRunBubble.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/FindBar.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/fil.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/fi.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/fa.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ExtensionInstallPromptWebstoreData.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ExtensionInstallPromptNoWarnings.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ExtensionInstallPrompt.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ExtensionInstalledBubble.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/et.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/es_419.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/es.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/en_GB.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/en.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/el.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/DownloadShelf.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/DownloadItem.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/de.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/da.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/cs.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/CookieDetailsView.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentProtocolHandlers.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedSimple.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedPopups.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedMixedScript.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedMIDISysEx.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedMedia.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedGeolocation.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedDownloads.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ContentBlockedCookies.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/CollectedCookies.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ca.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/BookmarkNameFolder.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/BookmarkEditor.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/BookmarkBubble.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/BookmarkBarFolderWindow.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/BookmarkAllTabs.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/bn.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/bg.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/ar.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/AppMenu.nib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/app_mode_loader.app/Contents/PkgInfo
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/app_mode_loader.app/Contents/MacOS/app_mode_loader
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/app_mode_loader.app/Contents/Info.plist
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Resources/am.lproj/locale.pak
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/nwjs Framework
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Versions/A/Helpers/crashpad_handler
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Resources
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/nwjs Framework
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/libnode.dylib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/nwjs Framework.framework/Helpers
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Versions/62.0.3202.94/libffmpeg.dylib
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/zh_TW.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/zh_CN.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/vi.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/uk.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/tr.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/th.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/te.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ta.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/sw.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/sv.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/sr.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/sl.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/sk.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/scripting.sdef
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ru.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ro.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/pt_PT.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/pt_BR.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/pl.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/nl.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/nb.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ms.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/mr.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ml.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/lv.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/lt.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ko.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/kn.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ja.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/it.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/io.nwjs.nwjs.manifest/Contents/Resources/io.nwjs.nwjs.manifest
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/io.nwjs.nwjs.manifest/Contents/Resources/en.lproj/Localizable.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/id.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/hu.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/hr.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/hi.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/he.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/gu.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/fr.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/fil.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/fi.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/fa.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/et.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/es_419.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/es.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/en_GB.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/en.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/el.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/document.icns
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/de.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/da.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/cs.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ca.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/bn.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/bg.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/ar.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/README.md
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/package.json
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/package-lock.json
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/music/Seth SirrMan Sotolongo - ForSpriteMan (Final Cut).wav
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/music/Sam Crowley - Sync.wav
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/music/Milana Zilnik - Dream of a Child.wav
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/music/Metaself - Kinetic Elevation Rites.wav
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/music/2CO - the one with the vocaloid.mp3
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/music/2CO - the one with the vocaloid.flac
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/LICENSE.md
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/lib/gpu/gpu.min.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/lib/gpu/gpu.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/lib/gpu/gpu-core.min.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/lib/gpu/gpu-core.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/ui/text.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/ui/prescreen.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/ui/portal.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/ui/menuitem.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/ui/keyboard.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/ui/controllers.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/ui/common.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/sound.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/scene.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/resource/parameters.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/resource/catalog.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/player/spirit.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/player/player.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/player/hiteffect.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/player/dashtarget.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/lib/pixi.min.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/helpers.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/game.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/complex.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/weaver.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/thaumiel.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/test boss.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/template.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/Symmetria.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/sprite.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/spiritwell.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/spawnerbehavior.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/spawner.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/phase.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/megaman_boss.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/kinetic.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/hope.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/generators/PCGBoss.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/generators/avoidance_generator.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/generators/avoidance_builder.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/choreography.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/bulletbehavior.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/bullet.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/boss.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/avoidance_boss.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/boss/attack.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/background.js
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/icon.PNG
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/CONTRIBUTING.md
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/bossrush.html
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/bossrush.css
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Water Spirit.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Spriteguard Commission.zip
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/sample02.PNG
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/sample01.PNG
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/quiet bird.jpg
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/proud bird.jpg
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Tail Tip.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Tail Straggler.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Pupil.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Middle Leg Top BG.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Middle Leg FG.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Middle Leg Bottom BG.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Mask.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Line Art.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Hind Leg Toe.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Hair Right.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Hair Left.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Hair Center.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Hair Center Left.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Front Leg Top BG.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Front Leg Straggler BG.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Front Leg Bottom BG.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Eye Black.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Ear.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/Fox/Body.png
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/dream child.xcf
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/art/cover.PNG
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.icns
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/am.lproj/InfoPlist.strings
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/PkgInfo
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/MacOS/infinite-ritual
+dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Info.plist
+dist/infinite-ritual-0.0.0-mac-x64/credits.html
+dist/infinite-ritual-0.0.0-mac-x64.zip
+dist/infinite-ritual-0.0.0-linux-x64/swiftshader/libGLESv2.so
+dist/infinite-ritual-0.0.0-linux-x64/swiftshader/libEGL.so
+dist/infinite-ritual-0.0.0-linux-x64/snapshot_blob.bin
+dist/infinite-ritual-0.0.0-linux-x64/resources.pak
+dist/infinite-ritual-0.0.0-linux-x64/README.md
+dist/infinite-ritual-0.0.0-linux-x64/package.json
+dist/infinite-ritual-0.0.0-linux-x64/package-lock.json
+dist/infinite-ritual-0.0.0-linux-x64/nw_200_percent.pak
+dist/infinite-ritual-0.0.0-linux-x64/nw_100_percent.pak
+dist/infinite-ritual-0.0.0-linux-x64/natives_blob.bin
+dist/infinite-ritual-0.0.0-linux-x64/music/Seth SirrMan Sotolongo - ForSpriteMan (Final Cut).wav
+dist/infinite-ritual-0.0.0-linux-x64/music/Sam Crowley - Sync.wav
+dist/infinite-ritual-0.0.0-linux-x64/music/Milana Zilnik - Dream of a Child.wav
+dist/infinite-ritual-0.0.0-linux-x64/music/Metaself - Kinetic Elevation Rites.wav
+dist/infinite-ritual-0.0.0-linux-x64/music/2CO - the one with the vocaloid.mp3
+dist/infinite-ritual-0.0.0-linux-x64/music/2CO - the one with the vocaloid.flac
+dist/infinite-ritual-0.0.0-linux-x64/locales/zh-TW.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/zh-CN.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/vi.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/uk.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/tr.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/th.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/te.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ta.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/sw.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/sv.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/sr.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/sl.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/sk.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ru.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ro.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/pt-PT.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/pt-BR.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/pl.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/nl.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/nb.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ms.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/mr.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ml.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/lv.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/lt.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ko.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/kn.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ja.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/it.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/id.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/hu.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/hr.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/hi.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/he.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/gu.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/fr.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/fil.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/fi.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/fa.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/et.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/es.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/es-419.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/en-US.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/en-GB.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/el.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/de.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/da.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/cs.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ca.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/bn.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/bg.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/ar.pak
+dist/infinite-ritual-0.0.0-linux-x64/locales/am.pak
+dist/infinite-ritual-0.0.0-linux-x64/LICENSE.md
+dist/infinite-ritual-0.0.0-linux-x64/lib/libnw.so
+dist/infinite-ritual-0.0.0-linux-x64/lib/libnode.so
+dist/infinite-ritual-0.0.0-linux-x64/lib/libffmpeg.so
+dist/infinite-ritual-0.0.0-linux-x64/lib/gpu/gpu.min.js
+dist/infinite-ritual-0.0.0-linux-x64/lib/gpu/gpu.js
+dist/infinite-ritual-0.0.0-linux-x64/lib/gpu/gpu-core.min.js
+dist/infinite-ritual-0.0.0-linux-x64/lib/gpu/gpu-core.js
+dist/infinite-ritual-0.0.0-linux-x64/js/ui/text.js
+dist/infinite-ritual-0.0.0-linux-x64/js/ui/prescreen.js
+dist/infinite-ritual-0.0.0-linux-x64/js/ui/portal.js
+dist/infinite-ritual-0.0.0-linux-x64/js/ui/menuitem.js
+dist/infinite-ritual-0.0.0-linux-x64/js/ui/keyboard.js
+dist/infinite-ritual-0.0.0-linux-x64/js/ui/controllers.js
+dist/infinite-ritual-0.0.0-linux-x64/js/ui/common.js
+dist/infinite-ritual-0.0.0-linux-x64/js/sound.js
+dist/infinite-ritual-0.0.0-linux-x64/js/scene.js
+dist/infinite-ritual-0.0.0-linux-x64/js/resource/parameters.js
+dist/infinite-ritual-0.0.0-linux-x64/js/resource/catalog.js
+dist/infinite-ritual-0.0.0-linux-x64/js/player/spirit.js
+dist/infinite-ritual-0.0.0-linux-x64/js/player/player.js
+dist/infinite-ritual-0.0.0-linux-x64/js/player/hiteffect.js
+dist/infinite-ritual-0.0.0-linux-x64/js/player/dashtarget.js
+dist/infinite-ritual-0.0.0-linux-x64/js/lib/pixi.min.js
+dist/infinite-ritual-0.0.0-linux-x64/js/helpers.js
+dist/infinite-ritual-0.0.0-linux-x64/js/game.js
+dist/infinite-ritual-0.0.0-linux-x64/js/complex.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/weaver.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/thaumiel.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/test boss.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/template.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/Symmetria.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/sprite.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/spiritwell.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/spawnerbehavior.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/spawner.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/phase.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/megaman_boss.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/kinetic.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/hope.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/generators/PCGBoss.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/generators/avoidance_generator.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/generators/avoidance_builder.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/choreography.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/bulletbehavior.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/bullet.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/boss.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/avoidance_boss.js
+dist/infinite-ritual-0.0.0-linux-x64/js/boss/attack.js
+dist/infinite-ritual-0.0.0-linux-x64/js/background.js
+dist/infinite-ritual-0.0.0-linux-x64/infinite-ritual
+dist/infinite-ritual-0.0.0-linux-x64/icudtl.dat
+dist/infinite-ritual-0.0.0-linux-x64/icon.PNG
+dist/infinite-ritual-0.0.0-linux-x64/credits.html
+dist/infinite-ritual-0.0.0-linux-x64/CONTRIBUTING.md
+dist/infinite-ritual-0.0.0-linux-x64/bossrush.html
+dist/infinite-ritual-0.0.0-linux-x64/bossrush.css
+dist/infinite-ritual-0.0.0-linux-x64/art/Water Spirit.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Spriteguard Commission.zip
+dist/infinite-ritual-0.0.0-linux-x64/art/sample02.PNG
+dist/infinite-ritual-0.0.0-linux-x64/art/sample01.PNG
+dist/infinite-ritual-0.0.0-linux-x64/art/quiet bird.jpg
+dist/infinite-ritual-0.0.0-linux-x64/art/proud bird.jpg
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Tail Tip.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Tail Straggler.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Pupil.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Middle Leg Top BG.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Middle Leg FG.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Middle Leg Bottom BG.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Mask.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Line Art.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Hind Leg Toe.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Hair Right.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Hair Left.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Hair Center.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Hair Center Left.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Front Leg Top BG.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Front Leg Straggler BG.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Front Leg Bottom BG.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Eye Black.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Ear.png
+dist/infinite-ritual-0.0.0-linux-x64/art/Fox/Body.png
+dist/infinite-ritual-0.0.0-linux-x64/art/dream child.xcf
+dist/infinite-ritual-0.0.0-linux-x64/art/cover.PNG
+dist/infinite-ritual-0.0.0-linux-x64.zip
+bossrush.html
+art/Water Spirit.png
+art/Spriteguard Commission.zip
+art/sample02.PNG
+art/sample01.PNG
+art/Fox/Tail Tip.png
+art/Fox/Tail Straggler.png
+art/Fox/Pupil.png
+art/Fox/Middle Leg Top BG.png
+art/Fox/Middle Leg FG.png
+art/Fox/Middle Leg Bottom BG.png
+art/Fox/Mask.png
+art/Fox/Line Art.png
+art/Fox/Hind Leg Toe.png
+art/Fox/Hair Right.png
+art/Fox/Hair Left.png
+art/Fox/Hair Center.png
+art/Fox/Hair Center Left.png
+art/Fox/Front Leg Top BG.png
+art/Fox/Front Leg Straggler BG.png
+art/Fox/Front Leg Bottom BG.png
+art/Fox/Eye Black.png
+art/Fox/Ear.png
+art/Fox/Body.png
+art/cover.PNG
+js/lib/bezier.js
+js/lib/pixi.min.js
+music/Pamgaea.mp3

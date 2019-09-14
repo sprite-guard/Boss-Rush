@@ -97,7 +97,7 @@ game.update = function() {
     for(var i = 0; i < game.moving_average_array.length; i++) {
       game.average_fps += game.moving_average_array[i];
     }
-    game.average_fps = game.average_fps / game.moving_average_array.length;
+    game.average_fps = Math.round(game.average_fps / game.moving_average_array.length);
     last_time = performance.now();
     
     if(UPDATE == 0) {

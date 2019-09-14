@@ -17,7 +17,11 @@ function Phase(parent,descriptor) {
   this.randomize_attacks = descriptor.randomize_attacks;
   this.cycle = descriptor.cycle;
   
-  this.music = new Sound(descriptor.music) || false;
+  if(descriptor.music) {
+    this.music = new Sound(descriptor.music);
+  } else {
+    this.music = false;
+  }
   
   this.get_next_attack_index = function() {
     if(this.randomize_attacks) {
@@ -69,7 +73,7 @@ function Phase(parent,descriptor) {
     var time_increment = 1;
     
     // slow the music if the framerate wobbles
-    var jitter = game.fr / 60;
+    var jitter = 1; //game.fr / 60;
     
     if(slowdown) {
       time_increment = slowspeed;

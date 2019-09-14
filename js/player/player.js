@@ -14,6 +14,11 @@ player.init = function() {
   this.wing_x_offset = 12;
   this.wing_y_offset = 6;
   this.wing_rotation = 0.33;
+  this.wing_rotation_max = 0.40;
+  this.wing_rotation_min = 0.24;
+  this.wing_rotation_speed = 0.02;
+  this.wing_rotation_direction = 1;
+  this.wing_x_offset_speed = 0.4;
   this.r = 8;
   this.graze_radius = 32;
   this.hb = 0;
@@ -233,7 +238,6 @@ player.update = function() {
     }
     
     // hit effect management
-    // NB the refactor is going to ruin this
     var next_hit_array = [];
     for(var i = 0; i < this.hit_effects.length; i++) {
       this.hit_effects[i].update();
@@ -242,6 +246,17 @@ player.update = function() {
       }
     }
     this.hit_effects = next_hit_array;
+  }
+  
+  // flap the wings
+  if(this.state == "fine") {
+    if((this.wing_rotation >= this.wing_rotation_max)
+    || (this.wing_rotation <= this.wing_rotation_min)) {
+      this.wing_rotation_direction *= -1
+    }
+    
+    this.wing_rotation += this.wing_rotation_speed * this.wing_rotation_direction;
+    this.wing_x_offset += this.wing_x_offset_speed * this.wing_rotation_direction;
   }
 };
 

@@ -133,16 +133,16 @@ BulletBehavior.phasing = function(parent) {
   // initializer
   if(parent.is_new) {
     // phase in and out based on an array of timers
-    parent.phase_state_list = parent.params.phase_state_list;
+    parent.phase_state_list = parent.parameters.phase_state_list;
     parent.phase_timer = parent.phase_state_list[0];
     // phased in or out?
-    parent.is_present = parent.params.start_phase;
+    parent.is_present = parent.parameters.start_phase;
     // where in the list?
     parent.current_phase_state = 0;
     // transition
-    parent.phase_transition_time = parent.params.transition_time;
-    parent.max_r = parent.params.max_r || parent.params.r;
-    parent.min_r = parent.params.min_r || 0;
+    parent.phase_transition_time = parent.parameters.transition_time;
+    parent.max_r = parent.parameters.max_r || parent.parameters.r;
+    parent.min_r = parent.parameters.min_r || 0;
   }
   // behavior
   if(parent.phase_timer > 0) {
@@ -173,6 +173,24 @@ BulletBehavior.phasing = function(parent) {
   }
 };
 
+BulletBehavior.stopyaw = function(parent) {
+  // speed modifier
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  // initializer
+  if(parent.is_new) {
+    parent.stopyaw_timer = parent.parameters.stopyaw_timer;
+  }
+  // behavior
+  if(parent.stopyaw_timer > 0) {
+    parent.stopyaw_timer -= speed;
+  } else {
+    parent.yaw = 0;
+  }
+};
+
 BulletBehavior.template = function(parent) {
   // speed modifier
   var speed = 1;
@@ -181,7 +199,7 @@ BulletBehavior.template = function(parent) {
   }
   // initializer
   if(parent.is_new) {
-    parent.template_timer = parent.params.template_timer;
+    parent.template_timer = parent.parameters.template_timer;
   }
   // behavior
   if(parent.template_timer > 0) {

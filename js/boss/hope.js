@@ -12,6 +12,7 @@ var hope = {
       attacks: [
         {
           spawners: [
+            // hexagons
             {
               sources: [
                 {x: 10, y: 10, heading: 0}
@@ -32,7 +33,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,8,0,1),
+                    sources: helpers.makeRingAttack(400,300,6,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -95,6 +96,7 @@ var hope = {
                 max_age: 1000
               }
             },
+            // hexagons
             {
               sources: [
                 {x: 10, y: 590, heading: -Math.PI / 2}
@@ -115,7 +117,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,8,0,1),
+                    sources: helpers.makeRingAttack(400,300,6,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -178,6 +180,7 @@ var hope = {
                 max_age: 1000
               }
             },
+            // hexagons
             {
               sources: [
                 {x: 790, y: 10, heading: Math.PI / 2},
@@ -198,7 +201,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,8,0,1),
+                    sources: helpers.makeRingAttack(400,300,6,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -261,6 +264,7 @@ var hope = {
                 max_age: 1000
               }
             },
+            // hexagons
             {
               sources: [
                 {x: 790, y: 590, heading: Math.PI}
@@ -281,7 +285,7 @@ var hope = {
                   max_yaw: 0.03,
                   explode_time: 320,
                   explode_spawner: {
-                    sources: helpers.makeRingAttack(400,300,8,0,1),
+                    sources: helpers.makeRingAttack(400,300,6,0,1),
                     x: 0,
                     y: 0,
                     spin: 0,
@@ -344,6 +348,7 @@ var hope = {
                 max_age: 1000
               }
             },
+            // magenta demon
             {
               sources: helpers.makeRingAttack(400,300,9,0,1),
               x: 0,
@@ -374,18 +379,18 @@ var hope = {
                     behaviors: [ SpawnerBehavior.freeze, SpawnerBehavior.scatter ],
                     parameters: {
                       freeze_countdown: 40,
-                      freeze_duration: 100,
-                      scatter_countdown: (40+100),
+                      freeze_duration: 80,
+                      scatter_countdown: (40+80),
                       scatter_target: {x: 400, y: 300},
                       scatter_beam_width: Math.PI/4,
-                      scatter_direction: 1
+                      scatter_direction: -1
                     },
                     bullet_type: {
                       behaviors: [ BulletBehavior.homing ],
                       parameters: {
-                        homing_time: 300,
-                        homing_delay: 140,
-                        max_yaw: 0.01,
+                        homing_time: 340,
+                        homing_delay: 120,
+                        max_yaw: 0.007,
                       },
                       yaw: 0,
                       speed: 3,
@@ -410,6 +415,7 @@ var hope = {
                 max_age: 1000
               }
             },
+            // flower
             {
               sources: helpers.makeRingAttack(400,300,6,0,1),
               x: 400, y: 300, heading: 0,
@@ -498,6 +504,7 @@ var hope = {
                 max_age: 1000,
               }
             },
+            // orange pursuit
             {
               sources: [{x: 400, y: 300, heading: 0}],
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
@@ -526,19 +533,20 @@ var hope = {
                       },
                       yaw: 0,
                       speed: 1,
-                      r: 8,
-                      color: "#FF5522",
-                      shell: "#FF5522",
+                      r: 6,
+                      color: "#FF7744",
+                      shell: "#EE4411",
                       graze_color: "#FF0000",
-                      style: "solid",
+                      style: "gradient",
                       cull_type: "screen",
-                      max_age: 1000
+                      max_age: 600
                     }
                   }
                 },
                 yaw: 0,
                 speed: 2,
                 r: 0,
+                halo: 8,
                 color: "#FF5522",
                 shell: "#FF5522",
                 graze_color: "#FF0000",
@@ -547,17 +555,24 @@ var hope = {
                 max_age: 1000
               }
             },
+            // cannons
             {
               sources: [
-                {x: 10, y: 10, heading: 0 }
+                {x: 10, y: 10, heading: -0.2 },
+                {x: 10, y: 10, heading: -0.1 },
+                {x: 10, y: 10, heading: 0 },
+                {x: 10, y: 10, heading: 0.1 },
+                {x: 10, y: 10, heading: 0.2 },
               ],
-              delay: 4,
-              sync: 2860,
-              lifespan: 100,
-              random_spread: 0.5,
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
               aimed: true,
+              target: {x: 400, y: 300},
               immediate: true,
               spin: 0,
+              yaw_jitter: 0.002,
               bullet_type: {
                 behaviors: [  ],
                 parameters: {
@@ -576,15 +591,21 @@ var hope = {
             },
             {
               sources: [
-                {x: 10, y: 550, heading: 0 }
+                {x: 10, y: 10, heading: -0.2 },
+                {x: 10, y: 10, heading: -0.1 },
+                {x: 10, y: 10, heading: 0 },
+                {x: 10, y: 10, heading: 0.1 },
+                {x: 10, y: 10, heading: 0.2 },
               ],
-              delay: 4,
-              sync: 2860,
-              lifespan: 100,
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
               aimed: true,
+              target: {x: 400, y: 300},
               immediate: true,
               spin: 0,
-              random_spread: 0.5,
+              yaw_jitter: -0.002,
               bullet_type: {
                 behaviors: [  ],
                 parameters: {
@@ -603,15 +624,21 @@ var hope = {
             },
             {
               sources: [
-                {x: 750, y: 10, heading: 0 }
+                {x: 10, y: 10, heading: -0.2 },
+                {x: 10, y: 10, heading: -0.1 },
+                {x: 10, y: 10, heading: 0 },
+                {x: 10, y: 10, heading: 0.1 },
+                {x: 10, y: 10, heading: 0.2 },
               ],
-              delay: 4,
-              sync: 2860,
-              lifespan: 100,
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
               aimed: true,
+              target: {x: 400, y: 300},
               immediate: true,
               spin: 0,
-              random_spread: 0.5,
+              yaw_jitter: 0.002,
               bullet_type: {
                 behaviors: [  ],
                 parameters: {
@@ -630,15 +657,21 @@ var hope = {
             },
             {
               sources: [
-                {x: 750, y: 550, heading: 0 }
+                {x: 790, y: 10, heading: -0.2 },
+                {x: 790, y: 10, heading: -0.1 },
+                {x: 790, y: 10, heading: 0 },
+                {x: 790, y: 10, heading: 0.1 },
+                {x: 790, y: 10, heading: 0.2 },
               ],
-              delay: 4,
-              sync: 2860,
-              lifespan: 100,
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
               aimed: true,
+              target: {x: 400, y: 300},
               immediate: true,
               spin: 0,
-              random_spread: 0.5,
+              yaw_jitter: -0.002,
               bullet_type: {
                 behaviors: [  ],
                 parameters: {
@@ -655,6 +688,139 @@ var hope = {
                 max_cycles: 1
               }
             },
+            {
+              sources: [
+                {x: 10, y: 10, heading: -0.2 },
+                {x: 10, y: 10, heading: -0.1 },
+                {x: 10, y: 10, heading: 0 },
+                {x: 10, y: 10, heading: 0.1 },
+                {x: 10, y: 10, heading: 0.2 },
+              ],
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
+              aimed: true,
+              target: {x: 400, y: 300},
+              immediate: true,
+              spin: 0,
+              yaw_jitter: 0.002,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0,
+                speed: 4,
+                r: 8,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: [
+                {x: 10, y: 590, heading: -0.2 },
+                {x: 10, y: 590, heading: -0.1 },
+                {x: 10, y: 590, heading: 0 },
+                {x: 10, y: 590, heading: 0.1 },
+                {x: 10, y: 590, heading: 0.2 },
+              ],
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
+              aimed: true,
+              target: {x: 400, y: 300},
+              immediate: true,
+              spin: 0,
+              yaw_jitter: -0.002,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0,
+                speed: 4,
+                r: 8,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: [
+                {x: 10, y: 10, heading: -0.2 },
+                {x: 10, y: 10, heading: -0.1 },
+                {x: 10, y: 10, heading: 0 },
+                {x: 10, y: 10, heading: 0.1 },
+                {x: 10, y: 10, heading: 0.2 },
+              ],
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
+              aimed: true,
+              target: {x: 400, y: 300},
+              immediate: true,
+              spin: 0,
+              yaw_jitter: 0.002,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0,
+                speed: 4,
+                r: 8,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            {
+              sources: [
+                {x: 790, y: 590, heading: -0.2 },
+                {x: 790, y: 590, heading: -0.1 },
+                {x: 790, y: 590, heading: 0 },
+                {x: 790, y: 590, heading: 0.1 },
+                {x: 790, y: 590, heading: 0.2 },
+              ],
+              delay: 40,
+              sync: 2880,
+              lifespan: 121,
+              random_spread: 0,
+              aimed: true,
+              target: {x: 400, y: 300},
+              immediate: true,
+              spin: 0,
+              yaw_jitter: -0.002,
+              bullet_type: {
+                behaviors: [  ],
+                parameters: {
+                },
+                yaw: 0,
+                speed: 4,
+                r: 8,
+                color: "#0066FF",
+                shell: "#0044CC",
+                graze_color: "#000000",
+                style: "solid",
+                cull_type: "timer",
+                max_age: 800,
+                max_cycles: 1
+              }
+            },
+            // double spiral
             {
               sources: [{x: 400, y: 300, heading: 0}],
               x: 0, y: 0, heading: 0, spin: 0, random_spread: 0,
@@ -884,11 +1050,12 @@ var hope = {
                 max_age: false
               }
             },
+            // final
             {
               sources: helpers.makeRingAttack(400,300,6,0,1),
               x: 0, y: 0, heading: 0,
               random_spread: 1,
-              delay: 2,
+              delay: 6,
               sync: 8120,
               lifespan: 100,
               aimed: false,
@@ -900,7 +1067,7 @@ var hope = {
                 },
                 yaw: 0.01,
                 speed: 4.5,
-                r: 6,
+                r: 4,
                 color: "#0066FF",
                 shell: "#0044CC",
                 graze_color: "#000000",
@@ -914,7 +1081,7 @@ var hope = {
               sources: helpers.makeRingAttack(400,300,6,0,1),
               x: 0, y: 0, heading: 0,
               random_spread: 1,
-              delay: 2,
+              delay: 6,
               sync: 8120,
               lifespan: 100,
               aimed: false,
@@ -926,7 +1093,7 @@ var hope = {
                 },
                 yaw: -0.01,
                 speed: 4.5,
-                r: 6,
+                r: 4,
                 color: "#0088DD",
                 shell: "#0055BB",
                 graze_color: "#000000",
