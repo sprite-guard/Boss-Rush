@@ -37,6 +37,33 @@ scenes_list.dream_intro = PreScreen({
   ]
 });
 
+scenes_list.symmetria_intro = PreScreen({
+  next_scene: scenes_list.symmetria,
+  elements: [
+    Background.DEFAULT,
+    new TextElement([
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "128px serif",
+        line_width: 2,
+        x: 32,
+        y: 250,
+        text: "Symmetria"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "64px serif",
+        line_width: 2,
+        x: 32,
+        y: 400,
+        text: "Music: Sam Crowley"
+      })
+    ])
+  ]
+});
+
 scenes_list.thaumiel_intro = PreScreen({
   next_scene: scenes_list.thaumiel,
   elements: [
@@ -90,4 +117,57 @@ scenes_list.kinetic_intro = PreScreen({
     ])
   ]
 });
-scenes_list.test_scene = scenes_list.dream_intro;
+
+scenes_list.weaver_intro = PreScreen({
+  next_scene: scenes_list.weaver,
+  elements: [
+    Background.DEFAULT,
+    new TextElement([
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "128px serif",
+        line_width: 2,
+        x: 32,
+        y: 250,
+        text: "The Weaver"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "48px serif",
+        line_width: 2,
+        x: 32,
+        y: 400,
+        text: "Music: Seth SirrMan Sotolongo"
+      })
+    ])
+  ]
+});
+scenes_list.avoidance_intro = PreScreen({
+  next_scene: scenes_list.avoidance,
+  elements: [
+    Background.DEFAULT,
+    new TextElement([
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "128px serif",
+        line_width: 2,
+        x: 32,
+        y: 250,
+        text: "TEST"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "64px serif",
+        line_width: 2,
+        x: 32,
+        y: 400,
+        text: "Music: Sam Crowley"
+      })
+    ])
+  ]
+});
+scenes_list.test_scene = scenes_list.thaumiel_intro;

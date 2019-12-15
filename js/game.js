@@ -46,6 +46,7 @@ game.init = function() {
   game.ewam = 60;
   game.draw_batch = [];
   game.corner_buffer = 450;
+  game.volume = 1;
   
   if(!PIXI) {
     game.canvas = document.getElementById("game");
@@ -145,6 +146,25 @@ game.quit = function() {
     var win = nw.Window.get();
     win.close();
   }
+}
+
+game.mute_unmute = function() {
+  if(game.volume > 0) {
+    game.previous_volume = game.volume;
+    game.volume = 0;
+  } else {
+    game.volume = game.previous_volume;
+  }
+}
+
+game.adjust_volume = function(amount) {
+  if((game.volume + amount <= 1) && (game.volume + amount >= 0)) {
+    game.volume += amount;
+  }
+}
+
+game.shared_music_pool = {
+  menu: new Sound("music/GlitchCat7 - Bullet_Hell_baseline.mp3",true)
 }
 
 game.init();

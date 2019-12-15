@@ -2,7 +2,7 @@ var kinetic = {
   x: 0,
   y: 0,
   sprites: [
-    { draw: function(x,y) { return true; } }
+    { draw: function(parent) { return true; } }
   ],
   phases: [
      {
@@ -324,10 +324,10 @@ kinetic.phases[0].attacks[0].spawners.push({
   random_spread: 0,
   speed_jitter: 0,
   yaw_jitter: 0,
-  behaviors: [ SpawnerBehavior.accelerate ],
+  behaviors: [ SpawnerBehavior.speedup ],
   parameters: {
     min_bullet_speed: 1,
-    bullet_acceleration: 0.2,
+    bullet_speedup: 0.2,
     max_bullet_speed: 4
   },
   bullet_type: {

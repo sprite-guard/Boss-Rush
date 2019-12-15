@@ -212,7 +212,7 @@ avoidance_attack.spawners.push({
   bullet_type: {
     yaw: 0,
     speed: 3,
-    behaviors: [ BulletBehavior.limited_homing  ],
+    behaviors: [ BulletBehavior.homing  ],
     homing_time: 400,
     max_yaw: 0.04,
     r: 6,

@@ -18,7 +18,13 @@ player.init = function() {
   this.wing_rotation_min = 0.24;
   this.wing_rotation_speed = 0.02;
   this.wing_rotation_direction = 1;
+  this.wing_rotation_modifier = 0;
   this.wing_x_offset_speed = 0.4;
+  this.wing_x_offset_modifier = 0;
+  this.wing_hurt_x_offset_speed = 0.73;
+  this.wing_hurt_rotation_speed = 0.04;
+  this.wing_hurt_x_offset_modifier = -3;
+  this.wing_hurt_rotation_modifier = -0.15;
   this.r = 8;
   this.graze_radius = 32;
   this.hb = 0;
@@ -71,11 +77,12 @@ player.draw = function() {
   body_gradient.addColorStop(0.75,this.inner_color);
   body_gradient.addColorStop(1,this.pip_color);
   
-  var left_wing_x = this.x - this.wing_x_offset;
+  var left_wing_x = this.x - (this.wing_x_offset + this.wing_x_offset_modifier);
   var left_wing_y = this.y + this.wing_y_offset;
-  var right_wing_x = this.x + this.wing_x_offset;
+  var right_wing_x = this.x + (this.wing_x_offset + this.wing_x_offset_modifier);
   var right_wing_y = this.y + this.wing_y_offset;
-      
+  var current_wing_rotation = this.wing_rotation + this.wing_rotation_modifier;
+
   var left_wing_gradient = game.draw.createRadialGradient(left_wing_x,left_wing_y,this.wing_height,
                                                           left_wing_x,left_wing_y,0);
   left_wing_gradient.addColorStop(0,this.wing_outer_color);
@@ -97,13 +104,13 @@ player.draw = function() {
   game.draw.beginPath();
   game.draw.ellipse(left_wing_x, left_wing_y,
                     this.wing_width, this.wing_height,
-                    this.wing_rotation, 0, 2 * Math.PI);
+                    current_wing_rotation, 0, 2 * Math.PI);
   game.draw.stroke();
   // outline the right wing
   game.draw.beginPath();
   game.draw.ellipse(right_wing_x, right_wing_y,
                     this.wing_width, this.wing_height,
-                    -this.wing_rotation, 0, 2 * Math.PI);
+                    -current_wing_rotation, 0, 2 * Math.PI);
   game.draw.stroke();
   
   // draw the body
@@ -117,7 +124,7 @@ player.draw = function() {
   game.draw.fillStyle = left_wing_gradient;
   game.draw.ellipse(left_wing_x, left_wing_y,
                     this.wing_width, this.wing_height,
-                    this.wing_rotation, 0, 2 * Math.PI);
+                    current_wing_rotation, 0, 2 * Math.PI);
   game.draw.fill();
   
   // draw the right wing
@@ -125,7 +132,7 @@ player.draw = function() {
   game.draw.fillStyle = right_wing_gradient;
   game.draw.ellipse(right_wing_x, right_wing_y,
                     this.wing_width, this.wing_height,
-                    -this.wing_rotation, 0, 2 * Math.PI);
+                    -current_wing_rotation, 0, 2 * Math.PI);
   game.draw.fill();
     
   if(this.dash_target) {
@@ -249,15 +256,29 @@ player.update = function() {
   }
   
   // flap the wings
+  
   if(this.state == "fine") {
-    if((this.wing_rotation >= this.wing_rotation_max)
-    || (this.wing_rotation <= this.wing_rotation_min)) {
-      this.wing_rotation_direction *= -1
-    }
-    
-    this.wing_rotation += this.wing_rotation_speed * this.wing_rotation_direction;
-    this.wing_x_offset += this.wing_x_offset_speed * this.wing_rotation_direction;
+    current_wing_rotation_speed = this.wing_rotation_speed;
+    current_wing_x_offset_speed = this.wing_x_offset_speed;
+    this.wing_x_offset_modifier = 0;
+    this.wing_rotation_modifier = 0;
+  } else if(this.state == "hurt") {
+    current_wing_rotation_speed = this.wing_hurt_rotation_speed;
+    current_wing_x_offset_speed = this.wing_hurt_x_offset_speed;
+    this.wing_x_offset_modifier = this.wing_hurt_x_offset_modifier;
+    this.wing_rotation_modifier = this.wing_hurt_rotation_modifier;
   }
+  
+  if(this.wing_rotation >= this.wing_rotation_max) {
+    this.wing_rotation_direction = -1;
+  }
+  
+  if(this.wing_rotation <= this.wing_rotation_min) {
+    this.wing_rotation_direction = 1;
+  }
+  
+  this.wing_rotation += current_wing_rotation_speed * this.wing_rotation_direction;
+  this.wing_x_offset += current_wing_x_offset_speed * this.wing_rotation_direction;
 };
 
 player.move_to_dash_target = function() {

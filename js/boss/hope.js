@@ -2,7 +2,7 @@ var hope = {
   x: 0,
   y: 0,
   sprites: [
-    { draw: function(x,y) { return true; } }
+    { draw: function(parent) { return true; } }
   ],
   phases: [
      {

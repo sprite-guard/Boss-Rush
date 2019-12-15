@@ -7,8 +7,16 @@ var thaumiel = {
     background: Background.DEFAULT
   },
   sprites: [
-    { draw: function(x,y) { return true; } }
+    { draw: function(parent) { return true; } }
   ],
+  persona: {
+    x: 400,
+    y: 100,
+    width: 120,
+    height: 152,
+    hitboxes: [{x:12,y:12,r:16},{x:45,y:100,r:16}],
+    sprites: []
+  },
   phases: [
     {
       // main
@@ -1037,7 +1045,231 @@ var thaumiel = {
                 cull_type: "timer",
                 max_age: 1200
               }
-            }
+            },
+            // calm and storm
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 9000,
+              immediate: true,
+              lifespan: 500,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.005,
+              behaviors: [ SpawnerBehavior.speedup, SpawnerBehavior.scatter ],
+              parameters: {
+                bullet_speedup_delay: 570,
+                bullet_speedup: 0.1,
+                max_bullet_speed: 5,
+                min_bullet_speed: 1.5,
+                scatter_countdown: 570,
+                scatter_target: { x: 400, y: 300 },
+                scatter_beam_width: 0.1,
+                scatter_direction: 1
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: 0.015,
+                speed: 1.5,
+                r: 8,
+                color: "#CC66AA",
+                shell: "#886644",
+                graze_color: "#663333",
+                style: "gradient",
+                cull_type: "screen"
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 9000,
+              immediate: true,
+              lifespan: 500,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.005,
+              behaviors: [ SpawnerBehavior.speedup, SpawnerBehavior.scatter ],
+              parameters: {
+                bullet_speedup_delay: 570,
+                bullet_speedup: 0.1,
+                max_bullet_speed: 5,
+                min_bullet_speed: 1.5,
+                scatter_countdown: 570,
+                scatter_target: { x: 400, y: 300 },
+                scatter_beam_width: 0.1,
+                scatter_direction: 1
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: -0.015,
+                speed: 1.5,
+                r: 8,
+                color: "#9966CC",
+                shell: "#8844AA",
+                graze_color: "#663333",
+                style: "gradient",
+                cull_type: "screen"
+              }
+            },
+            // echoes
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 9250,
+              immediate: true,
+              lifespan: 110,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.005,
+              behaviors: [ SpawnerBehavior.speedup, SpawnerBehavior.scatter ],
+              parameters: {
+                bullet_speedup_delay: 570,
+                bullet_speedup: 0.1,
+                max_bullet_speed: 5,
+                min_bullet_speed: 3,
+                scatter_countdown: 570,
+                scatter_target: { x: 400, y: 300 },
+                scatter_beam_width: 0.1,
+                scatter_direction: 1
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: 0.015,
+                speed: 3,
+                r: 8,
+                color: "#CC66AA",
+                shell: "#886644",
+                graze_color: "#663333",
+                style: "gradient",
+                cull_type: "screen"
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 9250,
+              immediate: true,
+              lifespan: 110,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.005,
+              behaviors: [ SpawnerBehavior.speedup, SpawnerBehavior.scatter ],
+              parameters: {
+                bullet_speedup_delay: 570,
+                bullet_speedup: 0.1,
+                max_bullet_speed: 5,
+                min_bullet_speed: 3,
+                scatter_countdown: 570,
+                scatter_target: { x: 400, y: 300 },
+                scatter_beam_width: 0.1,
+                scatter_direction: 1
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: -0.015,
+                speed: 3,
+                r: 8,
+                color: "#9966CC",
+                shell: "#8844AA",
+                graze_color: "#663333",
+                style: "gradient",
+                cull_type: "screen"
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 9490,
+              immediate: true,
+              lifespan: 60,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.005,
+              behaviors: [ SpawnerBehavior.speedup, SpawnerBehavior.scatter ],
+              parameters: {
+                bullet_speedup_delay: 60,
+                bullet_speedup: 0.1,
+                max_bullet_speed: 5,
+                min_bullet_speed: 3,
+                scatter_countdown: 60,
+                scatter_target: { x: 400, y: 300 },
+                scatter_beam_width: 0.1,
+                scatter_direction: 1
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: 0.015,
+                speed: 3,
+                r: 8,
+                color: "#CC66AA",
+                shell: "#886644",
+                graze_color: "#663333",
+                style: "gradient",
+                cull_type: "screen"
+              }
+            },
+            {
+              sources: helpers.makeRingAttack(400,300,20,0,1),
+              spin: 0,
+              random_spread: 0,
+              delay: 50,
+              sync: 9490,
+              immediate: true,
+              lifespan: 60,
+              speed_jitter: 0.5,
+              yaw_jitter: 0.005,
+              behaviors: [ SpawnerBehavior.speedup, SpawnerBehavior.scatter ],
+              parameters: {
+                bullet_speedup_delay: 60,
+                bullet_speedup: 0.1,
+                max_bullet_speed: 5,
+                min_bullet_speed: 3,
+                scatter_countdown: 60,
+                scatter_target: { x: 400, y: 300 },
+                scatter_beam_width: 0.1,
+                scatter_direction: 1
+              },
+              bullet_type: {
+                behaviors: [ BulletBehavior.stopyaw ],
+                parameters: {
+                  stopyaw_timer: 100
+                },
+                debug: false,
+                yaw: -0.015,
+                speed: 3,
+                r: 8,
+                color: "#9966CC",
+                shell: "#8844AA",
+                graze_color: "#663333",
+                style: "gradient",
+                cull_type: "screen"
+              }
+            },
           ],
           choreography: {}
         },

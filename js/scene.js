@@ -5,27 +5,36 @@ function Scene(descriptor) {
   this.timeout = descriptor.timeout || Infinity;
   this.time_remaining = this.timeout;
   this.next_scene = descriptor.next_scene;
-  
+  this.no_reset = descriptor.no_reset;
+
   if(descriptor.music) {
-    this.music = new Sound(descriptor.music, true);
+    if(typeof descriptor.music === "string") {
+      this.music = new Sound(descriptor.music, true);
+    } else {
+      this.music = descriptor.music;
+    }
   }
-  
+
   this.special_init = descriptor.init || function() { return true; };
-  
+
   // internal
   this.slowdown_speed = 1;
   this.slowdown = false;
-  
+
   this.init = function() {
     this.time_remaining = this.timeout;
     if(game.music) {
       game.music.pause();
-      game.music.rewind();
+      if(!this.no_reset) {
+        game.music.rewind();
+      }
     }
     if(this.music) {
       game.music = this.music;
       game.music.pause();
-      game.music.rewind();
+      if(!this.no_reset) {
+        game.music.rewind();
+      }
       game.music.play();
     }
     this.special_init();
@@ -55,6 +64,10 @@ function Scene(descriptor) {
     if((this.time_remaining <= 0)&&this.next_scene) {
       game.current_scene = this.next_scene;
       game.current_scene.init();
+    }
+    
+    if(game.music) {
+      game.music.setvolume(game.volume);
     }
   };
   
@@ -134,7 +147,7 @@ function Scene(descriptor) {
     }
   }
 }
-
+/*
 var scenes_list = {};
 
 var top_line = "Infinite",
@@ -158,6 +171,21 @@ scenes_list.menu = new Scene({
       y: 32,
       h: 16,
       destination: "test_scene"
+    }),
+    new MenuItem({
+      x: 610,
+      y: 10,
+      w: 130,
+      h: 44,
+      font: "sans-serif",
+      size: "32px",
+      text: "Settings"
+    }),
+    new Portal({
+      x: 770,
+      y: 32,
+      h: 16,
+      destination: "settings"
     }),
     new TextElement([
       new TextLine({
@@ -185,7 +213,51 @@ scenes_list.menu = new Scene({
   init: function() {
     player.init();
   },
-  music: "music/GlitchCat7 - Bullet_Hell_baseline.mp3"
+  music: "music/GlitchCat7 - Bullet_Hell_baseline.mp3",
+  no_reset: true
+});
+
+scenes_list.settings = new Scene({
+  elements: [
+    Background.DEFAULT,
+    new MenuItem({
+      x: 10,
+      y: 10,
+      w: 175,
+      h: 44,
+      font: "sans-serif",
+      size: "32px",
+      text: "Main Menu"
+    }),
+    new MenuItem({
+      x: 10,
+      y: 100,
+      w: 175,
+      h: 44,
+      font: "sans-serif",
+      size: "32px",
+      text: "Volume"
+    }),
+    new Slider({
+      x: 195,
+      y: 100,
+      w: 300,
+      h: 44,
+      min: 0,
+      max: 1,
+      value: 1,
+      binding: game.volume
+    }),
+    new Portal({
+      x: 210,
+      y: 32,
+      h: 16,
+      destination: "menu"
+    })
+  ],
+  player: player,
+  music: "music/GlitchCat7 - Bullet_Hell_baseline.mp3",
+  no_reset: true
 });
 
 scenes_list.thaumiel = new Scene({
@@ -215,4 +287,14 @@ scenes_list.kinetic = new Scene({
   },
   boss: kinetic,
   player: player,
-})
+});
+
+scenes_list.symmetria = new Scene({
+  elements: [ Background.INGAME ],
+  init: function() {
+    player.init();
+  },
+  boss: symmetria,
+  player: player,
+});
+*/

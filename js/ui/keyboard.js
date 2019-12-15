@@ -14,6 +14,9 @@ var K_LEFT = 37,
     K_TEST = 65,
     K_SKIP = 75,
     K_FAST = 70,
+    K_MUTE = 77,
+    K_VUP = 187,
+    K_VDN = 189,
     DEBUG = true;
 
 var CONTROLS = {
@@ -87,6 +90,16 @@ window.onkeydown = function(e){
     case K_FAST:
       game.current_scene.slowdown_speed = 3;
       game.current_scene.slowdown = true;
+      break;
+    case K_MUTE:
+      game.mute_unmute();
+      break;
+    case K_VUP:
+      game.adjust_volume(0.1);
+      break;
+    case K_VDN:
+      game.adjust_volume(-0.1);
+      break;
   }
 };
 

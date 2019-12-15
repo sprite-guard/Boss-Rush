@@ -2,7 +2,7 @@ var symmetria = {
   x: 0,
   y: 0,
   sprites: [
-    { draw: function(x,y) { return true; } }
+    { draw: function(parent) { return true; } }
   ],
   phases: []
 };
@@ -25,7 +25,7 @@ var sym_phase = {
   spirit_wells: [],
   exits: [],
   music: "music/Sam Crowley - Sync.wav",
-  duration: 6500,
+  duration: 15540,
   cycle: false
 };
 
@@ -381,7 +381,7 @@ sym_attack.spawners.push({
 // cw Orange
 
 sym_attack.spawners.push({
-  sources: helpers.makeRingAttack(400,300,6,0,1),
+  sources: helpers.makeRingAttack(400,300,24,0,1),
   sync: 2310,
   lifespan: 400,
   spin: 0,
@@ -389,21 +389,26 @@ sym_attack.spawners.push({
   speed_jitter: 0,
   yaw_jitter: 0.00,
   random_spread: 0,
+  aimed: true,
     bullet_type: {
     behaviors: [ BulletBehavior.shootback ],
     parameters: {
       shootback_spawner: {
         sources: [
+          { x: 750, y: 550, heading: -0.5 },
+          { x: 750, y: 550, heading: 0.5 },
           { x: 750, y: 550, heading: 0 }
         ],
         behaviors: [],
         parameters: {},
-        sync: 0,
-        lifespan: 200,
+        sync: 20,
+        lifespan: 60,
         spin: 0,
-        delay: 16,
+        delay: 12,
         speed_jitter: 0,
         yaw_jitter: 0.00,
+        aimed: true,
+        target: {x: 400, y: 300},
         random_spread: 0,
           bullet_type: {
           yaw: 0,
@@ -413,18 +418,18 @@ sym_attack.spawners.push({
           shell: "#66FF66",
           graze_color: "#996622",
           style: "gradient",
-          cull_type: "screen"
+          cull_type: "timer"
         }
       }
     },
     yaw: 0,
-    speed: 3,
+    speed: 2,
     r: 8,
     color: "#CC9922",
     shell: "#CC6633",
     graze_color: "#993300",
     style: "gradient",
-    cull_type: "screen"
+    cull_type: "timer"
   }
 
 });

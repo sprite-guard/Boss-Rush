@@ -5,6 +5,7 @@ function Sound(src, loop) {
   this.audio.setAttribute("preload","auto");
   this.audio.setAttribute("controls","none");
   this.audio.style.display = "none";
+  
   document.body.appendChild(this.audio);
   
   if(loop) {
@@ -24,6 +25,10 @@ function Sound(src, loop) {
   
   this.setspeed = function(amount) {
     this.audio.playbackRate = amount;
+  };
+  
+  this.setvolume = function(level) {
+    this.audio.volume = level;
   };
   
   this.despawn = function() {

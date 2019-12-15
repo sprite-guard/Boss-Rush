@@ -17,20 +17,24 @@ function TextLine(desc) {
   this.start_x = desc.x;
   this.start_y = desc.y;
   this.font = desc.font;
-  this.fill_color = desc.fill_color || "#006666";
-  this.outline_color = desc.outline_color || "#009999";
+  this.fill_color = desc.fill_color;
+  this.outline_color = desc.outline_color;
   this.line_width = desc.line_width || 2;
   this.text = desc.text;
   
   this.draw = function() {
-    game.draw.fillStyle = this.fill_color;
-    game.draw.strokeStyle = this.outline_color;
-    game.draw.lineWidth = this.line_width;
-    game.draw.font = this.font;
-    game.draw.fillText(this.text, this.start_x, this.start_y);
-    game.draw.beginPath();
-    game.draw.strokeText(this.text, this.start_x, this.start_y);
-    game.draw.stroke();
+    if(this.fill_color) {
+      game.draw.fillStyle = this.fill_color;
+      game.draw.lineWidth = this.line_width;
+      game.draw.font = this.font;
+      game.draw.fillText(this.text, this.start_x, this.start_y);
+    }
+    if(this.outline_color) {
+      game.draw.strokeStyle = this.outline_color;
+      game.draw.beginPath();
+      game.draw.strokeText(this.text, this.start_x, this.start_y);
+      game.draw.stroke();
+    }
   }
   
   this.init = function() { return true; };

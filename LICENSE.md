@@ -45,3 +45,8 @@ http://creativecommons.org/licenses/by/3.0/
 Metaself
 Licensed under Creative Commons: By Attribution 3.0
 http://creativecommons.org/licenses/by/3.0/
+
+"Bullet Hell Baseline"
+GlitchCat7
+Licensed under Creative Commons: By Attribution 3.0
+http://creativecommons.org/licenses/by/3.0/
