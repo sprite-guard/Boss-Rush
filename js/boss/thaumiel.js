@@ -1,21 +1,315 @@
+var THAUMIEL_SCALE = 0.25;
 var thaumiel = {
   x: 0,
   y: 0,
   metadata: {
     title: "Thaumiel",
     composer: "2CO",
+    artist: "Dan Ellis",
     background: Background.DEFAULT
   },
-  sprites: [
-    { draw: function(parent) { return true; } }
-  ],
+
   persona: {
     x: 400,
     y: 100,
-    width: 120,
-    height: 152,
-    hitboxes: [{x:12,y:12,r:16},{x:45,y:100,r:16}],
-    sprites: []
+    width: 300,
+    height: 380,
+    scale_factor: 1,
+    lineart: {
+      file: {
+        src: "art/Fox/Line Art.png",
+        name: "lineart"
+      },
+      x: 400,
+      y: 100,
+      width: 300,
+      height: 380
+    },
+    regions: [
+      {
+        hitboxes: [
+          {x:104,y:125,r:14}, // ear lower
+          {x:105,y:100,r:8}, // ear upper
+          {x:210,y:255,r:40}, // tail
+          {x:172,y:110,r:32}, // shoulder mid
+          {x:133,y:93,r:8}, // upper hair straggler
+          {x:136,y:113,r:6}, // lower hair straggler
+          {x:147,y:85,r:6}, // upper shoulder straggler
+          {x:120,y:141,r:9}, // forward neck
+          {x:105,y:141,r:6}, // under ear
+          {x:137,y:135,r:10}, // inner neck
+          {x:150,y:138,r:7}, // chest notch a
+          {x:164,y:141,r:7}, // chest notch b
+          {x:176,y:148,r:7}, // chest notch c
+          {x:223,y:163,r:43}, // lower back
+          {x: 146, y: 259, r: 27}, // upper tail
+          {x: 168, y: 236, r: 11}, // upper tail left nook
+          {x: 183, y: 222, r: 11}, // upper tail mid nook
+          {x: 193, y: 207, r: 13}, // upper tail right nook
+          {x: 233, y: 210, r: 29}, // tail base main
+          {x: 226, y: 235, r: 32}, // tail base corner
+          {x: 243, y: 178, r: 28}, // lower back corner
+          {x: 185, y: 285, r: 23}, // lower tail right edge
+          {x: 157, y: 290, r: 30}, // lower tail edge
+          {x: 200, y: 121, r: 33}, // upper back mid
+          {x: 225, y: 130, r: 22}, // upper back edge
+          {x: 126, y: 103, r: 6}, // between crown
+          {x: 198, y: 286, r: 24} // stray hair
+        ],
+        fill_rate: 0.1,
+        sprites: [ // TODO: should legs be their own region?
+          {
+            file: {
+              src: "art/Fox/Body.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          }
+        ]
+      },
+      {
+        hitboxes: [
+          {x:91,y:163,r:8}, // top
+          {x: 88, y: 171, r: 8} // bottom
+        ],
+        fill_rate: 0.01,
+        sprites: [
+        {
+          file: {
+            src: "art/Fox/Pupil.png",
+          },
+          x: 400,
+          y: 100,
+          width: 300,
+          height: 380
+        },
+        {
+          file: { src: "art/Fox/Eye Black.png" },
+          x: 400,
+          y: 100,
+          width: 300,
+          height: 380
+        }
+       ]
+      },
+      {
+        hitboxes: [
+          {x: 61, y: 118, r: 9}, // center
+          {x: 56, y: 132, r: 8}, // bottom left
+          {x: 60, y: 104, r: 9}, // top
+          {x: 68, y: 121, r: 6}  // right
+        ],
+        fill_rate: 0.01,
+        sprites: [
+        {
+          file: {
+            src: "art/Fox/Ear.png",
+          },
+          x: 400,
+          y: 100,
+          width: 300,
+          height: 380
+        }
+       ]
+      },
+      {
+        hitboxes: [
+          {x: 83, y: 260, r: 34}, // main
+          {x: 91, y: 278, r: 32}, // lower main
+          {x: 52, y: 240, r: 20}, // lower tip
+          {x: 55, y: 213, r: 12}, // mid tip
+          {x: 106, y: 305, r: 16}, // left base
+          {x: 58, y: 195, r: 9}, // upper tip
+          {x: 126, y: 314, r: 14}, // lower base
+          {x: 75, y: 274, r: 34} // fuzz
+        ],
+        fill_rate: 0.01,
+        sprites: [
+        {
+          file: {
+            src: "art/Fox/Tail Tip.png",
+          },
+          x: 400,
+          y: 100,
+          width: 300,
+          height: 380
+        },
+        {
+          file: {
+            src: "art/Fox/Tail Straggler.png",
+          },
+          x: 400,
+          y: 100,
+          width: 300,
+          height: 380
+        }
+       ]
+      },
+      
+      {
+        hitboxes: [
+          {x: 73, y: 148, r: 19}, // dome
+          {x: 81, y: 133, r: 10}, // top corner
+          {x: 65, y: 168, r: 14}, // forehead
+          {x: 102, y: 152, r: 9}, // temple
+          {x: 77, y: 196, r: 17}, // nose bridge
+          {x: 73, y: 216, r: 12}, // nose tip
+          {x: 94, y: 184, r: 7}, // cheek bottom
+          {x: 99, y: 176, r: 7}, // cheek lower mid
+          {x: 103, y: 167, r: 7} // cheek upper mid
+        ],
+        fill_rate: 0.01,
+        sprites: [
+        {
+          file: {
+            src: "art/Fox/Mask.png",
+          },
+          x: 400,
+          y: 100,
+          width: 300,
+          height: 380
+        }
+       ]
+      },
+      {
+        hitboxes: [
+          {x: 122, y: 86, r: 13}, // upper left
+          {x: 118, y: 103, r: 8}, // lower left
+          {x: 122, y: 119, r: 11}, // bottom
+          {x: 136, y: 102, r: 11}, // right
+        ],
+        fill_rate: 0.01,
+        sprites: [
+        {
+          file: {
+            src: "art/Fox/Hair Right.png",
+          },
+          x: 400,
+          y: 100,
+          width: 300,
+          height: 380
+        }
+       ]
+      },
+      {
+        hitboxes: [
+          {x: 82, y: 107, r: 14}, // center
+          {x: 96, y: 91, r: 11}, // right mid
+          {x: 100, y: 68, r: 12}, // right upper
+          {x: 74, y: 88, r: 8}, // mid mid
+          {x: 71, y: 75, r: 7}, // mid top
+          {x: 56, y: 93, r: 8}, // left center
+          {x: 45, y: 121, r: 7} // far left
+        ],
+        fill_rate: 0.01,
+        sprites: [
+          {
+            file: {
+              src: "art/Fox/Hair Center Left.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Hair Left.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Hair Center.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+        ]
+      },
+      
+      {
+        hitboxes: [
+          {x:145,y:186,r:40}, // main
+          {x:108,y:215,r:15}, // corner
+          {x: 131, y: 205, r: 31} // toe
+        ],
+        fill_rate: 0.01,
+        sprites: [
+          {
+            file: {
+              src: "art/Fox/Hind Leg Toe.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Middle Leg FG.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Middle Leg Top BG.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Middle Leg Bottom BG.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Front Leg Straggler BG.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Front Leg Top BG.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          {
+            file: {
+              src: "art/Fox/Front Leg Bottom BG.png"
+            },
+            x: 400,
+            y: 100,
+            width: 300,
+            height: 380
+          },
+          
+        ]
+      }
+    ]
   },
   phases: [
     {
@@ -33,7 +327,7 @@ var thaumiel = {
               ],
               spin: 0.15,
               random_spread: 0,
-              delay: 1,
+              delay: 2,
               sync: 0,
               lifespan: 20,
               speed_jitter: 0,
@@ -62,7 +356,7 @@ var thaumiel = {
               ],
               spin: -0.15,
               random_spread: 0,
-              delay: 1,
+              delay: 2,
               sync: 0,
               lifespan: 20,
               speed_jitter: 0,
@@ -83,16 +377,18 @@ var thaumiel = {
               }
             },
             {
-              sources: [
-                {x: 10, y: 10, heading: 0},
-                {x: 10, y: 590, heading: -Math.PI / 2},
-                {x: 790, y: 10, heading: Math.PI / 2},
-                {x: 790, y: 590, heading: Math.PI}
-              ],
-              spin: 0.15,
-              random_spread: 0,
-              delay: 1,
-              sync: 100,
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: -20,
+                ex: 820,
+                ey: -20,
+                count: 12,
+                heading: 0.5 * Math.PI
+              }),
+              spin: 0,
+              random_spread: 0.9,
+              delay: 5,
+              sync: 95,
               lifespan: 20,
               speed_jitter: 0,
               yaw_jitter: 0.01,
@@ -108,20 +404,22 @@ var thaumiel = {
                 shell: "#66CCDD",
                 graze_color: "#666666",
                 style: "solid",
-                cull_type: "screen"
+                cull_type: "timer"
               }
             },
             {
-              sources: [
-                {x: 10, y: 10, heading: Math.PI / 2 },
-                {x: 10, y: 590, heading: 0 },
-                {x: 790, y: 10, heading: Math.PI},
-                {x: 790, y: 590, heading: -Math.PI / 2}
-              ],
-              spin: -0.15,
-              random_spread: 0,
-              delay: 1,
-              sync: 100,
+              sources: helpers.makeLineAttack({
+                sx: 10,
+                sy: 620,
+                ex: 820,
+                ey: 620,
+                count: 12,
+                heading: -0.5 * Math.PI
+              }),
+              spin: 0,
+              random_spread: 0.9,
+              delay: 5,
+              sync: 95,
               lifespan: 20,
               speed_jitter: 0,
               yaw_jitter: 0.01,
@@ -137,20 +435,22 @@ var thaumiel = {
                 shell: "#66CCDD",
                 graze_color: "#666666",
                 style: "solid",
-                cull_type: "screen"
+                cull_type: "timer"
               }
             },
             {
-              sources: [
-                {x: 10, y: 10, heading: 0},
-                {x: 10, y: 590, heading: -Math.PI / 2},
-                {x: 790, y: 10, heading: Math.PI / 2},
-                {x: 790, y: 590, heading: Math.PI}
-              ],
-              spin: 0.15,
-              random_spread: 0,
-              delay: 1,
-              sync: 200,
+              sources: helpers.makeLineAttack({
+                sx: -20,
+                sy: -20,
+                ex: -20,
+                ey: 620,
+                count: 12,
+                heading: 0
+              }),
+              spin: 0,
+              random_spread: 0.9,
+              delay: 5,
+              sync: 195,
               lifespan: 20,
               speed_jitter: 0,
               yaw_jitter: 0.01,
@@ -166,20 +466,22 @@ var thaumiel = {
                 shell: "#66CCBB",
                 graze_color: "#666666",
                 style: "solid",
-                cull_type: "screen"
+                cull_type: "timer"
               }
             },
             {
-              sources: [
-                {x: 10, y: 10, heading: Math.PI / 2 },
-                {x: 10, y: 590, heading: 0 },
-                {x: 790, y: 10, heading: Math.PI},
-                {x: 790, y: 590, heading: -Math.PI / 2}
-              ],
-              spin: -0.15,
-              random_spread: 0,
-              delay: 1,
-              sync: 200,
+              sources: helpers.makeLineAttack({
+                sx: 820,
+                sy: -20,
+                ex: 820,
+                ey: 620,
+                count: 12,
+                heading: -1 * Math.PI
+              }),
+              spin: 0,
+              random_spread: 0.9,
+              delay: 5,
+              sync: 195,
               lifespan: 20,
               speed_jitter: 0,
               yaw_jitter: 0.01,
@@ -195,7 +497,7 @@ var thaumiel = {
                 shell: "#66CCBB",
                 graze_color: "#666666",
                 style: "solid",
-                cull_type: "screen"
+                cull_type: "timer"
               }
             },
             {
@@ -207,7 +509,7 @@ var thaumiel = {
               ],
               spin: 0.15,
               random_spread: 0,
-              delay: 1,
+              delay: 2,
               sync: 300,
               lifespan: 20,
               speed_jitter: 0,
@@ -236,7 +538,7 @@ var thaumiel = {
               ],
               spin: -0.15,
               random_spread: 0,
-              delay: 1,
+              delay: 2,
               sync: 300,
               lifespan: 20,
               speed_jitter: 0,
@@ -1271,7 +1573,19 @@ var thaumiel = {
               }
             },
           ],
-          choreography: {}
+          choreography: {
+            // TODO
+            movements: [
+              {
+                start_time: 0,
+                end_time: 60,
+                start_x: 400,
+                start_y: 300,
+                end_x: 400,
+                end_y: 300
+              }
+            ]
+          }
         },
       ],
       spirit_wells: [],

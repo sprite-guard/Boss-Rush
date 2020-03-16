@@ -86,6 +86,15 @@ scenes_list.thaumiel_intro = PreScreen({
         x: 32,
         y: 400,
         text: "Music: 2CO"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "64px serif",
+        line_width: 2,
+        x: 32,
+        y: 500,
+        text: "Art: Dan Ellis"
       })
     ])
   ]
@@ -170,4 +179,3 @@ scenes_list.avoidance_intro = PreScreen({
     ])
   ]
 });
-scenes_list.test_scene = scenes_list.thaumiel_intro;

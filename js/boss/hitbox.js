@@ -1,32 +1,15 @@
 const HITBOX_CAPACITY = 180;
 
-function Hitbox(desc) {
+function Hitbox(parent,desc) {
   this.x = desc.x;
   this.y = desc.y;
   this.r = desc.r;
+  this.region = parent;
   
-  // must specify what image we're connected to
-  this.layer = desc.layer;
-  
-  // internal
-  this.active = false;
-  this.completion = 0;
-  this.is_complete = false;
-  
-  this.update = function(slowdown,slowspeed) {
-    var speed_modifier;
-    if(slowdown) {
-      speed_modifier = slowspeed;
-    } else {
-      speed_modifier = 1;
-    }
-    if(this.completion < HITBOX_CAPACITY) {
-      if(this.active) {
-        this.completion += speed_modifier;
-      }
-    } else {
-      this.is_complete = true;
-      this.completion = HITBOX_CAPACITY;
-    }
+  this.move_center = function(point) {
+    this.cx = point.x;
+    this.cy = point.y;
+    this.x = (this.cx - (this.region.persona.width / 2.0));
+    this.y = (this.cy - (this.region.persona.height / 2.0));
   }
 }

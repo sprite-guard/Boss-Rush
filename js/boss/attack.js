@@ -53,6 +53,8 @@ function Attack(parent, descriptor) {
       speed = 1;
     }
     
+    this.choreography.update(slowdown,speed);
+    
     // update elements
     this.total_duration += speed;
     // this.choreography.update(slowdown,slowspeed);

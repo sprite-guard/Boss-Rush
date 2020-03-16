@@ -612,3 +612,5 @@ dist/infinite-ritual-0.0.0-linux-x64/js/lib/bezier.js
 *.mp3
 dist/infinite-ritual-0.0.0-mac-x64/infinite-ritual.app/Contents/Resources/app.nw/js/lib/bezier.js
 dist/infinite-ritual-0.0.0-win-x64/js/lib/bezier.js
+*.aup
+*.au

@@ -5,6 +5,8 @@
  * Sub goal is to create performant bullet-hell patterns in HTML Canvas.
  */
 
+scenes_list.test_scene = scenes_list.thaumiel_intro;
+
 if(typeof nw == "undefined") nw = false;
 
 var DEBUG = true,
@@ -109,11 +111,18 @@ game.update = function() {
     game.draw.fillStyle = "#0077AA";
     game.draw.font = "10px monospace";
     game.draw.fillText(game.fr,2,595);
+    game.hitbox_edit();
   }
   
   if(game.keep_going) {
     game.animation_request = window.requestAnimationFrame(game.update);
   }
+}
+
+game.hitbox_edit = function() {
+  game.mouse.update();
+  game.mouse.draw();
+  //game.animation_request = window.requestAnimationFrame(game.hitbox_edit);
 }
 
 game.pause = function() {
@@ -166,5 +175,7 @@ game.adjust_volume = function(amount) {
 game.shared_music_pool = {
   menu: new Sound("music/GlitchCat7 - Bullet_Hell_baseline.mp3",true)
 }
+
+
 
 game.init();

@@ -10,6 +10,8 @@ function Scene(descriptor) {
   if(descriptor.music) {
     if(typeof descriptor.music === "string") {
       this.music = new Sound(descriptor.music, true);
+    } else if(descriptor.music.length > 0) {
+      // TODO: multiple music tracks to choose from.
     } else {
       this.music = descriptor.music;
     }

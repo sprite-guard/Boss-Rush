@@ -3,33 +3,39 @@ function Sprite(parent,descriptor) {
   this.start_y = descriptor.y;
   this.x = this.start_x;
   this.y = this.start_y;
+  this.width = descriptor.width;
+  this.height = descriptor.height;
+  this.parent = parent;
+  this.scale_factor = parent.scale_factor || 1;
   
   // allow a custom draw function for vector graphics
   this.inner_draw = descriptor.draw;
   
-  // the normal way to do this is a stack of sprites
-  // that are all drawn at different opacities
-  // TODO
-  this.files = [] //descriptor.files;
-  this.opacities = [];
+  // TODO: Sprite object should only have one file
+  // multiple files will be handled by the region object
+  this.file = descriptor.file;
   
+  var img = document.createElement("img");
+  img.src = this.file.src;
+  this.img_object = img;
   
-  for(var i = 0; i < this.files.length; i++) {
-    if(i === 0) {
-      this.opacities.push(1);
-    } else {
-      this.opacities.push(0);
-    }
-  }
-  
-  this.draw = function() {
-    if(this.file) {
-      // draw the file
+  this.draw = function(opacity) {
+    if(this.img_object) {
+      game.draw.globalAlpha = opacity;
+      game.draw.drawImage(this.img_object,this.x,this.y,this.width * this.scale_factor,this.height * this.scale_factor);
+      game.draw.globalAlpha = 1;
     }
     
     if(this.inner_draw) {
       this.inner_draw(this);
     }
+  }
+  
+  this.move_center = function(point) {
+    this.cx = point.x;
+    this.cy = point.y;
+    this.x = (this.cx - (this.width / 2.0));
+    this.y = (this.cy - (this.height / 2.0));
   }
   
 }
