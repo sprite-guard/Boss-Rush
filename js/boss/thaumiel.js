@@ -56,8 +56,8 @@ var thaumiel = {
           {x: 126, y: 103, r: 6}, // between crown
           {x: 198, y: 286, r: 24} // stray hair
         ],
-        fill_rate: 0.1,
-        sprites: [ // TODO: should legs be their own region?
+        fill_rate: 0.005,
+        sprites: [
           {
             file: {
               src: "art/Fox/Body.png"
@@ -74,7 +74,7 @@ var thaumiel = {
           {x:91,y:163,r:8}, // top
           {x: 88, y: 171, r: 8} // bottom
         ],
-        fill_rate: 0.01,
+        fill_rate: 0.02,
         sprites: [
         {
           file: {
@@ -101,7 +101,7 @@ var thaumiel = {
           {x: 60, y: 104, r: 9}, // top
           {x: 68, y: 121, r: 6}  // right
         ],
-        fill_rate: 0.01,
+        fill_rate: 0.02,
         sprites: [
         {
           file: {
@@ -160,7 +160,7 @@ var thaumiel = {
           {x: 99, y: 176, r: 7}, // cheek lower mid
           {x: 103, y: 167, r: 7} // cheek upper mid
         ],
-        fill_rate: 0.01,
+        fill_rate: 0.015,
         sprites: [
         {
           file: {
@@ -180,7 +180,7 @@ var thaumiel = {
           {x: 122, y: 119, r: 11}, // bottom
           {x: 136, y: 102, r: 11}, // right
         ],
-        fill_rate: 0.01,
+        fill_rate: 0.02,
         sprites: [
         {
           file: {
@@ -203,7 +203,7 @@ var thaumiel = {
           {x: 56, y: 93, r: 8}, // left center
           {x: 45, y: 121, r: 7} // far left
         ],
-        fill_rate: 0.01,
+        fill_rate: 0.02,
         sprites: [
           {
             file: {
@@ -241,7 +241,7 @@ var thaumiel = {
           {x:108,y:215,r:15}, // corner
           {x: 131, y: 205, r: 31} // toe
         ],
-        fill_rate: 0.01,
+        fill_rate: 0.007,
         sprites: [
           {
             file: {
@@ -1578,9 +1578,17 @@ var thaumiel = {
             movements: [
               {
                 start_time: 0,
-                end_time: 60,
+                end_time: 1,
                 start_x: 400,
-                start_y: 300,
+                start_y: -300,
+                end_x: 400,
+                end_y: -300
+              },
+              {
+                start_time: 420,
+                end_time: 540,
+                start_x: 400,
+                start_y: -300,
                 end_x: 400,
                 end_y: 300
               }
