@@ -37,7 +37,7 @@ scenes_list.dream_intro = PreScreen({
   ]
 });
 
-scenes_list.symmetria_intro = PreScreen({
+scenes_list.watergod_intro = PreScreen({
   next_scene: scenes_list.symmetria,
   elements: [
     Background.DEFAULT,
@@ -45,11 +45,11 @@ scenes_list.symmetria_intro = PreScreen({
       new TextLine({
         fill_color: "#449999",
         outline_color: "#88FFFF",
-        font: "128px serif",
+        font: "120px serif",
         line_width: 2,
         x: 32,
         y: 250,
-        text: "Symmetria"
+        text: "The Water God"
       }),
       new TextLine({
         fill_color: "#449999",
