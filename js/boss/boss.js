@@ -55,7 +55,7 @@ function Boss(descriptor) {
       this.active_phase.update(slowdown,slowspeed);
     }
     
-    if(this.persona) {
+    if(this.persona && this.active_phase.current_attack) {
       this.persona.update(slowdown,slowspeed);
       this.persona.move_center(this.active_phase.current_attack.choreography.position);
     }
@@ -71,7 +71,7 @@ function Boss(descriptor) {
     // draw our current phase
     this.active_phase.draw_sprites();
     
-    if(this.persona) {
+    if(this.persona && this.active_phase.current_attack) {
       this.persona.draw();
     }
   };
