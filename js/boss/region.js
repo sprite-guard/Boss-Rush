@@ -9,6 +9,7 @@ function Region(parent,desc) {
   this.sprites = [];
   for(var i = 0; i < desc.sprites.length; i++) {
     this.sprites.push(new Sprite(this,desc.sprites[i]));
+    // TODO: Force the sprites to load and draw
   }
   
   this.hitboxes = [];
