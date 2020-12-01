@@ -23,6 +23,12 @@ function Persona(desc) {
     }
   }
   
+  this.reset = function() {
+    for(var i in this.regions) {
+      this.regions[i].reset();
+    }
+  }
+  
   this.move_center = function(point) {
     this.cx = point.x;
     this.cy = point.y;

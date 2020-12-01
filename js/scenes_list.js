@@ -8,26 +8,25 @@ scenes_list.shared_music = {
 }
 
 scenes_list.menu = new Scene({
-//  prescreen: PreScreen.Default(),
   elements: [
     Background.DEFAULT,
     new MenuItem({
-      x: 10,
-      y: 10,
-      w: 160,
+      x: 450,
+      y: 180,
+      w: 195,
       h: 44,
       font: "sans-serif",
       size: "32px",
       text: "Test Boss"
     }),
     new Portal({
-      x: 200,
-      y: 32,
+      x: 670,
+      y: 202,
       h: 16,
       destination: "test_scene"
     }),
     new MenuItem({
-      x: 610,
+      x: 10,
       y: 10,
       w: 130,
       h: 44,
@@ -36,10 +35,40 @@ scenes_list.menu = new Scene({
       text: "Settings"
     }),
     new Portal({
-      x: 770,
+      x: 170,
       y: 32,
       h: 16,
       destination: "settings"
+    }),
+    new MenuItem({
+      x: 450,
+      y: 80,
+      w: 195,
+      h: 44,
+      font: "sans-serif",
+      size: "32px",
+      text: "Thaumiel"
+    }),
+    new Portal({
+      x: 670,
+      y: 102,
+      h: 16,
+      destination: "thaumiel_intro"
+    }),
+    new MenuItem({
+      x: 450,
+      y: 130,
+      w: 195,
+      h: 44,
+      font: "sans-serif",
+      size: "32px",
+      text: "Dream Child"
+    }),
+    new Portal({
+      x: 670,
+      y: 152,
+      h: 16,
+      destination: "dream_intro"
     }),
     new TextElement([
       new TextLine({
@@ -87,6 +116,54 @@ scenes_list.menu = new Scene({
   },
   music: scenes_list.shared_music.title_music,
   no_reset: true
+});
+
+scenes_list.splash = new Scene({
+  elements: [
+    new JumpPortal({
+      destination: "menu",
+      trigger: function() { return CONTROLS.any; }
+    }),
+    Background.DEFAULT,
+    new TextElement([
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "128px serif",
+        line_width: 2,
+        x: 32,
+        y: 250,
+        text: "Infinite"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: "#88FFFF",
+        font: "128px serif",
+        line_width: 2,
+        x: 32,
+        y: 400,
+        text: "Ritual"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: false,
+        font: "16px serif",
+        line_width: 2,
+        x: 32,
+        y: 580,
+        text: "Title music by GlitchCat7"
+      }),
+      new TextLine({
+        fill_color: "#449999",
+        outline_color: false,
+        font: "16px serif",
+        line_width: 2,
+        x: 32,
+        y: 560,
+        text: "Programming and design by SpriteGuard"
+      })
+    ])
+  ],
 });
 
 scenes_list.settings = new Scene({
@@ -150,7 +227,7 @@ scenes_list.dream_child = new Scene({
   init: function() {
     player.init();
   },
-  boss: hope,
+  boss: dreamchild,
   player: player,
  // prescreen: new PreScreen(thaumiel.metadata)
 });
@@ -181,6 +258,15 @@ scenes_list.avoidance = new Scene({
   boss: avoidance_boss,
   player: player
 });
+
+scenes_list.weaver = new Scene({
+  elements: [ Background.INGAME ],
+  init: function() {
+    player.init();
+  },
+  boss: weaver,
+  player: player
+})
 /*
 var scenes_list = {};
 

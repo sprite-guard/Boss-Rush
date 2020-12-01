@@ -191,6 +191,38 @@ BulletBehavior.stopyaw = function(parent) {
   }
 };
 
+BulletBehavior.pulse = function(parent) {
+  // speed modifier
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  // initializer
+  if(parent.is_new) {
+    parent.pulse_delay = parent.parameters.pulse_delay;
+    parent.pulse_frequency = parent.parameters.pulse_frequency;
+    parent.pulse_tick = parent.pulse_frequency / 60;
+    parent.pulse_min_speed = parent.parameters.pulse_min_speed;
+    parent.pulse_max_speed = parent.parameters.pulse_max_speed;
+    parent.pulse_current_speed = 0;
+    parent.pulse_difference = parent.pulse_max_speed - parent.pulse_min_speed;
+    parent.pulse_whole_turns = parent.parameters.pulse_phase;
+    parent.pulse_radians = parent.pulse_whole_turns * Math.PI * 2;
+  }
+  // behavior
+  if(parent.pulse_delay > 0) {
+    parent.pulse_delay -= speed;
+  } else {
+    parent.pulse_radians = parent.pulse_whole_turns * Math.PI * 2;
+    var speed_modifier = (Math.cos(parent.pulse_radians)+1)/2;
+    var modified_speed = speed_modifier * parent.pulse_difference;
+    var new_speed = modified_speed + parent.pulse_min_speed;
+    parent.speed = new_speed;
+    parent.pulse_whole_turns += parent.pulse_tick;
+  }
+};
+
+
 BulletBehavior.template = function(parent) {
   // speed modifier
   var speed = 1;

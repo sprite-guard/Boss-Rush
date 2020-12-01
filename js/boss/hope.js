@@ -1,4 +1,4 @@
-var hope = {
+var dreamchild = {
   x: 0,
   y: 0,
   sprites: [
@@ -525,7 +525,7 @@ var hope = {
                     delay: 40,
                     sync: 0,
                     lifespan: 40,
-                    aimed: true,
+                    aimed: false,
                     immediate: true,
                     bullet_type: {
                       behaviors: [  ],

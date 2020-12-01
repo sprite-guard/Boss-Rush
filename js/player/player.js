@@ -40,8 +40,8 @@ player.init = function() {
   this.fast_speed = 4;
   this.speed = this.fast_speed;
   this.health = 4;
-  this.iframes = 30;
-  this.max_iframes = 30;
+  this.iframes = 60;
+  this.max_iframes = 60;
   this.state = "fine";
   this.dir = 0;
   this.is_normalized = false;
@@ -52,6 +52,8 @@ player.init = function() {
   this.spirit = false;
   this.invulnerable = false;
   this.dead = false;
+  this.health_ring_r = 6;
+  this.health_ring_width = 3;
 }
 
 player.draw = function() {
@@ -134,6 +136,25 @@ player.draw = function() {
                     this.wing_width, this.wing_height,
                     -current_wing_rotation, 0, 2 * Math.PI);
   game.draw.fill();
+  
+  // draw the health
+  var angle_to_draw = 2 * Math.PI;
+  var ring_color = "#000000";
+  
+  if(player.invulnerable) {
+    angle_to_draw = 2 * Math.PI;
+    ring_color = "#FFFF00";
+  } else {
+    ring_color = "#00BB88";
+    portion = ((player.health - 1) / 3);
+    angle_to_draw = portion * 2 * Math.PI;
+  }
+    
+  game.draw.beginPath();
+  game.draw.lineWidth = this.health_ring_width;
+  game.draw.strokeStyle = ring_color;
+  game.draw.ellipse(this.x, this.y, this.health_ring_r, this.health_ring_r, 0, 0, angle_to_draw);
+  game.draw.stroke();
     
   if(this.dash_target) {
     this.dash_target.draw();

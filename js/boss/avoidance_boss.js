@@ -46,6 +46,118 @@ var test_attack = {
   choreography: {}
 };
 
+var test_spin = 1.3;
+var spiral_spawners = helpers.makeRingAttack(400,300,5,0,1);
+
+avoidance_attack.spawners.push({
+  sources: [
+    {x: 0, y: 0, heading: 0},
+    //{x: 0, y: 600, heading: -(Math.PI/4)},
+    {x: 800, y: 600, heading: Math.PI},
+    //{x: 800, y: 0, heading: 3*(Math.PI/4)}
+  ],
+  sync: 1,
+  immediate: true,
+  lifespan: 800,
+  spin: 0,
+  delay: 140,
+  speed_jitter: 0,
+  yaw_jitter: 0.00,
+  random_spread: 0,
+  behaviors: [  ],
+  parameters: {
+    freeze_countdown: 350,
+    freeze_duration: 500,
+    scatter_countdown: 850
+  },
+  bullet_type: {
+    behaviors: [ BulletBehavior.shootback ],
+    parameters: {
+      shootback_spawner: {
+        sources: [{x: 0, y: 0, heading: 0}],
+        spin: 0,
+        random_spread: 0.2,
+        delay: 5,
+        sync: 0,
+        lifespan: 800,
+        aimed: true,
+        turret_speed: 0.1,
+        target: player,
+        immediate: true,
+        bullet_type: {
+          behaviors: [  ],
+          parameters: {
+          },
+          yaw: 0,
+          speed: 6,
+          r: 8,
+          color: "#996600",
+          shell: "#FFAA00",
+          graze_color: "#442200",
+          style: "gradient",
+          cull_type: "screen"
+        }
+      }
+    },
+    yaw: 0,
+    speed: 2,
+    r: 6,
+    color: "#FF9900",
+    shell: "#FF6600",
+    graze_color: "#CC0000",
+    style: "gradient",
+    cull_type: "timer",
+    max_age: 1200
+  }
+});
+
+// avoidance_attack.spawners.push({
+  // sources: spiral_spawners,
+  // x: 400,
+  // y: 300,
+  // heading: 0,
+  // spin: 0.8,
+  // random_spread: 0,
+  // delay: 9,
+  // sync: 0,
+  // lifespan: 1000,
+  // bullet_type: {
+    // yaw: 0.007,
+    // speed: 1.5,
+    // r: 8,
+    // color: "#FF88FF",
+    // shell: "#440044",
+    // graze_color: "#000000",
+    // style: "gradient",
+    // cull_type: "timer",
+    // max_age: false
+  // }
+// });
+
+// avoidance_attack.spawners.push({
+  // sources: spiral_spawners,
+  // x: 400,
+  // y: 300,
+  // heading: 0,
+  // spin: 0.8,
+  // random_spread: 0,
+  // delay: 9,
+  // sync: 0,
+  // lifespan: 1500,
+  // bullet_type: {
+    // yaw: 0,
+    // speed: 1.5,
+    // r: 8,
+    // color: "#00AABB",
+    // shell: "#004444",
+    // graze_color: "#000000",
+    // style: "gradient",
+    // cull_type: "timer",
+    // max_age: false
+  // }
+// });
+
+/* rain
 rain_spawners = helpers.makeLineAttack({
   sx: 0,
   sy: 0,
@@ -54,7 +166,6 @@ rain_spawners = helpers.makeLineAttack({
   count: 10,
   heading: 0.5 * Math.PI
 });
-
 avoidance_attack.spawners.push({
   sources: rain_spawners,
   x: 0,
@@ -605,7 +716,7 @@ aimed_attack.spawners.push({
     cull_type: "timer"
   }
 });
-*/
+
 var overlap_a = helpers.makeRingAttack(200,100,11,0,1),
     overlap_b = helpers.makeRingAttack(600,100,11,0,1),
     overlap_c = helpers.makeRingAttack(200,500,11,0,1),

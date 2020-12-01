@@ -82,3 +82,19 @@ function Portal(descriptor) {
     }
   }
 }
+
+function JumpPortal(desc) {
+  this.destination = desc.destination;
+  this.trigger = desc.trigger;
+  
+  this.update = function() {
+    if(this.trigger()) {
+      game.current_scene = scenes_list[this.destination];
+      game.current_scene.init();
+    }
+  }
+  
+  this.draw = function() {
+    return true;
+  }
+}

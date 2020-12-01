@@ -6,6 +6,12 @@ function Scene(descriptor) {
   this.time_remaining = this.timeout;
   this.next_scene = descriptor.next_scene;
   this.no_reset = descriptor.no_reset;
+  
+  if(descriptor.load_elements) {
+    this.load_elements = descriptor.load_elements;
+  } else {
+    this.load_elements = false;
+  }
 
   if(descriptor.music) {
     if(typeof descriptor.music === "string") {
@@ -41,12 +47,24 @@ function Scene(descriptor) {
     }
     this.special_init();
     
-    if(this.boss_type) {
+    if(this.next_scene) {
+      this.next_scene.preload();
+    }
+    if(this.boss_type && !this.boss) {
       this.boss = new Boss(this.boss_type);
+    }
+    
+    if(this.boss) {
       this.boss.init();
     }
+    
     this.slowdown = false;
   };
+  
+  this.load_boss = function() {
+    this.boss = new Boss(this.boss_type);
+    this.boss.preload();
+  }
   
   this.update = function() {
       
@@ -61,7 +79,7 @@ function Scene(descriptor) {
     if(this.player) {
       this.player.update(this.slowdown, this.slowdown_speed);
     }
-    this.time_remaining--
+    this.time_remaining--;
     
     if((this.time_remaining <= 0)&&this.next_scene) {
       game.current_scene = this.next_scene;
@@ -76,11 +94,18 @@ function Scene(descriptor) {
   this.draw = function() {
   
     // draw order:
-    // UI
-    // spirit wells + boss
+    // Load elements
+    // HUD elements
+    // boss
     // player
     // bullets
-    // should spirit be above bullets?
+    // game over screen
+    
+    if(this.load_elements) {
+      for(var i = 0; i < this.load_elements.length; i++) {
+        this.load_elements[i].draw();
+      }
+    }
   
     for(var i = 0; i < this.elements.length; i++) {
       this.elements[i].draw();
@@ -101,9 +126,6 @@ function Scene(descriptor) {
     if(player.dead) {
       TextElement.GAMEOVER.draw();
     }
-    // if(this.prescreen.is_showing) {
-      // this.prescreen.draw();
-    // }
   };
   
   this.game_over = function() {
@@ -148,155 +170,13 @@ function Scene(descriptor) {
       }
     }
   }
+  
+  this.preload = function() {
+    if(this.next_scene) {
+      // NB do not chain more than one "next scene"
+      this.next_scene.preload();
+    } else {
+      this.load_boss(true);
+    }
+  }
 }
-/*
-var scenes_list = {};
-
-var top_line = "Infinite",
-    bottom_line = "Ritual";
-
-scenes_list.menu = new Scene({
-//  prescreen: PreScreen.Default(),
-  elements: [
-    Background.DEFAULT,
-    new MenuItem({
-      x: 10,
-      y: 10,
-      w: 160,
-      h: 44,
-      font: "sans-serif",
-      size: "32px",
-      text: "Test Boss"
-    }),
-    new Portal({
-      x: 200,
-      y: 32,
-      h: 16,
-      destination: "test_scene"
-    }),
-    new MenuItem({
-      x: 610,
-      y: 10,
-      w: 130,
-      h: 44,
-      font: "sans-serif",
-      size: "32px",
-      text: "Settings"
-    }),
-    new Portal({
-      x: 770,
-      y: 32,
-      h: 16,
-      destination: "settings"
-    }),
-    new TextElement([
-      new TextLine({
-        fill_color: "#449999",
-        outline_color: "#88FFFF",
-        font: "128px serif",
-        line_width: 2,
-        x: 32,
-        y: 250,
-        text: "Infinite"
-      }),
-      new TextLine({
-        fill_color: "#449999",
-        outline_color: "#88FFFF",
-        font: "128px serif",
-        line_width: 2,
-        x: 32,
-        y: 400,
-        text: "Ritual"
-      })
-    ])
-
-  ],
-  player: player,
-  init: function() {
-    player.init();
-  },
-  music: "music/GlitchCat7 - Bullet_Hell_baseline.mp3",
-  no_reset: true
-});
-
-scenes_list.settings = new Scene({
-  elements: [
-    Background.DEFAULT,
-    new MenuItem({
-      x: 10,
-      y: 10,
-      w: 175,
-      h: 44,
-      font: "sans-serif",
-      size: "32px",
-      text: "Main Menu"
-    }),
-    new MenuItem({
-      x: 10,
-      y: 100,
-      w: 175,
-      h: 44,
-      font: "sans-serif",
-      size: "32px",
-      text: "Volume"
-    }),
-    new Slider({
-      x: 195,
-      y: 100,
-      w: 300,
-      h: 44,
-      min: 0,
-      max: 1,
-      value: 1,
-      binding: game.volume
-    }),
-    new Portal({
-      x: 210,
-      y: 32,
-      h: 16,
-      destination: "menu"
-    })
-  ],
-  player: player,
-  music: "music/GlitchCat7 - Bullet_Hell_baseline.mp3",
-  no_reset: true
-});
-
-scenes_list.thaumiel = new Scene({
-  elements: [ Background.INGAME ],
-  init: function() {
-    player.init();
-  },
-  boss: thaumiel,
-  player: player,
- // prescreen: new PreScreen(thaumiel.metadata)
-});
-
-scenes_list.dream_child = new Scene({
-  elements: [ Background.INGAME ],
-  init: function() {
-    player.init();
-  },
-  boss: hope,
-  player: player,
- // prescreen: new PreScreen(thaumiel.metadata)
-});
-
-scenes_list.kinetic = new Scene({
-  elements: [ Background.INGAME ],
-  init: function() {
-    player.init();
-  },
-  boss: kinetic,
-  player: player,
-});
-
-scenes_list.symmetria = new Scene({
-  elements: [ Background.INGAME ],
-  init: function() {
-    player.init();
-  },
-  boss: symmetria,
-  player: player,
-});
-*/

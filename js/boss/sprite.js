@@ -11,12 +11,11 @@ function Sprite(parent,descriptor) {
   // allow a custom draw function for vector graphics
   this.inner_draw = descriptor.draw;
   
-  // TODO: Sprite object should only have one file
-  // multiple files will be handled by the region object
   this.file = descriptor.file;
   
   var img = document.createElement("img");
   img.src = this.file.src;
+  document.body.appendChild(img);
   this.img_object = img;
   
   this.draw = function(opacity) {

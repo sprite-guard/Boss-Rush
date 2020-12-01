@@ -1,5 +1,36 @@
 var SpawnerBehavior = {};
 
+SpawnerBehavior.burst = function(parent) {
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  
+  if(parent.is_new) {
+    parent.burst_on_interval = parent.parameters.burst_on_interval;
+    parent.burst_off_interval = parent.parameters.burst_off_interval;
+    parent.burst_start_phase = parent.parameters.burst_phase;
+    parent.burst_timer = parent.burst_start_phase;
+    parent.burst_state = parent.parameters.burst_state;
+  }
+  
+  if(parent.burst_timer === 0) {
+    parent.burst_state = !parent.burst_state;
+    if(parent.burst_state) {
+      parent.burst_timer = parent.burst_on_interval;
+    } else {
+      parent.burst_timer = parent.burst_off_interval;
+    }
+  }
+  
+  if(parent.burst_state) {
+    // do nothing
+  } else {
+    parent.timer = 1;
+  }
+  
+};
+
 SpawnerBehavior.freeze = function(parent) {
   var speed = 1;
   if(game.current_scene.slowdown) {
@@ -24,6 +55,8 @@ SpawnerBehavior.freeze = function(parent) {
     parent.freeze_is_done = true;
   }
 };
+
+
 
 SpawnerBehavior.pop_in = function(parent) {
   var speed = 1;
@@ -126,6 +159,46 @@ SpawnerBehavior.followtarget = function(parent) {
   }
 };
 
+SpawnerBehavior.move = function(parent) {
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  if(parent.is_new) {
+    parent.dx = parent.parameters.dx;
+    parent.dy = parent.parameters.dy;
+    parent.move_countdown = parent.parameters.move_countdown + parent.sync;
+  }
+  if(parent.move_countdown <= 0) {
+    for(var i = 0; i < parent.sources.length; i++) {
+      parent.sources[i].x += parent.dx;
+      parent.sources[i].y += parent.dy;
+    }
+  } else {
+    parent.move_countdown -= speed;
+  }
+}
+
+SpawnerBehavior.burst = function(parent) {
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  if(parent.is_new) {
+    parent.dx = parent.parameters.dx;
+    parent.dy = parent.parameters.dy;
+    parent.move_countdown = parent.parameters.move_countdown + parent.sync;
+  }
+  if(parent.move_countdown <= 0) {
+    for(var i = 0; i < parent.sources.length; i++) {
+      parent.sources[i].x += parent.dx;
+      parent.sources[i].y += parent.dy;
+    }
+  } else {
+    parent.move_countdown -= speed;
+  }
+}
+
 SpawnerBehavior.juke = function(parent) {
   var speed = 1;
   if(game.current_scene.slowdown) {
@@ -185,5 +258,37 @@ SpawnerBehavior.speedup = function(parent) {
     parent.set_bullet_speed(parent.bullet_speed);
   } else {
     // do nothing?
+  }
+};
+
+SpawnerBehavior.pulse = function(parent) {
+  var speed = 1;
+  if(game.current_scene.slowdown) {
+    speed = game.current_scene.slowdown_speed;
+  }
+  
+  if(parent.is_new) {
+    parent.pulse_delay = parent.parameters.bullet_pulse_delay + parent.sync;
+    parent.pulse_frequency = parent.parameters.pulse_frequency;
+    parent.pulse_tick = parent.pulse_frequency / 60;
+    parent.pulse_min_speed = parent.parameters.pulse_min_speed;
+    parent.pulse_max_speed = parent.parameters.pulse_max_speed;
+    parent.pulse_current_speed = 0;
+    parent.pulse_difference = parent.pulse_max_speed - parent.pulse_min_speed;
+    parent.pulse_whole_turns = parent.parameters.pulse_phase;
+    parent.pulse_radians = parent.pulse_whole_turns * Math.PI * 2;
+  }
+  
+  if(parent.pulse_delay > 0) {
+    parent.pulse_delay -= speed;
+    return;
+  } else {
+    parent.pulse_radians = parent.pulse_whole_turns * Math.PI * 2;
+    var speed_modifier = (Math.cos(parent.pulse_radians)+1)/2;
+    var modified_speed = speed_modifier * parent.pulse_difference;
+    var new_speed = modified_speed + parent.pulse_min_speed;
+    parent.pulse_whole_turns += parent.pulse_tick;
+    parent.pulse_current_speed = new_speed;
+    parent.set_bullet_speed(parent.pulse_current_speed);
   }
 };

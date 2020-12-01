@@ -4,9 +4,9 @@ function HitEffect(descriptor) {
   this.y = descriptor.y;
   
   // optional
-  this.r_max = descriptor.r_max || 32;
+  this.r_max = descriptor.r_max || 64;
   this.r_min = descriptor.r_min || 4;
-  this.color = descriptor.color || "#FF6600";
+  this.color = descriptor.color || "#FFAA44";
   
   // internal
   this.r = this.r_min;
@@ -15,7 +15,7 @@ function HitEffect(descriptor) {
   this.update = function(draw_only) {
     if(this.r < this.r_max) {
       if(!draw_only) {
-        this.r += 2;
+        this.r += 3;
       }
       this.draw();
     } else {
@@ -26,7 +26,7 @@ function HitEffect(descriptor) {
   this.draw = function() {
     game.draw.beginPath();
     game.draw.strokeStyle = this.color;
-    game.draw.lineWidth = 3;
+    game.draw.lineWidth = 5;
     game.draw.ellipse(this.x, this.y, this.r, this.r, 0, 0, 2 * Math.PI);
     game.draw.stroke();
     game.draw.lineWidth = 1;

@@ -56,13 +56,21 @@ helpers.fill_to_hex = function(fill) {
   return parseInt(fill.replace("#","0x"));
 }
 
+helpers.normalize = function(x,y) {
+  var angle = Math.atan2(y,x);
+  return {
+    x: Math.cos(angle),
+    y: Math.sin(angle)
+  };
+}
+
 helpers.lerp = function(start,end,t) {
   var new_x = ((1 - t) * start.x) + (t * end.x);
   var new_y = ((1 - t) * start.y) + (t * end.y);
   
   return { x: new_x, y: new_y };
 };
-
+/*
 if(PIXI) {
   // reimplement canvas drawing API using PIXI rendering
   helpers.PseudoCanvas = function(graphics) {
@@ -83,3 +91,4 @@ if(PIXI) {
     
   }
 }
+*/

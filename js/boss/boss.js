@@ -30,16 +30,26 @@ function Boss(descriptor) {
   // them at the top level too.
   this.cached_sprites = [];
   
-  this.init = function() {
-    this.x = this.start_x;
-    this.y = this.start_y;
-    if(this.persona_type) {
+  this.preload = function() {
+    if(this.persona_type && !this.persona) {
       this.persona = new Persona(this.persona_type);
     }
-    //this.current_sprite = this.start_sprite;
-    //this.active_sprite = new Sprite(this, this.sprite_types[this.current_sprite]);
+  }
+  
+  this.init = function() {
+    if(!this.persona) {
+      this.preload();
+    }
+    this.x = this.start_x;
+    this.y = this.start_y;
     this.current_phase = this.start_phase;
     this.active_phase = new Phase(this, this.phase_types[this.current_phase]);
+    
+    // reset all coloring completion values.
+    if(this.persona) {
+      this.persona.reset();
+    }
+    
     this.active_phase.init();
   }
   

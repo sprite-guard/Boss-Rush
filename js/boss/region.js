@@ -8,8 +8,8 @@ function Region(parent,desc) {
   
   this.sprites = [];
   for(var i = 0; i < desc.sprites.length; i++) {
-    this.sprites.push(new Sprite(this,desc.sprites[i]));
-    // TODO: Force the sprites to load and draw
+    var current_sprite = new Sprite(this,desc.sprites[i]);
+    this.sprites.push(current_sprite);
   }
   
   this.hitboxes = [];
@@ -34,6 +34,10 @@ function Region(parent,desc) {
       this.doneness = 1;
     }
   };
+  
+  this.reset = function() {
+    this.doneness = 0;
+  }
   
   this.move_center = function(point) {
     for(var i = 0; i < this.sprites.length; i++) {

@@ -705,90 +705,28 @@ var thaumiel = {
                 cull_type: "screen"
               }
             },
-            // aimed
+            // flower
             {
-              sources: [
-                {x: 0, y: 0, heading: 0},
-                //{x: 0, y: 600, heading: -(Math.PI/4)},
-                {x: 800, y: 600, heading: Math.PI},
-                //{x: 800, y: 0, heading: 3*(Math.PI/4)}
-              ],
-              sync: 1150,
-              immediate: true,
-              lifespan: 800,
+              sources: helpers.makeRingAttack(400,300,20,0,1),
               spin: 0,
-              delay: 140,
-              speed_jitter: 0,
-              yaw_jitter: 0.00,
               random_spread: 0,
-              behaviors: [  ],
-              parameters: {
-                freeze_countdown: 350,
-                freeze_duration: 500,
-                scatter_countdown: 850
-              },
+              delay: 50,
+              sync: 1150,
+              lifespan: 600,
+              speed_jitter: 0,
+              yaw_jitter: 0,
               bullet_type: {
-                behaviors: [ BulletBehavior.shootback ],
-                parameters: {
-                  shootback_spawner: {
-                    sources: [{x: 0, y: 0, heading: 0}],
-                    spin: 0,
-                    random_spread: 0.2,
-                    delay: 5,
-                    sync: 0,
-                    lifespan: 800,
-                    aimed: true,
-                    turret_speed: 0.1,
-                    target: player,
-                    immediate: true,
-                    bullet_type: {
-                      behaviors: [  ],
-                      parameters: {
-                      },
-                      yaw: 0,
-                      speed: 6,
-                      r: 8,
-                      color: "#996600",
-                      shell: "#FFAA00",
-                      graze_color: "#442200",
-                      style: "gradient",
-                      cull_type: "screen"
-                    }
-                  }
-                },
-                yaw: 0,
-                speed: 2,
-                r: 6,
-                color: "#FF9900",
-                shell: "#FF6600",
-                graze_color: "#CC0000",
+                debug: false,
+                yaw: 0.0135,
+                speed: 3,
+                r: 8,
+                color: "#22FF00",
+                shell: "#44CC00",
+                graze_color: "#003333",
                 style: "gradient",
-                cull_type: "timer",
-                max_age: 1200
+                cull_type: "timer"
               }
             },
-            // flower
-            // {
-              // sources: helpers.makeRingAttack(400,300,20,0,1),
-              // spin: 0,
-              // random_spread: 0,
-              // delay: 50,
-              // sync: 1150,
-              // lifespan: 600,
-              // speed_jitter: 0,
-              // yaw_jitter: 0,
-              // bullet_type: {
-                // debug: false,
-                // yaw: 0.0135,
-                // speed: 3,
-                // r: 8,
-                // color: "#22FF00",
-                // shell: "#44CC00",
-                // graze_color: "#003333",
-                // style: "gradient",
-                // cull_type: "timer"
-              // }
-            // },
             // rain, stop and scatter
             {
               sources: helpers.makeLineAttack({
@@ -1059,7 +997,7 @@ var thaumiel = {
                 speed: 3,
                 r: 8,
                 color: "#449999",
-                shell: "#00FFFF",
+                shell: "#44AAAA",
                 graze_color: "#003333",
                 style: "solid",
                 cull_type: "screen"
@@ -1080,7 +1018,7 @@ var thaumiel = {
                 speed: 3,
                 r: 8,
                 color: "#449999",
-                shell: "#00FFFF",
+                shell: "#44AAAA",
                 graze_color: "#003333",
                 style: "solid",
                 cull_type: "screen"
@@ -1106,7 +1044,7 @@ var thaumiel = {
                 speed: 2,
                 r: 8,
                 color: "#449999",
-                shell: "#00FFFF",
+                shell: "#44AAAA",
                 graze_color: "#003333",
                 style: "solid",
                 cull_type: "screen"
@@ -1131,7 +1069,7 @@ var thaumiel = {
                 speed: 2,
                 r: 8,
                 color: "#449999",
-                shell: "#00FFFF",
+                shell: "#44AAAA",
                 graze_color: "#003333",
                 style: "solid",
                 cull_type: "screen"
@@ -1658,7 +1596,7 @@ var thaumiel = {
                   max_yaw: 0.05
                 },
                 yaw: 0,
-                speed: 2,
+                speed: 3,
                 r: 12,
                 color: "#00FFFF",
                 shell: "#00FFFF",
@@ -1775,30 +1713,226 @@ var thaumiel = {
                 start_time: 0,
                 end_time: 1,
                 start_x: 400,
+                start_y: -300,
+                end_x: 400,
+                end_y: -300
+              },
+              {
+                start_time: 400,
+                end_time: 500,
+                start_x: 400,
+                start_y: -300,
+                end_x: 400,
+                end_y: 300
+              },
+              {
+                start_time: 610,
+                end_time: 660,
+                start_x: 400,
+                start_y: 300,
+                end_x: 400,
+                end_y: 155
+              },
+              {
+                start_time: 660,
+                end_time: 760,
+                start_x: 400,
+                start_y: 155,
+                end_x: 125,
+                end_y: 155
+              },
+              {
+                start_time: 760,
+                end_time: 820,
+                start_x: 125,
+                start_y: 155,
+                end_x: 400,
+                end_y: 300
+              },
+              {
+                start_time: 820,
+                end_time: 1120,
+                start_x: 400,
                 start_y: 300,
                 end_x: 400,
                 end_y: 300
               },
-            ],
-            ai: {
-              homes: [
-                { x: 400, y: 300 },
-                { x: 155, y: 200 },
-                { x: 155, y: 450 },
-                { x: 500, y: 200 },
-                { x: 500, y: 450 }
-              ],
-              events: [],
-              start_state: "flee",
-              tempo: 180
-            }
+              {
+                start_time: 1120,
+                end_time: 1260,
+                start_x: 400,
+                start_y: 300,
+                end_x: 400,
+                end_y: 155
+              },
+              {
+                start_time: 1400,
+                end_time: 1700,
+                start_x: 400,
+                start_y: 155,
+                end_x: 400,
+                end_y: -300
+              },
+              {
+                start_time: 2100,
+                end_time: 2600,
+                start_x: -300,
+                start_y: 300,
+                end_x: 1000,
+                end_y: 300
+              },
+              {
+                start_time: 3500,
+                end_time: 3800,
+                start_x: 400,
+                start_y: -300,
+                end_x: 400,
+                end_y: 300
+              },
+              {
+                start_time: 3800,
+                end_time: 4000,
+                start_x: 400,
+                start_y: 300,
+                end_x: 600,
+                end_y: 155
+              },
+              {
+                start_time: 4000,
+                end_time: 4300,
+                start_x: 600,
+                start_y: 155,
+                end_x: 125,
+                end_y: 155
+              },
+              {
+                start_time: 4300,
+                end_time: 4600,
+                start_x: 125,
+                start_y: 155,
+                end_x: 650,
+                end_y: 450
+              },
+              {
+                start_time: 4600,
+                end_time: 4900,
+                start_x: 650,
+                start_y: 450,
+                end_x: 125,
+                end_y: 450
+              },
+              {
+                start_time: 4900,
+                end_time: 5200,
+                start_x: 125,
+                start_y: 450,
+                end_x: 650,
+                end_y: 155
+              },
+              {
+                start_time: 5200,
+                end_time: 5500,
+                start_x: 650,
+                start_y: 155,
+                end_x: 400,
+                end_y: 300
+              },
+              {
+                start_time: 6100,
+                end_time: 6130,
+                start_x: 400,
+                start_y: 300,
+                end_x: 450,
+                end_y: 350
+              },
+              {
+                start_time: 6130,
+                end_time: 6160,
+                start_x: 450,
+                start_y: 350,
+                end_x: 500,
+                end_y: 300
+              },
+              {
+                start_time: 6160,
+                end_time: 6220,
+                start_x: 500,
+                start_y: 300,
+                end_x: 400,
+                end_y: 200
+              },
+              {
+                start_time: 6220,
+                end_time: 6280,
+                start_x: 400,
+                start_y: 200,
+                end_x: 250,
+                end_y: 300
+              },
+              {
+                start_time: 6280,
+                end_time: 6370,
+                start_x: 250,
+                start_y: 300,
+                end_x: 400,
+                end_y: 450
+              },
+              {
+                start_time: 6370,
+                end_time: 6460,
+                start_x: 400,
+                start_y: 450,
+                end_x: 600,
+                end_y: 300
+              },
+              {
+                start_time: 6460,
+                end_time: 6580,
+                start_x: 600,
+                start_y: 300,
+                end_x: 400,
+                end_y: 150
+              },
+              {
+                start_time: 6580,
+                end_time: 6670,
+                start_x: 400,
+                start_y: 150,
+                end_x: 150,
+                end_y: 300
+              },
+              {
+                start_time: 6670,
+                end_time: 6790,
+                start_x: 150,
+                start_y: 300,
+                end_x: 400,
+                end_y: 450
+              },
+              {
+                start_time: 6790,
+                end_time: 6850,
+                start_x: 400,
+                start_y: 450,
+                end_x: 600,
+                end_y: 450
+              },
+              {
+                start_time: 6850,
+                end_time: 6910,
+                start_x: 600,
+                start_y: 450,
+                end_x: 660,
+                end_y: 300
+              }
+            ]
           }
         },
       ],
       spirit_wells: [],
       exits: [],
       music: "music/2CO - the one with the vocaloid.flac",
-      duration: 12300,
+      duration: 12200,
       cycle: false
     },
   

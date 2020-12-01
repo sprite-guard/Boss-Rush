@@ -2,7 +2,11 @@ function Choreography(parent,descriptor) {
 
   this.parent = parent;
   this.movements = descriptor.movements || [];
-  this.position = { x: 0, y: 0 };
+  this.position = descriptor.start_location || { x: 0, y: 0 };
+  
+  if(descriptor.ai) {
+    this.ai = new AI(this,descriptor.ai);
+  }
   
   // internal
   this.time_elapsed = 0;
@@ -20,6 +24,8 @@ function Choreography(parent,descriptor) {
       speed = 1;
     }
     
+    var is_free = true;
+    
     for(var i = 0; i < this.movements.length; i++) {
       var st = this.movements[i].start_time;
       var et = this.movements[i].end_time;
@@ -27,6 +33,7 @@ function Choreography(parent,descriptor) {
       
       
       if((st <= ct) && (ct < et)) {
+        is_free = false;
         var duration = et - st;
         var relative_time = ct - st;
         var t = relative_time / duration;
@@ -45,6 +52,15 @@ function Choreography(parent,descriptor) {
       }
     }
     
+    if(this.ai && is_free) {
+      this.ai.update();
+      var destination = this.ai.destination();
+      var origin = this.ai.origin();
+      var tempo = this.ai.tempo;
+      var tick = this.ai.tick;
+      var t = tick / tempo;
+      this.position = helpers.lerp(origin, destination, t);
+    }
     this.time_elapsed += speed;
   };
 }

@@ -17,6 +17,8 @@ function Phase(parent,descriptor) {
   this.randomize_attacks = descriptor.randomize_attacks;
   this.cycle = descriptor.cycle;
   
+  this.report = descriptor.report || [];
+  
   if(descriptor.music) {
     this.music = new Sound(descriptor.music);
   } else {

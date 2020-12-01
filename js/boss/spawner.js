@@ -2,6 +2,7 @@ function BulletSpawner(parent,descriptor) {
   this.bullet_type = descriptor.bullet_type;
   this.initial_heading = descriptor.heading;
   this.parent = parent;
+  this.debug = descriptor.debug;
   
   
   this.sync = descriptor.sync || 0;
@@ -10,6 +11,7 @@ function BulletSpawner(parent,descriptor) {
   // optional
   this.source_homes = descriptor.sources || [{x: descriptor.x, y: descriptor.y, heading: descriptor.heading}];
   this.aimed = descriptor.aimed;
+  this.turret_speed = descriptor.turret_speed;
   this.spin = descriptor.spin || 0;
   this.delay = descriptor.delay || 0;
   this.target = descriptor.target || player;
@@ -200,7 +202,28 @@ function BulletSpawner(parent,descriptor) {
           // apply heading
           var next_direction = this.sources[i].heading;
           
-          if(this.aimed) {
+          if(this.aimed && this.turret_speed) {
+            // find the current aim direction as a rotation
+            var last_rotation = new ComplexRotation(this.sources[i].heading);
+            // find the target's direction from this particular source
+            var x_offset = this.target.x - this.sources[0].x;
+            var y_offset = this.target.y - this.sources[0].y;
+            var h = Math.atan2(y_offset,x_offset);
+            var desired_rotation = new ComplexRotation(h);
+            var angle_delta = last_rotation.subtract(desired_rotation);
+            var turn_amount = new ComplexRotation(this.turret_speed);
+            var next_rotation = {};
+            
+            if(Math.abs(angle_delta.angle) < this.turret_speed) {
+              next_rotation = desired_rotation;
+            } else if(angle_delta.angle <= 0) {
+              next_rotation = last_rotation.add(turn_amount);
+            } else if(angle_delta.angle > 0) {
+              next_rotation = last_rotation.subtract(turn_amount);
+            }
+            next_direction = next_rotation.angle;
+            this.sources[i].heading = next_direction;
+          } else if(this.aimed) {
             // find the target's direction from this particular source
             var x_offset = this.target.x - this.sources[0].x;
             var y_offset = this.target.y - this.sources[0].y;
@@ -222,6 +245,9 @@ function BulletSpawner(parent,descriptor) {
               next_bullet.y = this.sources[i].y;
               next_bullet.yaw = next_bullet.yaw + next_yaw_offset;
               next_bullet.speed = next_bullet.speed + next_speed_offset;
+          if(this.debug) {
+            console.log(next_bullet);
+          }
               
           this.all_bullets.push( next_bullet );
           // housekeeping

@@ -1,13 +1,10 @@
 function PreScreen(desc) {
-  // TBD implement pre-screens, correct all calls to PreScreen
-  // prepare the desc
   var prescreen = desc;
-  
-  // add on some special information
-  // unique to prescreens
   prescreen.timeout = 300;
   
-  return new Scene(prescreen);
+  var next_scene = new Scene(prescreen);
+
+  return next_scene;
 }
 
 scenes_list.dream_intro = PreScreen({

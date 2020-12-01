@@ -5,7 +5,7 @@
  * Sub goal is to create performant bullet-hell patterns in HTML Canvas.
  */
 
-scenes_list.test_scene = scenes_list.thaumiel_intro;
+scenes_list.test_scene = scenes_list.avoidance_intro;
 
 if(typeof nw == "undefined") nw = false;
 
@@ -14,7 +14,8 @@ var DEBUG = true,
     MAX_UPDATE = 60,
     BGCOLOR = "#002244",
     BASE_W = 800,
-    BASE_H = 600;
+    BASE_H = 600
+    MIN_FRAME_LENGTH = 16.0;
 
 // performance testing
 var frame_counter = 0,
@@ -49,6 +50,7 @@ game.init = function() {
   game.draw_batch = [];
   game.corner_buffer = 450;
   game.volume = 1;
+  game.interval = 1000 / 60;
   
   if(!PIXI) {
     game.canvas = document.getElementById("game");
@@ -68,7 +70,7 @@ game.init = function() {
     game.window = nw.Window.get();
   }
   
-  game.current_scene = scenes_list.menu;
+  game.current_scene = scenes_list.splash;
   game.current_scene.init();
 
   // housekeeping
@@ -77,13 +79,19 @@ game.init = function() {
   
   player.init();
   
+  if(DEBUG) {
+    init_mouse();
+  }
+  
   // game.draw.fillRect(0,0,game.canvas.width,game.canvas.height);
-  game.animation_request = window.requestAnimationFrame(game.update);
+  game.update();
 }
 
 game.moving_average_array = [];
 
 game.update = function() {
+
+  var frame_start = performance.now();
   game.width = game.canvas.width;
   game.height = game.canvas.height;
   
@@ -93,7 +101,9 @@ game.update = function() {
 
     UPDATE--;
     var current_time = performance.now();
-    game.fps = 1000/(current_time - last_time);
+    // check how long it has been since the last update
+    var last_interval = current_time - last_time;
+    game.fps = 1000/last_interval;
     game.moving_average_array.push(game.fps);
     if(game.moving_average_array.length > 120) game.moving_average_array.shift();
     game.average_fps = 0;
@@ -113,9 +123,11 @@ game.update = function() {
     game.draw.fillText(game.fr,2,595);
     game.hitbox_edit();
   }
+  var frame_end = performance.now();
+  var this_frame_duration = frame_end - frame_start;
   
   if(game.keep_going) {
-    game.animation_request = window.requestAnimationFrame(game.update);
+    window.setTimeout(game.update,game.interval - this_frame_duration);
   }
 }
 
@@ -130,19 +142,20 @@ game.pause = function() {
 }
 
 game.unpause = function() {
-  game.keep_going = true;
-  window.cancelAnimationFrame(game.animation_request);
-  game.animation_request = window.requestAnimationFrame(game.update);
+  if(!game.keep_going) {
+    game.keep_going = true;
+    game.update();
+  }
 }
 
 game.pause_unpause = function() {
   game.keep_going = !game.keep_going;
   if(game.keep_going) {
     game.music.play();
+    game.update();
   } else {
     game.music.pause();
   }
-  game.animation_request = window.requestAnimationFrame(game.update);
 }
 
 game.return_to_menu = function() {
